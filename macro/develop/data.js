@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1781851617308,
+  "lastUpdate": 1781935245521,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (develop)": [
@@ -1004,6 +1004,142 @@ window.BENCHMARK_DATA = {
             "value": 2976,
             "unit": "ms",
             "extra": "min 2954.0ms, stddev 28.17ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "8171f42fa73b379293ba3c9ad242fad364317ede",
+          "message": "chore(deps): bump http-proxy-middleware to 4.1.0\n\nMajor bump from 3.0.6 (only dev-proxy consumes it directly). dev-proxy\nalready uses the v3-style on:{} event API and is ESM with Node 22+, so\nnone of the v4 breaking changes (ESM-only, dropped Node<=20, removed\nlegacyCreateProxyMiddleware) apply.\n\nv4 also dropped its transitive http-proxy dependency (replaced internally\nby httpxy), which the electron dev proxy was relying on via a phantom\n'import httpProxy from http-proxy'. Switch app-server to httpxy as an\nexplicit dev dependency: it is loaded via dynamic import on the dev-only\nproxy path and marked external in the main vite config, so it stays out\nof the production main bundle entirely - an improvement over http-proxy,\nwhich was previously inlined into it.",
+          "timestamp": "2026-06-19T09:47:22Z",
+          "url": "https://github.com/rotki/rotki/commit/8171f42fa73b379293ba3c9ad242fad364317ede"
+        },
+        "date": 1781935245070,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 1749.49,
+            "unit": "ms",
+            "extra": "min 1697.58ms, stddev 704.85ms"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 1592.56,
+            "unit": "ms",
+            "extra": "min 1587.13ms, stddev 281.13ms"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 46.97,
+            "unit": "ms",
+            "extra": "min 46.91ms, stddev 0.04ms"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 89.01,
+            "unit": "ms",
+            "extra": "min 87.76ms, stddev 0.89ms"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 43.08,
+            "unit": "ms",
+            "extra": "min 42.87ms, stddev 0.44ms"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 42.94,
+            "unit": "ms",
+            "extra": "min 42.93ms, stddev 0.02ms"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 143,
+            "unit": "ms",
+            "extra": "min 139.05ms, stddev 1.95ms"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 106.97,
+            "unit": "ms",
+            "extra": "min 105.94ms, stddev 0.77ms"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 1748.81,
+            "unit": "ms",
+            "extra": "min 1693.52ms, stddev 46.76ms"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 1673.21,
+            "unit": "ms",
+            "extra": "min 1630.44ms, stddev 23.53ms"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 1203.99,
+            "unit": "ms",
+            "extra": "min 1200.99ms, stddev 4.08ms"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 1202.04,
+            "unit": "ms",
+            "extra": "min 1200.66ms, stddev 1.41ms"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 1322.13,
+            "unit": "ms",
+            "extra": "min 1313.97ms, stddev 3.54ms"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 1194.99,
+            "unit": "ms",
+            "extra": "min 1189.01ms, stddev 3.29ms"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 88.02,
+            "unit": "ms",
+            "extra": "min 87.8ms, stddev 0.87ms"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 42.97,
+            "unit": "ms",
+            "extra": "min 42.88ms, stddev 0.43ms"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 42.92,
+            "unit": "ms",
+            "extra": "min 41.99ms, stddev 0.42ms"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 2499.85,
+            "unit": "ms",
+            "extra": "min 2487.13ms, stddev 13.58ms"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 2853,
+            "unit": "ms",
+            "extra": "min 2838.0ms, stddev 11.08ms"
           }
         ]
       }
