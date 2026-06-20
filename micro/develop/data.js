@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1781851988130,
+  "lastUpdate": 1781935618699,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (develop)": [
@@ -164,6 +164,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.000002597404353921609",
             "extra": "mean: 22.078369698944137 usec\nrounds: 5564"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "8171f42fa73b379293ba3c9ad242fad364317ede",
+          "message": "chore(deps): bump http-proxy-middleware to 4.1.0\n\nMajor bump from 3.0.6 (only dev-proxy consumes it directly). dev-proxy\nalready uses the v3-style on:{} event API and is ESM with Node 22+, so\nnone of the v4 breaking changes (ESM-only, dropped Node<=20, removed\nlegacyCreateProxyMiddleware) apply.\n\nv4 also dropped its transitive http-proxy dependency (replaced internally\nby httpxy), which the electron dev proxy was relying on via a phantom\n'import httpProxy from http-proxy'. Switch app-server to httpxy as an\nexplicit dev dependency: it is loaded via dynamic import on the dev-only\nproxy path and marked external in the main vite config, so it stays out\nof the production main bundle entirely - an improvement over http-proxy,\nwhich was previously inlined into it.",
+          "timestamp": "2026-06-19T09:47:22Z",
+          "url": "https://github.com/rotki/rotki/commit/8171f42fa73b379293ba3c9ad242fad364317ede"
+        },
+        "date": 1781935618007,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 335.4839619890008,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0064585620090166105",
+            "extra": "mean: 2.9807684220469115 msec\nrounds: 263"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 244.7094006493342,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000034105346960786754",
+            "extra": "mean: 4.0864797075490715 msec\nrounds: 212"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 1894.9351753733672,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000013719412604963646",
+            "extra": "mean: 527.7225379506535 usec\nrounds: 1805"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 1714.8702610911184,
+            "unit": "iter/sec",
+            "range": "stddev: 0.003244673180775144",
+            "extra": "mean: 583.1344928471331 usec\nrounds: 1049"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 9.67287293071617,
+            "unit": "iter/sec",
+            "range": "stddev: 0.016809291722342946",
+            "extra": "mean: 103.38190185715186 msec\nrounds: 7"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 70510.76875862402,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000001169661626695846",
+            "extra": "mean: 14.182230850769049 usec\nrounds: 5614"
           }
         ]
       }
