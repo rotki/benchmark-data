@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1782023888528,
+  "lastUpdate": 1782112205673,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (bugfixes)": [
@@ -1312,6 +1312,142 @@ window.BENCHMARK_DATA = {
             "value": 2673.08,
             "unit": "ms",
             "extra": "min 2650.02ms, stddev 13.73ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "committer": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "id": "506ed033891cffcdd58f939a8ff18cf6a7414fc1",
+          "message": "fix: fold globaldb v18 upgrade into unreleased v16_v17\n\nThe Moralis price source change bumped GLOBAL_DB_VERSION 17->18 and added a\nnew v17_v18 upgrade, but the v1.44 v16_v17 upgrade was still unreleased and\nthe packaged global.db is at v17. The version mismatch broke the globaldb\nreset and packaged-db consistency tests on develop.\n\nFold the moralis price-source step (J/10) into the existing v16_v17 upgrade,\nrevert GLOBAL_DB_VERSION back to 17, drop v17_v18.py and its registration,\nand merge the upgrade test assertion into test_upgrade_v16_v17.\n\nAlso document in CLAUDE.md/AGENTS.md to check whether the latest globaldb\nupgrade is released before adding a new one vs extending the unreleased one.",
+          "timestamp": "2026-06-21T21:59:34Z",
+          "url": "https://github.com/rotki/rotki/commit/506ed033891cffcdd58f939a8ff18cf6a7414fc1"
+        },
+        "date": 1782112205204,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 1804.47,
+            "unit": "ms",
+            "extra": "min 1801.98ms, stddev 698.19ms"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 1639.04,
+            "unit": "ms",
+            "extra": "min 1628.64ms, stddev 268.45ms"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 46.98,
+            "unit": "ms",
+            "extra": "min 46.93ms, stddev 0.41ms"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 89.96,
+            "unit": "ms",
+            "extra": "min 88.98ms, stddev 0.44ms"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 42.99,
+            "unit": "ms",
+            "extra": "min 42.94ms, stddev 0.04ms"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 42.96,
+            "unit": "ms",
+            "extra": "min 42.92ms, stddev 0.02ms"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 151,
+            "unit": "ms",
+            "extra": "min 150.03ms, stddev 2.39ms"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 112.99,
+            "unit": "ms",
+            "extra": "min 111.98ms, stddev 1.13ms"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 1802.59,
+            "unit": "ms",
+            "extra": "min 1801.65ms, stddev 24.62ms"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 1683.92,
+            "unit": "ms",
+            "extra": "min 1682.97ms, stddev 1.83ms"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 1134.04,
+            "unit": "ms",
+            "extra": "min 1128.96ms, stddev 3.57ms"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 1132.99,
+            "unit": "ms",
+            "extra": "min 1128.04ms, stddev 2.57ms"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 1252.17,
+            "unit": "ms",
+            "extra": "min 1250.95ms, stddev 0.73ms"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 1122.04,
+            "unit": "ms",
+            "extra": "min 1118.15ms, stddev 2.71ms"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 89.01,
+            "unit": "ms",
+            "extra": "min 88.78ms, stddev 0.84ms"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 43,
+            "unit": "ms",
+            "extra": "min 42.95ms, stddev 0.51ms"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 42.96,
+            "unit": "ms",
+            "extra": "min 42.94ms, stddev 0.02ms"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 2346.96,
+            "unit": "ms",
+            "extra": "min 2333.96ms, stddev 9.86ms"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 2703.98,
+            "unit": "ms",
+            "extra": "min 2702.03ms, stddev 2.76ms"
           }
         ]
       }
