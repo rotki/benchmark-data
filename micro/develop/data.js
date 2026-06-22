@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1782023945462,
+  "lastUpdate": 1782112267715,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (develop)": [
@@ -292,6 +292,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.0000032481505011131217",
             "extra": "mean: 21.42755015345923 usec\nrounds: 5533"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "committer": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "id": "506ed033891cffcdd58f939a8ff18cf6a7414fc1",
+          "message": "fix: fold globaldb v18 upgrade into unreleased v16_v17\n\nThe Moralis price source change bumped GLOBAL_DB_VERSION 17->18 and added a\nnew v17_v18 upgrade, but the v1.44 v16_v17 upgrade was still unreleased and\nthe packaged global.db is at v17. The version mismatch broke the globaldb\nreset and packaged-db consistency tests on develop.\n\nFold the moralis price-source step (J/10) into the existing v16_v17 upgrade,\nrevert GLOBAL_DB_VERSION back to 17, drop v17_v18.py and its registration,\nand merge the upgrade test assertion into test_upgrade_v16_v17.\n\nAlso document in CLAUDE.md/AGENTS.md to check whether the latest globaldb\nupgrade is released before adding a new one vs extending the unreleased one.",
+          "timestamp": "2026-06-21T21:59:34Z",
+          "url": "https://github.com/rotki/rotki/commit/506ed033891cffcdd58f939a8ff18cf6a7414fc1"
+        },
+        "date": 1782112267417,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 268.99854338196496,
+            "unit": "iter/sec",
+            "range": "stddev: 0.006291045100101999",
+            "extra": "mean: 3.7174922489451854 msec\nrounds: 237"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 180.94462424016396,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0004142349407740925",
+            "extra": "mean: 5.526552690909022 msec\nrounds: 165"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 1364.8135773817041,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000013584243802513153",
+            "extra": "mean: 732.7008000011456 usec\nrounds: 1350"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 2583.6877778741596,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00023033520465286927",
+            "extra": "mean: 387.04367012286326 usec\nrounds: 1061"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 9.001595526055805,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0019987293236337364",
+            "extra": "mean: 111.0914167499999 msec\nrounds: 8"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 46085.6783609699,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000002967886181545733",
+            "extra": "mean: 21.69871499270157 usec\nrounds: 6063"
           }
         ]
       }
