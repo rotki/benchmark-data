@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1782280293152,
+  "lastUpdate": 1782288212330,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (develop)": [
@@ -484,6 +484,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.0000024673750871214965",
             "extra": "mean: 21.86199555794162 usec\nrounds: 5403"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "committer": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "id": "36f70c8ce5b09c2799638505b2d9e62098ab1137",
+          "message": " Add MCP server exposing rotki data to LLM clients\n\nAdd a premium-gated Model Context Protocol server that lets local LLM\n  clients query the user's rotki data. It runs as a stdio subprocess\n  talking to the running backend over REST, so no ports are exposed.\n\n  The public surface is a generic, privacy-filtered analytics layer rather\n  than one tool per question:\n  - refresh_analytics_data loads source tables (history_events by default,\n    balances opt-in) into an in-memory Polars session\n  - list_tables / describe_table expose the schema\n  - query_sql runs read-only Polars SQL (aggregations, joins, windows) so\n    the math is computed exactly instead of by the model\n  - info reports connectivity and unlock state (ungated)\n\n  All rows pass through a fail-closed privacy filter before they can be\n  queried: identifiers are HMAC-hashed consistently within a session,\n  free-text notes are redacted, and unrecognized columns are hidden by\n  default. A --privacy-mode flag selects balanced (default), strict, or raw.\n\n  History events load complete by default (opt-in --max-events cap),\n  accept second or millisecond time ranges, and gain readable year/datetime\n  columns so models can filter by date without unix-timestamp math.",
+          "timestamp": "2026-06-16T14:37:57Z",
+          "url": "https://github.com/rotki/rotki/commit/36f70c8ce5b09c2799638505b2d9e62098ab1137"
+        },
+        "date": 1782288212048,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 278.73519411362025,
+            "unit": "iter/sec",
+            "range": "stddev: 0.006413577978689753",
+            "extra": "mean: 3.5876345044263482 msec\nrounds: 226"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 192.47305266975889,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000042188834462173185",
+            "extra": "mean: 5.195532497298614 msec\nrounds: 185"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 1445.0032503611817,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000007748809729506337",
+            "extra": "mean: 692.0399658270995 usec\nrounds: 1229"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 3361.7997582208445,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0001619803660186313",
+            "extra": "mean: 297.4597156046043 usec\nrounds: 1083"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 11.006133199520574,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000789277866479418",
+            "extra": "mean: 90.85843155555848 msec\nrounds: 9"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 50866.6353660368,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0000016806605693859962",
+            "extra": "mean: 19.659251939979722 usec\nrounds: 6315"
           }
         ]
       }
