@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1782280237429,
+  "lastUpdate": 1782288153159,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (bugfixes)": [
@@ -1720,6 +1720,142 @@ window.BENCHMARK_DATA = {
             "value": 2748.87,
             "unit": "ms",
             "extra": "min 2673.99ms, stddev 33.86ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "committer": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "id": "36f70c8ce5b09c2799638505b2d9e62098ab1137",
+          "message": " Add MCP server exposing rotki data to LLM clients\n\nAdd a premium-gated Model Context Protocol server that lets local LLM\n  clients query the user's rotki data. It runs as a stdio subprocess\n  talking to the running backend over REST, so no ports are exposed.\n\n  The public surface is a generic, privacy-filtered analytics layer rather\n  than one tool per question:\n  - refresh_analytics_data loads source tables (history_events by default,\n    balances opt-in) into an in-memory Polars session\n  - list_tables / describe_table expose the schema\n  - query_sql runs read-only Polars SQL (aggregations, joins, windows) so\n    the math is computed exactly instead of by the model\n  - info reports connectivity and unlock state (ungated)\n\n  All rows pass through a fail-closed privacy filter before they can be\n  queried: identifiers are HMAC-hashed consistently within a session,\n  free-text notes are redacted, and unrecognized columns are hidden by\n  default. A --privacy-mode flag selects balanced (default), strict, or raw.\n\n  History events load complete by default (opt-in --max-events cap),\n  accept second or millisecond time ranges, and gain readable year/datetime\n  columns so models can filter by date without unix-timestamp math.",
+          "timestamp": "2026-06-16T14:37:57Z",
+          "url": "https://github.com/rotki/rotki/commit/36f70c8ce5b09c2799638505b2d9e62098ab1137"
+        },
+        "date": 1782288152638,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 1854.35,
+            "unit": "ms",
+            "extra": "min 1798.38ms, stddev 650.61ms"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 1650.05,
+            "unit": "ms",
+            "extra": "min 1602.7ms, stddev 286.38ms"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 46.96,
+            "unit": "ms",
+            "extra": "min 46.95ms, stddev 0.42ms"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 90.02,
+            "unit": "ms",
+            "extra": "min 89.92ms, stddev 0.54ms"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 42.95,
+            "unit": "ms",
+            "extra": "min 42.95ms, stddev 0.01ms"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 42.97,
+            "unit": "ms",
+            "extra": "min 42.11ms, stddev 0.38ms"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 150.96,
+            "unit": "ms",
+            "extra": "min 148.96ms, stddev 2.43ms"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 112.01,
+            "unit": "ms",
+            "extra": "min 110.03ms, stddev 1.94ms"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 1799.65,
+            "unit": "ms",
+            "extra": "min 1747.55ms, stddev 28.71ms"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 1669.88,
+            "unit": "ms",
+            "extra": "min 1658.5ms, stddev 9.4ms"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 1126.89,
+            "unit": "ms",
+            "extra": "min 1119.88ms, stddev 4.63ms"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 1126.01,
+            "unit": "ms",
+            "extra": "min 1122.02ms, stddev 2.57ms"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 1243.98,
+            "unit": "ms",
+            "extra": "min 1238.05ms, stddev 3.06ms"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 1111.04,
+            "unit": "ms",
+            "extra": "min 1108.02ms, stddev 2.53ms"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 89.81,
+            "unit": "ms",
+            "extra": "min 88.12ms, stddev 0.96ms"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 42.91,
+            "unit": "ms",
+            "extra": "min 42.91ms, stddev 0.03ms"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 42.02,
+            "unit": "ms",
+            "extra": "min 41.97ms, stddev 0.55ms"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 2337.95,
+            "unit": "ms",
+            "extra": "min 2328.95ms, stddev 4.75ms"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 2686.05,
+            "unit": "ms",
+            "extra": "min 2670.97ms, stddev 9.12ms"
           }
         ]
       }
