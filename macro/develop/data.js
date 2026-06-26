@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1782366540981,
+  "lastUpdate": 1782453236478,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (develop)": [
@@ -1820,6 +1820,142 @@ window.BENCHMARK_DATA = {
             "value": 2824.01,
             "unit": "ms",
             "extra": "min 2768.01ms, stddev 33.62ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "be00ba4d91d6e3df44071ec619b01e74bc392b0e",
+          "message": "fix: drop unnecessary type assertion in password-manager spec\n\nThe type-aware no-unnecessary-type-assertion rule flags the\n`{} as Record<string, string>` cast once the keyring bugfix spec\nlands in the merged develop tree. Annotate the backing store type\ninstead of asserting it.",
+          "timestamp": "2026-06-25T14:43:13Z",
+          "url": "https://github.com/rotki/rotki/commit/be00ba4d91d6e3df44071ec619b01e74bc392b0e"
+        },
+        "date": 1782453236239,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 1491.24,
+            "unit": "ms",
+            "extra": "min 1439.98ms, stddev 611.78ms"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 1343.99,
+            "unit": "ms",
+            "extra": "min 1329.77ms, stddev 242.34ms"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 46.89,
+            "unit": "ms",
+            "extra": "min 46.36ms, stddev 0.26ms"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 85,
+            "unit": "ms",
+            "extra": "min 84.03ms, stddev 0.7ms"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 42.92,
+            "unit": "ms",
+            "extra": "min 42.77ms, stddev 0.15ms"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 42.9,
+            "unit": "ms",
+            "extra": "min 42.04ms, stddev 0.39ms"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 137.92,
+            "unit": "ms",
+            "extra": "min 137.0ms, stddev 0.77ms"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 102.81,
+            "unit": "ms",
+            "extra": "min 101.93ms, stddev 0.81ms"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 1491.26,
+            "unit": "ms",
+            "extra": "min 1439.05ms, stddev 23.37ms"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 1407.91,
+            "unit": "ms",
+            "extra": "min 1396.88ms, stddev 10.4ms"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 1129.01,
+            "unit": "ms",
+            "extra": "min 1126.02ms, stddev 2.28ms"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 1126.25,
+            "unit": "ms",
+            "extra": "min 1123.57ms, stddev 3.97ms"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 1245.81,
+            "unit": "ms",
+            "extra": "min 1242.0ms, stddev 2.61ms"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 1118.98,
+            "unit": "ms",
+            "extra": "min 1117.98ms, stddev 1.68ms"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 85,
+            "unit": "ms",
+            "extra": "min 84.02ms, stddev 0.74ms"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 42.98,
+            "unit": "ms",
+            "extra": "min 42.86ms, stddev 0.4ms"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 42.89,
+            "unit": "ms",
+            "extra": "min 42.79ms, stddev 0.08ms"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 2366.04,
+            "unit": "ms",
+            "extra": "min 2359.24ms, stddev 5.76ms"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 2659.02,
+            "unit": "ms",
+            "extra": "min 2646.11ms, stddev 14.35ms"
           }
         ]
       }
