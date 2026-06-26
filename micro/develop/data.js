@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1782366945494,
+  "lastUpdate": 1782453632638,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (develop)": [
@@ -612,6 +612,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.000002721818807771015",
             "extra": "mean: 21.483939858353526 usec\nrounds: 7366"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "be00ba4d91d6e3df44071ec619b01e74bc392b0e",
+          "message": "fix: drop unnecessary type assertion in password-manager spec\n\nThe type-aware no-unnecessary-type-assertion rule flags the\n`{} as Record<string, string>` cast once the keyring bugfix spec\nlands in the merged develop tree. Annotate the backing store type\ninstead of asserting it.",
+          "timestamp": "2026-06-25T14:43:13Z",
+          "url": "https://github.com/rotki/rotki/commit/be00ba4d91d6e3df44071ec619b01e74bc392b0e"
+        },
+        "date": 1782453631986,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 268.9850673772138,
+            "unit": "iter/sec",
+            "range": "stddev: 0.006658498176344026",
+            "extra": "mean: 3.717678493273533 msec\nrounds: 223"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 189.35516818594914,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0001825211322002391",
+            "extra": "mean: 5.28108110055907 msec\nrounds: 179"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 1445.502827946253,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000017824567473556207",
+            "extra": "mean: 691.8007911619127 usec\nrounds: 1403"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 2533.588020543054,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0002236291784159701",
+            "extra": "mean: 394.6971614531309 usec\nrounds: 991"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 9.88244284524713,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0013124479551637968",
+            "extra": "mean: 101.1895556249982 msec\nrounds: 8"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 49582.02726638623,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00000170519285792219",
+            "extra": "mean: 20.16859848483732 usec\nrounds: 8316"
           }
         ]
       }
