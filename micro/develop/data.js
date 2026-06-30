@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1782714508563,
+  "lastUpdate": 1782799088728,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (develop)": [
@@ -868,6 +868,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.0000031906758823272408",
             "extra": "mean: 22.01393004553244 usec\nrounds: 7176"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "8abb47426d4fac087a8f6ef573d5f60d8129e23e",
+          "message": "ci(renovate): group non-major deps by subproject\n\nBucket minor/patch updates into frontend/core/colibri groups so\nthe dependency dashboard reads per-stack. Majors, GitHub Actions,\nDockerfile and submodules stay individual as before.",
+          "timestamp": "2026-06-29T17:41:33Z",
+          "url": "https://github.com/rotki/rotki/commit/8abb47426d4fac087a8f6ef573d5f60d8129e23e"
+        },
+        "date": 1782799088341,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 273.1763371397875,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0075091060578891524",
+            "extra": "mean: 3.660639169813191 msec\nrounds: 212"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 194.7583945603724,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000049012021609191",
+            "extra": "mean: 5.134566868130625 msec\nrounds: 182"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 1440.3888883962518,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000009697100865349924",
+            "extra": "mean: 694.2569524494272 usec\nrounds: 1388"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 2710.9031417448605,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0002140460316504652",
+            "extra": "mean: 368.88075586365454 usec\nrounds: 938"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 10.27783825492485,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0008239252764281982",
+            "extra": "mean: 97.29672477778371 msec\nrounds: 9"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 50230.76647199587,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0000015033960494195683",
+            "extra": "mean: 19.908117479304433 usec\nrounds: 8061"
           }
         ]
       }
