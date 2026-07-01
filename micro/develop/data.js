@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1782799088728,
+  "lastUpdate": 1782886612812,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (develop)": [
@@ -932,6 +932,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.0000015033960494195683",
             "extra": "mean: 19.908117479304433 usec\nrounds: 8061"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "1931c02180035ae876e8579dd1126ae082eae9f8",
+          "message": "fix: unify login unlock-flow stage layouts\n\nThe asset-update/loading stages shown during the login flow each used\ntheir own width and presentation, so the content shifted and resized as\nthe flow advanced (login form -> check -> prompt -> restart -> unlock).\n\n- Cap the update prompt at 27.5rem to match the login form and status\n  screens instead of 32rem.\n- Give the busy/restart/unlock spinner a matching 27.5rem centered,\n  text-centered container.\n- Render the checking/applying status as the same centered spinner +\n  title + message block as the other loading phases, dropping the flat\n  card and its oversized spinner-to-text gap.",
+          "timestamp": "2026-06-30T19:52:28Z",
+          "url": "https://github.com/rotki/rotki/commit/1931c02180035ae876e8579dd1126ae082eae9f8"
+        },
+        "date": 1782886612311,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 276.6476630531363,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0077480176135879195",
+            "extra": "mean: 3.6147061173906536 msec\nrounds: 230"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 195.7376989371285,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000039691233782594144",
+            "extra": "mean: 5.108877878048433 msec\nrounds: 164"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 1443.4111718504962,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000010295498668545539",
+            "extra": "mean: 692.8032839859276 usec\nrounds: 1405"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 3417.068588593087,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00017227238173857609",
+            "extra": "mean: 292.6485009221694 usec\nrounds: 1084"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 10.5762276098733,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00246785968496274",
+            "extra": "mean: 94.55167162500011 msec\nrounds: 8"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 51100.89331299125,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000001338615958118143",
+            "extra": "mean: 19.569129523334038 usec\nrounds: 6964"
           }
         ]
       }
