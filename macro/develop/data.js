@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1782798699788,
+  "lastUpdate": 1782886247777,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (develop)": [
@@ -2500,6 +2500,142 @@ window.BENCHMARK_DATA = {
             "value": 2708.02,
             "unit": "ms",
             "extra": "min 2691.99ms, stddev 16.32ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "1931c02180035ae876e8579dd1126ae082eae9f8",
+          "message": "fix: unify login unlock-flow stage layouts\n\nThe asset-update/loading stages shown during the login flow each used\ntheir own width and presentation, so the content shifted and resized as\nthe flow advanced (login form -> check -> prompt -> restart -> unlock).\n\n- Cap the update prompt at 27.5rem to match the login form and status\n  screens instead of 32rem.\n- Give the busy/restart/unlock spinner a matching 27.5rem centered,\n  text-centered container.\n- Render the checking/applying status as the same centered spinner +\n  title + message block as the other loading phases, dropping the flat\n  card and its oversized spinner-to-text gap.",
+          "timestamp": "2026-06-30T19:52:28Z",
+          "url": "https://github.com/rotki/rotki/commit/1931c02180035ae876e8579dd1126ae082eae9f8"
+        },
+        "date": 1782886247063,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 1694.79,
+            "unit": "ms",
+            "extra": "min 1693.16ms, stddev 662.99ms"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 1459.67,
+            "unit": "ms",
+            "extra": "min 1452.33ms, stddev 278.39ms"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 45.94,
+            "unit": "ms",
+            "extra": "min 45.92ms, stddev 0.89ms"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 87.99,
+            "unit": "ms",
+            "extra": "min 86.96ms, stddev 0.46ms"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 42.03,
+            "unit": "ms",
+            "extra": "min 41.98ms, stddev 0.48ms"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 41.98,
+            "unit": "ms",
+            "extra": "min 41.96ms, stddev 0.02ms"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 148.99,
+            "unit": "ms",
+            "extra": "min 146.99ms, stddev 1.36ms"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 111.98,
+            "unit": "ms",
+            "extra": "min 109.99ms, stddev 0.9ms"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 1693.67,
+            "unit": "ms",
+            "extra": "min 1692.76ms, stddev 39.42ms"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 1539.47,
+            "unit": "ms",
+            "extra": "min 1530.54ms, stddev 12.47ms"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 1119.01,
+            "unit": "ms",
+            "extra": "min 1116.98ms, stddev 1.59ms"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 1118.76,
+            "unit": "ms",
+            "extra": "min 1116.01ms, stddev 1.74ms"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 1235.01,
+            "unit": "ms",
+            "extra": "min 1233.99ms, stddev 1.84ms"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 1106.08,
+            "unit": "ms",
+            "extra": "min 1104.09ms, stddev 3.8ms"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 86.99,
+            "unit": "ms",
+            "extra": "min 86.95ms, stddev 0.05ms"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 42.95,
+            "unit": "ms",
+            "extra": "min 42.0ms, stddev 0.43ms"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 41.97,
+            "unit": "ms",
+            "extra": "min 41.95ms, stddev 0.02ms"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 2321.01,
+            "unit": "ms",
+            "extra": "min 2314.95ms, stddev 9.24ms"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 2668,
+            "unit": "ms",
+            "extra": "min 2656.99ms, stddev 14.48ms"
           }
         ]
       }
