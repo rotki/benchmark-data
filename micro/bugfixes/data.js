@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1782971164922,
+  "lastUpdate": 1783057366702,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (bugfixes)": [
@@ -576,6 +576,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.000002715540419168087",
             "extra": "mean: 22.21351650471595 usec\nrounds: 5574"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "e6e3aff9d788d4d5876bb1304708672ce697f866",
+          "message": "dev: instance mode overrides stale VITE_BACKEND_URL from app/.env\n\nIn electron instance mode the renderer connected to the default backend\nport (4242) instead of the instance's reserved port. start-dev loads the\nenv files into process.env before prepareInstance writes the managed\nblock, so on a fresh instance run the default VITE_BACKEND_URL from\napp/.env lands in process.env. Vite gives process.env VITE_* vars priority\nover .env files, so that stale value shadowed the instance's real port.\n\nAdd readManagedBlockEnv and, in instance mode, propagate the whole managed\nblock (instance ports, data-dir pointers, dev flags) onto process.env\nafter it is written, overriding the stale seed. Previously only the dev\nflags were propagated.",
+          "timestamp": "2026-07-02T15:49:12Z",
+          "url": "https://github.com/rotki/rotki/commit/e6e3aff9d788d4d5876bb1304708672ce697f866"
+        },
+        "date": 1783057366553,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 385.74854245484306,
+            "unit": "iter/sec",
+            "range": "stddev: 0.007133551563341152",
+            "extra": "mean: 2.5923623551139228 msec\nrounds: 352"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 313.0735630876436,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00012800829864988644",
+            "extra": "mean: 3.194137474073639 msec\nrounds: 270"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 1392.3544587867884,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000018370641183873243",
+            "extra": "mean: 718.207920180999 usec\nrounds: 1328"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 2511.9905753040425,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0002595142378670063",
+            "extra": "mean: 398.0906655587127 usec\nrounds: 903"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 9.16026467123699,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0005843341462109177",
+            "extra": "mean: 109.16715137500077 msec\nrounds: 8"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 46789.98851089085,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000002826459252246062",
+            "extra": "mean: 21.372093300840195 usec\nrounds: 5359"
           }
         ]
       }
