@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1782970705274,
+  "lastUpdate": 1783056895865,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (develop)": [
@@ -2772,6 +2772,142 @@ window.BENCHMARK_DATA = {
             "value": 2662.14,
             "unit": "ms",
             "extra": "min 2642.03ms, stddev 41.72ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "e6e3aff9d788d4d5876bb1304708672ce697f866",
+          "message": "dev: instance mode overrides stale VITE_BACKEND_URL from app/.env\n\nIn electron instance mode the renderer connected to the default backend\nport (4242) instead of the instance's reserved port. start-dev loads the\nenv files into process.env before prepareInstance writes the managed\nblock, so on a fresh instance run the default VITE_BACKEND_URL from\napp/.env lands in process.env. Vite gives process.env VITE_* vars priority\nover .env files, so that stale value shadowed the instance's real port.\n\nAdd readManagedBlockEnv and, in instance mode, propagate the whole managed\nblock (instance ports, data-dir pointers, dev flags) onto process.env\nafter it is written, overriding the stale seed. Previously only the dev\nflags were propagated.",
+          "timestamp": "2026-07-02T15:49:12Z",
+          "url": "https://github.com/rotki/rotki/commit/e6e3aff9d788d4d5876bb1304708672ce697f866"
+        },
+        "date": 1783056895117,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 1906.84,
+            "unit": "ms",
+            "extra": "min 1748.56ms, stddev 729.68ms"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 1241.72,
+            "unit": "ms",
+            "extra": "min 1225.55ms, stddev 278.03ms"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 46.03,
+            "unit": "ms",
+            "extra": "min 45.91ms, stddev 0.54ms"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 85.05,
+            "unit": "ms",
+            "extra": "min 84.96ms, stddev 2.6ms"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 42.93,
+            "unit": "ms",
+            "extra": "min 42.87ms, stddev 0.04ms"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 41.99,
+            "unit": "ms",
+            "extra": "min 41.97ms, stddev 0.44ms"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 149.97,
+            "unit": "ms",
+            "extra": "min 146.93ms, stddev 5.43ms"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 113.12,
+            "unit": "ms",
+            "extra": "min 110.0ms, stddev 3.03ms"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 1854.69,
+            "unit": "ms",
+            "extra": "min 1744.05ms, stddev 62.44ms"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 1363.61,
+            "unit": "ms",
+            "extra": "min 1314.37ms, stddev 25.57ms"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 1144.08,
+            "unit": "ms",
+            "extra": "min 1132.95ms, stddev 10.74ms"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 1145.76,
+            "unit": "ms",
+            "extra": "min 1143.0ms, stddev 2.56ms"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 1258.19,
+            "unit": "ms",
+            "extra": "min 1249.95ms, stddev 7.24ms"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 1128.88,
+            "unit": "ms",
+            "extra": "min 1122.0ms, stddev 9.21ms"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 87.97,
+            "unit": "ms",
+            "extra": "min 85.99ms, stddev 2.76ms"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 42.99,
+            "unit": "ms",
+            "extra": "min 42.92ms, stddev 0.43ms"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 42.94,
+            "unit": "ms",
+            "extra": "min 41.98ms, stddev 0.52ms"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 2373.94,
+            "unit": "ms",
+            "extra": "min 2363.05ms, stddev 6.97ms"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 2763.93,
+            "unit": "ms",
+            "extra": "min 2710.96ms, stddev 31.26ms"
           }
         ]
       }
