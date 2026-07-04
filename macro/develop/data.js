@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1783056895865,
+  "lastUpdate": 1783142232996,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (develop)": [
@@ -2908,6 +2908,142 @@ window.BENCHMARK_DATA = {
             "value": 2763.93,
             "unit": "ms",
             "extra": "min 2710.96ms, stddev 31.26ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Yábir Benchakhtir",
+            "username": "yabirgb",
+            "email": "git@yabirgb.com"
+          },
+          "committer": {
+            "name": "GitHub",
+            "username": "web-flow",
+            "email": "noreply@github.com"
+          },
+          "id": "ae9c98a22cfef202078d65ad0045598b7b4160d2",
+          "message": "Merge pull request #12527 from yabirgb/deps\n\nBump dependencies and address unneded ignores",
+          "timestamp": "2026-07-03T14:06:18Z",
+          "url": "https://github.com/rotki/rotki/commit/ae9c98a22cfef202078d65ad0045598b7b4160d2"
+        },
+        "date": 1783142232547,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 1748.55,
+            "unit": "ms",
+            "extra": "min 1747.73ms, stddev 643.11ms"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 1229.59,
+            "unit": "ms",
+            "extra": "min 1220.05ms, stddev 276.22ms"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 46.07,
+            "unit": "ms",
+            "extra": "min 45.97ms, stddev 0.53ms"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 86.9,
+            "unit": "ms",
+            "extra": "min 86.0ms, stddev 1.02ms"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 42.89,
+            "unit": "ms",
+            "extra": "min 41.99ms, stddev 0.41ms"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 41.98,
+            "unit": "ms",
+            "extra": "min 41.95ms, stddev 0.03ms"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 148.99,
+            "unit": "ms",
+            "extra": "min 147.0ms, stddev 1.4ms"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 111,
+            "unit": "ms",
+            "extra": "min 110.98ms, stddev 0.91ms"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 1749.66,
+            "unit": "ms",
+            "extra": "min 1741.34ms, stddev 46.19ms"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 1294.81,
+            "unit": "ms",
+            "extra": "min 1287.75ms, stddev 22.8ms"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 1136.94,
+            "unit": "ms",
+            "extra": "min 1129.1ms, stddev 5.3ms"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 1134.76,
+            "unit": "ms",
+            "extra": "min 1127.0ms, stddev 5.3ms"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 1255.16,
+            "unit": "ms",
+            "extra": "min 1250.05ms, stddev 2.88ms"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 1122.1,
+            "unit": "ms",
+            "extra": "min 1120.02ms, stddev 4.25ms"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 87.07,
+            "unit": "ms",
+            "extra": "min 87.01ms, stddev 1.19ms"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 42.9,
+            "unit": "ms",
+            "extra": "min 42.88ms, stddev 0.06ms"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 42.96,
+            "unit": "ms",
+            "extra": "min 41.96ms, stddev 0.54ms"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 2346.91,
+            "unit": "ms",
+            "extra": "min 2327.05ms, stddev 12.41ms"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 2717.01,
+            "unit": "ms",
+            "extra": "min 2688.04ms, stddev 34.21ms"
           }
         ]
       }
