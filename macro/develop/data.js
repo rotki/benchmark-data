@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1783142232996,
+  "lastUpdate": 1783230319113,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (develop)": [
@@ -3044,6 +3044,142 @@ window.BENCHMARK_DATA = {
             "value": 2717.01,
             "unit": "ms",
             "extra": "min 2688.04ms, stddev 34.21ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "committer": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "id": "b5567802952d9f405944dd6c1c2e359ae44c32f2",
+          "message": "chore: bump ruff to 0.15.20\n\nIgnore the new preview rule PLW0717 (too many statements in\ntry clause) which fires 129 times across the codebase and is\ntoo strict for our error handling style.",
+          "timestamp": "2026-07-04T12:36:10Z",
+          "url": "https://github.com/rotki/rotki/commit/b5567802952d9f405944dd6c1c2e359ae44c32f2"
+        },
+        "date": 1783230318874,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 1853.92,
+            "unit": "ms",
+            "extra": "min 1750.38ms, stddev 637.86ms"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 1299.85,
+            "unit": "ms",
+            "extra": "min 1224.44ms, stddev 278.51ms"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 46.95,
+            "unit": "ms",
+            "extra": "min 45.95ms, stddev 0.45ms"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 86.93,
+            "unit": "ms",
+            "extra": "min 86.01ms, stddev 0.6ms"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 42.91,
+            "unit": "ms",
+            "extra": "min 42.89ms, stddev 0.02ms"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 41.97,
+            "unit": "ms",
+            "extra": "min 41.94ms, stddev 0.43ms"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 150.95,
+            "unit": "ms",
+            "extra": "min 149.98ms, stddev 1.2ms"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 112.99,
+            "unit": "ms",
+            "extra": "min 112.01ms, stddev 1.29ms"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 1738.95,
+            "unit": "ms",
+            "extra": "min 1691.58ms, stddev 27.94ms"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 1296.14,
+            "unit": "ms",
+            "extra": "min 1285.47ms, stddev 20.28ms"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 1132.97,
+            "unit": "ms",
+            "extra": "min 1126.01ms, stddev 5.02ms"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 1130.94,
+            "unit": "ms",
+            "extra": "min 1127.97ms, stddev 6.03ms"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 1243.11,
+            "unit": "ms",
+            "extra": "min 1240.0ms, stddev 6.96ms"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 1117.99,
+            "unit": "ms",
+            "extra": "min 1111.0ms, stddev 5.62ms"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 85,
+            "unit": "ms",
+            "extra": "min 84.02ms, stddev 1.14ms"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 42.01,
+            "unit": "ms",
+            "extra": "min 41.96ms, stddev 0.41ms"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 41.97,
+            "unit": "ms",
+            "extra": "min 41.95ms, stddev 0.02ms"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 2340.97,
+            "unit": "ms",
+            "extra": "min 2320.45ms, stddev 14.37ms"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 2675.95,
+            "unit": "ms",
+            "extra": "min 2655.96ms, stddev 11.1ms"
           }
         ]
       }
