@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1783142659688,
+  "lastUpdate": 1783230690106,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (develop)": [
@@ -1188,6 +1188,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.0000028733125361313543",
             "extra": "mean: 22.167927873803112 usec\nrounds: 7168"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "committer": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "id": "b5567802952d9f405944dd6c1c2e359ae44c32f2",
+          "message": "chore: bump ruff to 0.15.20\n\nIgnore the new preview rule PLW0717 (too many statements in\ntry clause) which fires 129 times across the codebase and is\ntoo strict for our error handling style.",
+          "timestamp": "2026-07-04T12:36:10Z",
+          "url": "https://github.com/rotki/rotki/commit/b5567802952d9f405944dd6c1c2e359ae44c32f2"
+        },
+        "date": 1783230689669,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 672.2294006189352,
+            "unit": "iter/sec",
+            "range": "stddev: 0.006144140419333638",
+            "extra": "mean: 1.4875874204241586 msec\nrounds: 421"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 596.4423570197472,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000018081607782804305",
+            "extra": "mean: 1.6766079541981482 msec\nrounds: 524"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 2833.55914405197,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000006606364740036063",
+            "extra": "mean: 352.913050041372 usec\nrounds: 2378"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 4028.6271636957704,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00040341366506083803",
+            "extra": "mean: 248.2235161922065 usec\nrounds: 1019"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 16.315191463367594,
+            "unit": "iter/sec",
+            "range": "stddev: 0.01264417867028242",
+            "extra": "mean: 61.29256909091716 msec\nrounds: 11"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 108621.51061946536,
+            "unit": "iter/sec",
+            "range": "stddev: 8.034381621375544e-7",
+            "extra": "mean: 9.206279624514782 usec\nrounds: 7578"
           }
         ]
       }
