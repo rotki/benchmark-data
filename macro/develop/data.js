@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1783230319113,
+  "lastUpdate": 1783317966442,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (develop)": [
@@ -3180,6 +3180,142 @@ window.BENCHMARK_DATA = {
             "value": 2675.95,
             "unit": "ms",
             "extra": "min 2655.96ms, stddev 11.1ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "committer": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "id": "8ba9b76497577cd6b3be1b2cac410d8eded41aa5",
+          "message": "feat: avatars for gwei names\n\nRoute .gwei names in try_download_ens_avatar to the GNS contract,\nwhich implements the same ENS resolver text(bytes32,string) interface,\nand skip the ENS metadata app for their NFT avatars since it only\nknows ENS names, falling back to opensea directly. The frontend needs\nno changes: avatars are requested for the displayed name from the\nmerged name mappings, so they follow the address name priority\nsetting automatically.",
+          "timestamp": "2026-07-04T21:05:20Z",
+          "url": "https://github.com/rotki/rotki/commit/8ba9b76497577cd6b3be1b2cac410d8eded41aa5"
+        },
+        "date": 1783317965971,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 1856.45,
+            "unit": "ms",
+            "extra": "min 1854.08ms, stddev 654.65ms"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 1277.39,
+            "unit": "ms",
+            "extra": "min 1261.52ms, stddev 275.77ms"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 46.95,
+            "unit": "ms",
+            "extra": "min 46.89ms, stddev 0.04ms"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 87.99,
+            "unit": "ms",
+            "extra": "min 86.75ms, stddev 1.08ms"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 42.91,
+            "unit": "ms",
+            "extra": "min 42.89ms, stddev 0.05ms"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 42.92,
+            "unit": "ms",
+            "extra": "min 42.08ms, stddev 0.39ms"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 151.99,
+            "unit": "ms",
+            "extra": "min 149.0ms, stddev 2.71ms"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 113.01,
+            "unit": "ms",
+            "extra": "min 111.97ms, stddev 0.83ms"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 1857.61,
+            "unit": "ms",
+            "extra": "min 1801.1ms, stddev 27.21ms"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 1348.66,
+            "unit": "ms",
+            "extra": "min 1313.53ms, stddev 16.66ms"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 1145.97,
+            "unit": "ms",
+            "extra": "min 1135.0ms, stddev 8.66ms"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 1141.06,
+            "unit": "ms",
+            "extra": "min 1137.05ms, stddev 4.62ms"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 1261.16,
+            "unit": "ms",
+            "extra": "min 1254.23ms, stddev 4.56ms"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 1124.99,
+            "unit": "ms",
+            "extra": "min 1120.06ms, stddev 7.8ms"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 88.98,
+            "unit": "ms",
+            "extra": "min 88.07ms, stddev 1.82ms"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 43.88,
+            "unit": "ms",
+            "extra": "min 42.92ms, stddev 0.55ms"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 42.97,
+            "unit": "ms",
+            "extra": "min 42.88ms, stddev 0.04ms"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 2343.93,
+            "unit": "ms",
+            "extra": "min 2322.78ms, stddev 19.11ms"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 2769.95,
+            "unit": "ms",
+            "extra": "min 2704.04ms, stddev 41.37ms"
           }
         ]
       }
