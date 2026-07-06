@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1783230690106,
+  "lastUpdate": 1783318365641,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (develop)": [
@@ -1252,6 +1252,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 8.034381621375544e-7",
             "extra": "mean: 9.206279624514782 usec\nrounds: 7578"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "committer": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "id": "8ba9b76497577cd6b3be1b2cac410d8eded41aa5",
+          "message": "feat: avatars for gwei names\n\nRoute .gwei names in try_download_ens_avatar to the GNS contract,\nwhich implements the same ENS resolver text(bytes32,string) interface,\nand skip the ENS metadata app for their NFT avatars since it only\nknows ENS names, falling back to opensea directly. The frontend needs\nno changes: avatars are requested for the displayed name from the\nmerged name mappings, so they follow the address name priority\nsetting automatically.",
+          "timestamp": "2026-07-04T21:05:20Z",
+          "url": "https://github.com/rotki/rotki/commit/8ba9b76497577cd6b3be1b2cac410d8eded41aa5"
+        },
+        "date": 1783318365130,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 360.77423380491683,
+            "unit": "iter/sec",
+            "range": "stddev: 0.008732512062753016",
+            "extra": "mean: 2.771816571969313 msec\nrounds: 264"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 309.8414812101653,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0000670920342623552",
+            "extra": "mean: 3.227456814672599 msec\nrounds: 259"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 1384.829918467264,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00001623488287964671",
+            "extra": "mean: 722.1103376411772 usec\nrounds: 1238"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 2138.8386490251696,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00030459963235603447",
+            "extra": "mean: 467.5434495518283 usec\nrounds: 892"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 8.406042014181132,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0014726900505672492",
+            "extra": "mean: 118.96205114285456 msec\nrounds: 7"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 43042.11076516603,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0000030605224736340324",
+            "extra": "mean: 23.233061349056793 usec\nrounds: 6895"
           }
         ]
       }
