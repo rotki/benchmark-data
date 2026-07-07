@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1783318365641,
+  "lastUpdate": 1783403563314,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (develop)": [
@@ -1316,6 +1316,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.0000030605224736340324",
             "extra": "mean: 23.233061349056793 usec\nrounds: 6895"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "1cc567fc8fc2174ef94fdb44fc2c43b6ac3953e9",
+          "message": "fix: drop duplicate nginx Host header for uvicorn\n\nEach proxied REST/colibri location set `proxy_set_header Host` twice\n($host and $http_host), so nginx forwarded two Host headers. The old\ngevent WSGI server tolerated that; the uvicorn server the gevent-removal\nflip switched to rejects it with \"Invalid HTTP request received.\" (400),\nbreaking every /api and /colibri request in the Docker deployment. Keep a\nsingle Host ($host, matching the /ws location).",
+          "timestamp": "2026-07-06T15:15:24Z",
+          "url": "https://github.com/rotki/rotki/commit/1cc567fc8fc2174ef94fdb44fc2c43b6ac3953e9"
+        },
+        "date": 1783403562361,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 598.1584893022629,
+            "unit": "iter/sec",
+            "range": "stddev: 0.008027015633158482",
+            "extra": "mean: 1.6717977223168317 msec\nrounds: 587"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 582.7702849549262,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0001044077683249778",
+            "extra": "mean: 1.7159419857471696 msec\nrounds: 421"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 2784.442492300878,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000028152087787053066",
+            "extra": "mean: 359.1383204232265 usec\nrounds: 2737"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 1678.3744045680403,
+            "unit": "iter/sec",
+            "range": "stddev: 0.005196912070970772",
+            "extra": "mean: 595.8146151885388 usec\nrounds: 1185"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 16.54929647516317,
+            "unit": "iter/sec",
+            "range": "stddev: 0.009259309872234915",
+            "extra": "mean: 60.42552935714087 msec\nrounds: 14"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 104729.62760615797,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0000010768111591009002",
+            "extra": "mean: 9.548396407562528 usec\nrounds: 9576"
           }
         ]
       }
