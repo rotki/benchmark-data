@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1783317966442,
+  "lastUpdate": 1783403194739,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (develop)": [
@@ -3316,6 +3316,142 @@ window.BENCHMARK_DATA = {
             "value": 2769.95,
             "unit": "ms",
             "extra": "min 2704.04ms, stddev 41.37ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "1cc567fc8fc2174ef94fdb44fc2c43b6ac3953e9",
+          "message": "fix: drop duplicate nginx Host header for uvicorn\n\nEach proxied REST/colibri location set `proxy_set_header Host` twice\n($host and $http_host), so nginx forwarded two Host headers. The old\ngevent WSGI server tolerated that; the uvicorn server the gevent-removal\nflip switched to rejects it with \"Invalid HTTP request received.\" (400),\nbreaking every /api and /colibri request in the Docker deployment. Keep a\nsingle Host ($host, matching the /ws location).",
+          "timestamp": "2026-07-06T15:15:24Z",
+          "url": "https://github.com/rotki/rotki/commit/1cc567fc8fc2174ef94fdb44fc2c43b6ac3953e9"
+        },
+        "date": 1783403194572,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 1554.35,
+            "unit": "ms",
+            "extra": "min 1541.19ms, stddev 615.88ms"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 1130.53,
+            "unit": "ms",
+            "extra": "min 1114.73ms, stddev 269.66ms"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 5.84,
+            "unit": "ms",
+            "extra": "min 5.79ms, stddev 0.12ms"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 45.76,
+            "unit": "ms",
+            "extra": "min 44.29ms, stddev 0.78ms"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 2.27,
+            "unit": "ms",
+            "extra": "min 2.16ms, stddev 0.09ms"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 1.83,
+            "unit": "ms",
+            "extra": "min 1.75ms, stddev 0.08ms"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 104.86,
+            "unit": "ms",
+            "extra": "min 104.56ms, stddev 0.76ms"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 72.99,
+            "unit": "ms",
+            "extra": "min 71.9ms, stddev 0.58ms"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 1595,
+            "unit": "ms",
+            "extra": "min 1542.31ms, stddev 62.28ms"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 1193.53,
+            "unit": "ms",
+            "extra": "min 1187.6ms, stddev 24.27ms"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 1052.09,
+            "unit": "ms",
+            "extra": "min 1048.33ms, stddev 3.22ms"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 1051.22,
+            "unit": "ms",
+            "extra": "min 1046.47ms, stddev 3.26ms"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 1162.81,
+            "unit": "ms",
+            "extra": "min 1161.66ms, stddev 4.28ms"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 1041.66,
+            "unit": "ms",
+            "extra": "min 1040.15ms, stddev 3.67ms"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 45.29,
+            "unit": "ms",
+            "extra": "min 44.98ms, stddev 0.8ms"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 2.22,
+            "unit": "ms",
+            "extra": "min 2.19ms, stddev 0.07ms"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 1.86,
+            "unit": "ms",
+            "extra": "min 1.81ms, stddev 0.07ms"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 2264.57,
+            "unit": "ms",
+            "extra": "min 2259.96ms, stddev 7.59ms"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 2592.32,
+            "unit": "ms",
+            "extra": "min 2586.1ms, stddev 17.14ms"
           }
         ]
       }
