@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1783403563314,
+  "lastUpdate": 1783486702226,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (develop)": [
@@ -1380,6 +1380,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.0000010768111591009002",
             "extra": "mean: 9.548396407562528 usec\nrounds: 9576"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Yábir Benchakhtir",
+            "username": "yabirgb",
+            "email": "git@yabirgb.com"
+          },
+          "committer": {
+            "name": "GitHub",
+            "username": "web-flow",
+            "email": "noreply@github.com"
+          },
+          "id": "a3b0685c9e3fb9f26d0020a0e72b073f8589a9ad",
+          "message": "Merge pull request #12549 from yabirgb/vendor-coincurve\n\nVendor what we need from coincurve and bip-utils",
+          "timestamp": "2026-07-07T14:28:31Z",
+          "url": "https://github.com/rotki/rotki/commit/a3b0685c9e3fb9f26d0020a0e72b073f8589a9ad"
+        },
+        "date": 1783486701753,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 386.29951235562055,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0072800037400906166",
+            "extra": "mean: 2.5886649297124085 msec\nrounds: 313"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 332.92721462004175,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0000326013013161544",
+            "extra": "mean: 3.0036595270268465 msec\nrounds: 296"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 1442.9021585386763,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000013426672984788853",
+            "extra": "mean: 693.047684544853 usec\nrounds: 1417"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 3459.8305415141404,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0001642500806940122",
+            "extra": "mean: 289.0314967745113 usec\nrounds: 1085"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 11.173171818066654,
+            "unit": "iter/sec",
+            "range": "stddev: 0.001139031928677258",
+            "extra": "mean: 89.5001004444443 msec\nrounds: 9"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 50195.64869589158,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0000014722440737535018",
+            "extra": "mean: 19.922045555352057 usec\nrounds: 9022"
           }
         ]
       }
