@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1783486759381,
+  "lastUpdate": 1783577003993,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (bugfixes)": [
@@ -960,6 +960,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 7.235897641947696e-7",
             "extra": "mean: 9.971862901528123 usec\nrounds: 8782"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Yábir Benchakhtir",
+            "username": "yabirgb",
+            "email": "git@yabirgb.com"
+          },
+          "committer": {
+            "name": "GitHub",
+            "username": "web-flow",
+            "email": "noreply@github.com"
+          },
+          "id": "ecb754839accb3f8c23f2c9916f2fbd2f26e41c1",
+          "message": "Merge pull request #12555 from yabirgb/clean-deps2\n\nRemove miniupnpc dep and deprecate code",
+          "timestamp": "2026-07-08T16:16:51Z",
+          "url": "https://github.com/rotki/rotki/commit/ecb754839accb3f8c23f2c9916f2fbd2f26e41c1"
+        },
+        "date": 1783577003525,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 386.1614620151294,
+            "unit": "iter/sec",
+            "range": "stddev: 0.007318546744264148",
+            "extra": "mean: 2.5895903614556466 msec\nrounds: 332"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 316.14145595762807,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00005426452957577807",
+            "extra": "mean: 3.1631409963963355 msec\nrounds: 278"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 1456.1639347943808,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00004666796664695058",
+            "extra": "mean: 686.7358654513073 usec\nrounds: 1427"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 2912.563426388226,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00023963526535955413",
+            "extra": "mean: 343.3401624630256 usec\nrounds: 1071"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 10.525154172521892,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0021794385749116397",
+            "extra": "mean: 95.01048475001994 msec\nrounds: 8"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 54427.57839920298,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0000016900402249468648",
+            "extra": "mean: 18.373038621439818 usec\nrounds: 7457"
           }
         ]
       }
