@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1783486702226,
+  "lastUpdate": 1783662576253,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (develop)": [
@@ -1444,6 +1444,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.0000014722440737535018",
             "extra": "mean: 19.922045555352057 usec\nrounds: 9022"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "committer": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "id": "7adf14d4d4df8f02395ad9c7e29c4377b15c2a34",
+          "message": "feat: support kinetiq earn vault",
+          "timestamp": "2026-07-09T16:23:22Z",
+          "url": "https://github.com/rotki/rotki/commit/7adf14d4d4df8f02395ad9c7e29c4377b15c2a34"
+        },
+        "date": 1783662576089,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 394.0477526488634,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00571932286248944",
+            "extra": "mean: 2.537763490028331 msec\nrounds: 351"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 259.7021733390708,
+            "unit": "iter/sec",
+            "range": "stddev: 0.006581568842787328",
+            "extra": "mean: 3.8505646184731233 msec\nrounds: 249"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 1386.318806421105,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000012998965194777394",
+            "extra": "mean: 721.3348007458555 usec\nrounds: 1340"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 2398.391045458247,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00028800543134161713",
+            "extra": "mean: 416.94618644180923 usec\nrounds: 944"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 7.778434865384293,
+            "unit": "iter/sec",
+            "range": "stddev: 0.001139381519953527",
+            "extra": "mean: 128.56056742857294 msec\nrounds: 7"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 45506.31549226255,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000002621700701810088",
+            "extra": "mean: 21.974971807375404 usec\nrounds: 8300"
           }
         ]
       }
