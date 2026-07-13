@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1783832404366,
+  "lastUpdate": 1783919164214,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (develop)": [
@@ -4132,6 +4132,142 @@ window.BENCHMARK_DATA = {
             "value": 2839.8,
             "unit": "ms",
             "extra": "min 2824.17ms, stddev 11.28ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "committer": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "id": "a2beea6a99fe57633e457e931fc828a6e60148d5",
+          "message": "fix: CoinEx trade filtering, fees and market caching\n\n- Filter finished orders by time client-side since /spot/finished-order\n  has no start_time/end_time arguments (they were sent but are not part\n  of the API), and skip trades in delisted/unknown markets with a clear\n  error instead of a per-trade KeyError message.\n- Use actual_amount for withdrawals since amount includes the fee,\n  which is tracked as a separate fee event. Using amount double\n  counted the fee.\n- Cache the spot market map on the instance instead of re-downloading\n  and re-resolving ~thousands of assets on every history query.\n- Follow pagination.has_next instead of assuming pages of max limit,\n  guarding against a lower server-side page size silently truncating\n  history.\n- Accept both int and string millisecond timestamps since the docs\n  examples show both forms.\n- Record both base and quote trade fees when both are non-zero.\n- Guard against zero filled_amount, check HTTP status before parsing\n  the body, use lazy logging args and fix test typing/import order.\n- keep CoinEx api key in session headers",
+          "timestamp": "2026-07-10T14:31:49Z",
+          "url": "https://github.com/rotki/rotki/commit/a2beea6a99fe57633e457e931fc828a6e60148d5"
+        },
+        "date": 1783919163931,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 1598.73,
+            "unit": "ms",
+            "extra": "min 1594.89ms, stddev 912.6ms"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 1649.78,
+            "unit": "ms",
+            "extra": "min 1632.24ms, stddev 279.82ms"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 7.28,
+            "unit": "ms",
+            "extra": "min 7.19ms, stddev 0.04ms"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 45.46,
+            "unit": "ms",
+            "extra": "min 44.85ms, stddev 0.58ms"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 2.42,
+            "unit": "ms",
+            "extra": "min 2.38ms, stddev 0.07ms"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 2.01,
+            "unit": "ms",
+            "extra": "min 1.96ms, stddev 0.06ms"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 109.98,
+            "unit": "ms",
+            "extra": "min 108.77ms, stddev 1.12ms"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 76.84,
+            "unit": "ms",
+            "extra": "min 75.88ms, stddev 0.92ms"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 1595.4,
+            "unit": "ms",
+            "extra": "min 1593.1ms, stddev 2.44ms"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 1720.49,
+            "unit": "ms",
+            "extra": "min 1719.81ms, stddev 6.56ms"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 1064.3,
+            "unit": "ms",
+            "extra": "min 1056.53ms, stddev 5.18ms"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 1051.49,
+            "unit": "ms",
+            "extra": "min 1048.44ms, stddev 2.31ms"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 1160,
+            "unit": "ms",
+            "extra": "min 1158.68ms, stddev 6.32ms"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 1042.53,
+            "unit": "ms",
+            "extra": "min 1037.78ms, stddev 5.25ms"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 46.25,
+            "unit": "ms",
+            "extra": "min 44.92ms, stddev 0.71ms"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 2.54,
+            "unit": "ms",
+            "extra": "min 2.38ms, stddev 0.08ms"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 2.12,
+            "unit": "ms",
+            "extra": "min 1.95ms, stddev 0.08ms"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 2270.33,
+            "unit": "ms",
+            "extra": "min 2257.02ms, stddev 8.2ms"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 2564.61,
+            "unit": "ms",
+            "extra": "min 2558.0ms, stddev 8.92ms"
           }
         ]
       }
