@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1783832746016,
+  "lastUpdate": 1783919530708,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (develop)": [
@@ -1636,6 +1636,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.0000026812765261478473",
             "extra": "mean: 21.68423719171607 usec\nrounds: 8959"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "committer": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "id": "a2beea6a99fe57633e457e931fc828a6e60148d5",
+          "message": "fix: CoinEx trade filtering, fees and market caching\n\n- Filter finished orders by time client-side since /spot/finished-order\n  has no start_time/end_time arguments (they were sent but are not part\n  of the API), and skip trades in delisted/unknown markets with a clear\n  error instead of a per-trade KeyError message.\n- Use actual_amount for withdrawals since amount includes the fee,\n  which is tracked as a separate fee event. Using amount double\n  counted the fee.\n- Cache the spot market map on the instance instead of re-downloading\n  and re-resolving ~thousands of assets on every history query.\n- Follow pagination.has_next instead of assuming pages of max limit,\n  guarding against a lower server-side page size silently truncating\n  history.\n- Accept both int and string millisecond timestamps since the docs\n  examples show both forms.\n- Record both base and quote trade fees when both are non-zero.\n- Guard against zero filled_amount, check HTTP status before parsing\n  the body, use lazy logging args and fix test typing/import order.\n- keep CoinEx api key in session headers",
+          "timestamp": "2026-07-10T14:31:49Z",
+          "url": "https://github.com/rotki/rotki/commit/a2beea6a99fe57633e457e931fc828a6e60148d5"
+        },
+        "date": 1783919529931,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 405.78516316513236,
+            "unit": "iter/sec",
+            "range": "stddev: 0.004822012723060381",
+            "extra": "mean: 2.4643582140854536 msec\nrounds: 355"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 318.8203053573273,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000049353196639719075",
+            "extra": "mean: 3.136563083330657 msec\nrounds: 12"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 1378.370489430481,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000025263547507413164",
+            "extra": "mean: 725.4943483396709 usec\nrounds: 1355"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 1928.4449486822093,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0004209992417321145",
+            "extra": "mean: 518.5525263157466 usec\nrounds: 1026"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 7.370901516171466,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0033241565578358088",
+            "extra": "mean: 135.66861499994806 msec\nrounds: 6"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 45788.7175600576,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0000024769696734893235",
+            "extra": "mean: 21.839441095688596 usec\nrounds: 8955"
           }
         ]
       }
