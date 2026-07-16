@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1784090419778,
+  "lastUpdate": 1784177533265,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (bugfixes)": [
@@ -1408,6 +1408,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.0000029973303994538215",
             "extra": "mean: 22.684177493827278 usec\nrounds: 8389"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "914cfb91fe1448770ef2cf76d3ba7f019c30850c",
+          "message": "feat(settings): derive search from the registry\n\nThe settings search is now fully derived from the settings registry: the\nper-tab getXTab builders and the hand-written search list are gone. A\nsetting's registry `search` block drives both its search row and its\nscroll-target anchor, and each settings tab's route/label/icon comes from\nits page `nav` meta.\n\nSettingsItem resolves its DOM id (and fallback title) from `setting-key`;\na composite item wrapping several settings under one anchor passes the\nrepresentative key. Rows with no registry value (change password, purge\ndata, rpc nodes, ...) live in a new `settingsActions` registry and resolve\nthrough a shared `anchorId(key)` helper, via `action-key` on a SettingsItem\nor `:id=\"anchorId('...')\"` on a bare section. No template restates a\nSettingsHighlightIds value anymore.\n\nA derived invariant - every highlight id is owned by exactly one of the\nsetting or action registries - replaces the hand-kept keyless allowlist.\n\nAdds unit coverage for the actions registry and the SettingsItem action-key\npath, plus an e2e spec that drives the search palette end to end.",
+          "timestamp": "2026-07-15T16:45:23Z",
+          "url": "https://github.com/rotki/rotki/commit/914cfb91fe1448770ef2cf76d3ba7f019c30850c"
+        },
+        "date": 1784177533115,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 410.0884649022033,
+            "unit": "iter/sec",
+            "range": "stddev: 0.005045622401620214",
+            "extra": "mean: 2.43849824022355 msec\nrounds: 358"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 296.9311690826861,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00013314148598947238",
+            "extra": "mean: 3.3677838641504527 msec\nrounds: 265"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 1371.7515748898393,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00001327592827298624",
+            "extra": "mean: 728.9949713236573 usec\nrounds: 1360"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 1680.120590589844,
+            "unit": "iter/sec",
+            "range": "stddev: 0.001520480777364825",
+            "extra": "mean: 595.1953720470311 usec\nrounds: 1016"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 8.614182711602442,
+            "unit": "iter/sec",
+            "range": "stddev: 0.004800143158997439",
+            "extra": "mean: 116.08762357142714 msec\nrounds: 7"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 46794.11150477982,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000002524146066365915",
+            "extra": "mean: 21.370210221810797 usec\nrounds: 8296"
           }
         ]
       }
