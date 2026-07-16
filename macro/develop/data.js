@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1784089979834,
+  "lastUpdate": 1784177098147,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (develop)": [
@@ -4540,6 +4540,142 @@ window.BENCHMARK_DATA = {
             "value": 2772.89,
             "unit": "ms",
             "extra": "min 2758.76ms, stddev 10.03ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "914cfb91fe1448770ef2cf76d3ba7f019c30850c",
+          "message": "feat(settings): derive search from the registry\n\nThe settings search is now fully derived from the settings registry: the\nper-tab getXTab builders and the hand-written search list are gone. A\nsetting's registry `search` block drives both its search row and its\nscroll-target anchor, and each settings tab's route/label/icon comes from\nits page `nav` meta.\n\nSettingsItem resolves its DOM id (and fallback title) from `setting-key`;\na composite item wrapping several settings under one anchor passes the\nrepresentative key. Rows with no registry value (change password, purge\ndata, rpc nodes, ...) live in a new `settingsActions` registry and resolve\nthrough a shared `anchorId(key)` helper, via `action-key` on a SettingsItem\nor `:id=\"anchorId('...')\"` on a bare section. No template restates a\nSettingsHighlightIds value anymore.\n\nA derived invariant - every highlight id is owned by exactly one of the\nsetting or action registries - replaces the hand-kept keyless allowlist.\n\nAdds unit coverage for the actions registry and the SettingsItem action-key\npath, plus an e2e spec that drives the search palette end to end.",
+          "timestamp": "2026-07-15T16:45:23Z",
+          "url": "https://github.com/rotki/rotki/commit/914cfb91fe1448770ef2cf76d3ba7f019c30850c"
+        },
+        "date": 1784177097613,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 1595.39,
+            "unit": "ms",
+            "extra": "min 1593.65ms, stddev 950.44ms"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 1255.03,
+            "unit": "ms",
+            "extra": "min 1224.11ms, stddev 270.96ms"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 5.93,
+            "unit": "ms",
+            "extra": "min 5.9ms, stddev 0.02ms"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 39.42,
+            "unit": "ms",
+            "extra": "min 39.09ms, stddev 0.29ms"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 2.39,
+            "unit": "ms",
+            "extra": "min 2.31ms, stddev 0.08ms"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 2.1,
+            "unit": "ms",
+            "extra": "min 1.92ms, stddev 0.12ms"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 106.6,
+            "unit": "ms",
+            "extra": "min 105.74ms, stddev 0.91ms"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 80.42,
+            "unit": "ms",
+            "extra": "min 77.76ms, stddev 1.54ms"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 1648.61,
+            "unit": "ms",
+            "extra": "min 1596.07ms, stddev 24.5ms"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 1333.46,
+            "unit": "ms",
+            "extra": "min 1307.8ms, stddev 20.71ms"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 1050.71,
+            "unit": "ms",
+            "extra": "min 1045.91ms, stddev 4.19ms"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 1048.76,
+            "unit": "ms",
+            "extra": "min 1047.09ms, stddev 4.63ms"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 1159.68,
+            "unit": "ms",
+            "extra": "min 1157.74ms, stddev 1.3ms"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 1046.14,
+            "unit": "ms",
+            "extra": "min 1039.04ms, stddev 4.37ms"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 41.24,
+            "unit": "ms",
+            "extra": "min 40.52ms, stddev 0.61ms"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 2.4,
+            "unit": "ms",
+            "extra": "min 2.28ms, stddev 0.07ms"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 1.97,
+            "unit": "ms",
+            "extra": "min 1.95ms, stddev 0.02ms"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 2295.91,
+            "unit": "ms",
+            "extra": "min 2266.39ms, stddev 13.89ms"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 2613.82,
+            "unit": "ms",
+            "extra": "min 2603.35ms, stddev 26.31ms"
           }
         ]
       }
