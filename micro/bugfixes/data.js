@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1784264101222,
+  "lastUpdate": 1784349522117,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (bugfixes)": [
@@ -1536,6 +1536,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.0000015746306492088714",
             "extra": "mean: 19.806823580683282 usec\nrounds: 9211"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "committer": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "id": "cd3722d62d9fe67775b61f156a70846389d4a893",
+          "message": "feat: decode GnosisDAO GIP-151 treasury redemption on gnosis chain",
+          "timestamp": "2026-07-17T16:25:00Z",
+          "url": "https://github.com/rotki/rotki/commit/cd3722d62d9fe67775b61f156a70846389d4a893"
+        },
+        "date": 1784349521658,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 399.30604602268113,
+            "unit": "iter/sec",
+            "range": "stddev: 0.005336625162963473",
+            "extra": "mean: 2.5043447499996 msec\nrounds: 352"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 304.43301843722963,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0000399345197226423",
+            "extra": "mean: 3.2847948134318017 msec\nrounds: 268"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 1360.7975786543557,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000015951474446413052",
+            "extra": "mean: 734.8631535550383 usec\nrounds: 1322"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 2489.6216370886705,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0004011180816768735",
+            "extra": "mean: 401.66746026893725 usec\nrounds: 969"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 8.812758620178602,
+            "unit": "iter/sec",
+            "range": "stddev: 0.007617635977919795",
+            "extra": "mean: 113.47184724999693 msec\nrounds: 8"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 45230.33668930284,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000003379439712242544",
+            "extra": "mean: 22.109054966121974 usec\nrounds: 8387"
           }
         ]
       }
