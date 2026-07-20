@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1784437233533,
+  "lastUpdate": 1784524793587,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (bugfixes)": [
@@ -1664,6 +1664,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.000002683041805004354",
             "extra": "mean: 22.003621506019055 usec\nrounds: 8658"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "committer": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "id": "f1b6736a3ebaba23872904b4d85ab5431a2b98b2",
+          "message": "fix: annotate touched_indices for mypy\n\nmypy can no longer infer the empty set's element type since the\nexact-page pagination fix reads the set before the first add call.\n\nClaude-Session: https://claude.ai/code/session_01WUGaBfx2snxLFx86TWKaMB",
+          "timestamp": "2026-07-19T13:09:39Z",
+          "url": "https://github.com/rotki/rotki/commit/f1b6736a3ebaba23872904b4d85ab5431a2b98b2"
+        },
+        "date": 1784524793054,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 511.31699439937086,
+            "unit": "iter/sec",
+            "range": "stddev: 0.004994191266490587",
+            "extra": "mean: 1.9557339399107412 msec\nrounds: 416"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 396.68662873556116,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000025509256183566862",
+            "extra": "mean: 2.520881541148741 msec\nrounds: 316"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 1845.9254270953488,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000016187872294936213",
+            "extra": "mean: 541.733693745986 usec\nrounds: 1773"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 2429.161825441975,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0009776993368598552",
+            "extra": "mean: 411.6646283201222 usec\nrounds: 1243"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 10.172242844700694,
+            "unit": "iter/sec",
+            "range": "stddev: 0.029430680980239123",
+            "extra": "mean: 98.30673680003201 msec\nrounds: 10"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 70439.07564041301,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0000011409887883885661",
+            "extra": "mean: 14.196665571038102 usec\nrounds: 9446"
           }
         ]
       }
