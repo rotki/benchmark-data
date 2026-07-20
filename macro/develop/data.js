@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1784436839975,
+  "lastUpdate": 1784524300072,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (develop)": [
@@ -5084,6 +5084,142 @@ window.BENCHMARK_DATA = {
             "value": 2232.37,
             "unit": "ms",
             "extra": "min 2177.26ms, stddev 73.86ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "committer": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "id": "f1b6736a3ebaba23872904b4d85ab5431a2b98b2",
+          "message": "fix: annotate touched_indices for mypy\n\nmypy can no longer infer the empty set's element type since the\nexact-page pagination fix reads the set before the first add call.\n\nClaude-Session: https://claude.ai/code/session_01WUGaBfx2snxLFx86TWKaMB",
+          "timestamp": "2026-07-19T13:09:39Z",
+          "url": "https://github.com/rotki/rotki/commit/f1b6736a3ebaba23872904b4d85ab5431a2b98b2"
+        },
+        "date": 1784524299576,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 1693.77,
+            "unit": "ms",
+            "extra": "min 1636.43ms, stddev 1412.64ms"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 1213.69,
+            "unit": "ms",
+            "extra": "min 1210.59ms, stddev 374.48ms"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 5.63,
+            "unit": "ms",
+            "extra": "min 5.51ms, stddev 0.09ms"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 34.48,
+            "unit": "ms",
+            "extra": "min 34.12ms, stddev 0.39ms"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 2.15,
+            "unit": "ms",
+            "extra": "min 2.06ms, stddev 0.05ms"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 1.74,
+            "unit": "ms",
+            "extra": "min 1.62ms, stddev 0.06ms"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 116.88,
+            "unit": "ms",
+            "extra": "min 115.75ms, stddev 0.96ms"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 79.47,
+            "unit": "ms",
+            "extra": "min 78.79ms, stddev 0.91ms"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 1640.38,
+            "unit": "ms",
+            "extra": "min 1634.7ms, stddev 30.17ms"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 1286.33,
+            "unit": "ms",
+            "extra": "min 1276.79ms, stddev 4.42ms"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 1047.24,
+            "unit": "ms",
+            "extra": "min 1044.71ms, stddev 4.73ms"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 1050.07,
+            "unit": "ms",
+            "extra": "min 1047.32ms, stddev 4.79ms"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 1160.51,
+            "unit": "ms",
+            "extra": "min 1155.24ms, stddev 5.67ms"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 1042.72,
+            "unit": "ms",
+            "extra": "min 1037.68ms, stddev 5.98ms"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 34.88,
+            "unit": "ms",
+            "extra": "min 34.26ms, stddev 0.72ms"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 2.21,
+            "unit": "ms",
+            "extra": "min 2.08ms, stddev 0.06ms"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 1.74,
+            "unit": "ms",
+            "extra": "min 1.64ms, stddev 0.08ms"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 2335.7,
+            "unit": "ms",
+            "extra": "min 2316.44ms, stddev 12.01ms"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 2629.2,
+            "unit": "ms",
+            "extra": "min 2621.72ms, stddev 10.81ms"
           }
         ]
       }
