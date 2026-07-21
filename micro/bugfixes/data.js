@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1784524793587,
+  "lastUpdate": 1784610076580,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (bugfixes)": [
@@ -1728,6 +1728,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.0000011409887883885661",
             "extra": "mean: 14.196665571038102 usec\nrounds: 9446"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "committer": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "id": "b8733296abd13f15fbdcec7cad0b28a85a582022",
+          "message": "feat: resolve bridge legs as external on both sides",
+          "timestamp": "2026-07-20T16:21:24Z",
+          "url": "https://github.com/rotki/rotki/commit/b8733296abd13f15fbdcec7cad0b28a85a582022"
+        },
+        "date": 1784610076130,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 410.65729413045597,
+            "unit": "iter/sec",
+            "range": "stddev: 0.004479048379455873",
+            "extra": "mean: 2.4351205111732996 msec\nrounds: 358"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 312.2669206047464,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00004654188048093665",
+            "extra": "mean: 3.202388514490638 msec\nrounds: 276"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 1397.9698334397606,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000013671128974886",
+            "extra": "mean: 715.3230177645967 usec\nrounds: 1351"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 2655.598318748495,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0002482542683481108",
+            "extra": "mean: 376.5629737524727 usec\nrounds: 1143"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 9.910345158207303,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0007475433915250161",
+            "extra": "mean: 100.9046591249998 msec\nrounds: 8"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 47095.46277642248,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00000246836727258144",
+            "extra": "mean: 21.23346796160229 usec\nrounds: 9473"
           }
         ]
       }
