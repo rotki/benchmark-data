@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1784610076580,
+  "lastUpdate": 1784696389517,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (bugfixes)": [
@@ -1792,6 +1792,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.00000246836727258144",
             "extra": "mean: 21.23346796160229 usec\nrounds: 9473"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Yábir Benchakhtir",
+            "username": "yabirgb",
+            "email": "git@yabirgb.com"
+          },
+          "committer": {
+            "name": "GitHub",
+            "username": "web-flow",
+            "email": "noreply@github.com"
+          },
+          "id": "bf4976168b293e9a9b0c2f043b0ca1ea96dab2f3",
+          "message": "Merge pull request #12638 from yabirgb/dbupgrades\n\nAdd kraken in the defaults for oracles and remove stale files",
+          "timestamp": "2026-07-21T21:07:31Z",
+          "url": "https://github.com/rotki/rotki/commit/bf4976168b293e9a9b0c2f043b0ca1ea96dab2f3"
+        },
+        "date": 1784696388769,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 381.3798073989792,
+            "unit": "iter/sec",
+            "range": "stddev: 0.006685800179358121",
+            "extra": "mean: 2.622058065475536 msec\nrounds: 336"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 312.24503930213746,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00005821364483570696",
+            "extra": "mean: 3.2026129293678567 msec\nrounds: 269"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 1373.7100033118318,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000015879784413692517",
+            "extra": "mean: 727.9556803030721 usec\nrounds: 1320"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 2323.245824945014,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0004446013272778224",
+            "extra": "mean: 430.432281105538 usec\nrounds: 868"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 9.447637251146093,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0015328710067985902",
+            "extra": "mean: 105.8465702500051 msec\nrounds: 8"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 45889.75871832639,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000003784418681915845",
+            "extra": "mean: 21.791354496720054 usec\nrounds: 7261"
           }
         ]
       }
