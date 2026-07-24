@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1784783126340,
+  "lastUpdate": 1784869277615,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (bugfixes)": [
@@ -1920,6 +1920,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.0000016365197115638816",
             "extra": "mean: 18.1046702872938 usec\nrounds: 7549"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Yábir Benchakhtir",
+            "username": "yabirgb",
+            "email": "git@yabirgb.com"
+          },
+          "committer": {
+            "name": "GitHub",
+            "username": "web-flow",
+            "email": "noreply@github.com"
+          },
+          "id": "4553441e10388f0cd7f7754f2400cfb46d7d55d4",
+          "message": "Merge pull request #12671 from yabirgb/duplicate-address\n\nAdd test for special case of tx addresses",
+          "timestamp": "2026-07-23T20:03:57Z",
+          "url": "https://github.com/rotki/rotki/commit/4553441e10388f0cd7f7754f2400cfb46d7d55d4"
+        },
+        "date": 1784869277081,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 404.4636526208135,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0053706493997207425",
+            "extra": "mean: 2.4724100509904274 msec\nrounds: 353"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 320.4465244805283,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00013996044097306623",
+            "extra": "mean: 3.1206454856113264 msec\nrounds: 278"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 1372.0835998374537,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000016451941194192843",
+            "extra": "mean: 728.8185647860428 usec\nrounds: 1312"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 2579.0941079180698,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00030031370781441783",
+            "extra": "mean: 387.7330404229542 usec\nrounds: 1039"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 9.308682946413288,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00206426421734282",
+            "extra": "mean: 107.42658287500362 msec\nrounds: 8"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 46235.710968078056,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0000027382129142820445",
+            "extra": "mean: 21.628303730214455 usec\nrounds: 6756"
           }
         ]
       }
