@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1784868813941,
+  "lastUpdate": 1784955013603,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (develop)": [
@@ -5764,6 +5764,142 @@ window.BENCHMARK_DATA = {
             "value": 2259.98,
             "unit": "ms",
             "extra": "min 2153.33ms, stddev 99.64ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "committer": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "id": "0055beb3dd824eab95319e37a0298b329aa65b47",
+          "message": "feat: decode solana stake program transactions\n\nAdd a decoder module for the native Solana Stake program, covering its\nfull instruction set. Previously staking transactions appeared as\nnear-empty events (fee only), since the base decoder only handles plain\nsystem transfers and SPL token transfers.\n\nDecoded events:\n- Initialize(Checked)/DelegateStake: staking deposit with the amount\n  recovered from the funding instruction in the same transaction\n  (createAccount, createAccountWithSeed parsing the variable-length\n  seed, or a plain transfer whose decoded spend event is transformed\n  in place). Delegating an account funded earlier yields an\n  informational event since the amount is not in the transaction.\n- Withdraw: unstake event with the amount from the instruction data.\n- Deactivate: informational start-of-unstaking event.\n- Split: deposit for the new account's rent-exempt reserve plus an\n  informational split event.\n- Merge, SetLockup(Checked), MoveStake/MoveLamports and all four\n  Authorize variants: informational events. Authority changes are\n  emitted when either the old or the new authority is tracked, so both\n  sides of a stake account sale see them.\n- GetMinimumDelegation, DeactivateDelinquent and Redelegate produce no\n  events (read-only, permissionless or retired).\n\nInstruction tags are parsed as a bincode enum via an IntEnum. Events\nuse the existing STAKING deposit/remove combos and a new solana-stake\ncounterparty rendered with the existing solana.svg icon.\n\nTests cover six real mainnet transactions: create+delegate, deactivate,\ndurable-nonce withdraw, a stake account sale (authorize x2 + payment),\na split funded via createAccountWithSeed, and a merge. They are not yet\nVCRed and query mainnet-beta live.\n\nNote: epoch rewards are credited by the runtime without transactions,\nso they cannot be decoded and would need a separate query task. SPL\nstake pool (liquid staking) deposits are a separate program and are\nnot covered by this module.",
+          "timestamp": "2026-07-24T20:07:36Z",
+          "url": "https://github.com/rotki/rotki/commit/0055beb3dd824eab95319e37a0298b329aa65b47"
+        },
+        "date": 1784955013397,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 1640.23,
+            "unit": "ms",
+            "extra": "min 1588.02ms, stddev 1620.46ms"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 1209.68,
+            "unit": "ms",
+            "extra": "min 1200.08ms, stddev 389.95ms"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 5.26,
+            "unit": "ms",
+            "extra": "min 5.22ms, stddev 0.11ms"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 34.8,
+            "unit": "ms",
+            "extra": "min 34.35ms, stddev 0.31ms"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 2.04,
+            "unit": "ms",
+            "extra": "min 1.96ms, stddev 0.08ms"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 1.64,
+            "unit": "ms",
+            "extra": "min 1.57ms, stddev 0.06ms"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 102.53,
+            "unit": "ms",
+            "extra": "min 101.36ms, stddev 0.77ms"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 69.26,
+            "unit": "ms",
+            "extra": "min 68.01ms, stddev 0.87ms"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 1595.31,
+            "unit": "ms",
+            "extra": "min 1588.12ms, stddev 21.77ms"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 1279.18,
+            "unit": "ms",
+            "extra": "min 1273.29ms, stddev 5.58ms"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 1125.81,
+            "unit": "ms",
+            "extra": "min 1120.82ms, stddev 4.35ms"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 1129.12,
+            "unit": "ms",
+            "extra": "min 1125.06ms, stddev 2.18ms"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 1242.67,
+            "unit": "ms",
+            "extra": "min 1236.23ms, stddev 4.79ms"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 1121.6,
+            "unit": "ms",
+            "extra": "min 1115.6ms, stddev 4.15ms"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 34.88,
+            "unit": "ms",
+            "extra": "min 34.63ms, stddev 0.65ms"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 2.03,
+            "unit": "ms",
+            "extra": "min 2.03ms, stddev 0.02ms"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 1.62,
+            "unit": "ms",
+            "extra": "min 1.53ms, stddev 0.06ms"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 2706.96,
+            "unit": "ms",
+            "extra": "min 2696.38ms, stddev 8.85ms"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 2740.87,
+            "unit": "ms",
+            "extra": "min 2731.26ms, stddev 6.01ms"
           }
         ]
       }
