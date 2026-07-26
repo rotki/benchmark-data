@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1784955013603,
+  "lastUpdate": 1785042260263,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (develop)": [
@@ -5900,6 +5900,142 @@ window.BENCHMARK_DATA = {
             "value": 2740.87,
             "unit": "ms",
             "extra": "min 2731.26ms, stddev 6.01ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "02259fa94b29adab0704b630e29457f7bbf99fba",
+          "message": "refactor: cut the remaining complexity offenders\n\nTakes the rule to zero. The same shapes as the previous pass, with two\nrecurring causes.\n\nDefaulted and optional fields: iterateAssets and enqueue counted their\ndefaults as branches, and the Lido row builder paid for one optional\nchain per metric. Those resolve once, through a defaults constant or a\nhelper that flattens the optional groups.\n\nGuards ahead of the work: gas estimation, online event queries, the\naccount-form key warnings and the purge dispatch all led with a stack of\npreconditions. Each is now a named question, so the function that follows\nreads as the work rather than the eligibility.\n\nTwo sign-in steps and two export outcomes were duplicated blocks that\ncollapse into one helper each.\n\nbalance-transformations breached the line cap once its collection\ngrouping was extracted, so the pure part moves to balance-grouping.ts,\ntaking the protocol sorting and the two balance types that only it and\nits callers need.\n\nThree of these lost TypeScript narrowing on extraction, since a boolean\nhelper discards what an inline `in` or discriminant check proves. The\nsign-in reporter is a type predicate, and the xpub and group checks stay\nat the sites that depend on them.",
+          "timestamp": "2026-07-26T01:23:32Z",
+          "url": "https://github.com/rotki/rotki/commit/02259fa94b29adab0704b630e29457f7bbf99fba"
+        },
+        "date": 1785042259346,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 1584.21,
+            "unit": "ms",
+            "extra": "min 1381.44ms, stddev 1406.65ms"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 1144.58,
+            "unit": "ms",
+            "extra": "min 1139.88ms, stddev 431.28ms"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 5.03,
+            "unit": "ms",
+            "extra": "min 5.02ms, stddev 0.14ms"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 30.67,
+            "unit": "ms",
+            "extra": "min 29.58ms, stddev 0.93ms"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 1.94,
+            "unit": "ms",
+            "extra": "min 1.89ms, stddev 0.08ms"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 1.64,
+            "unit": "ms",
+            "extra": "min 1.48ms, stddev 0.11ms"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 94.23,
+            "unit": "ms",
+            "extra": "min 93.15ms, stddev 0.82ms"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 66.35,
+            "unit": "ms",
+            "extra": "min 64.35ms, stddev 1.07ms"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 1430.45,
+            "unit": "ms",
+            "extra": "min 1376.36ms, stddev 24.82ms"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 1192.45,
+            "unit": "ms",
+            "extra": "min 1177.48ms, stddev 119.34ms"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 1018.98,
+            "unit": "ms",
+            "extra": "min 990.25ms, stddev 15.67ms"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 1016.97,
+            "unit": "ms",
+            "extra": "min 995.23ms, stddev 12.49ms"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 1110.72,
+            "unit": "ms",
+            "extra": "min 1083.13ms, stddev 21.62ms"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 1007.25,
+            "unit": "ms",
+            "extra": "min 997.65ms, stddev 10.77ms"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 31.19,
+            "unit": "ms",
+            "extra": "min 30.23ms, stddev 0.85ms"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 2.05,
+            "unit": "ms",
+            "extra": "min 1.83ms, stddev 0.11ms"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 1.57,
+            "unit": "ms",
+            "extra": "min 1.4ms, stddev 0.1ms"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 2447.81,
+            "unit": "ms",
+            "extra": "min 2411.93ms, stddev 23.48ms"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 2593.16,
+            "unit": "ms",
+            "extra": "min 2516.75ms, stddev 80.02ms"
           }
         ]
       }
