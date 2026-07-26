@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1784955378393,
+  "lastUpdate": 1785042656058,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (develop)": [
@@ -2468,6 +2468,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.0000019514791538477177",
             "extra": "mean: 27.078320208726012 usec\nrounds: 6705"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "02259fa94b29adab0704b630e29457f7bbf99fba",
+          "message": "refactor: cut the remaining complexity offenders\n\nTakes the rule to zero. The same shapes as the previous pass, with two\nrecurring causes.\n\nDefaulted and optional fields: iterateAssets and enqueue counted their\ndefaults as branches, and the Lido row builder paid for one optional\nchain per metric. Those resolve once, through a defaults constant or a\nhelper that flattens the optional groups.\n\nGuards ahead of the work: gas estimation, online event queries, the\naccount-form key warnings and the purge dispatch all led with a stack of\npreconditions. Each is now a named question, so the function that follows\nreads as the work rather than the eligibility.\n\nTwo sign-in steps and two export outcomes were duplicated blocks that\ncollapse into one helper each.\n\nbalance-transformations breached the line cap once its collection\ngrouping was extracted, so the pure part moves to balance-grouping.ts,\ntaking the protocol sorting and the two balance types that only it and\nits callers need.\n\nThree of these lost TypeScript narrowing on extraction, since a boolean\nhelper discards what an inline `in` or discriminant check proves. The\nsign-in reporter is a type predicate, and the xpub and group checks stay\nat the sites that depend on them.",
+          "timestamp": "2026-07-26T01:23:32Z",
+          "url": "https://github.com/rotki/rotki/commit/02259fa94b29adab0704b630e29457f7bbf99fba"
+        },
+        "date": 1785042655521,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 291.82247517124273,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0046640656921712485",
+            "extra": "mean: 3.426740861591265 msec\nrounds: 289"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 247.3815243590196,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0002743592034596889",
+            "extra": "mean: 4.042339065502406 msec\nrounds: 229"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 778.8164337276648,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000037167613690440965",
+            "extra": "mean: 1.2839996136363994 msec\nrounds: 748"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 2181.533204475105,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0003947341739675523",
+            "extra": "mean: 458.3932061857423 usec\nrounds: 873"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 4.946941504687333,
+            "unit": "iter/sec",
+            "range": "stddev: 0.007122109068177066",
+            "extra": "mean: 202.14510300000086 msec\nrounds: 5"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 29504.721249431037,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000003693297018619707",
+            "extra": "mean: 33.892880788334296 usec\nrounds: 6241"
           }
         ]
       }
