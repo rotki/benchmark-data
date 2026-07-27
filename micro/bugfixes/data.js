@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1785042718099,
+  "lastUpdate": 1785129897340,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (bugfixes)": [
@@ -2112,6 +2112,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.0000026754265370999006",
             "extra": "mean: 21.55514193574813 usec\nrounds: 8849"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "committer": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "id": "a115f4f1ae7f36efd1be4937c2c3a43875427a27",
+          "message": "fix: hold async task patches for task lifetime\n\nTwo api tests were failing on the nightlies only: test_async_task_death_traceback\nand test_query_async_task_that_died. Both inject their fault with a mock.patch\nscoped to the HTTP request that spawns the async task, but _query_async returns\nthe task id right after task.start(), so the with block exits while the task\nthread is still starting.\n\nUnder gevent this was safe by construction: the main greenlet blocked on the\nloopback read and handed control to the new greenlet, which ran until its own\nfirst blocking I/O, precisely the patched call. Since api tasks became real OS\nthreads it is a race between the main thread restoring the attribute and the new\nthread reaching the patched call. On an idle machine the task wins, on a\nsaturated nightly it loses and runs unpatched, so no death is ever logged and\nthe binance query hits the live API with the fake key and returns empty balances.\n\nHold the patches open for the whole lifetime of the task by moving the waits and\nthe polling loops inside the with block. test_async_task_death_traceback also\nasserts the task is really dead, since wait() returns silently on timeout and\nwould otherwise fail on the caplog assertion instead.\n\ntest_cancel_async_task gets the same treatment for consistency. It is not\nreproducibly broken today, as the task is cancelled at its first checkpoint\nbefore it reaches the request, but it has the same latent scope bug.",
+          "timestamp": "2026-07-26T12:52:07Z",
+          "url": "https://github.com/rotki/rotki/commit/a115f4f1ae7f36efd1be4937c2c3a43875427a27"
+        },
+        "date": 1785129897122,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 400.5742424132048,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0047066459171760475",
+            "extra": "mean: 2.4964161299429457 msec\nrounds: 354"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 299.67819051898954,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00003697631242330745",
+            "extra": "mean: 3.336912833957577 msec\nrounds: 265"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 1363.2087665362887,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000013788705774474791",
+            "extra": "mean: 733.563357680608 usec\nrounds: 1328"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 2763.1908738844554,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00021067351957323544",
+            "extra": "mean: 361.900442510587 usec\nrounds: 1322"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 9.6956683267387,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0010153364671287356",
+            "extra": "mean: 103.13884162499676 msec\nrounds: 8"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 45177.51374808312,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0000025690394863471808",
+            "extra": "mean: 22.13490555447908 usec\nrounds: 9275"
           }
         ]
       }
