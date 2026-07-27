@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1785042260263,
+  "lastUpdate": 1785129447973,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (develop)": [
@@ -6036,6 +6036,142 @@ window.BENCHMARK_DATA = {
             "value": 2593.16,
             "unit": "ms",
             "extra": "min 2516.75ms, stddev 80.02ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "committer": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "id": "a115f4f1ae7f36efd1be4937c2c3a43875427a27",
+          "message": "fix: hold async task patches for task lifetime\n\nTwo api tests were failing on the nightlies only: test_async_task_death_traceback\nand test_query_async_task_that_died. Both inject their fault with a mock.patch\nscoped to the HTTP request that spawns the async task, but _query_async returns\nthe task id right after task.start(), so the with block exits while the task\nthread is still starting.\n\nUnder gevent this was safe by construction: the main greenlet blocked on the\nloopback read and handed control to the new greenlet, which ran until its own\nfirst blocking I/O, precisely the patched call. Since api tasks became real OS\nthreads it is a race between the main thread restoring the attribute and the new\nthread reaching the patched call. On an idle machine the task wins, on a\nsaturated nightly it loses and runs unpatched, so no death is ever logged and\nthe binance query hits the live API with the fake key and returns empty balances.\n\nHold the patches open for the whole lifetime of the task by moving the waits and\nthe polling loops inside the with block. test_async_task_death_traceback also\nasserts the task is really dead, since wait() returns silently on timeout and\nwould otherwise fail on the caplog assertion instead.\n\ntest_cancel_async_task gets the same treatment for consistency. It is not\nreproducibly broken today, as the task is cancelled at its first checkpoint\nbefore it reaches the request, but it has the same latent scope bug.",
+          "timestamp": "2026-07-26T12:52:07Z",
+          "url": "https://github.com/rotki/rotki/commit/a115f4f1ae7f36efd1be4937c2c3a43875427a27"
+        },
+        "date": 1785129447282,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 1703.94,
+            "unit": "ms",
+            "extra": "min 1695.44ms, stddev 1614.15ms"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 1259.58,
+            "unit": "ms",
+            "extra": "min 1241.83ms, stddev 384.32ms"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 6.15,
+            "unit": "ms",
+            "extra": "min 5.46ms, stddev 0.44ms"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 36.3,
+            "unit": "ms",
+            "extra": "min 35.72ms, stddev 1.14ms"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 2.26,
+            "unit": "ms",
+            "extra": "min 2.03ms, stddev 0.19ms"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 1.79,
+            "unit": "ms",
+            "extra": "min 1.63ms, stddev 0.13ms"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 121.1,
+            "unit": "ms",
+            "extra": "min 118.71ms, stddev 2.27ms"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 83.22,
+            "unit": "ms",
+            "extra": "min 82.97ms, stddev 0.66ms"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 1697.05,
+            "unit": "ms",
+            "extra": "min 1694.11ms, stddev 22.86ms"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 1314.21,
+            "unit": "ms",
+            "extra": "min 1306.87ms, stddev 7.07ms"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 1050.24,
+            "unit": "ms",
+            "extra": "min 1048.57ms, stddev 6.93ms"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 1052.64,
+            "unit": "ms",
+            "extra": "min 1048.4ms, stddev 3.76ms"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 1162.59,
+            "unit": "ms",
+            "extra": "min 1159.85ms, stddev 2.62ms"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 1045.89,
+            "unit": "ms",
+            "extra": "min 1042.42ms, stddev 3.55ms"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 36.14,
+            "unit": "ms",
+            "extra": "min 34.64ms, stddev 1.41ms"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 2.15,
+            "unit": "ms",
+            "extra": "min 2.11ms, stddev 0.09ms"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 1.71,
+            "unit": "ms",
+            "extra": "min 1.67ms, stddev 0.08ms"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 2581.58,
+            "unit": "ms",
+            "extra": "min 2566.4ms, stddev 16.12ms"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 2675.67,
+            "unit": "ms",
+            "extra": "min 2654.67ms, stddev 12.43ms"
           }
         ]
       }
