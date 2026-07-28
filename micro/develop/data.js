@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1785129841173,
+  "lastUpdate": 1785214516883,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (develop)": [
@@ -2596,6 +2596,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.0000016032931901493656",
             "extra": "mean: 19.305791777982293 usec\nrounds: 7007"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "b5257f2db520438cf967b79b2212f64ae2be181c",
+          "message": "chore(dev): gate vue devtools behind its own flag\n\nENABLE_DEV_TOOLS drove two unrelated things: the vite-plugin-vue-devtools\nplugin here, and Electron opening its Chrome DevTools window in\nelectron/main/window-manager.ts. The Vite plugin breaks Vue SFC hot\nreload, so every .vue edit needs a manual page reload while it is\ninstalled, and there was no way to keep the Electron devtools without\npaying that cost.\n\nGive the plugin its own ENABLE_VUE_DEVTOOLS flag. It stays out of the\nmanaged dev flags, which default to on for instance runs, so the Vue\nDevTools panel is now opt-in.",
+          "timestamp": "2026-07-27T17:37:30Z",
+          "url": "https://github.com/rotki/rotki/commit/b5257f2db520438cf967b79b2212f64ae2be181c"
+        },
+        "date": 1785214516349,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 317.9093295900729,
+            "unit": "iter/sec",
+            "range": "stddev: 0.003862623403327349",
+            "extra": "mean: 3.145550969798359 msec\nrounds: 298"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 268.88226371987474,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00002765073953698181",
+            "extra": "mean: 3.7190998995821234 msec\nrounds: 239"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 865.5889195637334,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000018886810042882372",
+            "extra": "mean: 1.1552828108104842 msec\nrounds: 851"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 2750.866274871478,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00025217099666044327",
+            "extra": "mean: 363.5218509655547 usec\nrounds: 1087"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 6.186994515780981,
+            "unit": "iter/sec",
+            "range": "stddev: 0.002866019749445637",
+            "extra": "mean: 161.62936583333476 msec\nrounds: 6"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 37306.98936279317,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00000242434415084609",
+            "extra": "mean: 26.804628759385107 usec\nrounds: 6085"
           }
         ]
       }
