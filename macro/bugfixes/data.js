@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1782288153159,
+  "lastUpdate": 1785214444410,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (bugfixes)": [
@@ -1856,6 +1856,142 @@ window.BENCHMARK_DATA = {
             "value": 2686.05,
             "unit": "ms",
             "extra": "min 2670.97ms, stddev 9.12ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "b5257f2db520438cf967b79b2212f64ae2be181c",
+          "message": "chore(dev): gate vue devtools behind its own flag\n\nENABLE_DEV_TOOLS drove two unrelated things: the vite-plugin-vue-devtools\nplugin here, and Electron opening its Chrome DevTools window in\nelectron/main/window-manager.ts. The Vite plugin breaks Vue SFC hot\nreload, so every .vue edit needs a manual page reload while it is\ninstalled, and there was no way to keep the Electron devtools without\npaying that cost.\n\nGive the plugin its own ENABLE_VUE_DEVTOOLS flag. It stays out of the\nmanaged dev flags, which default to on for instance runs, so the Vue\nDevTools panel is now opt-in.",
+          "timestamp": "2026-07-27T17:37:30Z",
+          "url": "https://github.com/rotki/rotki/commit/b5257f2db520438cf967b79b2212f64ae2be181c"
+        },
+        "date": 1785214444224,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 1746.1,
+            "unit": "ms",
+            "extra": "min 1691.99ms, stddev 624.14ms"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 1329.3,
+            "unit": "ms",
+            "extra": "min 1321.57ms, stddev 262.63ms"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 45.95,
+            "unit": "ms",
+            "extra": "min 45.85ms, stddev 0.05ms"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 84,
+            "unit": "ms",
+            "extra": "min 83.92ms, stddev 0.83ms"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 42,
+            "unit": "ms",
+            "extra": "min 41.93ms, stddev 0.03ms"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 41.99,
+            "unit": "ms",
+            "extra": "min 41.95ms, stddev 0.02ms"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 133,
+            "unit": "ms",
+            "extra": "min 132.96ms, stddev 1.1ms"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 105.99,
+            "unit": "ms",
+            "extra": "min 105.95ms, stddev 0.9ms"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 1730.36,
+            "unit": "ms",
+            "extra": "min 1691.26ms, stddev 29.81ms"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 1403.6,
+            "unit": "ms",
+            "extra": "min 1387.73ms, stddev 10.14ms"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 1121,
+            "unit": "ms",
+            "extra": "min 1114.03ms, stddev 4.87ms"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 1121.02,
+            "unit": "ms",
+            "extra": "min 1114.67ms, stddev 3.19ms"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 1238.14,
+            "unit": "ms",
+            "extra": "min 1233.02ms, stddev 4.26ms"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 1107.15,
+            "unit": "ms",
+            "extra": "min 1105.05ms, stddev 2.2ms"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 84.99,
+            "unit": "ms",
+            "extra": "min 83.96ms, stddev 0.56ms"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 42,
+            "unit": "ms",
+            "extra": "min 41.99ms, stddev 0.51ms"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 41.99,
+            "unit": "ms",
+            "extra": "min 41.97ms, stddev 0.02ms"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 2247.03,
+            "unit": "ms",
+            "extra": "min 2244.08ms, stddev 5.62ms"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 1788.04,
+            "unit": "ms",
+            "extra": "min 1780.05ms, stddev 7.27ms"
           }
         ]
       }
