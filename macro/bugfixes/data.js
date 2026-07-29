@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1785214444410,
+  "lastUpdate": 1785301128584,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (bugfixes)": [
@@ -1992,6 +1992,142 @@ window.BENCHMARK_DATA = {
             "value": 1788.04,
             "unit": "ms",
             "extra": "min 1780.05ms, stddev 7.27ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "56ec63ca8a94a6beb5d0bec060f2c25e7846eca5",
+          "message": "chore(deps): bump electron to 43, c8 to 12\n\nBoth are majors. electron 43.1.1 is preferred over 43.2.0, which is\nright on the 7 day minimumReleaseAge boundary.\n\nNative modules rebuild cleanly against the new ABI and electron-builder\n26.15.3 packages it without changes. The resulting AppImage was launched\nand loads the frontend.\n\nc8 is only used by the e2e coverage report script.",
+          "timestamp": "2026-07-28T17:38:02Z",
+          "url": "https://github.com/rotki/rotki/commit/56ec63ca8a94a6beb5d0bec060f2c25e7846eca5"
+        },
+        "date": 1785301127829,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 1856.57,
+            "unit": "ms",
+            "extra": "min 1802.62ms, stddev 630.99ms"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 1365.84,
+            "unit": "ms",
+            "extra": "min 1357.72ms, stddev 272.92ms"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 46.03,
+            "unit": "ms",
+            "extra": "min 45.94ms, stddev 0.52ms"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 86.01,
+            "unit": "ms",
+            "extra": "min 86.01ms, stddev 0.79ms"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 42.89,
+            "unit": "ms",
+            "extra": "min 42.79ms, stddev 0.06ms"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 42.04,
+            "unit": "ms",
+            "extra": "min 42.0ms, stddev 0.41ms"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 138.01,
+            "unit": "ms",
+            "extra": "min 137.0ms, stddev 3.03ms"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 109.96,
+            "unit": "ms",
+            "extra": "min 109.0ms, stddev 1.28ms"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 1857.19,
+            "unit": "ms",
+            "extra": "min 1791.48ms, stddev 51.98ms"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 1461.48,
+            "unit": "ms",
+            "extra": "min 1431.42ms, stddev 19.27ms"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 1142.02,
+            "unit": "ms",
+            "extra": "min 1134.84ms, stddev 6.89ms"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 1142,
+            "unit": "ms",
+            "extra": "min 1134.96ms, stddev 5.24ms"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 1261.13,
+            "unit": "ms",
+            "extra": "min 1250.98ms, stddev 5.3ms"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 1128.99,
+            "unit": "ms",
+            "extra": "min 1121.03ms, stddev 4.68ms"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 87.8,
+            "unit": "ms",
+            "extra": "min 86.96ms, stddev 0.84ms"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 42.94,
+            "unit": "ms",
+            "extra": "min 42.92ms, stddev 0.03ms"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 42.95,
+            "unit": "ms",
+            "extra": "min 42.0ms, stddev 0.52ms"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 2308.09,
+            "unit": "ms",
+            "extra": "min 2292.98ms, stddev 11.39ms"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 1824.9,
+            "unit": "ms",
+            "extra": "min 1816.97ms, stddev 14.03ms"
           }
         ]
       }
