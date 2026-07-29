@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1785214516883,
+  "lastUpdate": 1785301199989,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (develop)": [
@@ -2660,6 +2660,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.00000242434415084609",
             "extra": "mean: 26.804628759385107 usec\nrounds: 6085"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "56ec63ca8a94a6beb5d0bec060f2c25e7846eca5",
+          "message": "chore(deps): bump electron to 43, c8 to 12\n\nBoth are majors. electron 43.1.1 is preferred over 43.2.0, which is\nright on the 7 day minimumReleaseAge boundary.\n\nNative modules rebuild cleanly against the new ABI and electron-builder\n26.15.3 packages it without changes. The resulting AppImage was launched\nand loads the frontend.\n\nc8 is only used by the e2e coverage report script.",
+          "timestamp": "2026-07-28T17:38:02Z",
+          "url": "https://github.com/rotki/rotki/commit/56ec63ca8a94a6beb5d0bec060f2c25e7846eca5"
+        },
+        "date": 1785301199075,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 408.7093289494905,
+            "unit": "iter/sec",
+            "range": "stddev: 0.004066131229531185",
+            "extra": "mean: 2.4467266322750927 msec\nrounds: 378"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 346.03847949935323,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000023505741465617206",
+            "extra": "mean: 2.8898520229507283 msec\nrounds: 305"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 1086.8433174543015,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00004588056016152357",
+            "extra": "mean: 920.0958260867689 usec\nrounds: 1081"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 1576.897514432428,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0027484928049828087",
+            "extra": "mean: 634.156621370495 usec\nrounds: 861"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 3.9859617647302854,
+            "unit": "iter/sec",
+            "range": "stddev: 0.1724899588953333",
+            "extra": "mean: 250.88047980000283 msec\nrounds: 5"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 48177.93050425163,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0000014598602702906444",
+            "extra": "mean: 20.756391765556465 usec\nrounds: 7165"
           }
         ]
       }
