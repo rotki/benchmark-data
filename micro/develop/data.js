@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1785301199989,
+  "lastUpdate": 1785386844650,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (develop)": [
@@ -2724,6 +2724,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.0000014598602702906444",
             "extra": "mean: 20.756391765556465 usec\nrounds: 7165"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "b4aa10d79f4a59e881782bafc9bd81ee3a31a9ba",
+          "message": "fix: skip settings suggestions on new accounts\n\nA new account starts with `lastAppliedSettingsVersion` at its `0.0.0`\ndefault, so every recommendation from the current and earlier versions\nwas pending on first login. The account is already created on the\ncurrent defaults, so applying one moved it away from them: since kraken\nwas added to the default current-price oracles, the 1.43 oracle\nsuggestion offered to remove it from an account that had just been\ngiven it.\n\nAccount creation now stamps the running version instead of showing the\ndialog. Restoring a premium backup is excluded: the pulled database\nbelongs to an existing account and its recommendations still apply.\n\nThe stamp is awaited rather than fire-and-forget. Writing a frontend\nsetting rewrites the whole blob from a snapshot of the repo, so the\nprivacy reset that follows in `initialize` could snapshot the pre-stamp\nversion and put it back, bringing the dialog around again on the next\nlogin.",
+          "timestamp": "2026-07-29T15:32:52Z",
+          "url": "https://github.com/rotki/rotki/commit/b4aa10d79f4a59e881782bafc9bd81ee3a31a9ba"
+        },
+        "date": 1785386844128,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 534.965127732182,
+            "unit": "iter/sec",
+            "range": "stddev: 0.003339513985316253",
+            "extra": "mean: 1.8692807216036462 msec\nrounds: 449"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 427.995642830611,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0001409348497207084",
+            "extra": "mean: 2.336472384126052 msec\nrounds: 315"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 1465.1797059091657,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00003099630001164261",
+            "extra": "mean: 682.5101357648721 usec\nrounds: 1289"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 255.48980954854835,
+            "unit": "iter/sec",
+            "range": "stddev: 0.021016103471858998",
+            "extra": "mean: 3.914050434211073 msec\nrounds: 228"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 1.4290501921748697,
+            "unit": "iter/sec",
+            "range": "stddev: 0.3712173398588001",
+            "extra": "mean: 699.7654844285778 msec\nrounds: 7"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 60006.81517842581,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0000017702533115183884",
+            "extra": "mean: 16.664773776554785 usec\nrounds: 8275"
           }
         ]
       }
