@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1785300827010,
+  "lastUpdate": 1785386481671,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (develop)": [
@@ -6444,6 +6444,142 @@ window.BENCHMARK_DATA = {
             "value": 2629.39,
             "unit": "ms",
             "extra": "min 2614.96ms, stddev 7.76ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "b4aa10d79f4a59e881782bafc9bd81ee3a31a9ba",
+          "message": "fix: skip settings suggestions on new accounts\n\nA new account starts with `lastAppliedSettingsVersion` at its `0.0.0`\ndefault, so every recommendation from the current and earlier versions\nwas pending on first login. The account is already created on the\ncurrent defaults, so applying one moved it away from them: since kraken\nwas added to the default current-price oracles, the 1.43 oracle\nsuggestion offered to remove it from an account that had just been\ngiven it.\n\nAccount creation now stamps the running version instead of showing the\ndialog. Restoring a premium backup is excluded: the pulled database\nbelongs to an existing account and its recommendations still apply.\n\nThe stamp is awaited rather than fire-and-forget. Writing a frontend\nsetting rewrites the whole blob from a snapshot of the repo, so the\nprivacy reset that follows in `initialize` could snapshot the pre-stamp\nversion and put it back, bringing the dialog around again on the next\nlogin.",
+          "timestamp": "2026-07-29T15:32:52Z",
+          "url": "https://github.com/rotki/rotki/commit/b4aa10d79f4a59e881782bafc9bd81ee3a31a9ba"
+        },
+        "date": 1785386481108,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 1693.7,
+            "unit": "ms",
+            "extra": "min 1689.57ms, stddev 1577.77ms"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 1256.45,
+            "unit": "ms",
+            "extra": "min 1228.85ms, stddev 370.49ms"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 5.64,
+            "unit": "ms",
+            "extra": "min 5.6ms, stddev 0.18ms"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 34.78,
+            "unit": "ms",
+            "extra": "min 34.49ms, stddev 0.9ms"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 2.14,
+            "unit": "ms",
+            "extra": "min 2.1ms, stddev 0.03ms"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 1.73,
+            "unit": "ms",
+            "extra": "min 1.67ms, stddev 0.05ms"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 117.66,
+            "unit": "ms",
+            "extra": "min 115.95ms, stddev 6.7ms"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 81.12,
+            "unit": "ms",
+            "extra": "min 80.27ms, stddev 0.77ms"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 1689.91,
+            "unit": "ms",
+            "extra": "min 1688.22ms, stddev 2.8ms"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 1289.74,
+            "unit": "ms",
+            "extra": "min 1284.89ms, stddev 5.85ms"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 1041.86,
+            "unit": "ms",
+            "extra": "min 1039.09ms, stddev 5.38ms"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 1042.64,
+            "unit": "ms",
+            "extra": "min 1040.92ms, stddev 3.34ms"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 1154.4,
+            "unit": "ms",
+            "extra": "min 1152.71ms, stddev 4.48ms"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 1036.03,
+            "unit": "ms",
+            "extra": "min 1032.49ms, stddev 2.22ms"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 34.69,
+            "unit": "ms",
+            "extra": "min 34.63ms, stddev 0.9ms"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 2.23,
+            "unit": "ms",
+            "extra": "min 2.12ms, stddev 0.07ms"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 1.74,
+            "unit": "ms",
+            "extra": "min 1.67ms, stddev 0.07ms"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 2557.99,
+            "unit": "ms",
+            "extra": "min 2539.19ms, stddev 12.46ms"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 2640.83,
+            "unit": "ms",
+            "extra": "min 2635.38ms, stddev 3.81ms"
           }
         ]
       }
