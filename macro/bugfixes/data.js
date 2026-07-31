@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1785386772186,
+  "lastUpdate": 1785474738415,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (bugfixes)": [
@@ -2264,6 +2264,142 @@ window.BENCHMARK_DATA = {
             "value": 1799.99,
             "unit": "ms",
             "extra": "min 1789.95ms, stddev 20.08ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "committer": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "id": "223c359bd6bdbf1e8d2a5c0f8719cda7b740ca43",
+          "message": "fix: retry bitcoin txs with unplaceable TxIOs via the next explorer\n\nAddress review findings on the bitcoin transaction saving PR:\n\n- blockchain.info returning a transaction incomplete and without the real\n  index of its TxIOs was skipped, which cached a block height past it as\n  soon as a newer transaction of the same response was kept, so nothing\n  ever queried it again and the explorer fallback never ran. Raise a\n  dedicated UnplaceableTxIOsError that the processing loop does not\n  swallow, so the api loop falls back to blockcypher which returns it\n  whole.\n- Lock the location selector of the bitcoin event form outside the add\n  flow, as the evm form does. The location picks the asset, so leaving it\n  editable let an event of a saved BTC transaction be relabelled as BCH.\n- Give reset_events_for_redecode a bitcoin branch. It deleted the events\n  while leaving the transactions marked as decoded, so nothing would ever\n  produce them again. Scoped by location since both chains share the\n  tables and every transaction id from before the fork.\n- Re-derive the counterparty addresses of a bitcoin event restored from\n  backup. Replacing the event cascades them away and they have no backup\n  table, so a restored event dropped out of the per-address balances and\n  the address filters.\n- Keep the tracked accounts as a set as well as a list. Membership was a\n  list scan run once per TxIO saved and once per address decoded, which a\n  full history redecode of an xpub wallet repeats millions of times.",
+          "timestamp": "2026-07-30T19:19:42Z",
+          "url": "https://github.com/rotki/rotki/commit/223c359bd6bdbf1e8d2a5c0f8719cda7b740ca43"
+        },
+        "date": 1785474738173,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 1746.27,
+            "unit": "ms",
+            "extra": "min 1693.37ms, stddev 676.45ms"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 1345.66,
+            "unit": "ms",
+            "extra": "min 1342.91ms, stddev 281.22ms"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 45.94,
+            "unit": "ms",
+            "extra": "min 45.91ms, stddev 0.44ms"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 85,
+            "unit": "ms",
+            "extra": "min 84.97ms, stddev 1.11ms"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 42.92,
+            "unit": "ms",
+            "extra": "min 42.91ms, stddev 0.45ms"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 41.99,
+            "unit": "ms",
+            "extra": "min 41.95ms, stddev 0.42ms"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 128.99,
+            "unit": "ms",
+            "extra": "min 126.96ms, stddev 2.27ms"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 102.98,
+            "unit": "ms",
+            "extra": "min 101.95ms, stddev 1.32ms"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 1693.78,
+            "unit": "ms",
+            "extra": "min 1693.0ms, stddev 48.57ms"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 1415.64,
+            "unit": "ms",
+            "extra": "min 1404.44ms, stddev 26.85ms"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 1200.02,
+            "unit": "ms",
+            "extra": "min 1196.01ms, stddev 3.89ms"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 1198.99,
+            "unit": "ms",
+            "extra": "min 1193.99ms, stddev 6.25ms"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 1319.93,
+            "unit": "ms",
+            "extra": "min 1316.0ms, stddev 13.2ms"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 1188.94,
+            "unit": "ms",
+            "extra": "min 1184.07ms, stddev 5.04ms"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 85,
+            "unit": "ms",
+            "extra": "min 83.99ms, stddev 1.06ms"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 42.96,
+            "unit": "ms",
+            "extra": "min 42.94ms, stddev 0.43ms"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 42,
+            "unit": "ms",
+            "extra": "min 41.98ms, stddev 0.41ms"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 2430.93,
+            "unit": "ms",
+            "extra": "min 2420.02ms, stddev 10.95ms"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 1889.93,
+            "unit": "ms",
+            "extra": "min 1883.98ms, stddev 15.51ms"
           }
         ]
       }
