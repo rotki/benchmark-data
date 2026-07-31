@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1785386909598,
+  "lastUpdate": 1785474871166,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (bugfixes)": [
@@ -2368,6 +2368,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.0000031086983311346795",
             "extra": "mean: 21.77597595176461 usec\nrounds: 7984"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "committer": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "id": "223c359bd6bdbf1e8d2a5c0f8719cda7b740ca43",
+          "message": "fix: retry bitcoin txs with unplaceable TxIOs via the next explorer\n\nAddress review findings on the bitcoin transaction saving PR:\n\n- blockchain.info returning a transaction incomplete and without the real\n  index of its TxIOs was skipped, which cached a block height past it as\n  soon as a newer transaction of the same response was kept, so nothing\n  ever queried it again and the explorer fallback never ran. Raise a\n  dedicated UnplaceableTxIOsError that the processing loop does not\n  swallow, so the api loop falls back to blockcypher which returns it\n  whole.\n- Lock the location selector of the bitcoin event form outside the add\n  flow, as the evm form does. The location picks the asset, so leaving it\n  editable let an event of a saved BTC transaction be relabelled as BCH.\n- Give reset_events_for_redecode a bitcoin branch. It deleted the events\n  while leaving the transactions marked as decoded, so nothing would ever\n  produce them again. Scoped by location since both chains share the\n  tables and every transaction id from before the fork.\n- Re-derive the counterparty addresses of a bitcoin event restored from\n  backup. Replacing the event cascades them away and they have no backup\n  table, so a restored event dropped out of the per-address balances and\n  the address filters.\n- Keep the tracked accounts as a set as well as a list. Membership was a\n  list scan run once per TxIO saved and once per address decoded, which a\n  full history redecode of an xpub wallet repeats millions of times.",
+          "timestamp": "2026-07-30T19:19:42Z",
+          "url": "https://github.com/rotki/rotki/commit/223c359bd6bdbf1e8d2a5c0f8719cda7b740ca43"
+        },
+        "date": 1785474870455,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 479.51348212514773,
+            "unit": "iter/sec",
+            "range": "stddev: 0.006567175664298922",
+            "extra": "mean: 2.0854470985218536 msec\nrounds: 406"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 383.177478428532,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000066821230234841",
+            "extra": "mean: 2.6097567218750672 msec\nrounds: 320"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 1872.4661826404838,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000010655128358090548",
+            "extra": "mean: 534.0550388951946 usec\nrounds: 1774"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 371.8735070558448,
+            "unit": "iter/sec",
+            "range": "stddev: 0.009875084916816382",
+            "extra": "mean: 2.6890864259653444 msec\nrounds: 932"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 4.221304787479065,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0881235791347893",
+            "extra": "mean: 236.89357919999736 msec\nrounds: 5"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 70852.26752148298,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0000012348832412228378",
+            "extra": "mean: 14.113874332910967 usec\nrounds: 7870"
           }
         ]
       }
