@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1785560715573,
+  "lastUpdate": 1785647277014,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (bugfixes)": [
@@ -2496,6 +2496,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.0000011203582508491445",
             "extra": "mean: 13.973985174981228 usec\nrounds: 9511"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "c192c9eee8bf4c505360fb817676063a37d91e03",
+          "message": "fix(e2e): key the core cache on bundled data\n\nThe spec bundles global.db, nodes.json and the populate_*.sql files\ninto the frozen core. None are .py, so a data-only change kept the key\nunchanged and restored a stale core - the suite would then pass against\nthe old data without failing.",
+          "timestamp": "2026-08-01T20:36:04Z",
+          "url": "https://github.com/rotki/rotki/commit/c192c9eee8bf4c505360fb817676063a37d91e03"
+        },
+        "date": 1785647276211,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 563.1660993320216,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0034314904610301704",
+            "extra": "mean: 1.7756750649339732 msec\nrounds: 462"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 422.8593916421099,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0001373270344796404",
+            "extra": "mean: 2.364852288408808 msec\nrounds: 371"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 2049.2978234426228,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000032331537823248365",
+            "extra": "mean: 487.9720207383505 usec\nrounds: 1977"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 1675.0510038288405,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0010075623620118862",
+            "extra": "mean: 596.9967467940945 usec\nrounds: 936"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 9.89896583128136,
+            "unit": "iter/sec",
+            "range": "stddev: 0.007966277958975669",
+            "extra": "mean: 101.0206537777852 msec\nrounds: 9"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 69671.163122597,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0000018174788505654276",
+            "extra": "mean: 14.353140599078962 usec\nrounds: 10249"
           }
         ]
       }
