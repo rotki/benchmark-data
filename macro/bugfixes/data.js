@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1785560588683,
+  "lastUpdate": 1785647149131,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (bugfixes)": [
@@ -2536,6 +2536,142 @@ window.BENCHMARK_DATA = {
             "value": 1534.02,
             "unit": "ms",
             "extra": "min 1518.98ms, stddev 85.99ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "c192c9eee8bf4c505360fb817676063a37d91e03",
+          "message": "fix(e2e): key the core cache on bundled data\n\nThe spec bundles global.db, nodes.json and the populate_*.sql files\ninto the frozen core. None are .py, so a data-only change kept the key\nunchanged and restored a stale core - the suite would then pass against\nthe old data without failing.",
+          "timestamp": "2026-08-01T20:36:04Z",
+          "url": "https://github.com/rotki/rotki/commit/c192c9eee8bf4c505360fb817676063a37d91e03"
+        },
+        "date": 1785647148817,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 1906.65,
+            "unit": "ms",
+            "extra": "min 1854.91ms, stddev 694.41ms"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 1418.86,
+            "unit": "ms",
+            "extra": "min 1410.98ms, stddev 270.74ms"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 46.96,
+            "unit": "ms",
+            "extra": "min 46.93ms, stddev 0.06ms"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 88.81,
+            "unit": "ms",
+            "extra": "min 87.78ms, stddev 0.51ms"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 42.94,
+            "unit": "ms",
+            "extra": "min 42.83ms, stddev 0.06ms"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 42.97,
+            "unit": "ms",
+            "extra": "min 42.94ms, stddev 0.01ms"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 141.08,
+            "unit": "ms",
+            "extra": "min 139.04ms, stddev 2.05ms"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 112.95,
+            "unit": "ms",
+            "extra": "min 110.01ms, stddev 2.06ms"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 1906.95,
+            "unit": "ms",
+            "extra": "min 1855.28ms, stddev 43.65ms"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 1476.3,
+            "unit": "ms",
+            "extra": "min 1465.37ms, stddev 11.15ms"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 1144.97,
+            "unit": "ms",
+            "extra": "min 1141.02ms, stddev 1.99ms"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 1146.05,
+            "unit": "ms",
+            "extra": "min 1144.04ms, stddev 1.58ms"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 1266.16,
+            "unit": "ms",
+            "extra": "min 1256.04ms, stddev 5.85ms"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 1132.05,
+            "unit": "ms",
+            "extra": "min 1125.94ms, stddev 4.67ms"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 88.02,
+            "unit": "ms",
+            "extra": "min 87.84ms, stddev 1.74ms"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 42.97,
+            "unit": "ms",
+            "extra": "min 42.93ms, stddev 0.52ms"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 42.97,
+            "unit": "ms",
+            "extra": "min 42.95ms, stddev 0.02ms"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 2311.1,
+            "unit": "ms",
+            "extra": "min 2296.06ms, stddev 12.2ms"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 1850.98,
+            "unit": "ms",
+            "extra": "min 1843.99ms, stddev 9.57ms"
           }
         ]
       }
