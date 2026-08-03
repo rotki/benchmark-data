@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1785647149131,
+  "lastUpdate": 1785734004192,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (bugfixes)": [
@@ -2672,6 +2672,142 @@ window.BENCHMARK_DATA = {
             "value": 1850.98,
             "unit": "ms",
             "extra": "min 1843.99ms, stddev 9.57ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "committer": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "id": "71d5d7b7a30fcc1d55181c937f1ea65e1b227572",
+          "message": "chore: upgrade ruff to 0.16.0 and enable S324, TID252, E402\n\nBump ruff from 0.15.22 to 0.16.0, the newest version past the repo's\none week uv exclude-newer quarantine. The upgrade needed no rule\nchanges on its own: the expanded default rule set does not apply since\nwe select explicitly, and the twelve newly stabilized rules were\nalready running under preview.\n\nWhile at it, enable three rules that were globally ignored:\n\n- S324: the two md5 uses are non adversarial (an http etag and a local\n  file fingerprint) so they now pass usedforsecurity=False, which both\n  documents the intent and satisfies the rule. Digests are unchanged.\n- TID252: rewrite the six parent relative imports to absolute ones.\n  Sibling '.constants' imports stay as they are. This matters most in\n  the decoder tree, where '..constants' and '.constants' are different\n  modules that read almost identically.\n- E402: eth2.py had a constant sitting in the middle of its import\n  block, which is now moved below them. The two deliberate cases, test\n  setup that configures logging before importing fixtures and the\n  bench launcher that patches requests before importing the app, get\n  per file ignores with the reason attached.\n\nRUF069 stays ignored: it still misfires on our FVal Decimal wrapper\nand the upstream issue is open.",
+          "timestamp": "2026-08-02T18:59:32Z",
+          "url": "https://github.com/rotki/rotki/commit/71d5d7b7a30fcc1d55181c937f1ea65e1b227572"
+        },
+        "date": 1785734003310,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 970.49,
+            "unit": "ms",
+            "extra": "min 968.62ms, stddev 718.9ms"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 947.82,
+            "unit": "ms",
+            "extra": "min 735.08ms, stddev 188.73ms"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 43.92,
+            "unit": "ms",
+            "extra": "min 43.85ms, stddev 0.09ms"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 64.93,
+            "unit": "ms",
+            "extra": "min 63.98ms, stddev 0.44ms"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 41.94,
+            "unit": "ms",
+            "extra": "min 41.87ms, stddev 0.05ms"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 40.99,
+            "unit": "ms",
+            "extra": "min 40.97ms, stddev 0.43ms"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 91.94,
+            "unit": "ms",
+            "extra": "min 86.98ms, stddev 2.51ms"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 73.03,
+            "unit": "ms",
+            "extra": "min 71.99ms, stddev 11.24ms"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 969.02,
+            "unit": "ms",
+            "extra": "min 917.94ms, stddev 119.21ms"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 816.81,
+            "unit": "ms",
+            "extra": "min 762.48ms, stddev 142.72ms"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 638.99,
+            "unit": "ms",
+            "extra": "min 635.98ms, stddev 1.66ms"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 636.92,
+            "unit": "ms",
+            "extra": "min 633.93ms, stddev 2.92ms"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 700,
+            "unit": "ms",
+            "extra": "min 698.0ms, stddev 1.77ms"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 632.99,
+            "unit": "ms",
+            "extra": "min 629.05ms, stddev 3.02ms"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 64,
+            "unit": "ms",
+            "extra": "min 62.99ms, stddev 0.45ms"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 41.95,
+            "unit": "ms",
+            "extra": "min 41.92ms, stddev 0.03ms"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 41,
+            "unit": "ms",
+            "extra": "min 40.98ms, stddev 0.44ms"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 1260,
+            "unit": "ms",
+            "extra": "min 1252.08ms, stddev 7.28ms"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 1023,
+            "unit": "ms",
+            "extra": "min 1004.94ms, stddev 11.12ms"
           }
         ]
       }
