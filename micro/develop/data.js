@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1785647220385,
+  "lastUpdate": 1785734072733,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (develop)": [
@@ -2980,6 +2980,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.0000036865881020705064",
             "extra": "mean: 33.0006795936151 usec\nrounds: 6498"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "committer": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "id": "71d5d7b7a30fcc1d55181c937f1ea65e1b227572",
+          "message": "chore: upgrade ruff to 0.16.0 and enable S324, TID252, E402\n\nBump ruff from 0.15.22 to 0.16.0, the newest version past the repo's\none week uv exclude-newer quarantine. The upgrade needed no rule\nchanges on its own: the expanded default rule set does not apply since\nwe select explicitly, and the twelve newly stabilized rules were\nalready running under preview.\n\nWhile at it, enable three rules that were globally ignored:\n\n- S324: the two md5 uses are non adversarial (an http etag and a local\n  file fingerprint) so they now pass usedforsecurity=False, which both\n  documents the intent and satisfies the rule. Digests are unchanged.\n- TID252: rewrite the six parent relative imports to absolute ones.\n  Sibling '.constants' imports stay as they are. This matters most in\n  the decoder tree, where '..constants' and '.constants' are different\n  modules that read almost identically.\n- E402: eth2.py had a constant sitting in the middle of its import\n  block, which is now moved below them. The two deliberate cases, test\n  setup that configures logging before importing fixtures and the\n  bench launcher that patches requests before importing the app, get\n  per file ignores with the reason attached.\n\nRUF069 stays ignored: it still misfires on our FVal Decimal wrapper\nand the upstream issue is open.",
+          "timestamp": "2026-08-02T18:59:32Z",
+          "url": "https://github.com/rotki/rotki/commit/71d5d7b7a30fcc1d55181c937f1ea65e1b227572"
+        },
+        "date": 1785734072239,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 268.83352589721517,
+            "unit": "iter/sec",
+            "range": "stddev: 0.004521068662421703",
+            "extra": "mean: 3.719774148936827 msec\nrounds: 94"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 272.6183520737741,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0001917760768813462",
+            "extra": "mean: 3.6681316294120467 msec\nrounds: 170"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 789.6810545836261,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00001790046543303286",
+            "extra": "mean: 1.2663340397944187 msec\nrounds: 779"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 2422.094580389675,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00026665042703619455",
+            "extra": "mean: 412.86579314302276 usec\nrounds: 875"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 5.763960686864758,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0012066593596611374",
+            "extra": "mean: 173.4918147999963 msec\nrounds: 5"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 30372.311087886606,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0000038087968146502184",
+            "extra": "mean: 32.92472532321817 usec\nrounds: 6808"
           }
         ]
       }
