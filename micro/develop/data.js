@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1785819275349,
+  "lastUpdate": 1785905695961,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (develop)": [
@@ -3108,6 +3108,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.00000357141802973476",
             "extra": "mean: 32.910150885480824 usec\nrounds: 6707"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Yábir Benchakhtir",
+            "username": "yabirgb",
+            "email": "git@yabirgb.com"
+          },
+          "committer": {
+            "name": "GitHub",
+            "username": "web-flow",
+            "email": "noreply@github.com"
+          },
+          "id": "ffacf466b31708c5ab531628d97b357aa3774708",
+          "message": "Merge pull request #12759 from kelsos/feat/starling-public-health\n\nServe a public /health endpoint on the starling proxy",
+          "timestamp": "2026-08-04T15:32:38Z",
+          "url": "https://github.com/rotki/rotki/commit/ffacf466b31708c5ab531628d97b357aa3774708"
+        },
+        "date": 1785905695147,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 335.7639120889182,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0038586878954895397",
+            "extra": "mean: 2.97828314478054 msec\nrounds: 297"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 282.97659584836384,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000026300964646565154",
+            "extra": "mean: 3.5338611555559925 msec\nrounds: 270"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 881.8929298138371,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000015972547589705505",
+            "extra": "mean: 1.133924500575251 msec\nrounds: 869"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 2845.080516583026,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0002125081133728084",
+            "extra": "mean: 351.48390148234233 usec\nrounds: 1147"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 5.9412992057375575,
+            "unit": "iter/sec",
+            "range": "stddev: 0.002320377712255143",
+            "extra": "mean: 168.31335459999934 msec\nrounds: 5"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 38464.71421709214,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000001759152126406431",
+            "extra": "mean: 25.997853366492475 usec\nrounds: 6431"
           }
         ]
       }
