@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1785905619159,
+  "lastUpdate": 1785992084239,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (bugfixes)": [
@@ -3080,6 +3080,142 @@ window.BENCHMARK_DATA = {
             "value": 1572.95,
             "unit": "ms",
             "extra": "min 1537.02ms, stddev 48.16ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "c843a513a9f1dce6d2345c2203a2823cce14736b",
+          "message": "test(e2e): address history rows by event id\n\nReading a row and then re-querying nth(0) to delete it deleted a different\nswap: the list sorts timestamp DESC and re-renders under the test, so the index\nno longer names the row that was read. Rows carry the id of the event they\nstand for, and the spec addresses them by it throughout.\n\nThe id is on both the collapsed row and the collapse header, so a swap that\nmerely expands still matches and only a real deletion clears it.",
+          "timestamp": "2026-08-05T17:41:18Z",
+          "url": "https://github.com/rotki/rotki/commit/c843a513a9f1dce6d2345c2203a2823cce14736b"
+        },
+        "date": 1785992083847,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 1490.49,
+            "unit": "ms",
+            "extra": "min 1489.35ms, stddev 525.63ms"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 1187.06,
+            "unit": "ms",
+            "extra": "min 1179.85ms, stddev 228.91ms"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 46,
+            "unit": "ms",
+            "extra": "min 45.71ms, stddev 0.15ms"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 81.05,
+            "unit": "ms",
+            "extra": "min 80.97ms, stddev 0.64ms"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 42.9,
+            "unit": "ms",
+            "extra": "min 42.72ms, stddev 0.16ms"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 42,
+            "unit": "ms",
+            "extra": "min 41.98ms, stddev 0.43ms"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 126.01,
+            "unit": "ms",
+            "extra": "min 123.05ms, stddev 30.56ms"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 98.06,
+            "unit": "ms",
+            "extra": "min 96.99ms, stddev 1.26ms"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 1488.71,
+            "unit": "ms",
+            "extra": "min 1436.57ms, stddev 22.83ms"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 1253.05,
+            "unit": "ms",
+            "extra": "min 1249.16ms, stddev 6.67ms"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 1118.65,
+            "unit": "ms",
+            "extra": "min 1110.13ms, stddev 3.81ms"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 1119.62,
+            "unit": "ms",
+            "extra": "min 1110.09ms, stddev 4.58ms"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 1233.06,
+            "unit": "ms",
+            "extra": "min 1227.05ms, stddev 3.35ms"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 1111.09,
+            "unit": "ms",
+            "extra": "min 1104.15ms, stddev 3.57ms"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 81.75,
+            "unit": "ms",
+            "extra": "min 81.06ms, stddev 0.43ms"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 42.84,
+            "unit": "ms",
+            "extra": "min 42.8ms, stddev 0.04ms"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 42,
+            "unit": "ms",
+            "extra": "min 41.94ms, stddev 0.33ms"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 2280,
+            "unit": "ms",
+            "extra": "min 2275.11ms, stddev 10.84ms"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 1760.83,
+            "unit": "ms",
+            "extra": "min 1749.01ms, stddev 6.62ms"
           }
         ]
       }
