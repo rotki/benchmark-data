@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1785905695961,
+  "lastUpdate": 1785992150822,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (develop)": [
@@ -3172,6 +3172,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.000001759152126406431",
             "extra": "mean: 25.997853366492475 usec\nrounds: 6431"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "c843a513a9f1dce6d2345c2203a2823cce14736b",
+          "message": "test(e2e): address history rows by event id\n\nReading a row and then re-querying nth(0) to delete it deleted a different\nswap: the list sorts timestamp DESC and re-renders under the test, so the index\nno longer names the row that was read. Rows carry the id of the event they\nstand for, and the spec addresses them by it throughout.\n\nThe id is on both the collapsed row and the collapse header, so a swap that\nmerely expands still matches and only a real deletion clears it.",
+          "timestamp": "2026-08-05T17:41:18Z",
+          "url": "https://github.com/rotki/rotki/commit/c843a513a9f1dce6d2345c2203a2823cce14736b"
+        },
+        "date": 1785992150268,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 412.6124507851821,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0037119928491849813",
+            "extra": "mean: 2.4235817365594445 msec\nrounds: 372"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 364.36634015635155,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0000247836410904166",
+            "extra": "mean: 2.7444906123076427 msec\nrounds: 325"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 1130.0794742528756,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000019679921665997438",
+            "extra": "mean: 884.893516591942 usec\nrounds: 1115"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 2545.540930998885,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0005948356572624165",
+            "extra": "mean: 392.84381084675556 usec\nrounds: 756"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 5.711762100036439,
+            "unit": "iter/sec",
+            "range": "stddev: 0.04559949923329865",
+            "extra": "mean: 175.07731983333485 msec\nrounds: 6"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 48999.59756009957,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0000014478335252913383",
+            "extra": "mean: 20.40833088013566 usec\nrounds: 6658"
           }
         ]
       }
