@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1786076620976,
+  "lastUpdate": 1786159318547,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (bugfixes)": [
@@ -2880,6 +2880,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.0000028004501193618755",
             "extra": "mean: 21.58995870685014 usec\nrounds: 8815"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Yábir Benchakhtir",
+            "username": "yabirgb",
+            "email": "git@yabirgb.com"
+          },
+          "committer": {
+            "name": "GitHub",
+            "username": "web-flow",
+            "email": "noreply@github.com"
+          },
+          "id": "d192e77b68d459bc101f066322b963f6b593206b",
+          "message": "Merge pull request #12809 from yabirgb/across-prices\n\nAdd logic to ensure across LP token prices",
+          "timestamp": "2026-08-07T20:41:34Z",
+          "url": "https://github.com/rotki/rotki/commit/d192e77b68d459bc101f066322b963f6b593206b"
+        },
+        "date": 1786159318078,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 395.4717164649225,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0056741166430100565",
+            "extra": "mean: 2.528625836858545 msec\nrounds: 331"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 309.9036408974849,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0000856009853081064",
+            "extra": "mean: 3.226809459559711 msec\nrounds: 272"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 1475.3658831949429,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000014040911029040472",
+            "extra": "mean: 677.7979695683855 usec\nrounds: 1413"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 3354.4495838261555,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00020576007927395457",
+            "extra": "mean: 298.1115008619027 usec\nrounds: 1160"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 10.804045272239339,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0014681804828192957",
+            "extra": "mean: 92.55792388888533 msec\nrounds: 9"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 54760.16518207374,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0000017699203160247397",
+            "extra": "mean: 18.2614496628173 usec\nrounds: 8304"
           }
         ]
       }
