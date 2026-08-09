@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1786158877594,
+  "lastUpdate": 1786245732076,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (develop)": [
@@ -7804,6 +7804,142 @@ window.BENCHMARK_DATA = {
             "value": 2276.73,
             "unit": "ms",
             "extra": "min 2221.46ms, stddev 36.37ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "dc2c9bfdcbac9f02963de9838b986b78ae519ef4",
+          "message": "fix(accounts): bound a read that never starts\n\n`release()` was documented as the guarantee that a waiter cannot outlive the load,\nand it is not: its caller sits behind `allSettled([fetchCached(), fetchNetValue()])`,\nand allSettled cannot settle if fetchCached never settles. A poisoned\n`prices:exchange-rates` id did exactly that, and the history sync waited forever.\n\nThe bound covers the arm→track window only, which is the one state that can hang\nwith nothing to settle it. Once a read is in flight the wait stays open: that promise\nsettles on rejection too and its requests carry their own timeouts, so expiring\nmid-read would release waiters into a half-filled store — the bug this prevents.",
+          "timestamp": "2026-08-08T11:36:22Z",
+          "url": "https://github.com/rotki/rotki/commit/dc2c9bfdcbac9f02963de9838b986b78ae519ef4"
+        },
+        "date": 1786245731106,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 1749.02,
+            "unit": "ms",
+            "extra": "min 1739.69ms, stddev 1591.34ms"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 1252.36,
+            "unit": "ms",
+            "extra": "min 1227.91ms, stddev 378.12ms"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 5.71,
+            "unit": "ms",
+            "extra": "min 5.49ms, stddev 0.21ms"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 36.38,
+            "unit": "ms",
+            "extra": "min 35.12ms, stddev 1.11ms"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 2.18,
+            "unit": "ms",
+            "extra": "min 2.06ms, stddev 0.07ms"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 1.81,
+            "unit": "ms",
+            "extra": "min 1.75ms, stddev 0.07ms"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 120.43,
+            "unit": "ms",
+            "extra": "min 119.25ms, stddev 9.71ms"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 82.61,
+            "unit": "ms",
+            "extra": "min 81.4ms, stddev 0.78ms"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 1741.12,
+            "unit": "ms",
+            "extra": "min 1739.79ms, stddev 1.92ms"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 1317.35,
+            "unit": "ms",
+            "extra": "min 1312.64ms, stddev 6.95ms"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 1054.69,
+            "unit": "ms",
+            "extra": "min 1048.74ms, stddev 2.76ms"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 1054.47,
+            "unit": "ms",
+            "extra": "min 1051.51ms, stddev 2.74ms"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 1165.71,
+            "unit": "ms",
+            "extra": "min 1159.32ms, stddev 4.27ms"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 1045.52,
+            "unit": "ms",
+            "extra": "min 1040.13ms, stddev 3.47ms"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 36.29,
+            "unit": "ms",
+            "extra": "min 34.89ms, stddev 1.4ms"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 2.29,
+            "unit": "ms",
+            "extra": "min 2.15ms, stddev 0.14ms"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 1.93,
+            "unit": "ms",
+            "extra": "min 1.72ms, stddev 0.14ms"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 2583.88,
+            "unit": "ms",
+            "extra": "min 2580.84ms, stddev 4.11ms"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 2673.85,
+            "unit": "ms",
+            "extra": "min 2665.92ms, stddev 11.52ms"
           }
         ]
       }
