@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1786159253514,
+  "lastUpdate": 1786246109191,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (develop)": [
@@ -3364,6 +3364,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.0000036568588351219003",
             "extra": "mean: 31.854806586027877 usec\nrounds: 6954"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "dc2c9bfdcbac9f02963de9838b986b78ae519ef4",
+          "message": "fix(accounts): bound a read that never starts\n\n`release()` was documented as the guarantee that a waiter cannot outlive the load,\nand it is not: its caller sits behind `allSettled([fetchCached(), fetchNetValue()])`,\nand allSettled cannot settle if fetchCached never settles. A poisoned\n`prices:exchange-rates` id did exactly that, and the history sync waited forever.\n\nThe bound covers the arm→track window only, which is the one state that can hang\nwith nothing to settle it. Once a read is in flight the wait stays open: that promise\nsettles on rejection too and its requests carry their own timeouts, so expiring\nmid-read would release waiters into a half-filled store — the bug this prevents.",
+          "timestamp": "2026-08-08T11:36:22Z",
+          "url": "https://github.com/rotki/rotki/commit/dc2c9bfdcbac9f02963de9838b986b78ae519ef4"
+        },
+        "date": 1786246108447,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 412.93744611426473,
+            "unit": "iter/sec",
+            "range": "stddev: 0.003803630212545554",
+            "extra": "mean: 2.421674298153353 msec\nrounds: 379"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 359.2055597379556,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000032850355910429626",
+            "extra": "mean: 2.783921275409855 msec\nrounds: 305"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 1125.8452094606905,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00014205182249237878",
+            "extra": "mean: 888.2215704226571 usec\nrounds: 1136"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 2194.3514978959033,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0010813774803382944",
+            "extra": "mean: 455.7155045392087 usec\nrounds: 771"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 2.758587131537849,
+            "unit": "iter/sec",
+            "range": "stddev: 0.14678806832564717",
+            "extra": "mean: 362.50440979999894 msec\nrounds: 5"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 48441.94820302116,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00000256137772583782",
+            "extra": "mean: 20.64326553938294 usec\nrounds: 6387"
           }
         ]
       }
