@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1786246034534,
+  "lastUpdate": 1786333058927,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (bugfixes)": [
@@ -3624,6 +3624,142 @@ window.BENCHMARK_DATA = {
             "value": 1828.96,
             "unit": "ms",
             "extra": "min 1824.98ms, stddev 2.62ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "8cfedb09a2c3052b78a8d7b3eb2e97f3a05d0895",
+          "message": "fix(balances): stop a failed run reading as a settled, empty portfolio\n\neverCompleted for a kind must mean we have data, not that a run happened. The run\numbrella settles COMPLETE whenever its children settle, allSettled on purpose because a\nfailure belongs to the subject that failed, so sharing its children's kind wrote a\nsuccess to the completion ledger even when every chain FAILED. Backend unreachable at\nlogin then read as a settled, empty portfolio. ActivitySpec gains container, opt-in per\numbrella: HISTORY_SYNC's umbrella IS the subject for its kind and its entry is\nload-bearing.\n\ndetect is now part of the chain job's identity. submitTask dedups by id, so a login\nsweep landing while any plain background refresh was in flight joined it and never\ndetected, with no row, no log and no error, while withDetection still recorded the\nsweep, suppressing the next login's too.\n\nHydration's reset now bumps a generation. Clearing the map was not enough: an abandoned\nread still ran its own teardown later, deleting the next session's inflight entry and\nclearing its hydrating flag mid-load.\n\nbalances-cached is dropped from STATIC_LANES. It had no constant, no cap and no producer\nonce the cached read stopped being an activity.",
+          "timestamp": "2026-08-09T20:57:14Z",
+          "url": "https://github.com/rotki/rotki/commit/8cfedb09a2c3052b78a8d7b3eb2e97f3a05d0895"
+        },
+        "date": 1786333058233,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 1798.97,
+            "unit": "ms",
+            "extra": "min 1748.35ms, stddev 663.37ms"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 1349.14,
+            "unit": "ms",
+            "extra": "min 1340.2ms, stddev 276.72ms"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 45.95,
+            "unit": "ms",
+            "extra": "min 45.92ms, stddev 0.02ms"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 85.01,
+            "unit": "ms",
+            "extra": "min 84.0ms, stddev 0.46ms"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 41.99,
+            "unit": "ms",
+            "extra": "min 41.98ms, stddev 0.42ms"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 41.99,
+            "unit": "ms",
+            "extra": "min 41.98ms, stddev 0.01ms"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 135.99,
+            "unit": "ms",
+            "extra": "min 134.98ms, stddev 0.7ms"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 109,
+            "unit": "ms",
+            "extra": "min 107.04ms, stddev 1.12ms"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 1783.99,
+            "unit": "ms",
+            "extra": "min 1742.9ms, stddev 45.86ms"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 1422.56,
+            "unit": "ms",
+            "extra": "min 1391.98ms, stddev 16.39ms"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 1125.01,
+            "unit": "ms",
+            "extra": "min 1119.31ms, stddev 2.79ms"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 1123.99,
+            "unit": "ms",
+            "extra": "min 1117.02ms, stddev 4.01ms"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 1244.97,
+            "unit": "ms",
+            "extra": "min 1237.01ms, stddev 3.82ms"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 1111.01,
+            "unit": "ms",
+            "extra": "min 1102.02ms, stddev 8.3ms"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 84.99,
+            "unit": "ms",
+            "extra": "min 83.97ms, stddev 1.59ms"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 42.02,
+            "unit": "ms",
+            "extra": "min 41.99ms, stddev 0.42ms"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 41.99,
+            "unit": "ms",
+            "extra": "min 41.96ms, stddev 0.02ms"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 2274.04,
+            "unit": "ms",
+            "extra": "min 2248.1ms, stddev 13.74ms"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 1801.99,
+            "unit": "ms",
+            "extra": "min 1775.0ms, stddev 17.97ms"
           }
         ]
       }
