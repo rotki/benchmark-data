@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1786246181644,
+  "lastUpdate": 1786333179341,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (bugfixes)": [
@@ -3008,6 +3008,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.000001848807023095489",
             "extra": "mean: 16.744536683316454 usec\nrounds: 9214"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "8cfedb09a2c3052b78a8d7b3eb2e97f3a05d0895",
+          "message": "fix(balances): stop a failed run reading as a settled, empty portfolio\n\neverCompleted for a kind must mean we have data, not that a run happened. The run\numbrella settles COMPLETE whenever its children settle, allSettled on purpose because a\nfailure belongs to the subject that failed, so sharing its children's kind wrote a\nsuccess to the completion ledger even when every chain FAILED. Backend unreachable at\nlogin then read as a settled, empty portfolio. ActivitySpec gains container, opt-in per\numbrella: HISTORY_SYNC's umbrella IS the subject for its kind and its entry is\nload-bearing.\n\ndetect is now part of the chain job's identity. submitTask dedups by id, so a login\nsweep landing while any plain background refresh was in flight joined it and never\ndetected, with no row, no log and no error, while withDetection still recorded the\nsweep, suppressing the next login's too.\n\nHydration's reset now bumps a generation. Clearing the map was not enough: an abandoned\nread still ran its own teardown later, deleting the next session's inflight entry and\nclearing its hydrating flag mid-load.\n\nbalances-cached is dropped from STATIC_LANES. It had no constant, no cap and no producer\nonce the cached read stopped being an activity.",
+          "timestamp": "2026-08-09T20:57:14Z",
+          "url": "https://github.com/rotki/rotki/commit/8cfedb09a2c3052b78a8d7b3eb2e97f3a05d0895"
+        },
+        "date": 1786333179001,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 386.50686542658985,
+            "unit": "iter/sec",
+            "range": "stddev: 0.006533500441003349",
+            "extra": "mean: 2.5872761636363024 msec\nrounds: 330"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 293.2541968695777,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00004838340842147047",
+            "extra": "mean: 3.410010873415535 msec\nrounds: 237"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 1385.339508856717,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00001919246570294538",
+            "extra": "mean: 721.84471287134 usec\nrounds: 1313"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 2401.6797298292154,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0002947535374096612",
+            "extra": "mean: 416.3752508629077 usec\nrounds: 869"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 9.162206823152957,
+            "unit": "iter/sec",
+            "range": "stddev: 0.004785527250257498",
+            "extra": "mean: 109.14401075000768 msec\nrounds: 8"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 47221.796854692584,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0000030641124447567285",
+            "extra": "mean: 21.176661343004923 usec\nrounds: 8265"
           }
         ]
       }
