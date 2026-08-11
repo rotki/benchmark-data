@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1786333121487,
+  "lastUpdate": 1786419099101,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (develop)": [
@@ -3492,6 +3492,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.0000034059541281258163",
             "extra": "mean: 33.10279365298373 usec\nrounds: 7153"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "b4f7bdabfc2d5b2aa8a26dd062093fdaf93b37b7",
+          "message": "feat(assets): filter asset locations from the pill bar\n\nThe per-asset locations table filtered through three selectors of its own\nabove the table: a location picker, an account picker and a tag picker.\nThey are now fields on the pill bar, like every other table, and the last\nuser of TagFilter.vue goes with them.\n\nPicking a location also used to compare the row's location through\ngetChainName with the picked one through toSentenceCase. The two disagree\non any id that is more than one word: polygon_pos reads as Polygon PoS on\none side and Polygon_pos on the other, so picking such a location matched\nnothing and left the table empty under an unchanged filter. Both sides are\nthe raw id the row already carries, so they are now compared as they are.\nThe test that covered this only used single-word ids, where the two\nformatters happen to agree; it now uses one of each.",
+          "timestamp": "2026-08-10T20:37:11Z",
+          "url": "https://github.com/rotki/rotki/commit/b4f7bdabfc2d5b2aa8a26dd062093fdaf93b37b7"
+        },
+        "date": 1786419098444,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 322.49988515464196,
+            "unit": "iter/sec",
+            "range": "stddev: 0.003597280067543652",
+            "extra": "mean: 3.1007762980147726 msec\nrounds: 302"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 267.3766070545137,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0000416184378825019",
+            "extra": "mean: 3.7400429716580117 msec\nrounds: 247"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 782.8664067241506,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00003956212935036512",
+            "extra": "mean: 1.2773571472870187 msec\nrounds: 774"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 2315.4698986522235,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00029008077762061955",
+            "extra": "mean: 431.8777802216625 usec\nrounds: 1001"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 5.256217999454828,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00750295224681471",
+            "extra": "mean: 190.25086100000408 msec\nrounds: 5"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 30313.047906051983,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00000406947731203278",
+            "extra": "mean: 32.98909443548072 usec\nrounds: 6703"
           }
         ]
       }
