@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1786333058927,
+  "lastUpdate": 1786419027256,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (bugfixes)": [
@@ -3760,6 +3760,142 @@ window.BENCHMARK_DATA = {
             "value": 1801.99,
             "unit": "ms",
             "extra": "min 1775.0ms, stddev 17.97ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "b4f7bdabfc2d5b2aa8a26dd062093fdaf93b37b7",
+          "message": "feat(assets): filter asset locations from the pill bar\n\nThe per-asset locations table filtered through three selectors of its own\nabove the table: a location picker, an account picker and a tag picker.\nThey are now fields on the pill bar, like every other table, and the last\nuser of TagFilter.vue goes with them.\n\nPicking a location also used to compare the row's location through\ngetChainName with the picked one through toSentenceCase. The two disagree\non any id that is more than one word: polygon_pos reads as Polygon PoS on\none side and Polygon_pos on the other, so picking such a location matched\nnothing and left the table empty under an unchanged filter. Both sides are\nthe raw id the row already carries, so they are now compared as they are.\nThe test that covered this only used single-word ids, where the two\nformatters happen to agree; it now uses one of each.",
+          "timestamp": "2026-08-10T20:37:11Z",
+          "url": "https://github.com/rotki/rotki/commit/b4f7bdabfc2d5b2aa8a26dd062093fdaf93b37b7"
+        },
+        "date": 1786419026366,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 1801.94,
+            "unit": "ms",
+            "extra": "min 1749.71ms, stddev 661.09ms"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 1372.38,
+            "unit": "ms",
+            "extra": "min 1341.29ms, stddev 265.62ms"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 46,
+            "unit": "ms",
+            "extra": "min 45.92ms, stddev 0.52ms"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 86,
+            "unit": "ms",
+            "extra": "min 84.97ms, stddev 0.66ms"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 42.82,
+            "unit": "ms",
+            "extra": "min 42.0ms, stddev 0.39ms"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 42,
+            "unit": "ms",
+            "extra": "min 41.96ms, stddev 0.46ms"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 136.04,
+            "unit": "ms",
+            "extra": "min 135.98ms, stddev 0.87ms"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 109.04,
+            "unit": "ms",
+            "extra": "min 108.98ms, stddev 0.85ms"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 1749.85,
+            "unit": "ms",
+            "extra": "min 1748.51ms, stddev 1.82ms"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 1416.04,
+            "unit": "ms",
+            "extra": "min 1401.51ms, stddev 7.15ms"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 1124.94,
+            "unit": "ms",
+            "extra": "min 1124.0ms, stddev 0.79ms"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 1126.72,
+            "unit": "ms",
+            "extra": "min 1125.7ms, stddev 3.02ms"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 1244.17,
+            "unit": "ms",
+            "extra": "min 1241.04ms, stddev 1.79ms"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 1114,
+            "unit": "ms",
+            "extra": "min 1112.11ms, stddev 0.85ms"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 85,
+            "unit": "ms",
+            "extra": "min 84.02ms, stddev 1.42ms"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 42.87,
+            "unit": "ms",
+            "extra": "min 42.05ms, stddev 0.38ms"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 42.09,
+            "unit": "ms",
+            "extra": "min 42.0ms, stddev 0.52ms"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 2269.06,
+            "unit": "ms",
+            "extra": "min 2266.08ms, stddev 5.04ms"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 1811.03,
+            "unit": "ms",
+            "extra": "min 1797.94ms, stddev 8.56ms"
           }
         ]
       }
