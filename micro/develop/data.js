@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1786419099101,
+  "lastUpdate": 1786506617158,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (develop)": [
@@ -3556,6 +3556,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.00000406947731203278",
             "extra": "mean: 32.98909443548072 usec\nrounds: 6703"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "70e394bcf38cc49bf90a9afa259528be4d851abd",
+          "message": "chore(deps): update @rotki/ui-library to 2.23.4\n\nTwo releases in one step, since the app was still on 2.23.2.\n\n2.23.3 carries the persistent-menu escape fix (#567), the icon registration\nwarning fix (#568) and the category picker's selection overlay fix (#559).\n2.23.4 adds a track behind the circular progress arc with a label that scales\nwith its size, the menu select's clear button no longer overlapping the\nchevron, and a consumer class now beating the variant class on both\nRuiNavigationDrawer and RuiIcon.\n\nDrop the `mr-16` that held the direction badge clear of the category picker's\nchevron: #559 shipped, so the selection layer no longer overflows the field.\n\nTwo visible knock-on effects from the class-merge fixes, both of them the\nmarkup finally doing what it already asked for:\n- `HistoryRedecodeSelection`'s chevron carries `size-4`, which until now lost\n  to the icon's own box and rendered at the button's icon size.\n- `PinnedSidebar` can drop the `!` from `!z-[6]` whenever convenient; the\n  important flag still works, so nothing is urgent.",
+          "timestamp": "2026-08-11T16:09:38Z",
+          "url": "https://github.com/rotki/rotki/commit/70e394bcf38cc49bf90a9afa259528be4d851abd"
+        },
+        "date": 1786506616788,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 347.8247778940138,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0029916643372211436",
+            "extra": "mean: 2.8750108202605147 msec\nrounds: 306"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 271.53836853008795,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00011976760001746031",
+            "extra": "mean: 3.6827208081615717 msec\nrounds: 245"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 822.5542678117321,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00006904716377615998",
+            "extra": "mean: 1.2157252586632765 msec\nrounds: 808"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 2401.6373574888044,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00029610477027863953",
+            "extra": "mean: 416.3825970152372 usec\nrounds: 938"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 5.389225441646433,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0012917472600293633",
+            "extra": "mean: 185.5554218000009 msec\nrounds: 5"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 31014.009306556934,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00000375115901866472",
+            "extra": "mean: 32.24349325866042 usec\nrounds: 6972"
           }
         ]
       }
