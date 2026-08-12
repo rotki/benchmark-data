@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1786418739051,
+  "lastUpdate": 1786506240905,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (develop)": [
@@ -8212,6 +8212,142 @@ window.BENCHMARK_DATA = {
             "value": 2802.73,
             "unit": "ms",
             "extra": "min 2774.38ms, stddev 22.05ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "70e394bcf38cc49bf90a9afa259528be4d851abd",
+          "message": "chore(deps): update @rotki/ui-library to 2.23.4\n\nTwo releases in one step, since the app was still on 2.23.2.\n\n2.23.3 carries the persistent-menu escape fix (#567), the icon registration\nwarning fix (#568) and the category picker's selection overlay fix (#559).\n2.23.4 adds a track behind the circular progress arc with a label that scales\nwith its size, the menu select's clear button no longer overlapping the\nchevron, and a consumer class now beating the variant class on both\nRuiNavigationDrawer and RuiIcon.\n\nDrop the `mr-16` that held the direction badge clear of the category picker's\nchevron: #559 shipped, so the selection layer no longer overflows the field.\n\nTwo visible knock-on effects from the class-merge fixes, both of them the\nmarkup finally doing what it already asked for:\n- `HistoryRedecodeSelection`'s chevron carries `size-4`, which until now lost\n  to the icon's own box and rendered at the button's icon size.\n- `PinnedSidebar` can drop the `!` from `!z-[6]` whenever convenient; the\n  important flag still works, so nothing is urgent.",
+          "timestamp": "2026-08-11T16:09:38Z",
+          "url": "https://github.com/rotki/rotki/commit/70e394bcf38cc49bf90a9afa259528be4d851abd"
+        },
+        "date": 1786506239821,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 1584.86,
+            "unit": "ms",
+            "extra": "min 1431.51ms, stddev 1828.09ms"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 1386.04,
+            "unit": "ms",
+            "extra": "min 1322.04ms, stddev 380.21ms"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 5.25,
+            "unit": "ms",
+            "extra": "min 4.83ms, stddev 0.39ms"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 32.77,
+            "unit": "ms",
+            "extra": "min 31.85ms, stddev 0.79ms"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 2.05,
+            "unit": "ms",
+            "extra": "min 1.87ms, stddev 0.11ms"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 1.77,
+            "unit": "ms",
+            "extra": "min 1.56ms, stddev 0.12ms"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 98.72,
+            "unit": "ms",
+            "extra": "min 91.51ms, stddev 24.99ms"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 81.18,
+            "unit": "ms",
+            "extra": "min 61.5ms, stddev 55.72ms"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 1483.4,
+            "unit": "ms",
+            "extra": "min 1427.43ms, stddev 172.29ms"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 1233,
+            "unit": "ms",
+            "extra": "min 1186.35ms, stddev 204.61ms"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 1013.04,
+            "unit": "ms",
+            "extra": "min 981.91ms, stddev 15.18ms"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 999.23,
+            "unit": "ms",
+            "extra": "min 992.05ms, stddev 8.05ms"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 1103.4,
+            "unit": "ms",
+            "extra": "min 1069.7ms, stddev 16.46ms"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 989.81,
+            "unit": "ms",
+            "extra": "min 973.3ms, stddev 8.95ms"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 31.13,
+            "unit": "ms",
+            "extra": "min 30.84ms, stddev 0.26ms"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 2.02,
+            "unit": "ms",
+            "extra": "min 1.81ms, stddev 0.11ms"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 1.68,
+            "unit": "ms",
+            "extra": "min 1.56ms, stddev 0.06ms"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 2397.67,
+            "unit": "ms",
+            "extra": "min 2388.11ms, stddev 19.6ms"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 2838.6,
+            "unit": "ms",
+            "extra": "min 2647.26ms, stddev 125.68ms"
           }
         ]
       }
