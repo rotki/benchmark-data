@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1786506551256,
+  "lastUpdate": 1786593107535,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (bugfixes)": [
@@ -4032,6 +4032,142 @@ window.BENCHMARK_DATA = {
             "value": 1920.99,
             "unit": "ms",
             "extra": "min 1891.91ms, stddev 13.08ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "91060aad11a69c156d7bdae6df3b03700faed3c4",
+          "message": "refactor(frontend): validate the snapshot edit forms with zod\n\nMoves the three snapshot edit forms off vuelidate and onto the useForm\ncore, with the rules in a pure snapshot-forms module. The per-field\nwritable computeds go with them: useForm owns one reactive state the\ntemplates bind into, so useRefPropVModel and useFormStateWatcher are\ndeleted rather than carried across.\n\nThe gate is unchanged. EditBalancesSnapshotForm still validates only the\ncategory and the location, and the price sub-form still exposes no\nvalidate(), so its messages stay decorative.\n\nTwo behaviour notes:\n\n- stateUpdated now tracks form.dirty. A plain dirty check covers the\n  whole entry, and the price fetch rewrites the value on mount, which\n  armed the dialog's unsaved-changes prompt before the user touched\n  anything. transientKeys narrows it back to the fields each form gates.\n- Messages appear on blur rather than on the first keystroke, matching\n  $autoDirty's replacement across the migrated forms.",
+          "timestamp": "2026-08-12T22:29:07Z",
+          "url": "https://github.com/rotki/rotki/commit/91060aad11a69c156d7bdae6df3b03700faed3c4"
+        },
+        "date": 1786593107166,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 1797.38,
+            "unit": "ms",
+            "extra": "min 1747.1ms, stddev 653.48ms"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 1367.43,
+            "unit": "ms",
+            "extra": "min 1352.39ms, stddev 295.4ms"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 45.97,
+            "unit": "ms",
+            "extra": "min 45.94ms, stddev 0.53ms"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 85.01,
+            "unit": "ms",
+            "extra": "min 84.97ms, stddev 0.42ms"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 42.88,
+            "unit": "ms",
+            "extra": "min 41.98ms, stddev 0.5ms"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 41.97,
+            "unit": "ms",
+            "extra": "min 41.95ms, stddev 0.02ms"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 136.96,
+            "unit": "ms",
+            "extra": "min 135.04ms, stddev 1.12ms"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 109.01,
+            "unit": "ms",
+            "extra": "min 108.97ms, stddev 0.56ms"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 1754.5,
+            "unit": "ms",
+            "extra": "min 1746.36ms, stddev 27.93ms"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 1411.11,
+            "unit": "ms",
+            "extra": "min 1401.44ms, stddev 4.57ms"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 1126.95,
+            "unit": "ms",
+            "extra": "min 1122.02ms, stddev 2.39ms"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 1126.02,
+            "unit": "ms",
+            "extra": "min 1123.0ms, stddev 3.05ms"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 1243.13,
+            "unit": "ms",
+            "extra": "min 1238.16ms, stddev 3.23ms"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 1114,
+            "unit": "ms",
+            "extra": "min 1106.02ms, stddev 3.64ms"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 85.97,
+            "unit": "ms",
+            "extra": "min 83.99ms, stddev 0.9ms"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 42.91,
+            "unit": "ms",
+            "extra": "min 41.99ms, stddev 0.42ms"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 41.99,
+            "unit": "ms",
+            "extra": "min 41.99ms, stddev 0.02ms"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 2269.03,
+            "unit": "ms",
+            "extra": "min 2256.06ms, stddev 6.91ms"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 1794,
+            "unit": "ms",
+            "extra": "min 1786.92ms, stddev 6.49ms"
           }
         ]
       }
