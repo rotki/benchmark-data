@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1786506617158,
+  "lastUpdate": 1786593173767,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (develop)": [
@@ -3620,6 +3620,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.00000375115901866472",
             "extra": "mean: 32.24349325866042 usec\nrounds: 6972"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "91060aad11a69c156d7bdae6df3b03700faed3c4",
+          "message": "refactor(frontend): validate the snapshot edit forms with zod\n\nMoves the three snapshot edit forms off vuelidate and onto the useForm\ncore, with the rules in a pure snapshot-forms module. The per-field\nwritable computeds go with them: useForm owns one reactive state the\ntemplates bind into, so useRefPropVModel and useFormStateWatcher are\ndeleted rather than carried across.\n\nThe gate is unchanged. EditBalancesSnapshotForm still validates only the\ncategory and the location, and the price sub-form still exposes no\nvalidate(), so its messages stay decorative.\n\nTwo behaviour notes:\n\n- stateUpdated now tracks form.dirty. A plain dirty check covers the\n  whole entry, and the price fetch rewrites the value on mount, which\n  armed the dialog's unsaved-changes prompt before the user touched\n  anything. transientKeys narrows it back to the fields each form gates.\n- Messages appear on blur rather than on the first keystroke, matching\n  $autoDirty's replacement across the migrated forms.",
+          "timestamp": "2026-08-12T22:29:07Z",
+          "url": "https://github.com/rotki/rotki/commit/91060aad11a69c156d7bdae6df3b03700faed3c4"
+        },
+        "date": 1786593173268,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 320.6978592017939,
+            "unit": "iter/sec",
+            "range": "stddev: 0.004092928926484818",
+            "extra": "mean: 3.1181997986795613 msec\nrounds: 303"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 271.94262190786094,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00003674347915868561",
+            "extra": "mean: 3.6772462991800454 msec\nrounds: 244"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 785.5327274584307,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00004132917538354572",
+            "extra": "mean: 1.2730214350654392 msec\nrounds: 770"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 2326.9737141693818,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000337372896243296",
+            "extra": "mean: 429.74271428629015 usec\nrounds: 959"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 5.419940196726667,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0018825094098811274",
+            "extra": "mean: 184.50388080000266 msec\nrounds: 5"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 30129.786838724314,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0000036716378898466414",
+            "extra": "mean: 33.18974692229651 usec\nrounds: 6417"
           }
         ]
       }
