@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1786593239157,
+  "lastUpdate": 1786679509172,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (bugfixes)": [
@@ -3264,6 +3264,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.0000010429889738111183",
             "extra": "mean: 14.040313355243285 usec\nrounds: 9427"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "f903db4176fff35b7611408f992e5482f268e752",
+          "message": "refactor(frontend): take the device server errors from the core\n\n`useModelForm` grew a `serverErrors` option, so the hand-rolled mirror goes. The core's watch is\ndeep, which the local one was not, so errors mutated in place rather than reassigned now render.\n\nBoth model forms also gain the round trip they had no coverage for: an edit reaching the model the\ndialog above holds, and a change made outside the form reaching the field. Each spec mounts a\nparent holding a real ref, since the shared `mountModelForm` fits neither form: it is typed for an\nobject payload, while the device name is a bare string bridged through a writable computed, and it\nbinds a `stateUpdated` prop the range selector does not declare.",
+          "timestamp": "2026-08-13T20:19:05Z",
+          "url": "https://github.com/rotki/rotki/commit/f903db4176fff35b7611408f992e5482f268e752"
+        },
+        "date": 1786679508403,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 389.86356372860917,
+            "unit": "iter/sec",
+            "range": "stddev: 0.005822869302974397",
+            "extra": "mean: 2.564999894927646 msec\nrounds: 276"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 316.9006684465687,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00005078429445831125",
+            "extra": "mean: 3.155562924186781 msec\nrounds: 277"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 1419.6271706561988,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00007221625154961008",
+            "extra": "mean: 704.4102991757806 usec\nrounds: 1337"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 2645.229069401031,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0002484195583749263",
+            "extra": "mean: 378.0390936904506 usec\nrounds: 1046"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 9.771922772810901,
+            "unit": "iter/sec",
+            "range": "stddev: 0.001502497251852325",
+            "extra": "mean: 102.3340056250106 msec\nrounds: 8"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 47332.41498811494,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000002850691982145087",
+            "extra": "mean: 21.12717046554877 usec\nrounds: 8336"
           }
         ]
       }
