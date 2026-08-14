@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1786593107535,
+  "lastUpdate": 1786679358032,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (bugfixes)": [
@@ -4168,6 +4168,142 @@ window.BENCHMARK_DATA = {
             "value": 1794,
             "unit": "ms",
             "extra": "min 1786.92ms, stddev 6.49ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "f903db4176fff35b7611408f992e5482f268e752",
+          "message": "refactor(frontend): take the device server errors from the core\n\n`useModelForm` grew a `serverErrors` option, so the hand-rolled mirror goes. The core's watch is\ndeep, which the local one was not, so errors mutated in place rather than reassigned now render.\n\nBoth model forms also gain the round trip they had no coverage for: an edit reaching the model the\ndialog above holds, and a change made outside the form reaching the field. Each spec mounts a\nparent holding a real ref, since the shared `mountModelForm` fits neither form: it is typed for an\nobject payload, while the device name is a bare string bridged through a writable computed, and it\nbinds a `stateUpdated` prop the range selector does not declare.",
+          "timestamp": "2026-08-13T20:19:05Z",
+          "url": "https://github.com/rotki/rotki/commit/f903db4176fff35b7611408f992e5482f268e752"
+        },
+        "date": 1786679357639,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 1800.99,
+            "unit": "ms",
+            "extra": "min 1798.13ms, stddev 639.97ms"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 1363.31,
+            "unit": "ms",
+            "extra": "min 1338.59ms, stddev 272.65ms"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 45.92,
+            "unit": "ms",
+            "extra": "min 45.88ms, stddev 0.58ms"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 85.98,
+            "unit": "ms",
+            "extra": "min 84.0ms, stddev 1.94ms"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 42.9,
+            "unit": "ms",
+            "extra": "min 42.0ms, stddev 0.41ms"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 42,
+            "unit": "ms",
+            "extra": "min 41.97ms, stddev 0.02ms"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 136.02,
+            "unit": "ms",
+            "extra": "min 134.96ms, stddev 30.76ms"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 108.93,
+            "unit": "ms",
+            "extra": "min 107.99ms, stddev 0.7ms"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 1797.82,
+            "unit": "ms",
+            "extra": "min 1745.86ms, stddev 28.89ms"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 1418.64,
+            "unit": "ms",
+            "extra": "min 1409.3ms, stddev 11.58ms"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 1134.07,
+            "unit": "ms",
+            "extra": "min 1125.98ms, stddev 5.0ms"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 1133.69,
+            "unit": "ms",
+            "extra": "min 1127.65ms, stddev 4.14ms"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 1254,
+            "unit": "ms",
+            "extra": "min 1248.97ms, stddev 2.55ms"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 1120.05,
+            "unit": "ms",
+            "extra": "min 1116.08ms, stddev 3.02ms"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 85.02,
+            "unit": "ms",
+            "extra": "min 84.95ms, stddev 0.44ms"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 42.9,
+            "unit": "ms",
+            "extra": "min 42.01ms, stddev 0.41ms"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 42,
+            "unit": "ms",
+            "extra": "min 41.99ms, stddev 0.01ms"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 2277.11,
+            "unit": "ms",
+            "extra": "min 2273.9ms, stddev 11.57ms"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 1800.97,
+            "unit": "ms",
+            "extra": "min 1796.99ms, stddev 6.13ms"
           }
         ]
       }
