@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1786761837153,
+  "lastUpdate": 1786848814565,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (bugfixes)": [
@@ -4440,6 +4440,142 @@ window.BENCHMARK_DATA = {
             "value": 1826,
             "unit": "ms",
             "extra": "min 1810.93ms, stddev 21.94ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "610b6411579f026de0cec1da155a18e461f527ff",
+          "message": "fix(dev): honour the instance data directory in electron\n\n`pnpm dev --instance` hands the electron child five instance variables\n(scripts/dev/services.ts). Four of them, the ports, are read in\napplication.ts. ROTKI_INSTANCE_DATA_DIR was read nowhere: it appeared\nexactly once in the tree, on the line that writes it.\n\nSo an instance isolated its ports and then opened the shared data\ndirectory anyway. It took that directory's lock, which meant an instance\ncould not run beside another rotki at all — it exited with code 3,\n\"data directory is already in use\" — and the ~5 GB the instance had just\nseeded went unused.\n\nloadConfig now applies the variable after the config file, so the\ninstance wins: an instance exists precisely so as not to touch the\nshared data. That meant dropping the early return for a missing config\nfile, which is the common case and would have skipped the override.\n\nAn empty value is ignored rather than treated as a directory, so an\nunset instance cannot blank out a configured data-dir.",
+          "timestamp": "2026-08-14T14:47:17Z",
+          "url": "https://github.com/rotki/rotki/commit/610b6411579f026de0cec1da155a18e461f527ff"
+        },
+        "date": 1786848813698,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 1853.1,
+            "unit": "ms",
+            "extra": "min 1799.68ms, stddev 654.99ms"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 1387.34,
+            "unit": "ms",
+            "extra": "min 1378.33ms, stddev 283.22ms"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 46.13,
+            "unit": "ms",
+            "extra": "min 46.01ms, stddev 0.51ms"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 86.99,
+            "unit": "ms",
+            "extra": "min 85.98ms, stddev 0.78ms"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 42.9,
+            "unit": "ms",
+            "extra": "min 42.87ms, stddev 0.06ms"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 42.12,
+            "unit": "ms",
+            "extra": "min 41.95ms, stddev 0.41ms"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 137.99,
+            "unit": "ms",
+            "extra": "min 136.94ms, stddev 0.77ms"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 109.98,
+            "unit": "ms",
+            "extra": "min 109.02ms, stddev 0.82ms"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 1800.92,
+            "unit": "ms",
+            "extra": "min 1798.87ms, stddev 30.41ms"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 1440.44,
+            "unit": "ms",
+            "extra": "min 1424.91ms, stddev 20.92ms"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 1132,
+            "unit": "ms",
+            "extra": "min 1129.0ms, stddev 2.62ms"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 1134.03,
+            "unit": "ms",
+            "extra": "min 1132.1ms, stddev 1.75ms"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 1255.89,
+            "unit": "ms",
+            "extra": "min 1252.07ms, stddev 2.97ms"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 1121.95,
+            "unit": "ms",
+            "extra": "min 1120.98ms, stddev 3.73ms"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 86,
+            "unit": "ms",
+            "extra": "min 85.0ms, stddev 0.7ms"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 42.92,
+            "unit": "ms",
+            "extra": "min 42.88ms, stddev 0.02ms"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 42.04,
+            "unit": "ms",
+            "extra": "min 41.97ms, stddev 0.41ms"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 2295.02,
+            "unit": "ms",
+            "extra": "min 2279.06ms, stddev 11.11ms"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 1816.05,
+            "unit": "ms",
+            "extra": "min 1808.22ms, stddev 4.46ms"
           }
         ]
       }
