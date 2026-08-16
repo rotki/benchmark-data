@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1786761908853,
+  "lastUpdate": 1786848884925,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (develop)": [
@@ -3812,6 +3812,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.000004152764504696673",
             "extra": "mean: 32.94626410920592 usec\nrounds: 6804"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "610b6411579f026de0cec1da155a18e461f527ff",
+          "message": "fix(dev): honour the instance data directory in electron\n\n`pnpm dev --instance` hands the electron child five instance variables\n(scripts/dev/services.ts). Four of them, the ports, are read in\napplication.ts. ROTKI_INSTANCE_DATA_DIR was read nowhere: it appeared\nexactly once in the tree, on the line that writes it.\n\nSo an instance isolated its ports and then opened the shared data\ndirectory anyway. It took that directory's lock, which meant an instance\ncould not run beside another rotki at all — it exited with code 3,\n\"data directory is already in use\" — and the ~5 GB the instance had just\nseeded went unused.\n\nloadConfig now applies the variable after the config file, so the\ninstance wins: an instance exists precisely so as not to touch the\nshared data. That meant dropping the early return for a missing config\nfile, which is the common case and would have skipped the override.\n\nAn empty value is ignored rather than treated as a directory, so an\nunset instance cannot blank out a configured data-dir.",
+          "timestamp": "2026-08-14T14:47:17Z",
+          "url": "https://github.com/rotki/rotki/commit/610b6411579f026de0cec1da155a18e461f527ff"
+        },
+        "date": 1786848884323,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 345.563106828492,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0029558514911222876",
+            "extra": "mean: 2.893827437708258 msec\nrounds: 297"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 275.78622649297523,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000044113205226201365",
+            "extra": "mean: 3.6259968915651113 msec\nrounds: 249"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 828.5886272816557,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000011810763545296683",
+            "extra": "mean: 1.206871500615079 msec\nrounds: 813"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 2541.7565774906925,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00026752757939135124",
+            "extra": "mean: 393.4287055085478 usec\nrounds: 944"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 5.435638124961691,
+            "unit": "iter/sec",
+            "range": "stddev: 0.002380370890319033",
+            "extra": "mean: 183.9710402000037 msec\nrounds: 5"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 30874.898237843987,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000003475156203156412",
+            "extra": "mean: 32.38877071906523 usec\nrounds: 7083"
           }
         ]
       }
