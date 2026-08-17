@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1786848814565,
+  "lastUpdate": 1786935171653,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (bugfixes)": [
@@ -4576,6 +4576,142 @@ window.BENCHMARK_DATA = {
             "value": 1816.05,
             "unit": "ms",
             "extra": "min 1808.22ms, stddev 4.46ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "7561ca1c417ba57c6bd95bdd608ca676d5d77d8d",
+          "message": "refactor(frontend): finish the vuelidate migration\n\nThe matching settings menu was the last root. Its two bounds move into\nasset-movement-matching-settings.ts with a spec, and each field now answers for itself: the rule it\nreplaces asked the whole validator whether anything was wrong, so an out-of-range tolerance\nsilently stopped the unrelated time range from saving.\n\nWith that gone the rest follows. useValidation held only callIfValid, which the menu was the last\ncaller of, and toMessages leaves validation.ts, which keeps the character helper it also holds.\n\nUnderlyingTokenManager's spec no longer builds a vuelidate parent to prove the staging row stays\nout of it. There is no ambient collector to be caught by any more: a zod form is local, and that\ncomponent exposes nothing, which is what the test says now.\n\n@vuelidate/core and @vuelidate/validators leave package.json and the catalog.",
+          "timestamp": "2026-08-14T15:45:39Z",
+          "url": "https://github.com/rotki/rotki/commit/7561ca1c417ba57c6bd95bdd608ca676d5d77d8d"
+        },
+        "date": 1786935170781,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 1905.73,
+            "unit": "ms",
+            "extra": "min 1851.61ms, stddev 624.16ms"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 1396.7,
+            "unit": "ms",
+            "extra": "min 1392.62ms, stddev 275.91ms"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 46.95,
+            "unit": "ms",
+            "extra": "min 45.93ms, stddev 0.55ms"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 87.97,
+            "unit": "ms",
+            "extra": "min 85.04ms, stddev 1.63ms"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 42.98,
+            "unit": "ms",
+            "extra": "min 42.91ms, stddev 0.43ms"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 42.9,
+            "unit": "ms",
+            "extra": "min 42.0ms, stddev 0.53ms"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 138.13,
+            "unit": "ms",
+            "extra": "min 135.99ms, stddev 1.46ms"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 109,
+            "unit": "ms",
+            "extra": "min 108.02ms, stddev 1.13ms"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 1800.32,
+            "unit": "ms",
+            "extra": "min 1798.14ms, stddev 27.05ms"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 1439.89,
+            "unit": "ms",
+            "extra": "min 1433.79ms, stddev 13.78ms"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 1141.95,
+            "unit": "ms",
+            "extra": "min 1127.1ms, stddev 8.34ms"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 1137.99,
+            "unit": "ms",
+            "extra": "min 1132.91ms, stddev 8.02ms"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 1253.95,
+            "unit": "ms",
+            "extra": "min 1241.92ms, stddev 9.73ms"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 1123.98,
+            "unit": "ms",
+            "extra": "min 1117.07ms, stddev 6.88ms"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 86.01,
+            "unit": "ms",
+            "extra": "min 83.95ms, stddev 1.59ms"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 42.91,
+            "unit": "ms",
+            "extra": "min 41.99ms, stddev 0.42ms"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 41.98,
+            "unit": "ms",
+            "extra": "min 41.98ms, stddev 0.01ms"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 2283.95,
+            "unit": "ms",
+            "extra": "min 2278.0ms, stddev 4.33ms"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 1816.99,
+            "unit": "ms",
+            "extra": "min 1800.96ms, stddev 9.08ms"
           }
         ]
       }
