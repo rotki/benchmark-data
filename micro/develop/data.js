@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1786848884925,
+  "lastUpdate": 1786935247542,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (develop)": [
@@ -3876,6 +3876,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.000003475156203156412",
             "extra": "mean: 32.38877071906523 usec\nrounds: 7083"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "7561ca1c417ba57c6bd95bdd608ca676d5d77d8d",
+          "message": "refactor(frontend): finish the vuelidate migration\n\nThe matching settings menu was the last root. Its two bounds move into\nasset-movement-matching-settings.ts with a spec, and each field now answers for itself: the rule it\nreplaces asked the whole validator whether anything was wrong, so an out-of-range tolerance\nsilently stopped the unrelated time range from saving.\n\nWith that gone the rest follows. useValidation held only callIfValid, which the menu was the last\ncaller of, and toMessages leaves validation.ts, which keeps the character helper it also holds.\n\nUnderlyingTokenManager's spec no longer builds a vuelidate parent to prove the staging row stays\nout of it. There is no ambient collector to be caught by any more: a zod form is local, and that\ncomponent exposes nothing, which is what the test says now.\n\n@vuelidate/core and @vuelidate/validators leave package.json and the catalog.",
+          "timestamp": "2026-08-14T15:45:39Z",
+          "url": "https://github.com/rotki/rotki/commit/7561ca1c417ba57c6bd95bdd608ca676d5d77d8d"
+        },
+        "date": 1786935246526,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 428.4688278103305,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0027372382204094957",
+            "extra": "mean: 2.3338920712399367 msec\nrounds: 379"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 330.6111692048003,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0000762234813062697",
+            "extra": "mean: 3.024701199312901 msec\nrounds: 291"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 1025.6977237140077,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000012000163622285643",
+            "extra": "mean: 974.9461043737551 usec\nrounds: 1006"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 2046.1463037001618,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00051836594606018",
+            "extra": "mean: 488.7236060254556 usec\nrounds: 863"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 4.169232148079129,
+            "unit": "iter/sec",
+            "range": "stddev: 0.05040700984936615",
+            "extra": "mean: 239.85231920000558 msec\nrounds: 5"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 43236.42111808985,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0000023028637151956987",
+            "extra": "mean: 23.128648813664327 usec\nrounds: 7207"
           }
         ]
       }
