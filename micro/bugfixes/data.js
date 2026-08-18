@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1786935313941,
+  "lastUpdate": 1787021360985,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (bugfixes)": [
@@ -3520,6 +3520,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.0000017715273964190638",
             "extra": "mean: 18.55609718821757 usec\nrounds: 7789"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "79bf87f41a855da7decc255a2db5acbd07788987",
+          "message": "fix(frontend): keep the row context's parts internal\n\nknip fails the build on an unused export, and the four interfaces the row\ncontext is composed from are only ever referenced by HistoryEventsRowContext\nin the same file.",
+          "timestamp": "2026-08-17T11:30:09Z",
+          "url": "https://github.com/rotki/rotki/commit/79bf87f41a855da7decc255a2db5acbd07788987"
+        },
+        "date": 1787021359610,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 366.6048531670321,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0071801919111085626",
+            "extra": "mean: 2.7277325746268315 msec\nrounds: 268"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 304.7204171254465,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00009582848328033667",
+            "extra": "mean: 3.281696741667043 msec\nrounds: 240"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 1366.8064744769138,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000014960713273525602",
+            "extra": "mean: 731.6324722435244 usec\nrounds: 1315"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 2454.7541065334917,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00029825575869960573",
+            "extra": "mean: 407.3727781281365 usec\nrounds: 951"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 8.905163672003964,
+            "unit": "iter/sec",
+            "range": "stddev: 0.002134149355846921",
+            "extra": "mean: 112.29439871428733 msec\nrounds: 7"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 46185.97770357885,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0000026963544316753158",
+            "extra": "mean: 21.651593183065 usec\nrounds: 8655"
           }
         ]
       }
