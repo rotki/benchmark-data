@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1787107531058,
+  "lastUpdate": 1787193812790,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (develop)": [
@@ -9300,6 +9300,142 @@ window.BENCHMARK_DATA = {
             "value": 2700.28,
             "unit": "ms",
             "extra": "min 2679.74ms, stddev 12.37ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "ee31084f967d41c573e165e9d1ab50e906dbaa55",
+          "message": "fix(frontend): stop hover hijacking the pill filter list\n\nThe option list set its highlight from a bare mousemove. The list is\nvirtualized and the arrow keys scroll it, so a row the user never pointed at\narrives under a cursor that has not moved, and the browser reports that as a\nmousemove at unchanged coordinates. Obeying it hands the highlight straight\nback, so the arrows could not advance past one row and a wheel scroll dragged\nthe highlight along with it.\n\nPointer moves are now taken only when the coordinates actually changed.\n\nSame defect and same fix as the send form's token picker in #12961, which is\nwhere it was spotted; this list is the other virtualized picker in the app.",
+          "timestamp": "2026-08-19T15:24:59Z",
+          "url": "https://github.com/rotki/rotki/commit/ee31084f967d41c573e165e9d1ab50e906dbaa55"
+        },
+        "date": 1787193812008,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 1378.56,
+            "unit": "ms",
+            "extra": "min 1283.25ms, stddev 1560.07ms"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 1021.65,
+            "unit": "ms",
+            "extra": "min 994.48ms, stddev 299.26ms"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 4.38,
+            "unit": "ms",
+            "extra": "min 4.24ms, stddev 0.13ms"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 27.88,
+            "unit": "ms",
+            "extra": "min 27.36ms, stddev 0.26ms"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 1.79,
+            "unit": "ms",
+            "extra": "min 1.61ms, stddev 0.13ms"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 1.47,
+            "unit": "ms",
+            "extra": "min 1.36ms, stddev 0.07ms"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 82.6,
+            "unit": "ms",
+            "extra": "min 80.6ms, stddev 6.37ms"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 60.28,
+            "unit": "ms",
+            "extra": "min 56.62ms, stddev 26.73ms"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 1276.62,
+            "unit": "ms",
+            "extra": "min 1275.01ms, stddev 177.08ms"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 1082.49,
+            "unit": "ms",
+            "extra": "min 1046.33ms, stddev 248.0ms"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 888.58,
+            "unit": "ms",
+            "extra": "min 884.21ms, stddev 4.88ms"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 886.48,
+            "unit": "ms",
+            "extra": "min 880.19ms, stddev 8.48ms"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 976.62,
+            "unit": "ms",
+            "extra": "min 971.01ms, stddev 6.57ms"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 885.44,
+            "unit": "ms",
+            "extra": "min 876.96ms, stddev 5.44ms"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 27.61,
+            "unit": "ms",
+            "extra": "min 27.54ms, stddev 0.46ms"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 1.63,
+            "unit": "ms",
+            "extra": "min 1.61ms, stddev 0.12ms"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 1.4,
+            "unit": "ms",
+            "extra": "min 1.37ms, stddev 0.08ms"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 2140.14,
+            "unit": "ms",
+            "extra": "min 2099.41ms, stddev 26.51ms"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 2302.94,
+            "unit": "ms",
+            "extra": "min 2220.35ms, stddev 138.91ms"
           }
         ]
       }
