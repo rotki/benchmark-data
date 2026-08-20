@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1787107895885,
+  "lastUpdate": 1787194114126,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (develop)": [
@@ -4068,6 +4068,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.000002164717211219609",
             "extra": "mean: 27.047661044745485 usec\nrounds: 6107"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "ee31084f967d41c573e165e9d1ab50e906dbaa55",
+          "message": "fix(frontend): stop hover hijacking the pill filter list\n\nThe option list set its highlight from a bare mousemove. The list is\nvirtualized and the arrow keys scroll it, so a row the user never pointed at\narrives under a cursor that has not moved, and the browser reports that as a\nmousemove at unchanged coordinates. Obeying it hands the highlight straight\nback, so the arrows could not advance past one row and a wheel scroll dragged\nthe highlight along with it.\n\nPointer moves are now taken only when the coordinates actually changed.\n\nSame defect and same fix as the send form's token picker in #12961, which is\nwhere it was spotted; this list is the other virtualized picker in the app.",
+          "timestamp": "2026-08-19T15:24:59Z",
+          "url": "https://github.com/rotki/rotki/commit/ee31084f967d41c573e165e9d1ab50e906dbaa55"
+        },
+        "date": 1787194113195,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 345.7983769345264,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0029325663203375344",
+            "extra": "mean: 2.8918585704910367 msec\nrounds: 305"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 274.87173516020795,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000034093026298716494",
+            "extra": "mean: 3.6380604918041275 msec\nrounds: 244"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 865.2770679437848,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000022492856667867294",
+            "extra": "mean: 1.1556991824322425 msec\nrounds: 888"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 2851.377995974288,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00025409391219778724",
+            "extra": "mean: 350.70762326560975 usec\nrounds: 937"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 15.863917401324779,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0017373944381843258",
+            "extra": "mean: 63.03613254545129 msec\nrounds: 11"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 37884.234525967964,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0000020507062253610606",
+            "extra": "mean: 26.39620445054906 usec\nrounds: 6471"
           }
         ]
       }
