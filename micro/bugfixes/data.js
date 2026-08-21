@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1787194171536,
+  "lastUpdate": 1787281073875,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (bugfixes)": [
@@ -3712,6 +3712,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.0000011273979376810416",
             "extra": "mean: 13.95068242662766 usec\nrounds: 9497"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "GitHub",
+            "username": "web-flow",
+            "email": "noreply@github.com"
+          },
+          "id": "78f86bda7e29e5f4aa3471f6c4fa9b50f993beee",
+          "message": "Fix the ETH staking total when filtering (#12974)\n\n* fix(staking): correct staked total when filtering\n\nApplying a validator filter left the staked total showing a number that\nbelonged to a different filter, so it disagreed with the validator count\nbeside it. Two causes, both here.\n\nRequests were not ordered. Filter changes run concurrently, so whichever\nresponse landed last won rather than the one belonging to the newest\nfilter. The total is now keyed to the filter it was asked for, and an\nanswer is dropped once a newer filter supersedes it. Keyed by filter\nrather than by call on purpose: the premium component re-emits\n`update:filter` after every change, so the same filter is requested\ntwice as a matter of course and both answers are equally valid.\n\nThe recompute also went through the async task orchestrator, so a\nmillisecond-scale database read arrived on the polling cadence and the\ntotal trailed the count beside it by roughly two seconds. It now uses a\nsynchronous sibling of the validators query, which drops that to well\nunder a tenth of a second. The async query is untouched for the actual\nvalidator fetch, which is a real background job.\n\nA selection made only of exited validators still totals zero. That is\nthe backend contract, since balances are only reported for validators\nthat have not exited.\n\n* feat(staking): show optional API key in a popover\n\nThe Beaconcha.in prompt occupied a full-width row on every visit to the\nETH staking page, for a key the page works perfectly well without. A\nnotice that is always present stops being read, and it sat directly\nabove a second alert.\n\nIt now sits in the page header as a button that opens the same guidance\non demand, and it can be dismissed for good. The dismissal is persisted\nin a new frontend setting, so it does not return on the next login. The\nsetting takes no `.catch`: an unreadable value should surface rather\nthan silently re-show every prompt.\n\nProminence follows severity. A missing consensus RPC means there is no\nstaking data at all, which is a fault rather than an offer, so that case\nkeeps the inline alert and cannot be dismissed.\n\nRuiMenu supplies neither the disclosure semantics nor the focus move, so\nboth are wired here: the trigger announces `aria-haspopup` and its\nexpanded state, the panel is a labelled dialog, focus enters it on open\nand returns to the trigger on close. Without the focus move the panel is\nteleported to the end of the document and a keyboard user reaches its\nlink only after tabbing through the rest of the page.",
+          "timestamp": "2026-08-20T14:57:25Z",
+          "url": "https://github.com/rotki/rotki/commit/78f86bda7e29e5f4aa3471f6c4fa9b50f993beee"
+        },
+        "date": 1787281072813,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 381.21310150823984,
+            "unit": "iter/sec",
+            "range": "stddev: 0.006154074659775698",
+            "extra": "mean: 2.623204701107014 msec\nrounds: 271"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 312.53207886626393,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00004951694516503639",
+            "extra": "mean: 3.199671546126026 msec\nrounds: 271"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 1341.6194738290305,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00004730690892970091",
+            "extra": "mean: 745.3678330607142 usec\nrounds: 1222"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 2683.292380621646,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0002652310741979107",
+            "extra": "mean: 372.67649519741383 usec\nrounds: 937"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 9.599972401999198,
+            "unit": "iter/sec",
+            "range": "stddev: 0.001357417140013097",
+            "extra": "mean: 104.16696612500154 msec\nrounds: 8"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 46563.77580633691,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000002877196355208651",
+            "extra": "mean: 21.47592162970403 usec\nrounds: 8345"
           }
         ]
       }
