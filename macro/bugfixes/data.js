@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1787194046242,
+  "lastUpdate": 1787280935055,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (bugfixes)": [
@@ -5120,6 +5120,142 @@ window.BENCHMARK_DATA = {
             "value": 1429.9,
             "unit": "ms",
             "extra": "min 1317.06ms, stddev 103.16ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "GitHub",
+            "username": "web-flow",
+            "email": "noreply@github.com"
+          },
+          "id": "78f86bda7e29e5f4aa3471f6c4fa9b50f993beee",
+          "message": "Fix the ETH staking total when filtering (#12974)\n\n* fix(staking): correct staked total when filtering\n\nApplying a validator filter left the staked total showing a number that\nbelonged to a different filter, so it disagreed with the validator count\nbeside it. Two causes, both here.\n\nRequests were not ordered. Filter changes run concurrently, so whichever\nresponse landed last won rather than the one belonging to the newest\nfilter. The total is now keyed to the filter it was asked for, and an\nanswer is dropped once a newer filter supersedes it. Keyed by filter\nrather than by call on purpose: the premium component re-emits\n`update:filter` after every change, so the same filter is requested\ntwice as a matter of course and both answers are equally valid.\n\nThe recompute also went through the async task orchestrator, so a\nmillisecond-scale database read arrived on the polling cadence and the\ntotal trailed the count beside it by roughly two seconds. It now uses a\nsynchronous sibling of the validators query, which drops that to well\nunder a tenth of a second. The async query is untouched for the actual\nvalidator fetch, which is a real background job.\n\nA selection made only of exited validators still totals zero. That is\nthe backend contract, since balances are only reported for validators\nthat have not exited.\n\n* feat(staking): show optional API key in a popover\n\nThe Beaconcha.in prompt occupied a full-width row on every visit to the\nETH staking page, for a key the page works perfectly well without. A\nnotice that is always present stops being read, and it sat directly\nabove a second alert.\n\nIt now sits in the page header as a button that opens the same guidance\non demand, and it can be dismissed for good. The dismissal is persisted\nin a new frontend setting, so it does not return on the next login. The\nsetting takes no `.catch`: an unreadable value should surface rather\nthan silently re-show every prompt.\n\nProminence follows severity. A missing consensus RPC means there is no\nstaking data at all, which is a fault rather than an offer, so that case\nkeeps the inline alert and cannot be dismissed.\n\nRuiMenu supplies neither the disclosure semantics nor the focus move, so\nboth are wired here: the trigger announces `aria-haspopup` and its\nexpanded state, the panel is a labelled dialog, focus enters it on open\nand returns to the trigger on close. Without the focus move the panel is\nteleported to the end of the document and a keyboard user reaches its\nlink only after tabbing through the rest of the page.",
+          "timestamp": "2026-08-20T14:57:25Z",
+          "url": "https://github.com/rotki/rotki/commit/78f86bda7e29e5f4aa3471f6c4fa9b50f993beee"
+        },
+        "date": 1787280934171,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 1483.16,
+            "unit": "ms",
+            "extra": "min 1481.06ms, stddev 615.41ms"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 1200.63,
+            "unit": "ms",
+            "extra": "min 1174.08ms, stddev 227.5ms"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 45.88,
+            "unit": "ms",
+            "extra": "min 45.75ms, stddev 0.08ms"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 81.84,
+            "unit": "ms",
+            "extra": "min 80.83ms, stddev 0.86ms"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 42.93,
+            "unit": "ms",
+            "extra": "min 42.77ms, stddev 0.09ms"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 41.99,
+            "unit": "ms",
+            "extra": "min 41.82ms, stddev 0.08ms"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 125.05,
+            "unit": "ms",
+            "extra": "min 124.78ms, stddev 12.91ms"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 95.16,
+            "unit": "ms",
+            "extra": "min 93.0ms, stddev 1.88ms"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 1471.85,
+            "unit": "ms",
+            "extra": "min 1429.74ms, stddev 27.94ms"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 1361.92,
+            "unit": "ms",
+            "extra": "min 1245.95ms, stddev 190.36ms"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 1112.93,
+            "unit": "ms",
+            "extra": "min 1100.18ms, stddev 8.96ms"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 1112.83,
+            "unit": "ms",
+            "extra": "min 1093.13ms, stddev 14.39ms"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 1216.03,
+            "unit": "ms",
+            "extra": "min 1198.86ms, stddev 17.56ms"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 1108.81,
+            "unit": "ms",
+            "extra": "min 1079.99ms, stddev 14.83ms"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 81.14,
+            "unit": "ms",
+            "extra": "min 80.89ms, stddev 0.49ms"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 42.86,
+            "unit": "ms",
+            "extra": "min 42.65ms, stddev 0.11ms"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 41.95,
+            "unit": "ms",
+            "extra": "min 41.87ms, stddev 0.05ms"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 2262.94,
+            "unit": "ms",
+            "extra": "min 2221.04ms, stddev 21.44ms"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 1833.98,
+            "unit": "ms",
+            "extra": "min 1794.2ms, stddev 36.62ms"
           }
         ]
       }
