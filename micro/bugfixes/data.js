@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1787366818658,
+  "lastUpdate": 1787453857910,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (bugfixes)": [
@@ -3840,6 +3840,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.0000014098538638387408",
             "extra": "mean: 20.989520310564362 usec\nrounds: 7213"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "ef14aadd1f387a199731fcc03254463b45b6e0cb",
+          "message": "fix(notifications): report monerium success inline only\n\nA completed authorization raised a notification saying it had worked,\nfor something the user was already looking at: the card flips to its\nconnected state naming the account as soon as the token round trip\nlands. The entry then had to be dismissed by hand, and it sat in the\nsame group as the \"opening browser\" step and the session-expired\nwarning, so the trail of the flow outlived the flow.\n\nSuccess now raises nothing and clears that group instead, which also\nretires the expiry warning the re-authentication just resolved. One\nremoval is enough because a group holds a single entry, the dispatcher\nreplacing rather than appending. Failures still report, since nothing\non the card shows them.\n\nThe card also drops to one notification composable: useNotifications\ncovers both notify and removeMatching, and its Notification type is the\nsame SemiPartial the card was already building.",
+          "timestamp": "2026-08-21T13:28:52Z",
+          "url": "https://github.com/rotki/rotki/commit/ef14aadd1f387a199731fcc03254463b45b6e0cb"
+        },
+        "date": 1787453857247,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 347.4532140043988,
+            "unit": "iter/sec",
+            "range": "stddev: 0.002944446791760653",
+            "extra": "mean: 2.878085335504595 msec\nrounds: 307"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 272.53860718821863,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000037721670270790456",
+            "extra": "mean: 3.669204925925916 msec\nrounds: 243"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 805.7785022637189,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000015848191329529427",
+            "extra": "mean: 1.241035839490187 msec\nrounds: 785"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 2560.139505659101,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00026140364906485715",
+            "extra": "mean: 390.6037142856997 usec\nrounds: 1015"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 13.982801833308555,
+            "unit": "iter/sec",
+            "range": "stddev: 0.001461894836376036",
+            "extra": "mean: 71.51642510000329 msec\nrounds: 10"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 30812.213777313686,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000003680420215200587",
+            "extra": "mean: 32.4546625317872 usec\nrounds: 7094"
           }
         ]
       }
