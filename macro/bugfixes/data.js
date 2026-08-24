@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1787453722282,
+  "lastUpdate": 1787540153712,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (bugfixes)": [
@@ -5528,6 +5528,142 @@ window.BENCHMARK_DATA = {
             "value": 1798.68,
             "unit": "ms",
             "extra": "min 1794.39ms, stddev 4.86ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "ef14aadd1f387a199731fcc03254463b45b6e0cb",
+          "message": "fix(notifications): report monerium success inline only\n\nA completed authorization raised a notification saying it had worked,\nfor something the user was already looking at: the card flips to its\nconnected state naming the account as soon as the token round trip\nlands. The entry then had to be dismissed by hand, and it sat in the\nsame group as the \"opening browser\" step and the session-expired\nwarning, so the trail of the flow outlived the flow.\n\nSuccess now raises nothing and clears that group instead, which also\nretires the expiry warning the re-authentication just resolved. One\nremoval is enough because a group holds a single entry, the dispatcher\nreplacing rather than appending. Failures still report, since nothing\non the card shows them.\n\nThe card also drops to one notification composable: useNotifications\ncovers both notify and removeMatching, and its Notification type is the\nsame SemiPartial the card was already building.",
+          "timestamp": "2026-08-21T13:28:52Z",
+          "url": "https://github.com/rotki/rotki/commit/ef14aadd1f387a199731fcc03254463b45b6e0cb"
+        },
+        "date": 1787540152957,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 1427.91,
+            "unit": "ms",
+            "extra": "min 1333.37ms, stddev 1306.66ms"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 1096.33,
+            "unit": "ms",
+            "extra": "min 977.52ms, stddev 316.88ms"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 4.18,
+            "unit": "ms",
+            "extra": "min 4.1ms, stddev 0.13ms"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 28.49,
+            "unit": "ms",
+            "extra": "min 27.74ms, stddev 0.9ms"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 1.59,
+            "unit": "ms",
+            "extra": "min 1.47ms, stddev 0.08ms"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 1.37,
+            "unit": "ms",
+            "extra": "min 1.26ms, stddev 0.1ms"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 75.46,
+            "unit": "ms",
+            "extra": "min 72.5ms, stddev 7.16ms"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 54.83,
+            "unit": "ms",
+            "extra": "min 52.58ms, stddev 21.01ms"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 1377.53,
+            "unit": "ms",
+            "extra": "min 1325.94ms, stddev 29.57ms"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 1073.95,
+            "unit": "ms",
+            "extra": "min 1030.97ms, stddev 26.96ms"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 889.34,
+            "unit": "ms",
+            "extra": "min 881.32ms, stddev 6.73ms"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 887.45,
+            "unit": "ms",
+            "extra": "min 880.97ms, stddev 4.43ms"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 974.54,
+            "unit": "ms",
+            "extra": "min 970.82ms, stddev 6.05ms"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 880.7,
+            "unit": "ms",
+            "extra": "min 871.74ms, stddev 5.86ms"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 27.76,
+            "unit": "ms",
+            "extra": "min 27.37ms, stddev 1.26ms"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 1.61,
+            "unit": "ms",
+            "extra": "min 1.58ms, stddev 0.03ms"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 1.4,
+            "unit": "ms",
+            "extra": "min 1.38ms, stddev 0.03ms"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 2057.88,
+            "unit": "ms",
+            "extra": "min 2045.24ms, stddev 18.82ms"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 1520.14,
+            "unit": "ms",
+            "extra": "min 1458.09ms, stddev 105.99ms"
           }
         ]
       }
