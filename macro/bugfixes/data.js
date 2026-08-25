@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1787540153712,
+  "lastUpdate": 1787626156173,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (bugfixes)": [
@@ -5664,6 +5664,142 @@ window.BENCHMARK_DATA = {
             "value": 1520.14,
             "unit": "ms",
             "extra": "min 1458.09ms, stddev 105.99ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "58e30ab4c8f3f8e6f0c08b32e0f03a1ef496eeb0",
+          "message": "chore(frontend): lint the test ids the first rules could not see\n\nCloses two of the three blind spots the guard rail shipped with:\n\n- a test id forwarded under a component's own attribute name. The rule's\n  `key` option goes through `toRegExp`, so widening it covers\n  `switch-test-id` / `field-test-id` on SettingToggleNumber.\n- a test id held in an object literal (`testId:`), which is how\n  CreateAccountIntroduction carries the ids for its two mode cards, and\n  a selector built as a template literal, which `Literal` never matches.\n\nThe third is genuinely unlintable: an id built at runtime, today only\n`tabTestId`. Its spec asserts the generated value never contains `__`.\n\nEach selector joins an existing `no-restricted-syntax` array rather than\narriving in its own block, because a flat config replaces a rule's\noptions rather than merging them. Each was confirmed by reintroducing a\nBEM id in that exact shape and watching the right rule fire.",
+          "timestamp": "2026-08-24T15:05:39Z",
+          "url": "https://github.com/rotki/rotki/commit/58e30ab4c8f3f8e6f0c08b32e0f03a1ef496eeb0"
+        },
+        "date": 1787626155773,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 1690.43,
+            "unit": "ms",
+            "extra": "min 1687.37ms, stddev 1685.77ms"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 1257.33,
+            "unit": "ms",
+            "extra": "min 1247.53ms, stddev 408.17ms"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 5.47,
+            "unit": "ms",
+            "extra": "min 5.34ms, stddev 0.07ms"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 36.71,
+            "unit": "ms",
+            "extra": "min 36.31ms, stddev 0.23ms"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 2.09,
+            "unit": "ms",
+            "extra": "min 1.97ms, stddev 0.07ms"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 1.88,
+            "unit": "ms",
+            "extra": "min 1.62ms, stddev 0.12ms"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 92.16,
+            "unit": "ms",
+            "extra": "min 91.06ms, stddev 1.3ms"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 68.08,
+            "unit": "ms",
+            "extra": "min 67.2ms, stddev 0.5ms"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 1741.18,
+            "unit": "ms",
+            "extra": "min 1687.64ms, stddev 30.71ms"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 1336.38,
+            "unit": "ms",
+            "extra": "min 1328.42ms, stddev 9.05ms"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 1139.75,
+            "unit": "ms",
+            "extra": "min 1135.9ms, stddev 2.89ms"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 1139.91,
+            "unit": "ms",
+            "extra": "min 1136.26ms, stddev 4.33ms"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 1251.07,
+            "unit": "ms",
+            "extra": "min 1249.48ms, stddev 3.26ms"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 1134.14,
+            "unit": "ms",
+            "extra": "min 1127.49ms, stddev 3.84ms"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 37.22,
+            "unit": "ms",
+            "extra": "min 36.26ms, stddev 0.86ms"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 2.14,
+            "unit": "ms",
+            "extra": "min 1.94ms, stddev 0.12ms"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 1.89,
+            "unit": "ms",
+            "extra": "min 1.68ms, stddev 0.13ms"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 1663.51,
+            "unit": "ms",
+            "extra": "min 1658.35ms, stddev 5.49ms"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 1844.12,
+            "unit": "ms",
+            "extra": "min 1832.66ms, stddev 12.2ms"
           }
         ]
       }
