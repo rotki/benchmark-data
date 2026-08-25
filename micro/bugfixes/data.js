@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1787540292955,
+  "lastUpdate": 1787626296502,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (bugfixes)": [
@@ -3968,6 +3968,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.0000031918699597370096",
             "extra": "mean: 32.15867015774697 usec\nrounds: 7352"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "58e30ab4c8f3f8e6f0c08b32e0f03a1ef496eeb0",
+          "message": "chore(frontend): lint the test ids the first rules could not see\n\nCloses two of the three blind spots the guard rail shipped with:\n\n- a test id forwarded under a component's own attribute name. The rule's\n  `key` option goes through `toRegExp`, so widening it covers\n  `switch-test-id` / `field-test-id` on SettingToggleNumber.\n- a test id held in an object literal (`testId:`), which is how\n  CreateAccountIntroduction carries the ids for its two mode cards, and\n  a selector built as a template literal, which `Literal` never matches.\n\nThe third is genuinely unlintable: an id built at runtime, today only\n`tabTestId`. Its spec asserts the generated value never contains `__`.\n\nEach selector joins an existing `no-restricted-syntax` array rather than\narriving in its own block, because a flat config replaces a rule's\noptions rather than merging them. Each was confirmed by reintroducing a\nBEM id in that exact shape and watching the right rule fire.",
+          "timestamp": "2026-08-24T15:05:39Z",
+          "url": "https://github.com/rotki/rotki/commit/58e30ab4c8f3f8e6f0c08b32e0f03a1ef496eeb0"
+        },
+        "date": 1787626295362,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 339.55973158043037,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0035375717684494046",
+            "extra": "mean: 2.9449899590438724 msec\nrounds: 293"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 275.1434929648922,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00004741138480603511",
+            "extra": "mean: 3.634467198276058 msec\nrounds: 232"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 793.4475633275782,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0002086963837064439",
+            "extra": "mean: 1.2603227311029572 msec\nrounds: 807"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 2147.550062321028,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0005043503085542497",
+            "extra": "mean: 465.6468864428802 usec\nrounds: 863"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 13.868375250498154,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0015035144016804702",
+            "extra": "mean: 72.10649999999674 msec\nrounds: 10"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 30634.270236632266,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000003327217400448296",
+            "extra": "mean: 32.64318008150905 usec\nrounds: 6386"
           }
         ]
       }
