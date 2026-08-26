@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1787625881919,
+  "lastUpdate": 1787712827599,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (develop)": [
@@ -10116,6 +10116,142 @@ window.BENCHMARK_DATA = {
             "value": 1480.6,
             "unit": "ms",
             "extra": "min 1450.77ms, stddev 49.5ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "9665a8fff360bc53173fbb6b4b890a4832b77ddb",
+          "message": "refactor(frontend): extract the liquity staking cluster\n\nCloses #13002. Batch D of #12964: one module, `staking/liquity/`, taken\nwhole. 157 tests in the module, 285 uncovered statements down to 26.\n\nThe two fat components carried 198 of those statements between them and\nare now wiring over three new modules:\n\n- `liquity-aggregation.ts` (100%) sums positions across addresses and\n  proxies. `aggregatedStake` and `aggregatedStakingPool` turned out to be\n  the same algorithm written twice, because a staking detail and a pool\n  detail are structurally identical, so both now call one generic\n  `aggregateEntries`.\n- `liquity-statistics.ts` (100%) holds the re-pricing and the profit and\n  loss arithmetic, taking a price lookup so it needs no store.\n- `liquity-assets.ts` gives the LUSD and LQTY identifiers one home; LUSD\n  had been declared separately in two components.\n\n`use-liquity-data-fetching.ts` had four near-identical fetchers, ~150\nlines differing in five values. They are now one `createFetch` over a\ndefinition, and the premium guard that three of them carry, and the\nfourth deliberately does not, is covered in both directions for the\nfirst time.\n\nThe view toggle became an `as const` object rather than a bare string\nunion, per the repo convention for new types.\n\n`LiquityPnlRow.vue` is deliberately left without a spec: it is pure\ndisplay with no branch, and a mount-only test would move the number\nwithout proving anything.\n\nTwo corrections found by writing the tests: the doc comment claiming an\nunpriced gain is valued at zero was wrong, since the price defaults to\none and only an explicit zero collapses the value; and a per-iteration\ndefensive copy in the aggregation reduce was redundant, because the\nfirst entry is already copied and every later field is reassigned.",
+          "timestamp": "2026-08-25T15:08:02Z",
+          "url": "https://github.com/rotki/rotki/commit/9665a8fff360bc53173fbb6b4b890a4832b77ddb"
+        },
+        "date": 1787712826603,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 1996.45,
+            "unit": "ms",
+            "extra": "min 1992.34ms, stddev 1667.32ms"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 1256.15,
+            "unit": "ms",
+            "extra": "min 1250.42ms, stddev 408.54ms"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 5.27,
+            "unit": "ms",
+            "extra": "min 5.21ms, stddev 0.04ms"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 35.87,
+            "unit": "ms",
+            "extra": "min 35.37ms, stddev 0.67ms"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 2.02,
+            "unit": "ms",
+            "extra": "min 1.9ms, stddev 0.09ms"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 1.77,
+            "unit": "ms",
+            "extra": "min 1.7ms, stddev 0.06ms"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 94.17,
+            "unit": "ms",
+            "extra": "min 92.08ms, stddev 1.32ms"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 67.28,
+            "unit": "ms",
+            "extra": "min 66.8ms, stddev 1.33ms"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 1996.11,
+            "unit": "ms",
+            "extra": "min 1994.65ms, stddev 24.25ms"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 1333.08,
+            "unit": "ms",
+            "extra": "min 1326.23ms, stddev 6.97ms"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 1134.85,
+            "unit": "ms",
+            "extra": "min 1128.81ms, stddev 4.72ms"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 1135,
+            "unit": "ms",
+            "extra": "min 1126.3ms, stddev 5.95ms"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 1246.47,
+            "unit": "ms",
+            "extra": "min 1239.07ms, stddev 6.35ms"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 1123.88,
+            "unit": "ms",
+            "extra": "min 1117.69ms, stddev 8.43ms"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 36.12,
+            "unit": "ms",
+            "extra": "min 35.35ms, stddev 1.32ms"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 2.11,
+            "unit": "ms",
+            "extra": "min 1.95ms, stddev 0.14ms"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 1.84,
+            "unit": "ms",
+            "extra": "min 1.67ms, stddev 0.12ms"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 2642.02,
+            "unit": "ms",
+            "extra": "min 2635.65ms, stddev 7.36ms"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 1823.64,
+            "unit": "ms",
+            "extra": "min 1808.27ms, stddev 15.52ms"
           }
         ]
       }
