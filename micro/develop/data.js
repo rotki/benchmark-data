@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1787626222923,
+  "lastUpdate": 1787713163315,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (develop)": [
@@ -4452,6 +4452,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.0000010794175355990208",
             "extra": "mean: 14.519416149880868 usec\nrounds: 8062"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "9665a8fff360bc53173fbb6b4b890a4832b77ddb",
+          "message": "refactor(frontend): extract the liquity staking cluster\n\nCloses #13002. Batch D of #12964: one module, `staking/liquity/`, taken\nwhole. 157 tests in the module, 285 uncovered statements down to 26.\n\nThe two fat components carried 198 of those statements between them and\nare now wiring over three new modules:\n\n- `liquity-aggregation.ts` (100%) sums positions across addresses and\n  proxies. `aggregatedStake` and `aggregatedStakingPool` turned out to be\n  the same algorithm written twice, because a staking detail and a pool\n  detail are structurally identical, so both now call one generic\n  `aggregateEntries`.\n- `liquity-statistics.ts` (100%) holds the re-pricing and the profit and\n  loss arithmetic, taking a price lookup so it needs no store.\n- `liquity-assets.ts` gives the LUSD and LQTY identifiers one home; LUSD\n  had been declared separately in two components.\n\n`use-liquity-data-fetching.ts` had four near-identical fetchers, ~150\nlines differing in five values. They are now one `createFetch` over a\ndefinition, and the premium guard that three of them carry, and the\nfourth deliberately does not, is covered in both directions for the\nfirst time.\n\nThe view toggle became an `as const` object rather than a bare string\nunion, per the repo convention for new types.\n\n`LiquityPnlRow.vue` is deliberately left without a spec: it is pure\ndisplay with no branch, and a mount-only test would move the number\nwithout proving anything.\n\nTwo corrections found by writing the tests: the doc comment claiming an\nunpriced gain is valued at zero was wrong, since the price defaults to\none and only an explicit zero collapses the value; and a per-iteration\ndefensive copy in the aggregation reduce was redundant, because the\nfirst entry is already copied and every later field is reassigned.",
+          "timestamp": "2026-08-25T15:08:02Z",
+          "url": "https://github.com/rotki/rotki/commit/9665a8fff360bc53173fbb6b4b890a4832b77ddb"
+        },
+        "date": 1787713162072,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 490.36050749838375,
+            "unit": "iter/sec",
+            "range": "stddev: 0.002564388854483866",
+            "extra": "mean: 2.039315941452108 msec\nrounds: 427"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 372.6140743637379,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00017676740238820268",
+            "extra": "mean: 2.6837418895342675 msec\nrounds: 344"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 1158.9128269571,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00006102500279992917",
+            "extra": "mean: 862.8776701226533 usec\nrounds: 1061"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 1980.3811343583425,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00234955230801395",
+            "extra": "mean: 504.9533055282347 usec\nrounds: 1031"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 14.773203668255482,
+            "unit": "iter/sec",
+            "range": "stddev: 0.003801683361973327",
+            "extra": "mean: 67.69012479999788 msec\nrounds: 5"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 49986.72964834061,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000002303541650530905",
+            "extra": "mean: 20.005309549855628 usec\nrounds: 8199"
           }
         ]
       }
