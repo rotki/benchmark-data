@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1787713236660,
+  "lastUpdate": 1787832227034,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (bugfixes)": [
@@ -4096,6 +4096,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.000004165803306994488",
             "extra": "mean: 32.03802765579198 usec\nrounds: 6147"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "da657112eff8974f3151d623dccaf90caf883700",
+          "message": "refactor(frontend): filter disabled chains at the door\n\nfilterDisabledChainAccounts was called three times on the way to a refresh:\ntwice in use-refresh-transactions before novelty detection, and again inside\nresolveRefreshTargets. Each call site carried a comment asserting the ordering\nmattered, and the one with the strongest wording sat where the rule was not in\neffect at all -- it runs after novelty, which is already a parameter there.\n\nFilter at the two places accounts enter the module instead. getAccountsByChainType\nis the funnel every getter reads through, so filtering there means no getter in\nuse-history-transaction-accounts can return a disabled account. A caller-supplied\nlist is the only other door, and resolveInputAccounts covers it.\n\nresolveRefreshTargets's no-novelty branch read payload.accounts directly, skipping\neverything resolved upstream -- which is what the third filter was really covering.\nIt now takes the resolved list through opts.inputAccounts and the payload parameter\nnarrows to exchanges.\n\nThe five filterDisabledChainAccounts tests duplicated use-disabled-chains.spec.ts\nat one remove; they are replaced by four asserting the invariant at the source.\nBoth doors were negative-controlled: removing the source filter fails all four,\nremoving the caller filter fails the two in use-refresh-transactions.",
+          "timestamp": "2026-08-25T21:51:28Z",
+          "url": "https://github.com/rotki/rotki/commit/da657112eff8974f3151d623dccaf90caf883700"
+        },
+        "date": 1787832226393,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 341.40657618882506,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0031187905484468077",
+            "extra": "mean: 2.9290589863943346 msec\nrounds: 294"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 275.8607584271894,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000196458375146567",
+            "extra": "mean: 3.625017221374528 msec\nrounds: 262"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 834.0369842413074,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000025385464648513494",
+            "extra": "mean: 1.1989875975460045 msec\nrounds: 815"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 2182.4813005675082,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0003734163599083001",
+            "extra": "mean: 458.1940746708671 usec\nrounds: 683"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 13.269780031796007,
+            "unit": "iter/sec",
+            "range": "stddev: 0.002362699936211665",
+            "extra": "mean: 75.35919944444282 msec\nrounds: 9"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 30081.98539439588,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000005171643364439095",
+            "extra": "mean: 33.242486720517284 usec\nrounds: 6928"
           }
         ]
       }
