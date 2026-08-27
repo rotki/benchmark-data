@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1787712827599,
+  "lastUpdate": 1787831825688,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (develop)": [
@@ -10252,6 +10252,142 @@ window.BENCHMARK_DATA = {
             "value": 1823.64,
             "unit": "ms",
             "extra": "min 1808.27ms, stddev 15.52ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "da657112eff8974f3151d623dccaf90caf883700",
+          "message": "refactor(frontend): filter disabled chains at the door\n\nfilterDisabledChainAccounts was called three times on the way to a refresh:\ntwice in use-refresh-transactions before novelty detection, and again inside\nresolveRefreshTargets. Each call site carried a comment asserting the ordering\nmattered, and the one with the strongest wording sat where the rule was not in\neffect at all -- it runs after novelty, which is already a parameter there.\n\nFilter at the two places accounts enter the module instead. getAccountsByChainType\nis the funnel every getter reads through, so filtering there means no getter in\nuse-history-transaction-accounts can return a disabled account. A caller-supplied\nlist is the only other door, and resolveInputAccounts covers it.\n\nresolveRefreshTargets's no-novelty branch read payload.accounts directly, skipping\neverything resolved upstream -- which is what the third filter was really covering.\nIt now takes the resolved list through opts.inputAccounts and the payload parameter\nnarrows to exchanges.\n\nThe five filterDisabledChainAccounts tests duplicated use-disabled-chains.spec.ts\nat one remove; they are replaced by four asserting the invariant at the source.\nBoth doors were negative-controlled: removing the source filter fails all four,\nremoving the caller filter fails the two in use-refresh-transactions.",
+          "timestamp": "2026-08-25T21:51:28Z",
+          "url": "https://github.com/rotki/rotki/commit/da657112eff8974f3151d623dccaf90caf883700"
+        },
+        "date": 1787831825168,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 1993.98,
+            "unit": "ms",
+            "extra": "min 1991.42ms, stddev 1601.21ms"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 1260.17,
+            "unit": "ms",
+            "extra": "min 1248.11ms, stddev 392.09ms"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 5.4,
+            "unit": "ms",
+            "extra": "min 5.26ms, stddev 0.12ms"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 36.24,
+            "unit": "ms",
+            "extra": "min 35.42ms, stddev 0.4ms"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 2.12,
+            "unit": "ms",
+            "extra": "min 1.97ms, stddev 0.07ms"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 1.86,
+            "unit": "ms",
+            "extra": "min 1.68ms, stddev 0.08ms"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 94,
+            "unit": "ms",
+            "extra": "min 93.08ms, stddev 0.48ms"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 67.14,
+            "unit": "ms",
+            "extra": "min 66.85ms, stddev 0.54ms"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 1945.22,
+            "unit": "ms",
+            "extra": "min 1941.08ms, stddev 22.27ms"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 1328.82,
+            "unit": "ms",
+            "extra": "min 1326.64ms, stddev 10.06ms"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 1130.2,
+            "unit": "ms",
+            "extra": "min 1126.87ms, stddev 4.97ms"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 1132.07,
+            "unit": "ms",
+            "extra": "min 1126.63ms, stddev 2.54ms"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 1241.86,
+            "unit": "ms",
+            "extra": "min 1240.09ms, stddev 1.7ms"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 1121.98,
+            "unit": "ms",
+            "extra": "min 1119.15ms, stddev 2.32ms"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 35.66,
+            "unit": "ms",
+            "extra": "min 35.38ms, stddev 0.22ms"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 1.98,
+            "unit": "ms",
+            "extra": "min 1.95ms, stddev 0.05ms"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 1.71,
+            "unit": "ms",
+            "extra": "min 1.67ms, stddev 0.05ms"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 2635.41,
+            "unit": "ms",
+            "extra": "min 2626.64ms, stddev 5.38ms"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 1813.37,
+            "unit": "ms",
+            "extra": "min 1807.63ms, stddev 5.78ms"
           }
         ]
       }
