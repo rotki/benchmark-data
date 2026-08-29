@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1787923190742,
+  "lastUpdate": 1787991304285,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (develop)": [
@@ -10524,6 +10524,142 @@ window.BENCHMARK_DATA = {
             "value": 1594.43,
             "unit": "ms",
             "extra": "min 1491.81ms, stddev 83.19ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "eb39ab02a65fe37fd96a2d3bf07c09b8df997819",
+          "message": "refactor(frontend): let the code carry the intent, not comments\n\nDrains the comment-run backlog across assets, accounts, core and\nhistory, taking each to zero, and writes the rule down so it does not\nhave to be re-derived.\n\nA comment explaining code is treated as a defect in the code. Each one\nis enforced, encoded as a name, moved to the enclosing declaration's\nTSDoc, folded into a test title, or deleted. Shortening it to fit a\nlint threshold is not an outcome.\n\nFacts restated at every call site move to the shared code that owns\nthem: submitTask's dedup contract, FieldDef's per-keystroke resolver\ncost and pill-absence default, createItemCacheStorage's injection,\nassetSuggestions, useSharedFieldResolvers, and the table provenance\nmodel. Duplicated logic goes with them - one useFeeRows for three swap\nforms, one collection factory in the tokens DB, one settleMountedWork\nfor five form specs.\n\nBehaviour that only a comment asserted becomes a test:\nHistoryRedecodeSelection had no spec and now pins that every decodable\nchain is offered; listIssues pins that it strips the ordering params\nthe endpoint rejects.\n\nFixes four callers that read an activity's result from a closure the\nrun body assigned, which a deduped caller never executes, so a success\nreturned nothing: ERC20 token lookup, ENS force-update, and Gnosis Pay\nnonce and verification. Adds local/no-closure-result-in-activity-run,\nwhich found three of them.\n\nFourteen comments were wrong rather than stale, including two claiming\nbehaviour the code contradicts: autostart being Electron-only, and\nIndexedDB logging being production-only when it runs unpackaged.\n\nRatchet: 1471 -> 481.",
+          "timestamp": "2026-08-27T21:18:08Z",
+          "url": "https://github.com/rotki/rotki/commit/eb39ab02a65fe37fd96a2d3bf07c09b8df997819"
+        },
+        "date": 1787991303007,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 1524.94,
+            "unit": "ms",
+            "extra": "min 1473.58ms, stddev 1306.03ms"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 909.92,
+            "unit": "ms",
+            "extra": "min 857.88ms, stddev 363.17ms"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 4.26,
+            "unit": "ms",
+            "extra": "min 4.07ms, stddev 0.13ms"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 26.5,
+            "unit": "ms",
+            "extra": "min 26.13ms, stddev 0.2ms"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 1.65,
+            "unit": "ms",
+            "extra": "min 1.61ms, stddev 0.07ms"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 1.35,
+            "unit": "ms",
+            "extra": "min 1.31ms, stddev 0.09ms"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 69.84,
+            "unit": "ms",
+            "extra": "min 69.36ms, stddev 0.56ms"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 45.98,
+            "unit": "ms",
+            "extra": "min 45.71ms, stddev 0.4ms"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 1476.22,
+            "unit": "ms",
+            "extra": "min 1472.41ms, stddev 23.83ms"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 937.5,
+            "unit": "ms",
+            "extra": "min 902.57ms, stddev 45.17ms"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 747.44,
+            "unit": "ms",
+            "extra": "min 741.13ms, stddev 17.46ms"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 743.19,
+            "unit": "ms",
+            "extra": "min 740.68ms, stddev 11.57ms"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 819.84,
+            "unit": "ms",
+            "extra": "min 814.52ms, stddev 6.52ms"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 739.37,
+            "unit": "ms",
+            "extra": "min 734.89ms, stddev 7.31ms"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 26.91,
+            "unit": "ms",
+            "extra": "min 26.25ms, stddev 0.43ms"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 1.88,
+            "unit": "ms",
+            "extra": "min 1.65ms, stddev 0.12ms"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 1.52,
+            "unit": "ms",
+            "extra": "min 1.36ms, stddev 0.08ms"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 1122.23,
+            "unit": "ms",
+            "extra": "min 1115.87ms, stddev 6.47ms"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 1281.9,
+            "unit": "ms",
+            "extra": "min 1238.23ms, stddev 233.9ms"
           }
         ]
       }
