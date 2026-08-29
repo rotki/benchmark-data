@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1787923699970,
+  "lastUpdate": 1787991723521,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (develop)": [
@@ -4644,6 +4644,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.000004163913571167615",
             "extra": "mean: 35.485513815786184 usec\nrounds: 6261"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "eb39ab02a65fe37fd96a2d3bf07c09b8df997819",
+          "message": "refactor(frontend): let the code carry the intent, not comments\n\nDrains the comment-run backlog across assets, accounts, core and\nhistory, taking each to zero, and writes the rule down so it does not\nhave to be re-derived.\n\nA comment explaining code is treated as a defect in the code. Each one\nis enforced, encoded as a name, moved to the enclosing declaration's\nTSDoc, folded into a test title, or deleted. Shortening it to fit a\nlint threshold is not an outcome.\n\nFacts restated at every call site move to the shared code that owns\nthem: submitTask's dedup contract, FieldDef's per-keystroke resolver\ncost and pill-absence default, createItemCacheStorage's injection,\nassetSuggestions, useSharedFieldResolvers, and the table provenance\nmodel. Duplicated logic goes with them - one useFeeRows for three swap\nforms, one collection factory in the tokens DB, one settleMountedWork\nfor five form specs.\n\nBehaviour that only a comment asserted becomes a test:\nHistoryRedecodeSelection had no spec and now pins that every decodable\nchain is offered; listIssues pins that it strips the ordering params\nthe endpoint rejects.\n\nFixes four callers that read an activity's result from a closure the\nrun body assigned, which a deduped caller never executes, so a success\nreturned nothing: ERC20 token lookup, ENS force-update, and Gnosis Pay\nnonce and verification. Adds local/no-closure-result-in-activity-run,\nwhich found three of them.\n\nFourteen comments were wrong rather than stale, including two claiming\nbehaviour the code contradicts: autostart being Electron-only, and\nIndexedDB logging being production-only when it runs unpackaged.\n\nRatchet: 1471 -> 481.",
+          "timestamp": "2026-08-27T21:18:08Z",
+          "url": "https://github.com/rotki/rotki/commit/eb39ab02a65fe37fd96a2d3bf07c09b8df997819"
+        },
+        "date": 1787991723144,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 357.5227678119845,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00002513729177242229",
+            "extra": "mean: 2.7970246653658823 msec\nrounds: 254"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 247.85190438774018,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00004020650166400703",
+            "extra": "mean: 4.034667405401886 msec\nrounds: 222"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 761.4281045038015,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00003410046959757867",
+            "extra": "mean: 1.3133216308736966 msec\nrounds: 745"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 2277.553607565802,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0002999861814670654",
+            "extra": "mean: 439.0676016046786 usec\nrounds: 994"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 13.577820474924748,
+            "unit": "iter/sec",
+            "range": "stddev: 0.001915436475485532",
+            "extra": "mean: 73.64952289999565 msec\nrounds: 10"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 29411.825100756094,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000003544709570522923",
+            "extra": "mean: 33.99993018366932 usec\nrounds: 6775"
           }
         ]
       }
