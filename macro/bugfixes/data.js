@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1788074418410,
+  "lastUpdate": 1788161767500,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (bugfixes)": [
@@ -6480,6 +6480,142 @@ window.BENCHMARK_DATA = {
             "value": 1410.62,
             "unit": "ms",
             "extra": "min 1397.05ms, stddev 6.75ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Yábir Benchakhtir",
+            "username": "yabirgb",
+            "email": "git@yabirgb.com"
+          },
+          "committer": {
+            "name": "GitHub",
+            "username": "web-flow",
+            "email": "noreply@github.com"
+          },
+          "id": "01cc4a7e0cd2ebd71253a2bef30e069f288ce7bd",
+          "message": "Close retained database cursors on shutdown (#13031)\n\nSQLite connection.close() uses sqlite3_close_v2(), which marks the connection closed but defers releasing the database handle while cursor statements are still alive. The asset update tests relied on cursor destruction to release those statements. With Python 3.14t that destruction is no longer reliably immediate, and Windows consequently rejected removal of global.db with WinError 32.\n\nTrack each DBConnection's cursors through weak references, remove cursors from that tracking set when they are explicitly closed, and close any survivors before closing the underlying connection. Weak references avoid extending cursor lifetimes while making connection shutdown deterministic. Add a regression test proving that a cursor retained by its caller is closed by connection shutdown.",
+          "timestamp": "2026-08-30T18:34:36Z",
+          "url": "https://github.com/rotki/rotki/commit/01cc4a7e0cd2ebd71253a2bef30e069f288ce7bd"
+        },
+        "date": 1788161766859,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 2210.12,
+            "unit": "ms",
+            "extra": "min 2160.13ms, stddev 1810.5ms"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 1411.83,
+            "unit": "ms",
+            "extra": "min 1359.04ms, stddev 451.95ms"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 7.56,
+            "unit": "ms",
+            "extra": "min 7.24ms, stddev 0.15ms"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 45.88,
+            "unit": "ms",
+            "extra": "min 44.41ms, stddev 1.44ms"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 3,
+            "unit": "ms",
+            "extra": "min 2.84ms, stddev 0.1ms"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 2.47,
+            "unit": "ms",
+            "extra": "min 2.25ms, stddev 0.24ms"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 136.64,
+            "unit": "ms",
+            "extra": "min 134.5ms, stddev 1.03ms"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 90.67,
+            "unit": "ms",
+            "extra": "min 89.17ms, stddev 1.41ms"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 2158.63,
+            "unit": "ms",
+            "extra": "min 2054.33ms, stddev 77.99ms"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 1436.03,
+            "unit": "ms",
+            "extra": "min 1425.27ms, stddev 21.36ms"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 1047.76,
+            "unit": "ms",
+            "extra": "min 1042.75ms, stddev 3.15ms"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 1049.86,
+            "unit": "ms",
+            "extra": "min 1044.86ms, stddev 3.51ms"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 1158.23,
+            "unit": "ms",
+            "extra": "min 1154.72ms, stddev 3.07ms"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 1040.46,
+            "unit": "ms",
+            "extra": "min 1034.42ms, stddev 3.92ms"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 46.69,
+            "unit": "ms",
+            "extra": "min 42.4ms, stddev 2.01ms"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 2.81,
+            "unit": "ms",
+            "extra": "min 2.57ms, stddev 0.15ms"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 2.3,
+            "unit": "ms",
+            "extra": "min 2.19ms, stddev 0.14ms"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 1650.87,
+            "unit": "ms",
+            "extra": "min 1635.55ms, stddev 8.76ms"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 1797.38,
+            "unit": "ms",
+            "extra": "min 1785.14ms, stddev 21.8ms"
           }
         ]
       }
