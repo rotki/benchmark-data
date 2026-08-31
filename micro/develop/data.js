@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1788074485992,
+  "lastUpdate": 1788161842217,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (develop)": [
@@ -4772,6 +4772,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.000002513992404425161",
             "extra": "mean: 19.85835770826269 usec\nrounds: 6441"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Yábir Benchakhtir",
+            "username": "yabirgb",
+            "email": "git@yabirgb.com"
+          },
+          "committer": {
+            "name": "GitHub",
+            "username": "web-flow",
+            "email": "noreply@github.com"
+          },
+          "id": "01cc4a7e0cd2ebd71253a2bef30e069f288ce7bd",
+          "message": "Close retained database cursors on shutdown (#13031)\n\nSQLite connection.close() uses sqlite3_close_v2(), which marks the connection closed but defers releasing the database handle while cursor statements are still alive. The asset update tests relied on cursor destruction to release those statements. With Python 3.14t that destruction is no longer reliably immediate, and Windows consequently rejected removal of global.db with WinError 32.\n\nTrack each DBConnection's cursors through weak references, remove cursors from that tracking set when they are explicitly closed, and close any survivors before closing the underlying connection. Weak references avoid extending cursor lifetimes while making connection shutdown deterministic. Add a regression test proving that a cursor retained by its caller is closed by connection shutdown.",
+          "timestamp": "2026-08-30T18:34:36Z",
+          "url": "https://github.com/rotki/rotki/commit/01cc4a7e0cd2ebd71253a2bef30e069f288ce7bd"
+        },
+        "date": 1788161841631,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 333.9192425207354,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00020706198706790105",
+            "extra": "mean: 2.994736069868459 msec\nrounds: 229"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 228.31065077785857,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0001569388735209945",
+            "extra": "mean: 4.3799971512191025 msec\nrounds: 205"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 772.104084114639,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000022932726831905955",
+            "extra": "mean: 1.295162168642957 msec\nrounds: 759"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 2827.7383189183975,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0002367194231804149",
+            "extra": "mean: 353.6395122949345 usec\nrounds: 976"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 14.405107147506513,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0020141526982758646",
+            "extra": "mean: 69.41982379999843 msec\nrounds: 10"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 35170.11705381074,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0000024562749246085375",
+            "extra": "mean: 28.43322922326323 usec\nrounds: 5523"
           }
         ]
       }
