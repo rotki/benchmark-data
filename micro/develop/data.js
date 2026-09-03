@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1788330451543,
+  "lastUpdate": 1788416964061,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (develop)": [
@@ -4964,6 +4964,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.000002744215741767693",
             "extra": "mean: 24.92591899251985 usec\nrounds: 6308"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "groninge",
+            "username": "groninge01",
+            "email": "groninge@gmail.com"
+          },
+          "committer": {
+            "name": "GitHub",
+            "username": "web-flow",
+            "email": "noreply@github.com"
+          },
+          "id": "660655051088adf36e7d1558f06ccbe986c0a4a1",
+          "message": "Add Beets gauge balances for Sonic (#12914)\n\n* feat: add Sonic as a supported EVM chain\n\nAdd the Sonic chain package (manager, node inquirer, accountant, decoder, wson module) and wire it into the chains aggregator, rotki instance and balance/account tracking. Add SupportedBlockchain.SONIC, its native token S, the Location enum value and all chain/location type tuples.\nThe packaged globaldb is seeded with the Sonic multicall and balance scanner contracts and the S asset so inquirer initialization and asset resolution work.\n\nCo-Authored-By: Empryo <noreply@empryo.com>\n\n* fix: restore rotkehlchen.py executable bit\n\nCo-Authored-By: Empryo <noreply@empryo.com>\n\n* feat: add Sonic assets, nodes, indexers and DB location\n\nRegister the S native token and WS wrapped token, chain decimals and wrapped-token mapping, the sonicscan-first indexer order, contract ABI overload, genesis timestamp handling in the tx and earliest-ts paths, the CSV explorer URL, location image, default RPC nodes, the Sonic location row in the user DB schema and the unreleased v52->v53 upgrade step, and seed the packaged globaldb with the Sonic multicall/balance scanner contracts and the S asset.\n\nCo-Authored-By: Empryo <noreply@empryo.com>\n\n* feat: generalize Balancer decoders for Beets chains\n\nParameterize the shared Balancer v1/v2/v3 decoders with counterparty, swap counterparty, label and image so non-Balancer-run deployments (Beets on Sonic) can decode through the same machinery with their own counterparties. Add the beets-v2/beets-v3/beets-swap-v3 counterparties, extend the cache/version mappings, branch join ordering on the protocol version instead of the counterparty string, and accept the beets protocols in the pool price paths and protocol cache refresh.\nAlso fix v3 liquidity decoding when the deposit/withdrawal transfer is emitted before the LiquidityAdded/LiquidityRemoved log (BatchRouter), transforming already-decoded events in place with a tolerance for pool exit fees.\n\nCo-Authored-By: Empryo <noreply@empryo.com>\n\n* test: cover Sonic chain and Beets v3 decoding\n\nThread the sonic manager/inquirer/accounts fixtures through the test harness, add the Sonic mainnet node helper, extend the chains aggregator, EVM API, db upgrade, types and balancer-utils tests with Sonic, and add live-RPC decoder tests for Beets v3 pool join and exit through the BatchRouter.\n\nCo-Authored-By: Empryo <noreply@empryo.com>\n\n* feat: add Sonic to the frontend\n\nAdd Blockchain.SONIC, the sonicscan explorer URLs, the early-integration flag, protocol icons for Sonic, WS and Beets, and update the co-located specs.\n\nCo-Authored-By: Empryo <noreply@empryo.com>\n\n* test: cover Beets v3 single-hop swap on Sonic\n\nAdd a live-RPC decoder test for a single-hop Beets v3 swap of stS for wS through the pool, asserting the consolidated trade events carry the beets-v3 counterparty.\n\nCo-Authored-By: Empryo <noreply@empryo.com>\n\n* test: cover Beets v2 swap on Sonic\n\nAdd a live-RPC decoder test for a single-hop Beets v2 swap of stS for scUSD through the vault, asserting the consolidated trade events carry the beets-v2 counterparty.\n\nCo-Authored-By: Empryo <noreply@empryo.com>\n\n* fix: reuse transfer events in wrapped token decoding\n\nSome wrapped tokens (WS on Sonic) emit an ERC20 Transfer on wrap/unwrap in addition to the Deposit/Withdrawal log. The generic transfer decoder materialized those as plain receive/spend events, duplicating the ones the weth decoder creates. Reuse the existing Transfer-derived event (setting subtype, counterparty, notes and address) instead of creating a duplicate.\nAlso add live-RPC decoder tests for wrapping and unwrapping S to/from WS on Sonic.\n\nCo-Authored-By: Empryo <noreply@empryo.com>\n\n* test: cover Beets v2 join and exit on Sonic\n\nAdd live-RPC decoder tests for a Beets v2 pool join (three tokens) and exit (four tokens) through the vault, asserting the deposit/receive and return/withdraw events carry the beets-v2 counterparty.\n\nCo-Authored-By: Empryo <noreply@empryo.com>\n\n* fix: satisfy mypy on generalized Balancer decoders\n\nWiden the protocol parameter of query_balancer_data to str, type the cache mapping with the pool cache Literal, keep counterparties() a staticmethod in the v2/v3 common decoders (with the Sonic modules overriding it for the Beets label/icon), and checksum the Sonic archive check address.\n\nCo-Authored-By: Empryo <noreply@empryo.com>\n\n* test: assert Beets cache mappings and counterparties\n\nCover the previously-untested contracts: the beets-v2/beets-v3 cache-type and protocol-version mappings, and the Beets label/icon surfaced by the Sonic v2/v3 decoder counterparties.\n\nCo-Authored-By: Empryo <noreply@empryo.com>\n\n* chore: note BalanceScanner gap in Sonic constants\n\nCo-Authored-By: Empryo <noreply@empryo.com>\n\n* fix: use official Sonic/Beets/WS logos and rename wson to ws\n\nReplace invented placeholder SVGs with the real brand assets:\n- beets.svg: official Beets mark from brand.beets.fi\n- sonic.svg: official Sonic logo\n- ws.svg: official Wrapped Sonic logo\nRename the wS counterparty from wson to ws (module, CPT_WS, decoder, tests).\n\nCo-Authored-By: Empryo <noreply@empryo.com>\n\n* feat: add Beets gauge balances, Beefy decoder, and Sonic token listings\n\n- Add BeetsBalances/BeetsV2Balances/BeetsV3Balances extending ProtocolWithGauges\n  to query gauge deposits via multicall balanceOf on Sonic\n- Register BeetsV2Balances and BeetsV3Balances in CHAIN_TO_BALANCE_PROTOCOLS for ChainID.SONIC\n- Add beets-v2 and beets-v3 to PROTOCOLS_WITH_BALANCES literal\n- Add Sonic Beefy zap contract (0x03C2E2e84031d913d45B1F5b5dDC8E50Fcb28652)\n- Remove unnecessary get_multi_balance override from SonicInquirer\n- Remove incorrect comment about BalanceScanner not being deployed on Sonic\n- Add 139 Sonic tokens to global.db with name/symbol/decimals queried from chain\n- Add CoinGecko mappings for 19 Sonic tokens listed on CoinGecko\n\nCloses #12911\\n\\nCo-Authored-By: Empryo <noreply@empryo.com>\n\n* fix(sonic): resolve lint errors in beets balances and node inquirer\n\nFix undefined names ChecksumEvmAddress and FVal in node_inquirer, wrap\nover-long lines in balancer balances, and remove trailing newline in\nconstants.\n\n* fix(sonic): repair beets-related test failures\n\nMove the Sonic location to its dedicated v53->v54 upgrade instead of\nappending it to v52->v53, add Sonic to the BALANCER_V2 protocol cache\nchains, exclude the BeetsBalances base class from the balance-class\nusage check, and add deferred annotations to db/updates.py to fix a\nlatent Sequence/Callable NameError on Python 3.14.\n\n* revert(beefy): drop Sonic zap address\n\nBeets has no LPs on Beefy, so the Sonic entry in SUPPORTED_BEEFY_CHAINS\nis not needed.\n\n* refactor(sonic): rename balancer module to beets\n\nRename chain/sonic/modules/balancer to beets and the decoder classes to\nBeetsv2Decoder/Beetsv3Decoder so the protocol is easier to find when\nsearching the code.\n\n* refactor(balancer): type counterparty with BalancerCounterparty literal\n\nAdd a BalancerCounterparty literal covering the balancer and beets\ncounterparties and use it for the mappings and decoder parameters,\nremoving the type: ignore in the beets balances. Also rename\nself.version to self.implementation_version and derive protocol_label\nfrom the counterparty.\n\n* fix(balancer): derive event notes from the counterparty\n\nPool join/exit and swap notes used a hardcoded 'Balancer v2/v3' label,\nso Beets events on Sonic were labeled as Balancer. Build the notes from\nprotocol_label, which is derived from the counterparty, and update the\nbeets test expectations.\n\n* refactor(balancer): use scientific notation for liquidity tolerance\n\nMove the liquidity event amount matching tolerance to a named constant\nin v3/constants.py and express it in scientific notation.\n\n* style(balancer): fix lint issues in notes and tolerance changes\n\n* docs(changelog): add Beets Sonic support entry\n\n* test(sonic): add VCR test for Beets gauge balances\n\nQuery gauge balances for an address with positions staked in both a\nBeets v2 and v3 gauge on Sonic. The gauges and pools are seeded into\nthe globaldb cache since the test environment does not query the\nremote pool listings. Also allow the beets counterparties to load the\nbalancer cache in tests.\n\n---------\n\nCo-authored-by: Empryo <noreply@empryo.com>",
+          "timestamp": "2026-09-02T13:49:41Z",
+          "url": "https://github.com/rotki/rotki/commit/660655051088adf36e7d1558f06ccbe986c0a4a1"
+        },
+        "date": 1788416963372,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 354.77185834164004,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00003250080383869398",
+            "extra": "mean: 2.8187128614835477 msec\nrounds: 296"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 243.76348897142339,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000042032620025198643",
+            "extra": "mean: 4.102337081814705 msec\nrounds: 220"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 728.0913334588266,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000024070197825061604",
+            "extra": "mean: 1.3734540627608633 msec\nrounds: 717"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 2278.099343376391,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0003355019086128382",
+            "extra": "mean: 438.9624196624767 usec\nrounds: 946"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 13.56513651635638,
+            "unit": "iter/sec",
+            "range": "stddev: 0.002153231782764545",
+            "extra": "mean: 73.71838822220728 msec\nrounds: 9"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 28617.683581287198,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00000388496588234498",
+            "extra": "mean: 34.94342919683022 usec\nrounds: 5939"
           }
         ]
       }
