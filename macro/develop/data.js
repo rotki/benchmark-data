@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1788329987335,
+  "lastUpdate": 1788416536742,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (develop)": [
@@ -11204,6 +11204,142 @@ window.BENCHMARK_DATA = {
             "value": 1895.66,
             "unit": "ms",
             "extra": "min 1886.15ms, stddev 8.24ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "groninge",
+            "username": "groninge01",
+            "email": "groninge@gmail.com"
+          },
+          "committer": {
+            "name": "GitHub",
+            "username": "web-flow",
+            "email": "noreply@github.com"
+          },
+          "id": "660655051088adf36e7d1558f06ccbe986c0a4a1",
+          "message": "Add Beets gauge balances for Sonic (#12914)\n\n* feat: add Sonic as a supported EVM chain\n\nAdd the Sonic chain package (manager, node inquirer, accountant, decoder, wson module) and wire it into the chains aggregator, rotki instance and balance/account tracking. Add SupportedBlockchain.SONIC, its native token S, the Location enum value and all chain/location type tuples.\nThe packaged globaldb is seeded with the Sonic multicall and balance scanner contracts and the S asset so inquirer initialization and asset resolution work.\n\nCo-Authored-By: Empryo <noreply@empryo.com>\n\n* fix: restore rotkehlchen.py executable bit\n\nCo-Authored-By: Empryo <noreply@empryo.com>\n\n* feat: add Sonic assets, nodes, indexers and DB location\n\nRegister the S native token and WS wrapped token, chain decimals and wrapped-token mapping, the sonicscan-first indexer order, contract ABI overload, genesis timestamp handling in the tx and earliest-ts paths, the CSV explorer URL, location image, default RPC nodes, the Sonic location row in the user DB schema and the unreleased v52->v53 upgrade step, and seed the packaged globaldb with the Sonic multicall/balance scanner contracts and the S asset.\n\nCo-Authored-By: Empryo <noreply@empryo.com>\n\n* feat: generalize Balancer decoders for Beets chains\n\nParameterize the shared Balancer v1/v2/v3 decoders with counterparty, swap counterparty, label and image so non-Balancer-run deployments (Beets on Sonic) can decode through the same machinery with their own counterparties. Add the beets-v2/beets-v3/beets-swap-v3 counterparties, extend the cache/version mappings, branch join ordering on the protocol version instead of the counterparty string, and accept the beets protocols in the pool price paths and protocol cache refresh.\nAlso fix v3 liquidity decoding when the deposit/withdrawal transfer is emitted before the LiquidityAdded/LiquidityRemoved log (BatchRouter), transforming already-decoded events in place with a tolerance for pool exit fees.\n\nCo-Authored-By: Empryo <noreply@empryo.com>\n\n* test: cover Sonic chain and Beets v3 decoding\n\nThread the sonic manager/inquirer/accounts fixtures through the test harness, add the Sonic mainnet node helper, extend the chains aggregator, EVM API, db upgrade, types and balancer-utils tests with Sonic, and add live-RPC decoder tests for Beets v3 pool join and exit through the BatchRouter.\n\nCo-Authored-By: Empryo <noreply@empryo.com>\n\n* feat: add Sonic to the frontend\n\nAdd Blockchain.SONIC, the sonicscan explorer URLs, the early-integration flag, protocol icons for Sonic, WS and Beets, and update the co-located specs.\n\nCo-Authored-By: Empryo <noreply@empryo.com>\n\n* test: cover Beets v3 single-hop swap on Sonic\n\nAdd a live-RPC decoder test for a single-hop Beets v3 swap of stS for wS through the pool, asserting the consolidated trade events carry the beets-v3 counterparty.\n\nCo-Authored-By: Empryo <noreply@empryo.com>\n\n* test: cover Beets v2 swap on Sonic\n\nAdd a live-RPC decoder test for a single-hop Beets v2 swap of stS for scUSD through the vault, asserting the consolidated trade events carry the beets-v2 counterparty.\n\nCo-Authored-By: Empryo <noreply@empryo.com>\n\n* fix: reuse transfer events in wrapped token decoding\n\nSome wrapped tokens (WS on Sonic) emit an ERC20 Transfer on wrap/unwrap in addition to the Deposit/Withdrawal log. The generic transfer decoder materialized those as plain receive/spend events, duplicating the ones the weth decoder creates. Reuse the existing Transfer-derived event (setting subtype, counterparty, notes and address) instead of creating a duplicate.\nAlso add live-RPC decoder tests for wrapping and unwrapping S to/from WS on Sonic.\n\nCo-Authored-By: Empryo <noreply@empryo.com>\n\n* test: cover Beets v2 join and exit on Sonic\n\nAdd live-RPC decoder tests for a Beets v2 pool join (three tokens) and exit (four tokens) through the vault, asserting the deposit/receive and return/withdraw events carry the beets-v2 counterparty.\n\nCo-Authored-By: Empryo <noreply@empryo.com>\n\n* fix: satisfy mypy on generalized Balancer decoders\n\nWiden the protocol parameter of query_balancer_data to str, type the cache mapping with the pool cache Literal, keep counterparties() a staticmethod in the v2/v3 common decoders (with the Sonic modules overriding it for the Beets label/icon), and checksum the Sonic archive check address.\n\nCo-Authored-By: Empryo <noreply@empryo.com>\n\n* test: assert Beets cache mappings and counterparties\n\nCover the previously-untested contracts: the beets-v2/beets-v3 cache-type and protocol-version mappings, and the Beets label/icon surfaced by the Sonic v2/v3 decoder counterparties.\n\nCo-Authored-By: Empryo <noreply@empryo.com>\n\n* chore: note BalanceScanner gap in Sonic constants\n\nCo-Authored-By: Empryo <noreply@empryo.com>\n\n* fix: use official Sonic/Beets/WS logos and rename wson to ws\n\nReplace invented placeholder SVGs with the real brand assets:\n- beets.svg: official Beets mark from brand.beets.fi\n- sonic.svg: official Sonic logo\n- ws.svg: official Wrapped Sonic logo\nRename the wS counterparty from wson to ws (module, CPT_WS, decoder, tests).\n\nCo-Authored-By: Empryo <noreply@empryo.com>\n\n* feat: add Beets gauge balances, Beefy decoder, and Sonic token listings\n\n- Add BeetsBalances/BeetsV2Balances/BeetsV3Balances extending ProtocolWithGauges\n  to query gauge deposits via multicall balanceOf on Sonic\n- Register BeetsV2Balances and BeetsV3Balances in CHAIN_TO_BALANCE_PROTOCOLS for ChainID.SONIC\n- Add beets-v2 and beets-v3 to PROTOCOLS_WITH_BALANCES literal\n- Add Sonic Beefy zap contract (0x03C2E2e84031d913d45B1F5b5dDC8E50Fcb28652)\n- Remove unnecessary get_multi_balance override from SonicInquirer\n- Remove incorrect comment about BalanceScanner not being deployed on Sonic\n- Add 139 Sonic tokens to global.db with name/symbol/decimals queried from chain\n- Add CoinGecko mappings for 19 Sonic tokens listed on CoinGecko\n\nCloses #12911\\n\\nCo-Authored-By: Empryo <noreply@empryo.com>\n\n* fix(sonic): resolve lint errors in beets balances and node inquirer\n\nFix undefined names ChecksumEvmAddress and FVal in node_inquirer, wrap\nover-long lines in balancer balances, and remove trailing newline in\nconstants.\n\n* fix(sonic): repair beets-related test failures\n\nMove the Sonic location to its dedicated v53->v54 upgrade instead of\nappending it to v52->v53, add Sonic to the BALANCER_V2 protocol cache\nchains, exclude the BeetsBalances base class from the balance-class\nusage check, and add deferred annotations to db/updates.py to fix a\nlatent Sequence/Callable NameError on Python 3.14.\n\n* revert(beefy): drop Sonic zap address\n\nBeets has no LPs on Beefy, so the Sonic entry in SUPPORTED_BEEFY_CHAINS\nis not needed.\n\n* refactor(sonic): rename balancer module to beets\n\nRename chain/sonic/modules/balancer to beets and the decoder classes to\nBeetsv2Decoder/Beetsv3Decoder so the protocol is easier to find when\nsearching the code.\n\n* refactor(balancer): type counterparty with BalancerCounterparty literal\n\nAdd a BalancerCounterparty literal covering the balancer and beets\ncounterparties and use it for the mappings and decoder parameters,\nremoving the type: ignore in the beets balances. Also rename\nself.version to self.implementation_version and derive protocol_label\nfrom the counterparty.\n\n* fix(balancer): derive event notes from the counterparty\n\nPool join/exit and swap notes used a hardcoded 'Balancer v2/v3' label,\nso Beets events on Sonic were labeled as Balancer. Build the notes from\nprotocol_label, which is derived from the counterparty, and update the\nbeets test expectations.\n\n* refactor(balancer): use scientific notation for liquidity tolerance\n\nMove the liquidity event amount matching tolerance to a named constant\nin v3/constants.py and express it in scientific notation.\n\n* style(balancer): fix lint issues in notes and tolerance changes\n\n* docs(changelog): add Beets Sonic support entry\n\n* test(sonic): add VCR test for Beets gauge balances\n\nQuery gauge balances for an address with positions staked in both a\nBeets v2 and v3 gauge on Sonic. The gauges and pools are seeded into\nthe globaldb cache since the test environment does not query the\nremote pool listings. Also allow the beets counterparties to load the\nbalancer cache in tests.\n\n---------\n\nCo-authored-by: Empryo <noreply@empryo.com>",
+          "timestamp": "2026-09-02T13:49:41Z",
+          "url": "https://github.com/rotki/rotki/commit/660655051088adf36e7d1558f06ccbe986c0a4a1"
+        },
+        "date": 1788416536362,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 2400.44,
+            "unit": "ms",
+            "extra": "min 2357.11ms, stddev 1594.44ms"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 1337.32,
+            "unit": "ms",
+            "extra": "min 1294.49ms, stddev 467.07ms"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 6.27,
+            "unit": "ms",
+            "extra": "min 6.13ms, stddev 0.11ms"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 39.42,
+            "unit": "ms",
+            "extra": "min 39.01ms, stddev 0.62ms"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 2.38,
+            "unit": "ms",
+            "extra": "min 2.2ms, stddev 0.1ms"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 2.01,
+            "unit": "ms",
+            "extra": "min 1.91ms, stddev 0.09ms"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 122,
+            "unit": "ms",
+            "extra": "min 120.53ms, stddev 1.27ms"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 81.06,
+            "unit": "ms",
+            "extra": "min 79.6ms, stddev 0.83ms"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 2356.41,
+            "unit": "ms",
+            "extra": "min 2348.49ms, stddev 27.7ms"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 1367.88,
+            "unit": "ms",
+            "extra": "min 1363.3ms, stddev 16.59ms"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 1028.68,
+            "unit": "ms",
+            "extra": "min 1026.24ms, stddev 1.8ms"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 1027.33,
+            "unit": "ms",
+            "extra": "min 1026.73ms, stddev 0.94ms"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 1135.48,
+            "unit": "ms",
+            "extra": "min 1132.6ms, stddev 2.52ms"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 1020.49,
+            "unit": "ms",
+            "extra": "min 1017.62ms, stddev 2.34ms"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 39.63,
+            "unit": "ms",
+            "extra": "min 38.96ms, stddev 0.54ms"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 2.32,
+            "unit": "ms",
+            "extra": "min 2.24ms, stddev 0.1ms"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 2.02,
+            "unit": "ms",
+            "extra": "min 1.85ms, stddev 0.1ms"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 1614.6,
+            "unit": "ms",
+            "extra": "min 1613.03ms, stddev 1.5ms"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 1740.77,
+            "unit": "ms",
+            "extra": "min 1737.3ms, stddev 2.11ms"
           }
         ]
       }
