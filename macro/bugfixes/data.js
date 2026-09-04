@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1788416886278,
+  "lastUpdate": 1788503615386,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (bugfixes)": [
@@ -7024,6 +7024,142 @@ window.BENCHMARK_DATA = {
             "value": 1692.81,
             "unit": "ms",
             "extra": "min 1488.6ms, stddev 121.92ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "patcito",
+            "username": "patcito",
+            "email": "patcito@gmail.com"
+          },
+          "committer": {
+            "name": "GitHub",
+            "username": "web-flow",
+            "email": "noreply@github.com"
+          },
+          "id": "6552ba786bf91ae1c93d5fbfdf0e8138054445e9",
+          "message": "Flying Tulip integration (#12898)\n\n* Add Flying Tulip decoders and balances\n\nDecode ftUSD mint/redeem, sftUSD staking and FT reward claims, lending\nmarket deposits/withdrawals/borrows/repayments and ftPUT invest/divest/\nwithdraw on Ethereum. Expose open lending collateral and debt plus\nclaimable staking rewards through the protocol balances interface.\n\n* Register Flying Tulip decoders and balances\n\nHook the three decoders into the shared EVM decoder, add the balance\nclasses to the Ethereum protocol-balances registry, ship the protocol\nicon and note the integration in the changelog.\n\n* Test ftUSD mint/redeem and sftUSD staking decoding\n\n* Rework lend decoding as a post-decoding rule\n\nRelayed (session) lending transactions place the wallet transfer after\nthe positions manager event and deduct the relayer fee from it in-flight,\nso decoding moved to a post-decoding rule that reconciles each event\nagainst the actual transfer and decodes the difference as a fee.\n\n* Test ftPUT invest/divest/withdraw decoding\n\n* Test Flying Tulip lend decoding and balances\n\nCover direct and session-relayed lend flows including the relayer fee\nreconciliation, and add offline balance tests for lending collateral,\ndebt and claimable staking rewards.\n\n* Deduplicate shared event topic constants\n\nPromote the Deposit(address,address,uint256) topic to the shared EVM\nconstants (velodrome previously defined it as GAUGE_DEPOSIT_V2) and reuse\nthe existing UNSTAKE_TOPIC bytes for the ftPUT Withdraw event, keeping\nthe duplicate-constants lint clean.\n\n* Use lazy formatting in decoder log call\n\n* Harden event matching and decode payout-side fees\n\nTie the staking relayer-fee split to its vault deposit and the transfer\ninto the vault, decode the fee deducted from unstake payouts and reward\nclaims by grossing the payout up from the RelayerFeePaid log, fold full-\nrepayment refunds into the lend fee split, restrict inexact matches to\nrelayed transfers through the meta-action entry points, disambiguate\nmulti-event and multi-account transactions, attribute on-behalf deposits\nto the position owner, and run the lend post-decoding rule after the\ncommon priority-0 rules so appended fee events do not preempt them.\n\n* Tighten fee pairing and ambiguity guards\n\nPair payout-side relayer fees with the nearest preceding fee log so\nmultiple payouts in one transaction each get their own fee, restrict the\nlend fee/refund inference to tokens with a single positions manager\nevent in the transaction, fold zero-fee refunds completely, note the\nbeneficiary on repayments made for another account, and drop the\nreward-claim fallback that decoded the net amount without its fee.\n\n* Bound payout fee pairing between vault actions\n\nA payout without its own RelayerFeePaid log could inherit the fee log of\nan earlier payout of the same user and token in the same transaction.\nDisqualify a fee log when another vault deposit, withdrawal or claim sits\nbetween it and the payout being decoded.\n\n* Require protocol counterparties when matching transfers\n\nTransfers are now only claimed by a protocol event when their\ncounterparty is a known protocol contract: the positions manager, the\nmeta-action entry points or the per-asset yield wrappers for lending\n(the wrappers also trigger the post-decoding rule for transactions\nrouted through unknown entry points such as a Safe), and the put\nmanager, the reported investor or the collateral wrappers for ftPUT.\nThis prevents an unrelated equal-amount transfer in the same transaction\nfrom being relabeled, and decodes investments funded through the ftPUT\ninvesting proxy, where the proxy appears as the investor and the user's\ntransfer goes to the proxy.\n\n* Constrain ftUSD matching to protocol counterparties\n\nMint/redeem legs must transfer to or from the MintAndRedeem contract or\none of its collateral wrappers, vault deposits to the vault itself, the\nunstake share burn to the zero address, unstake payouts from the vault\nor a wrapper, and reward claims from the vault. An unrelated\nequal-amount transfer in the same transaction can no longer be claimed\nby an ftUSD or staking event.\n\n* Decode circuit breaker queue and leverage fills\n\nRate-limited ftUSD payouts are queued on CircuitBreakerV2 and paid out\nin a later transaction: the request leg now decodes with a queued-payout\nnote (mint/redeem spends become protocol deposits, unstake share burns\nkeep their return label instead of half-decoding) and the later release\ndecodes as a withdrawal from the circuit breaker queue.\n\nLeverage RFQ engine fills decode into informational entries that\nattribute opens, closes and collateral swaps to Flying Tulip and seed\nbalance discovery for users whose position exists purely inside the\npositions manager. Staking reward balances are also discovered through\nreceived vault shares, put investments accept any tracked funder\n(covering proxy invests for another recipient), and unmatched protocol\nevents are logged.\n\n* Note the relayer fee of queued relayed unstakes\n\nA relayed unstake whose payout the circuit breaker queues pays the\nrelayer fee before queueing, so the fee never touches the wallet in\neither transaction of the lifecycle. Record it in the share-return note\ninstead of as a fee event, keeping the decoded events equal to the\nactual transfers.\n\n* Support the lending market on Binance Smart Chain\n\n* Decode the ftPUT position NFT as the wrapped position it is\n\nInvesting hands over collateral and gets an ERC-721 whose token id is the\nposition id, so decode the pair the way the rest of rotki decodes an NFT\nposition receipt: deposit for wrapped plus receive wrapped going in,\nreturn wrapped plus redeem wrapped coming out. The wrapped subtypes are\nonly used when the NFT leg is actually there, and the NFT is decoded even\nwhen the collateral came from a wallet nobody tracks.\n\n* Keep a deposit made for someone else on the payer's wallet\n\nAttributing the transfer to the beneficiary debited a wallet the funds\nnever left. The payer keeps it, with the position owner in the notes and\nin extra_data, and the owner gets an informational entry of their own to\nseed balance discovery. That entry is decoded from the positions manager\nlog rather than in the post-decoding rule, because a payer nobody tracks\nleaves no wallet transfer for the rule to run on.\n\nTransfers already claimed by an event are keyed by sequence index rather\nthan by the object id, which is the same identity the framework itself\nuses while decoding, before any of these events has a database id.\n\n* Ask each Flying Tulip market only about its own users\n\nEvery product shares one counterparty, so discovering positions by it\nalone sent ftPUT investors and ftUSD stakers into the lending multicalls\nand, once an ftPUT investment became a deposit for a wrapped token, put\ninvestors into the staking vault's reward query too. Both discoveries now\nfilter by the addresses of the deployment they belong to.\n\nThe contracts they call are built where they are used, so a user without\na position in a market does not carry its ABI around for the session.\n\n* Decode the relayer fee of a queued unstake as a fee\n\nA note is invisible to accounting. The relayer is paid out of the\nwithdrawal before the rest of it is queued, so that part of the payout is\nsettled in this transaction: decode it and the fee it pays, which nets to\nnothing in the wallet and leaves the expense where accounting can see it,\nthe same economics an immediate relayed payout gets from grossing its\ntransfer up. The circuit breaker still pays out the queued remainder in\nits own transaction, so nothing is counted twice.\n\n* Find lending deposits made for someone else\n\ndepositFor credits the beneficiary while the tokens leave the payer's wallet, so\na beneficiary whose payer is untracked appears only in the log topic and their\ntransaction is never imported by the per address query. With no transaction\nthere is no event, and the position stays out of the balances too.\n\nA daily scan reads the positions manager's DepositFor logs on each chain that\nhas a deployment, imports the transactions of tracked beneficiaries and maps\nthem to the beneficiary, which also flags an already imported transaction for\nre-decoding. Progress is kept per address so an account added later is\nbackfilled from the deployment block, and it stops short of the chain tip so\nblocks an indexer may not have yet are read again.\n\n* Adjustments over tulip\n\n* Some more improvements\n\n---------\n\nCo-authored-by: Yabir Benchakhtir <git@yabirgb.com>",
+          "timestamp": "2026-09-03T14:28:24Z",
+          "url": "https://github.com/rotki/rotki/commit/6552ba786bf91ae1c93d5fbfdf0e8138054445e9"
+        },
+        "date": 1788503615007,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 2108.07,
+            "unit": "ms",
+            "extra": "min 2084.23ms, stddev 1672.37ms"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 1380.03,
+            "unit": "ms",
+            "extra": "min 1373.72ms, stddev 419.06ms"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 6.5,
+            "unit": "ms",
+            "extra": "min 6.43ms, stddev 0.13ms"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 42.85,
+            "unit": "ms",
+            "extra": "min 42.33ms, stddev 0.4ms"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 2.53,
+            "unit": "ms",
+            "extra": "min 2.43ms, stddev 0.07ms"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 2.11,
+            "unit": "ms",
+            "extra": "min 2.07ms, stddev 0.05ms"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 129.36,
+            "unit": "ms",
+            "extra": "min 127.94ms, stddev 0.94ms"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 86.7,
+            "unit": "ms",
+            "extra": "min 85.83ms, stddev 0.97ms"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 2106.08,
+            "unit": "ms",
+            "extra": "min 2105.3ms, stddev 26.21ms"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 1457.71,
+            "unit": "ms",
+            "extra": "min 1399.67ms, stddev 28.72ms"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 1059.74,
+            "unit": "ms",
+            "extra": "min 1057.63ms, stddev 2.47ms"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 1062.37,
+            "unit": "ms",
+            "extra": "min 1058.11ms, stddev 2.7ms"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 1172.07,
+            "unit": "ms",
+            "extra": "min 1169.36ms, stddev 1.73ms"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 1048.92,
+            "unit": "ms",
+            "extra": "min 1044.16ms, stddev 3.51ms"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 43.42,
+            "unit": "ms",
+            "extra": "min 42.42ms, stddev 0.79ms"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 2.68,
+            "unit": "ms",
+            "extra": "min 2.4ms, stddev 0.15ms"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 2.17,
+            "unit": "ms",
+            "extra": "min 2.05ms, stddev 0.09ms"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 1662.77,
+            "unit": "ms",
+            "extra": "min 1661.37ms, stddev 1.46ms"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 1804.81,
+            "unit": "ms",
+            "extra": "min 1795.76ms, stddev 10.51ms"
           }
         ]
       }
