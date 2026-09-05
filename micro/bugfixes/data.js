@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1788503889415,
+  "lastUpdate": 1788589538433,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (bugfixes)": [
@@ -4672,6 +4672,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.000002472035895554771",
             "extra": "mean: 28.30158363776372 usec\nrounds: 5757"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "committer": {
+            "name": "GitHub",
+            "username": "web-flow",
+            "email": "noreply@github.com"
+          },
+          "id": "abf7b9cc5251d2290b3afdd2dfddcea2580f9cff",
+          "message": "Add 1inch Liquidity Protocol pool decoder (#13047)\n\nDeposits to and withdrawals from the Mooniswap and 1inch Liquidity\nProtocol pools are decoded. The pools are found through a transfer\nenricher that matches mints and burns of a token whose contract also\nemitted a Deposited or Withdrawn log, so no pool list and no per-log\nrule is needed. Closes #1981",
+          "timestamp": "2026-09-04T16:19:00Z",
+          "url": "https://github.com/rotki/rotki/commit/abf7b9cc5251d2290b3afdd2dfddcea2580f9cff"
+        },
+        "date": 1788589537859,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 352.29185942104544,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00004121593902887179",
+            "extra": "mean: 2.8385555137248835 msec\nrounds: 255"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 245.75715928461648,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00006178687159771507",
+            "extra": "mean: 4.0690574504968104 msec\nrounds: 202"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 766.6376198466396,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00002716355318990866",
+            "extra": "mean: 1.3043972459896278 msec\nrounds: 748"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 2685.5841137546427,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00027166163115462284",
+            "extra": "mean: 372.35847310770953 usec\nrounds: 1004"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 14.847558123746122,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0012216367288092867",
+            "extra": "mean: 67.35114230000363 msec\nrounds: 10"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 34681.13554986667,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000002528456209691196",
+            "extra": "mean: 28.83411930275866 usec\nrounds: 5507"
           }
         ]
       }
