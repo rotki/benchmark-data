@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1788503212049,
+  "lastUpdate": 1788588891949,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (develop)": [
@@ -11476,6 +11476,142 @@ window.BENCHMARK_DATA = {
             "value": 1786.67,
             "unit": "ms",
             "extra": "min 1781.78ms, stddev 4.19ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "committer": {
+            "name": "GitHub",
+            "username": "web-flow",
+            "email": "noreply@github.com"
+          },
+          "id": "abf7b9cc5251d2290b3afdd2dfddcea2580f9cff",
+          "message": "Add 1inch Liquidity Protocol pool decoder (#13047)\n\nDeposits to and withdrawals from the Mooniswap and 1inch Liquidity\nProtocol pools are decoded. The pools are found through a transfer\nenricher that matches mints and burns of a token whose contract also\nemitted a Deposited or Withdrawn log, so no pool list and no per-log\nrule is needed. Closes #1981",
+          "timestamp": "2026-09-04T16:19:00Z",
+          "url": "https://github.com/rotki/rotki/commit/abf7b9cc5251d2290b3afdd2dfddcea2580f9cff"
+        },
+        "date": 1788588891510,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 2457.96,
+            "unit": "ms",
+            "extra": "min 2405.56ms, stddev 1678.78ms"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 1349.56,
+            "unit": "ms",
+            "extra": "min 1310.36ms, stddev 428.39ms"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 6.44,
+            "unit": "ms",
+            "extra": "min 6.26ms, stddev 0.12ms"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 40.43,
+            "unit": "ms",
+            "extra": "min 40.15ms, stddev 0.36ms"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 2.39,
+            "unit": "ms",
+            "extra": "min 2.33ms, stddev 0.06ms"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 2.02,
+            "unit": "ms",
+            "extra": "min 1.99ms, stddev 0.07ms"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 125.21,
+            "unit": "ms",
+            "extra": "min 124.2ms, stddev 1.12ms"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 83.33,
+            "unit": "ms",
+            "extra": "min 82.6ms, stddev 0.49ms"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 2467.31,
+            "unit": "ms",
+            "extra": "min 2406.35ms, stddev 40.42ms"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 1399.27,
+            "unit": "ms",
+            "extra": "min 1375.53ms, stddev 22.93ms"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 1047.9,
+            "unit": "ms",
+            "extra": "min 1045.13ms, stddev 4.32ms"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 1046.13,
+            "unit": "ms",
+            "extra": "min 1045.8ms, stddev 4.41ms"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 1153.4,
+            "unit": "ms",
+            "extra": "min 1152.55ms, stddev 4.89ms"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 1038.81,
+            "unit": "ms",
+            "extra": "min 1034.85ms, stddev 2.62ms"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 41,
+            "unit": "ms",
+            "extra": "min 40.47ms, stddev 0.75ms"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 2.41,
+            "unit": "ms",
+            "extra": "min 2.31ms, stddev 0.08ms"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 2.05,
+            "unit": "ms",
+            "extra": "min 1.94ms, stddev 0.09ms"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 1641.4,
+            "unit": "ms",
+            "extra": "min 1634.35ms, stddev 5.7ms"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 1781.32,
+            "unit": "ms",
+            "extra": "min 1775.07ms, stddev 4.92ms"
           }
         ]
       }
