@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1788589264567,
+  "lastUpdate": 1788676454151,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (bugfixes)": [
@@ -7296,6 +7296,142 @@ window.BENCHMARK_DATA = {
             "value": 1726.79,
             "unit": "ms",
             "extra": "min 1715.04ms, stddev 7.02ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "committer": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "id": "364a007917cdb10cb7f4c6b9e25c5c9b45780c56",
+          "message": "Use balance scanner for Robinhood native balances\n\nThe rotki balance scanner is now deployed on Robinhood Chain at the\nusual address, so drop the Multicall3 getEthBalance override in\nRobinhoodInquirer and let the base class contract_scan path handle\nnative balances like every other chain. The contract_data row for\nchain 4663 was already seeded in the packaged global DB.\n\nRename test_native_balances_via_multicall to\ntest_native_balances_via_scanner to reflect the new path.",
+          "timestamp": "2026-09-05T14:20:35Z",
+          "url": "https://github.com/rotki/rotki/commit/364a007917cdb10cb7f4c6b9e25c5c9b45780c56"
+        },
+        "date": 1788676453080,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 1846.4,
+            "unit": "ms",
+            "extra": "min 1794.79ms, stddev 1458.35ms"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 1272.32,
+            "unit": "ms",
+            "extra": "min 1242.24ms, stddev 389.8ms"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 6.16,
+            "unit": "ms",
+            "extra": "min 5.92ms, stddev 0.16ms"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 39.81,
+            "unit": "ms",
+            "extra": "min 39.28ms, stddev 0.33ms"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 2.44,
+            "unit": "ms",
+            "extra": "min 2.29ms, stddev 0.08ms"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 2,
+            "unit": "ms",
+            "extra": "min 1.9ms, stddev 0.09ms"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 102.3,
+            "unit": "ms",
+            "extra": "min 100.09ms, stddev 1.99ms"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 68.84,
+            "unit": "ms",
+            "extra": "min 67.77ms, stddev 0.89ms"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 1793.22,
+            "unit": "ms",
+            "extra": "min 1790.43ms, stddev 23.87ms"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 1292.31,
+            "unit": "ms",
+            "extra": "min 1278.5ms, stddev 16.89ms"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 1036.1,
+            "unit": "ms",
+            "extra": "min 1034.62ms, stddev 2.88ms"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 1034.07,
+            "unit": "ms",
+            "extra": "min 1033.82ms, stddev 3.27ms"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 1138.11,
+            "unit": "ms",
+            "extra": "min 1136.52ms, stddev 2.47ms"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 1022.24,
+            "unit": "ms",
+            "extra": "min 1019.19ms, stddev 2.75ms"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 39.64,
+            "unit": "ms",
+            "extra": "min 39.53ms, stddev 0.24ms"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 2.45,
+            "unit": "ms",
+            "extra": "min 2.29ms, stddev 0.11ms"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 2.03,
+            "unit": "ms",
+            "extra": "min 1.87ms, stddev 0.11ms"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 1552.03,
+            "unit": "ms",
+            "extra": "min 1547.76ms, stddev 5.48ms"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 1723.63,
+            "unit": "ms",
+            "extra": "min 1720.62ms, stddev 9.47ms"
           }
         ]
       }
