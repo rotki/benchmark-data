@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1788676721114,
+  "lastUpdate": 1788763557244,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (bugfixes)": [
@@ -4800,6 +4800,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.0000024322163738674907",
             "extra": "mean: 28.622454463730605 usec\nrounds: 5567"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "committer": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "id": "364a007917cdb10cb7f4c6b9e25c5c9b45780c56",
+          "message": "Use balance scanner for Robinhood native balances\n\nThe rotki balance scanner is now deployed on Robinhood Chain at the\nusual address, so drop the Multicall3 getEthBalance override in\nRobinhoodInquirer and let the base class contract_scan path handle\nnative balances like every other chain. The contract_data row for\nchain 4663 was already seeded in the packaged global DB.\n\nRename test_native_balances_via_multicall to\ntest_native_balances_via_scanner to reflect the new path.",
+          "timestamp": "2026-09-05T14:20:35Z",
+          "url": "https://github.com/rotki/rotki/commit/364a007917cdb10cb7f4c6b9e25c5c9b45780c56"
+        },
+        "date": 1788763556832,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 356.4700300121031,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00004303570683624881",
+            "extra": "mean: 2.805284921052262 msec\nrounds: 266"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 247.98712494105507,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00009837325045036374",
+            "extra": "mean: 4.032467412321077 msec\nrounds: 211"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 760.8568595513376,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000019228195373364347",
+            "extra": "mean: 1.3143076617455751 msec\nrounds: 745"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 2517.8219566093285,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0002737397995684911",
+            "extra": "mean: 397.1686708724506 usec\nrounds: 951"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 13.499237139886173,
+            "unit": "iter/sec",
+            "range": "stddev: 0.01234247345815765",
+            "extra": "mean: 74.07826009999496 msec\nrounds: 10"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 34131.99424295617,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00000489456364866211",
+            "extra": "mean: 29.298024395582168 usec\nrounds: 4673"
           }
         ]
       }
