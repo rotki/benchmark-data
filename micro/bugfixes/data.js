@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1788849555592,
+  "lastUpdate": 1788936214577,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (bugfixes)": [
@@ -4928,6 +4928,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.000002941642895689573",
             "extra": "mean: 28.7181322599317 usec\nrounds: 5527"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "d5925914b97acaddfb06a63f85f69920ea3294a4",
+          "message": "refactor(frontend): extract the manual balance price lookup\n\nThe lookup prefers a price the user saved before, then the asset\nbeing the main currency itself, then the oracle. A zero oracle price\nis no price at all, and anything unpriced leaves the fields blank so\nthe custom toggle comes on.",
+          "timestamp": "2026-09-08T20:02:31Z",
+          "url": "https://github.com/rotki/rotki/commit/d5925914b97acaddfb06a63f85f69920ea3294a4"
+        },
+        "date": 1788936213893,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 356.1220866743322,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00005006733640388823",
+            "extra": "mean: 2.808025779413349 msec\nrounds: 272"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 245.7634793781982,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0000609318488382987",
+            "extra": "mean: 4.068952809954034 msec\nrounds: 221"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 734.6900314960862,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00002510037105398157",
+            "extra": "mean: 1.3611182364399985 msec\nrounds: 719"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 2291.7619820682926,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00035757291502610573",
+            "extra": "mean: 436.34548780563586 usec\nrounds: 1066"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 12.597605230519347,
+            "unit": "iter/sec",
+            "range": "stddev: 0.006112291502654787",
+            "extra": "mean: 79.38016644444208 msec\nrounds: 9"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 28242.756254924356,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00000391831553411773",
+            "extra": "mean: 35.40730908038204 usec\nrounds: 6707"
           }
         ]
       }
