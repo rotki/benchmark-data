@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1788848883237,
+  "lastUpdate": 1788935608479,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (develop)": [
@@ -12020,6 +12020,142 @@ window.BENCHMARK_DATA = {
             "value": 1826.58,
             "unit": "ms",
             "extra": "min 1822.12ms, stddev 4.48ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "d5925914b97acaddfb06a63f85f69920ea3294a4",
+          "message": "refactor(frontend): extract the manual balance price lookup\n\nThe lookup prefers a price the user saved before, then the asset\nbeing the main currency itself, then the oracle. A zero oracle price\nis no price at all, and anything unpriced leaves the fields blank so\nthe custom toggle comes on.",
+          "timestamp": "2026-09-08T20:02:31Z",
+          "url": "https://github.com/rotki/rotki/commit/d5925914b97acaddfb06a63f85f69920ea3294a4"
+        },
+        "date": 1788935607469,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 2409.39,
+            "unit": "ms",
+            "extra": "min 2353.65ms, stddev 1627.14ms"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 1313.28,
+            "unit": "ms",
+            "extra": "min 1302.57ms, stddev 420.47ms"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 6.54,
+            "unit": "ms",
+            "extra": "min 6.34ms, stddev 0.18ms"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 39.8,
+            "unit": "ms",
+            "extra": "min 38.98ms, stddev 0.48ms"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 2.37,
+            "unit": "ms",
+            "extra": "min 2.25ms, stddev 0.06ms"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 2.05,
+            "unit": "ms",
+            "extra": "min 1.9ms, stddev 0.07ms"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 121.06,
+            "unit": "ms",
+            "extra": "min 118.68ms, stddev 1.58ms"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 81.97,
+            "unit": "ms",
+            "extra": "min 80.53ms, stddev 1.31ms"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 2404.41,
+            "unit": "ms",
+            "extra": "min 2403.04ms, stddev 1.2ms"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 1382.76,
+            "unit": "ms",
+            "extra": "min 1377.93ms, stddev 22.18ms"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 1037.17,
+            "unit": "ms",
+            "extra": "min 1034.04ms, stddev 3.63ms"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 1037.63,
+            "unit": "ms",
+            "extra": "min 1034.08ms, stddev 2.88ms"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 1147.16,
+            "unit": "ms",
+            "extra": "min 1143.93ms, stddev 2.65ms"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 1027.82,
+            "unit": "ms",
+            "extra": "min 1025.76ms, stddev 1.65ms"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 40.23,
+            "unit": "ms",
+            "extra": "min 39.23ms, stddev 0.56ms"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 2.33,
+            "unit": "ms",
+            "extra": "min 2.28ms, stddev 0.05ms"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 1.99,
+            "unit": "ms",
+            "extra": "min 1.87ms, stddev 0.07ms"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 1614.44,
+            "unit": "ms",
+            "extra": "min 1606.13ms, stddev 5.88ms"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 1769.35,
+            "unit": "ms",
+            "extra": "min 1762.9ms, stddev 3.22ms"
           }
         ]
       }
