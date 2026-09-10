@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1788936214577,
+  "lastUpdate": 1789022581674,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (bugfixes)": [
@@ -4992,6 +4992,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.00000391831553411773",
             "extra": "mean: 35.40730908038204 usec\nrounds: 6707"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "8df71d390c9da74e2d694ae3a4143c6327b284af",
+          "message": "test(frontend): cover the profit currency dropdown\n\nCovers filtering on either the ticker or the translated name, since a\nuser typing what they read has to match too; saving the pick and\nre-reading the prices it changes; and doing neither when the pick is\nalready the current currency.\n\nAlso covers the filter being forgotten when the menu closes, which\notherwise reopens on a list narrowed to one row for no visible reason.",
+          "timestamp": "2026-09-09T22:00:40Z",
+          "url": "https://github.com/rotki/rotki/commit/8df71d390c9da74e2d694ae3a4143c6327b284af"
+        },
+        "date": 1789022580862,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 376.11394103638435,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00005456738368310303",
+            "extra": "mean: 2.658768768965313 msec\nrounds: 290"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 259.28046550354225,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00006500061851007216",
+            "extra": "mean: 3.8568273859657127 msec\nrounds: 228"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 849.6577935244281,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00001458663666401897",
+            "extra": "mean: 1.176944421179195 msec\nrounds: 831"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 2912.489431958025,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0001874015756102792",
+            "extra": "mean: 343.34888533062053 usec\nrounds: 968"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 14.280302273702643,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0008966303029220282",
+            "extra": "mean: 70.02652890909128 msec\nrounds: 11"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 33285.07566683588,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0000021821270867988004",
+            "extra": "mean: 30.04349486867371 usec\nrounds: 6626"
           }
         ]
       }
