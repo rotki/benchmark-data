@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1789021928002,
+  "lastUpdate": 1789108493266,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (develop)": [
@@ -12292,6 +12292,142 @@ window.BENCHMARK_DATA = {
             "value": 1803.84,
             "unit": "ms",
             "extra": "min 1798.51ms, stddev 27.33ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "8e229180f75e294060947fd0faa3e8e092a77186",
+          "message": "fix(frontend): explain a table whose fetch failed\n\nA failed table read leaves the collection empty, so every server table rendered\nthe same \"No data available\" whether the backend was unreachable or the user\ngenuinely had no rows. Since the notification for those reads was reclassified\nto NORMAL it no longer pops either, so nothing on screen said anything.\n\nuseTableData already returned the failure, and none of the 28 useServerTable\nconsumers rendered it. useTableEmptyState turns it into the table's own empty\ntext: the reason in place of \"No data available\".\n\nuseServerTable provides the failure and the leaf injects it, following the\npattern use-history-events-selection-context already uses, rather than\nthreading a prop through every wrapper between the two. A leaf that owns its\nown fetch cannot inject what it provided itself, so it passes the error in.",
+          "timestamp": "2026-09-10T14:49:31Z",
+          "url": "https://github.com/rotki/rotki/commit/8e229180f75e294060947fd0faa3e8e092a77186"
+        },
+        "date": 1789108492400,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 2396.56,
+            "unit": "ms",
+            "extra": "min 2353.99ms, stddev 1723.78ms"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 1343.67,
+            "unit": "ms",
+            "extra": "min 1309.11ms, stddev 441.28ms"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 6.3,
+            "unit": "ms",
+            "extra": "min 6.15ms, stddev 0.15ms"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 41.35,
+            "unit": "ms",
+            "extra": "min 41.06ms, stddev 2.67ms"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 2.33,
+            "unit": "ms",
+            "extra": "min 2.18ms, stddev 0.1ms"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 1.89,
+            "unit": "ms",
+            "extra": "min 1.84ms, stddev 0.08ms"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 110.62,
+            "unit": "ms",
+            "extra": "min 109.96ms, stddev 8.36ms"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 74.83,
+            "unit": "ms",
+            "extra": "min 73.76ms, stddev 0.76ms"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 2405.83,
+            "unit": "ms",
+            "extra": "min 2359.26ms, stddev 23.56ms"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 1435.19,
+            "unit": "ms",
+            "extra": "min 1378.04ms, stddev 34.48ms"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 1025.71,
+            "unit": "ms",
+            "extra": "min 1022.48ms, stddev 4.86ms"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 1027.6,
+            "unit": "ms",
+            "extra": "min 1023.83ms, stddev 1.95ms"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 1139.47,
+            "unit": "ms",
+            "extra": "min 1134.52ms, stddev 2.5ms"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 1018.5,
+            "unit": "ms",
+            "extra": "min 1016.04ms, stddev 2.41ms"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 42.07,
+            "unit": "ms",
+            "extra": "min 41.59ms, stddev 1.11ms"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 2.46,
+            "unit": "ms",
+            "extra": "min 2.3ms, stddev 0.13ms"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 2.05,
+            "unit": "ms",
+            "extra": "min 1.84ms, stddev 0.12ms"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 1558.41,
+            "unit": "ms",
+            "extra": "min 1557.92ms, stddev 2.13ms"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 1741.58,
+            "unit": "ms",
+            "extra": "min 1730.87ms, stddev 13.94ms"
           }
         ]
       }
