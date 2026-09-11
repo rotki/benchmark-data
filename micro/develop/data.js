@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1789022406706,
+  "lastUpdate": 1789108892531,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (develop)": [
@@ -5476,6 +5476,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.000003575060764095433",
             "extra": "mean: 35.00865537751967 usec\nrounds: 6555"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "8e229180f75e294060947fd0faa3e8e092a77186",
+          "message": "fix(frontend): explain a table whose fetch failed\n\nA failed table read leaves the collection empty, so every server table rendered\nthe same \"No data available\" whether the backend was unreachable or the user\ngenuinely had no rows. Since the notification for those reads was reclassified\nto NORMAL it no longer pops either, so nothing on screen said anything.\n\nuseTableData already returned the failure, and none of the 28 useServerTable\nconsumers rendered it. useTableEmptyState turns it into the table's own empty\ntext: the reason in place of \"No data available\".\n\nuseServerTable provides the failure and the leaf injects it, following the\npattern use-history-events-selection-context already uses, rather than\nthreading a prop through every wrapper between the two. A leaf that owns its\nown fetch cannot inject what it provided itself, so it passes the error in.",
+          "timestamp": "2026-09-10T14:49:31Z",
+          "url": "https://github.com/rotki/rotki/commit/8e229180f75e294060947fd0faa3e8e092a77186"
+        },
+        "date": 1789108891828,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 111.77995579160137,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00012354358522889474",
+            "extra": "mean: 8.9461477499988 msec\nrounds: 16"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 98.70674340187934,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00008703251477370179",
+            "extra": "mean: 10.131020085715445 msec\nrounds: 70"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 733.1272947865448,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000018396400016240965",
+            "extra": "mean: 1.364019600840475 msec\nrounds: 714"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 2465.6453321140957,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0003037873766673059",
+            "extra": "mean: 405.5733348894016 usec\nrounds: 857"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 12.820541895018968,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0024302293188004035",
+            "extra": "mean: 77.99982311110574 msec\nrounds: 9"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 28382.495393472316,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0000036040248288950788",
+            "extra": "mean: 35.23298378584392 usec\nrounds: 6846"
           }
         ]
       }
