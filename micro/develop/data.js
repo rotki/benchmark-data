@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1789194561673,
+  "lastUpdate": 1789282200587,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (develop)": [
@@ -5604,6 +5604,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.000001964352550787377",
             "extra": "mean: 31.200309022216608 usec\nrounds: 6307"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "fe32b325fd77f54d718864446d5a32150fc5a979",
+          "message": "test(frontend): cover the sync rollup from the ledger\n\nThe 15 cases pinning `phase`, `overallProgress` and `isActive` stuffed the\nfour websocket status stores; the values now come from the orchestrator, so\nthe fixture submits a refresh the way history-sync.flow.ts declares one --\numbrella, a chain per entry, an account beneath each chain, each account\nnaming how it ends.\n\nWhat the rewrite let the tests say that they could not before:\n\n- a decode is one leaf among the accounts, not a weighted third of the bar.\n  Under the 50/30/20 split one cancelled decode moved the bar as much as\n  every account on a ten-account chain.\n- every account weighs the same whichever chain it sits on.\n- the chain and umbrella rows are not units of work, so the bar cannot\n  double-count a chain once for itself and once per account.\n- disabled chains are not re-filtered here. They never reach the ledger:\n  getAccountsByChainType filters at the funnel every account getter reads\n  through, so the exclusion happens while the refresh scope resolves.\n  Re-filtering would be a second implementation of one rule, free to\n  disagree with the first.\n\nTwo negative controls, both restored: counting parents alongside leaves\nfails the four cases that pin the unit of work, and reading liveness as\n\"the model is non-empty\" fails the six that pin settlement -- the trap that\nregressed NotificationIndicator, since settled activities stay in the model.",
+          "timestamp": "2026-09-11T12:44:17Z",
+          "url": "https://github.com/rotki/rotki/commit/fe32b325fd77f54d718864446d5a32150fc5a979"
+        },
+        "date": 1789282200213,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 102.15411506828961,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000337682707163973",
+            "extra": "mean: 9.78913085715151 msec\nrounds: 14"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 90.70587077756304,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00015947872732836863",
+            "extra": "mean: 11.024644727266756 msec\nrounds: 66"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 727.4277564978333,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00003883714853834837",
+            "extra": "mean: 1.3747069603371376 msec\nrounds: 706"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 2267.7940269749934,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00038544832366839047",
+            "extra": "mean: 440.95715400304596 usec\nrounds: 974"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 12.510013918640182,
+            "unit": "iter/sec",
+            "range": "stddev: 0.002635928439584116",
+            "extra": "mean: 79.93596222223056 msec\nrounds: 9"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 27872.20179776979,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0000044022302645401864",
+            "extra": "mean: 35.87804104087735 usec\nrounds: 6189"
           }
         ]
       }
