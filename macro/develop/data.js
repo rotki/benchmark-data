@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1789194084656,
+  "lastUpdate": 1789281729886,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (develop)": [
@@ -12564,6 +12564,142 @@ window.BENCHMARK_DATA = {
             "value": 1700.22,
             "unit": "ms",
             "extra": "min 1699.02ms, stddev 3.96ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "fe32b325fd77f54d718864446d5a32150fc5a979",
+          "message": "test(frontend): cover the sync rollup from the ledger\n\nThe 15 cases pinning `phase`, `overallProgress` and `isActive` stuffed the\nfour websocket status stores; the values now come from the orchestrator, so\nthe fixture submits a refresh the way history-sync.flow.ts declares one --\numbrella, a chain per entry, an account beneath each chain, each account\nnaming how it ends.\n\nWhat the rewrite let the tests say that they could not before:\n\n- a decode is one leaf among the accounts, not a weighted third of the bar.\n  Under the 50/30/20 split one cancelled decode moved the bar as much as\n  every account on a ten-account chain.\n- every account weighs the same whichever chain it sits on.\n- the chain and umbrella rows are not units of work, so the bar cannot\n  double-count a chain once for itself and once per account.\n- disabled chains are not re-filtered here. They never reach the ledger:\n  getAccountsByChainType filters at the funnel every account getter reads\n  through, so the exclusion happens while the refresh scope resolves.\n  Re-filtering would be a second implementation of one rule, free to\n  disagree with the first.\n\nTwo negative controls, both restored: counting parents alongside leaves\nfails the four cases that pin the unit of work, and reading liveness as\n\"the model is non-empty\" fails the six that pin settlement -- the trap that\nregressed NotificationIndicator, since settled activities stay in the model.",
+          "timestamp": "2026-09-11T12:44:17Z",
+          "url": "https://github.com/rotki/rotki/commit/fe32b325fd77f54d718864446d5a32150fc5a979"
+        },
+        "date": 1789281729018,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 2457.47,
+            "unit": "ms",
+            "extra": "min 2408.39ms, stddev 1647.89ms"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 1374.68,
+            "unit": "ms",
+            "extra": "min 1327.12ms, stddev 402.21ms"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 6.82,
+            "unit": "ms",
+            "extra": "min 6.63ms, stddev 0.14ms"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 40.75,
+            "unit": "ms",
+            "extra": "min 40.56ms, stddev 0.13ms"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 2.54,
+            "unit": "ms",
+            "extra": "min 2.3ms, stddev 0.15ms"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 2.06,
+            "unit": "ms",
+            "extra": "min 1.92ms, stddev 0.1ms"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 123.13,
+            "unit": "ms",
+            "extra": "min 122.29ms, stddev 2.36ms"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 86.66,
+            "unit": "ms",
+            "extra": "min 85.68ms, stddev 2.07ms"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 2406.24,
+            "unit": "ms",
+            "extra": "min 2403.19ms, stddev 31.22ms"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 1420.38,
+            "unit": "ms",
+            "extra": "min 1395.36ms, stddev 35.01ms"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 949.84,
+            "unit": "ms",
+            "extra": "min 948.82ms, stddev 2.05ms"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 949.47,
+            "unit": "ms",
+            "extra": "min 949.09ms, stddev 1.31ms"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 1059.32,
+            "unit": "ms",
+            "extra": "min 1058.69ms, stddev 0.91ms"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 942.86,
+            "unit": "ms",
+            "extra": "min 941.88ms, stddev 0.81ms"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 40.64,
+            "unit": "ms",
+            "extra": "min 39.85ms, stddev 0.38ms"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 2.4,
+            "unit": "ms",
+            "extra": "min 2.26ms, stddev 0.1ms"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 2.08,
+            "unit": "ms",
+            "extra": "min 1.92ms, stddev 0.09ms"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 1503.06,
+            "unit": "ms",
+            "extra": "min 1499.63ms, stddev 3.85ms"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 1685.34,
+            "unit": "ms",
+            "extra": "min 1680.17ms, stddev 6.56ms"
           }
         ]
       }
