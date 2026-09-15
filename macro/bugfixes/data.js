@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1789369206347,
+  "lastUpdate": 1789454563354,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (bugfixes)": [
@@ -8520,6 +8520,142 @@ window.BENCHMARK_DATA = {
             "value": 1791.95,
             "unit": "ms",
             "extra": "min 1769.35ms, stddev 12.46ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "d31fe62d0201d06ff1a8d79f7210a980f8b82c9b",
+          "message": "fix(frontend): honour scramble multipliers below 1\n\nA multiplier between 0 and 1 had 1 added to it before use, so 0.5\nscrambled as 1.5 and every value below 1 was silently replaced.\n\nnormalizeScrambleMultiplier now uses any positive finite multiplier as\ngiven and falls back to 1 only for 0, negative or non-finite values,\nwhich still keeps a scrambled amount from collapsing to zero or\nflipping sign. The unreleased changelog entry from the original\nbounding change is corrected to match.",
+          "timestamp": "2026-09-14T15:19:11Z",
+          "url": "https://github.com/rotki/rotki/commit/d31fe62d0201d06ff1a8d79f7210a980f8b82c9b"
+        },
+        "date": 1789454562920,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 2052.49,
+            "unit": "ms",
+            "extra": "min 2029.87ms, stddev 1615.18ms"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 1372.93,
+            "unit": "ms",
+            "extra": "min 1354.96ms, stddev 423.83ms"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 6.63,
+            "unit": "ms",
+            "extra": "min 6.39ms, stddev 0.19ms"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 40.69,
+            "unit": "ms",
+            "extra": "min 40.19ms, stddev 0.63ms"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 2.55,
+            "unit": "ms",
+            "extra": "min 2.46ms, stddev 0.07ms"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 2.14,
+            "unit": "ms",
+            "extra": "min 2.04ms, stddev 0.08ms"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 124.3,
+            "unit": "ms",
+            "extra": "min 123.55ms, stddev 0.8ms"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 83.62,
+            "unit": "ms",
+            "extra": "min 83.05ms, stddev 0.99ms"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 2050.72,
+            "unit": "ms",
+            "extra": "min 1996.36ms, stddev 39.5ms"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 1457.81,
+            "unit": "ms",
+            "extra": "min 1420.41ms, stddev 19.67ms"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 1044.29,
+            "unit": "ms",
+            "extra": "min 1042.35ms, stddev 2.0ms"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 1042.11,
+            "unit": "ms",
+            "extra": "min 1041.26ms, stddev 1.75ms"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 1150.6,
+            "unit": "ms",
+            "extra": "min 1144.64ms, stddev 4.12ms"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 1028.37,
+            "unit": "ms",
+            "extra": "min 1024.49ms, stddev 3.11ms"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 41.11,
+            "unit": "ms",
+            "extra": "min 40.33ms, stddev 0.38ms"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 2.58,
+            "unit": "ms",
+            "extra": "min 2.4ms, stddev 0.1ms"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 2.24,
+            "unit": "ms",
+            "extra": "min 2.13ms, stddev 0.06ms"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 1629.42,
+            "unit": "ms",
+            "extra": "min 1627.24ms, stddev 4.25ms"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 1765.84,
+            "unit": "ms",
+            "extra": "min 1760.62ms, stddev 8.82ms"
           }
         ]
       }
