@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1789369281461,
+  "lastUpdate": 1789454629714,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (develop)": [
@@ -5732,6 +5732,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.000005137142845890108",
             "extra": "mean: 36.871204035442965 usec\nrounds: 5401"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "d31fe62d0201d06ff1a8d79f7210a980f8b82c9b",
+          "message": "fix(frontend): honour scramble multipliers below 1\n\nA multiplier between 0 and 1 had 1 added to it before use, so 0.5\nscrambled as 1.5 and every value below 1 was silently replaced.\n\nnormalizeScrambleMultiplier now uses any positive finite multiplier as\ngiven and falls back to 1 only for 0, negative or non-finite values,\nwhich still keeps a scrambled amount from collapsing to zero or\nflipping sign. The unreleased changelog entry from the original\nbounding change is corrected to match.",
+          "timestamp": "2026-09-14T15:19:11Z",
+          "url": "https://github.com/rotki/rotki/commit/d31fe62d0201d06ff1a8d79f7210a980f8b82c9b"
+        },
+        "date": 1789454629260,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 113.51415532866959,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00012522211885081255",
+            "extra": "mean: 8.80947400000109 msec\nrounds: 71"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 99.5766816027043,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00013386186006941275",
+            "extra": "mean: 10.042511799999993 msec\nrounds: 70"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 758.2672454113319,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000024370122762662654",
+            "extra": "mean: 1.3187962503345863 msec\nrounds: 747"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 1962.0654452990566,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00038419251426553624",
+            "extra": "mean: 509.6669952553906 usec\nrounds: 843"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 12.107580029715763,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0034945350027123794",
+            "extra": "mean: 82.5928878888836 msec\nrounds: 9"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 29014.48524133604,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0000033872681447503876",
+            "extra": "mean: 34.46554338918034 usec\nrounds: 6603"
           }
         ]
       }
