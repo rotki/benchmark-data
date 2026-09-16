@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1789454629714,
+  "lastUpdate": 1789540875897,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (develop)": [
@@ -5796,6 +5796,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.0000033872681447503876",
             "extra": "mean: 34.46554338918034 usec\nrounds: 6603"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "b5c98a2c08eb913a21a03da71049f303aab442d9",
+          "message": "feat(frontend): move background tasks into a dock\n\nBackground work leaves the notification drawer for a pill anchored in\nthe bottom-right corner, which opens the task tree above it.\n\n- TaskDock: the pill names the primary job with its count and \"+N more\",\n  says \"Queued\" while nothing has started, and never opens onto an\n  empty panel\n- AppCore mounts the dock, and the scroll-to-top button moves up while\n  the dock is visible so the two stack instead of overlapping\n- the notification drawer drops its task section and the bell stops\n  turning into a spinner; PendingTasks and NoTasksRunning are removed\n  along with the unused no_task_running key in every locale\n- waitForNoRunningTasks polls the pill, which renders under the same\n  condition the bell's spinner did",
+          "timestamp": "2026-09-15T15:49:55Z",
+          "url": "https://github.com/rotki/rotki/commit/b5c98a2c08eb913a21a03da71049f303aab442d9"
+        },
+        "date": 1789540875305,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 160.332859843833,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000068741711960173",
+            "extra": "mean: 6.2370246559190505 msec\nrounds: 93"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 141.68914988337886,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00016120723922598499",
+            "extra": "mean: 7.057703436170501 msec\nrounds: 94"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 1082.0900147259176,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000017434220694049962",
+            "extra": "mean: 924.1375360563602 usec\nrounds: 1054"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 2227.2876653142025,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0005449950742337278",
+            "extra": "mean: 448.9765806065874 usec\nrounds: 856"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 13.487955728451928,
+            "unit": "iter/sec",
+            "range": "stddev: 0.003141041878977256",
+            "extra": "mean: 74.14021962502204 msec\nrounds: 8"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 45462.94371897661,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0000023391522542396584",
+            "extra": "mean: 21.995935990889027 usec\nrounds: 7327"
           }
         ]
       }
