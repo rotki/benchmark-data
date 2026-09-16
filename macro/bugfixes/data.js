@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1789454563354,
+  "lastUpdate": 1789540807606,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (bugfixes)": [
@@ -8656,6 +8656,142 @@ window.BENCHMARK_DATA = {
             "value": 1765.84,
             "unit": "ms",
             "extra": "min 1760.62ms, stddev 8.82ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "b5c98a2c08eb913a21a03da71049f303aab442d9",
+          "message": "feat(frontend): move background tasks into a dock\n\nBackground work leaves the notification drawer for a pill anchored in\nthe bottom-right corner, which opens the task tree above it.\n\n- TaskDock: the pill names the primary job with its count and \"+N more\",\n  says \"Queued\" while nothing has started, and never opens onto an\n  empty panel\n- AppCore mounts the dock, and the scroll-to-top button moves up while\n  the dock is visible so the two stack instead of overlapping\n- the notification drawer drops its task section and the bell stops\n  turning into a spinner; PendingTasks and NoTasksRunning are removed\n  along with the unused no_task_running key in every locale\n- waitForNoRunningTasks polls the pill, which renders under the same\n  condition the bell's spinner did",
+          "timestamp": "2026-09-15T15:49:55Z",
+          "url": "https://github.com/rotki/rotki/commit/b5c98a2c08eb913a21a03da71049f303aab442d9"
+        },
+        "date": 1789540806386,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 1423.37,
+            "unit": "ms",
+            "extra": "min 1302.74ms, stddev 1107.31ms"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 1110.59,
+            "unit": "ms",
+            "extra": "min 943.46ms, stddev 348.71ms"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 4.6,
+            "unit": "ms",
+            "extra": "min 4.36ms, stddev 0.4ms"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 28.26,
+            "unit": "ms",
+            "extra": "min 27.77ms, stddev 2.22ms"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 1.86,
+            "unit": "ms",
+            "extra": "min 1.8ms, stddev 0.09ms"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 1.54,
+            "unit": "ms",
+            "extra": "min 1.51ms, stddev 0.07ms"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 71.4,
+            "unit": "ms",
+            "extra": "min 69.61ms, stddev 2.74ms"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 55,
+            "unit": "ms",
+            "extra": "min 49.25ms, stddev 32.13ms"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 1371.27,
+            "unit": "ms",
+            "extra": "min 1274.85ms, stddev 65.51ms"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 1157.78,
+            "unit": "ms",
+            "extra": "min 989.48ms, stddev 217.37ms"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 760.49,
+            "unit": "ms",
+            "extra": "min 755.81ms, stddev 7.82ms"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 758.74,
+            "unit": "ms",
+            "extra": "min 753.29ms, stddev 3.43ms"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 839.81,
+            "unit": "ms",
+            "extra": "min 828.45ms, stddev 6.13ms"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 745.97,
+            "unit": "ms",
+            "extra": "min 742.05ms, stddev 6.77ms"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 28.05,
+            "unit": "ms",
+            "extra": "min 27.54ms, stddev 0.32ms"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 1.94,
+            "unit": "ms",
+            "extra": "min 1.79ms, stddev 0.12ms"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 1.53,
+            "unit": "ms",
+            "extra": "min 1.48ms, stddev 0.03ms"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 1152.62,
+            "unit": "ms",
+            "extra": "min 1135.58ms, stddev 21.4ms"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 1595.3,
+            "unit": "ms",
+            "extra": "min 1520.5ms, stddev 289.08ms"
           }
         ]
       }
