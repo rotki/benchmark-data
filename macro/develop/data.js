@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1789540496311,
+  "lastUpdate": 1789626874875,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (develop)": [
@@ -13108,6 +13108,142 @@ window.BENCHMARK_DATA = {
             "value": 1718.52,
             "unit": "ms",
             "extra": "min 1691.58ms, stddev 14.97ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Yábir Benchakhtir",
+            "username": "yabirgb",
+            "email": "git@yabirgb.com"
+          },
+          "committer": {
+            "name": "GitHub",
+            "username": "web-flow",
+            "email": "noreply@github.com"
+          },
+          "id": "c13f20fe853860ce373fff6cc64ebf116b922bd1",
+          "message": "Flag for log destination (#13145)",
+          "timestamp": "2026-09-16T15:51:28Z",
+          "url": "https://github.com/rotki/rotki/commit/c13f20fe853860ce373fff6cc64ebf116b922bd1"
+        },
+        "date": 1789626874332,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 2258.99,
+            "unit": "ms",
+            "extra": "min 2205.7ms, stddev 1579.92ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 1335.61,
+            "unit": "ms",
+            "extra": "min 1290.18ms, stddev 416.37ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 6.82,
+            "unit": "ms",
+            "extra": "min 6.54ms, stddev 0.73ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 40.4,
+            "unit": "ms",
+            "extra": "min 39.85ms, stddev 1.12ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 2.64,
+            "unit": "ms",
+            "extra": "min 2.5ms, stddev 0.17ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 2.1,
+            "unit": "ms",
+            "extra": "min 2.01ms, stddev 0.1ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 108.01,
+            "unit": "ms",
+            "extra": "min 106.75ms, stddev 6.85ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 72.27,
+            "unit": "ms",
+            "extra": "min 71.22ms, stddev 32.32ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 2204.81,
+            "unit": "ms",
+            "extra": "min 2157.23ms, stddev 41.85ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 1397.76,
+            "unit": "ms",
+            "extra": "min 1340.75ms, stddev 38.17ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 972.12,
+            "unit": "ms",
+            "extra": "min 968.52ms, stddev 6.41ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 973.91,
+            "unit": "ms",
+            "extra": "min 965.86ms, stddev 5.45ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 1078.63,
+            "unit": "ms",
+            "extra": "min 1065.85ms, stddev 6.95ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 959.18,
+            "unit": "ms",
+            "extra": "min 951.26ms, stddev 6.08ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 40.77,
+            "unit": "ms",
+            "extra": "min 39.24ms, stddev 0.79ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 2.68,
+            "unit": "ms",
+            "extra": "min 2.46ms, stddev 0.22ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 2.08,
+            "unit": "ms",
+            "extra": "min 2.03ms, stddev 0.09ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 1469.62,
+            "unit": "ms",
+            "extra": "min 1456.01ms, stddev 10.03ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 1685.1,
+            "unit": "ms",
+            "extra": "min 1675.21ms, stddev 11.23ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
           }
         ]
       }
