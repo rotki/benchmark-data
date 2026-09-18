@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1789627403045,
+  "lastUpdate": 1789713655620,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (bugfixes)": [
@@ -5504,6 +5504,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.000003468905838447002",
             "extra": "mean: 34.96427286412961 usec\nrounds: 6637"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Yábir Benchakhtir",
+            "username": "yabirgb",
+            "email": "git@yabirgb.com"
+          },
+          "committer": {
+            "name": "GitHub",
+            "username": "web-flow",
+            "email": "noreply@github.com"
+          },
+          "id": "31aba39236da1f360e6b61c984affdc576946e62",
+          "message": "Improve negative balance options for withdrawal from exchanges (#13153)",
+          "timestamp": "2026-09-17T17:49:55Z",
+          "url": "https://github.com/rotki/rotki/commit/31aba39236da1f360e6b61c984affdc576946e62"
+        },
+        "date": 1789713653963,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 461.0437276766255,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000036960446859167086",
+            "extra": "mean: 2.168991659509999 msec\nrounds: 326"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 311.69001038538266,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00023439117094497565",
+            "extra": "mean: 3.208315848055479 msec\nrounds: 283"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 1010.7763156490756,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000010568064943576707",
+            "extra": "mean: 989.3385752295198 usec\nrounds: 977"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 755.4196659225635,
+            "unit": "iter/sec",
+            "range": "stddev: 0.009543792465266316",
+            "extra": "mean: 1.323767496546096 msec\nrounds: 1013"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 3.491001024631049,
+            "unit": "iter/sec",
+            "range": "stddev: 0.14372265059862271",
+            "extra": "mean: 286.45078960000774 msec\nrounds: 5"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 45183.31785923761,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0000018130661140918492",
+            "extra": "mean: 22.132062172046815 usec\nrounds: 6482"
           }
         ]
       }
