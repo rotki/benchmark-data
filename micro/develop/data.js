@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1789974308657,
+  "lastUpdate": 1790059720463,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (develop)": [
@@ -6180,6 +6180,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.000003842181350448399",
             "extra": "mean: 34.89884544706821 usec\nrounds: 7072"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "15836a712e0f6592a7e07b7809d4de2f975a4c87",
+          "message": "test(frontend): cover the price oracle settings",
+          "timestamp": "2026-09-21T15:08:46Z",
+          "url": "https://github.com/rotki/rotki/commit/15836a712e0f6592a7e07b7809d4de2f975a4c87"
+        },
+        "date": 1790059719352,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 117.33744969174978,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00008791058997663237",
+            "extra": "mean: 8.52242828378357 msec\nrounds: 74"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 104.21789884077148,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00009539543635053682",
+            "extra": "mean: 9.59528076389107 msec\nrounds: 72"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 777.3858017813931,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000015919489127154837",
+            "extra": "mean: 1.2863625727514993 msec\nrounds: 756"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 2934.440090764715,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00024110098254182064",
+            "extra": "mean: 340.7805131708789 usec\nrounds: 1025"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 14.923871636919102,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0005604477578696058",
+            "extra": "mean: 67.00674090000689 msec\nrounds: 10"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 35305.749471772426,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0000021173322369732803",
+            "extra": "mean: 28.323998639358095 usec\nrounds: 6618"
           }
         ]
       }
