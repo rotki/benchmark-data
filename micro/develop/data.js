@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1790059720463,
+  "lastUpdate": 1790145586820,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (develop)": [
@@ -6244,6 +6244,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.0000021173322369732803",
             "extra": "mean: 28.323998639358095 usec\nrounds: 6618"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "fa0d99ebdab9bc031b1ef1ba43162c38d548171d",
+          "message": "test(frontend): skip minifying the coverage build\n\nV8 coverage of minified chunks does not map back to the right lines.\nThe minifier moves, merges and inlines statements, so executed code\nlands on the wrong source ranges or on none: aggregateTotals() in\naccount-helpers.ts ran 168 times by istanbul's count, yet the minified\nreport had its body at 0. Click handlers and computed bodies in SFCs had\nno line at all.\n\nOn the same 26 tests, an unminified build keeps 78% of the unit report's\n.vue lines and 94% of its .ts lines, against 61% and 66% minified, with\nfive times the .vue branch data. The report agrees with istanbul source\ninstrumentation on 98.9% of shared .ts lines, and two runs of it differ\non 0.08% of lines.\n\nVITE_COVERAGE is only set for the e2e coverage build, so a release is\nstill minified. The e2e suite now runs against an unminified bundle.",
+          "timestamp": "2026-09-21T16:53:03Z",
+          "url": "https://github.com/rotki/rotki/commit/fa0d99ebdab9bc031b1ef1ba43162c38d548171d"
+        },
+        "date": 1790145585539,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 166.88493680828194,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000047800995423519304",
+            "extra": "mean: 5.992152552083259 msec\nrounds: 96"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 145.25574955207435,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0001026646981480054",
+            "extra": "mean: 6.884409072162055 msec\nrounds: 97"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 1119.8082082896983,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000010087761475404242",
+            "extra": "mean: 893.0100642210122 usec\nrounds: 1090"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 633.0734478356936,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00562288528117092",
+            "extra": "mean: 1.579595548381833 msec\nrounds: 31"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 4.489791415340524,
+            "unit": "iter/sec",
+            "range": "stddev: 0.11023174155318144",
+            "extra": "mean: 222.7274961111208 msec\nrounds: 9"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 46920.90156184026,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000002132357601078789",
+            "extra": "mean: 21.312463458998796 usec\nrounds: 8169"
           }
         ]
       }
