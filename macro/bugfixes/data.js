@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1790059645204,
+  "lastUpdate": 1790145517200,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (bugfixes)": [
@@ -9608,6 +9608,142 @@ window.BENCHMARK_DATA = {
             "value": 1126.25,
             "unit": "ms",
             "extra": "min 1040.66ms, stddev 149.16ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "fa0d99ebdab9bc031b1ef1ba43162c38d548171d",
+          "message": "test(frontend): skip minifying the coverage build\n\nV8 coverage of minified chunks does not map back to the right lines.\nThe minifier moves, merges and inlines statements, so executed code\nlands on the wrong source ranges or on none: aggregateTotals() in\naccount-helpers.ts ran 168 times by istanbul's count, yet the minified\nreport had its body at 0. Click handlers and computed bodies in SFCs had\nno line at all.\n\nOn the same 26 tests, an unminified build keeps 78% of the unit report's\n.vue lines and 94% of its .ts lines, against 61% and 66% minified, with\nfive times the .vue branch data. The report agrees with istanbul source\ninstrumentation on 98.9% of shared .ts lines, and two runs of it differ\non 0.08% of lines.\n\nVITE_COVERAGE is only set for the e2e coverage build, so a release is\nstill minified. The e2e suite now runs against an unminified bundle.",
+          "timestamp": "2026-09-21T16:53:03Z",
+          "url": "https://github.com/rotki/rotki/commit/fa0d99ebdab9bc031b1ef1ba43162c38d548171d"
+        },
+        "date": 1790145515821,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 2167.21,
+            "unit": "ms",
+            "extra": "min 2157.02ms, stddev 1687.9ms"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 1458.68,
+            "unit": "ms",
+            "extra": "min 1414.81ms, stddev 433.66ms"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 7.37,
+            "unit": "ms",
+            "extra": "min 6.96ms, stddev 0.28ms"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 45.51,
+            "unit": "ms",
+            "extra": "min 43.65ms, stddev 0.86ms"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 2.79,
+            "unit": "ms",
+            "extra": "min 2.61ms, stddev 0.11ms"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 2.27,
+            "unit": "ms",
+            "extra": "min 2.13ms, stddev 0.07ms"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 132.37,
+            "unit": "ms",
+            "extra": "min 131.69ms, stddev 1.98ms"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 88.47,
+            "unit": "ms",
+            "extra": "min 86.1ms, stddev 1.89ms"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 2104.96,
+            "unit": "ms",
+            "extra": "min 2053.07ms, stddev 57.12ms"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 1477.39,
+            "unit": "ms",
+            "extra": "min 1463.99ms, stddev 26.62ms"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 1056.46,
+            "unit": "ms",
+            "extra": "min 1054.42ms, stddev 7.04ms"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 1058.13,
+            "unit": "ms",
+            "extra": "min 1050.47ms, stddev 8.38ms"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 1163.04,
+            "unit": "ms",
+            "extra": "min 1159.52ms, stddev 9.02ms"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 1044.46,
+            "unit": "ms",
+            "extra": "min 1036.86ms, stddev 7.91ms"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 46.01,
+            "unit": "ms",
+            "extra": "min 43.43ms, stddev 1.83ms"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 2.67,
+            "unit": "ms",
+            "extra": "min 2.59ms, stddev 0.22ms"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 2.18,
+            "unit": "ms",
+            "extra": "min 2.09ms, stddev 0.18ms"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 1646.51,
+            "unit": "ms",
+            "extra": "min 1638.05ms, stddev 9.41ms"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 1804.39,
+            "unit": "ms",
+            "extra": "min 1796.44ms, stddev 5.54ms"
           }
         ]
       }
