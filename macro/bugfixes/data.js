@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1790145517200,
+  "lastUpdate": 1790232323386,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (bugfixes)": [
@@ -9744,6 +9744,142 @@ window.BENCHMARK_DATA = {
             "value": 1804.39,
             "unit": "ms",
             "extra": "min 1796.44ms, stddev 5.54ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "e8d14e108350a69416f5d77aec39fee4539b0de8",
+          "message": "refactor(frontend): replace SimpleTable with RuiTable\n\nRuiTable (ui-library 2.26.0) covers what SimpleTable did and adds\nshared loading, error and empty states. The RPC node manager and the\nprioritized list drop their hand-rolled state rows for those props, and\nthe simple RPC manager moves its add button into the empty slot.\n\nRuiTable scopes its cell rules under :where(), so cell overrides no\nlonger need !important.",
+          "timestamp": "2026-09-23T09:02:35Z",
+          "url": "https://github.com/rotki/rotki/commit/e8d14e108350a69416f5d77aec39fee4539b0de8"
+        },
+        "date": 1790232322893,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 2156.24,
+            "unit": "ms",
+            "extra": "min 2105.89ms, stddev 1701.74ms"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 1436.96,
+            "unit": "ms",
+            "extra": "min 1381.27ms, stddev 431.46ms"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 6.79,
+            "unit": "ms",
+            "extra": "min 6.55ms, stddev 0.32ms"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 44.26,
+            "unit": "ms",
+            "extra": "min 42.33ms, stddev 1.23ms"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 2.66,
+            "unit": "ms",
+            "extra": "min 2.59ms, stddev 0.04ms"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 2.25,
+            "unit": "ms",
+            "extra": "min 2.11ms, stddev 0.08ms"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 129.65,
+            "unit": "ms",
+            "extra": "min 128.32ms, stddev 1.61ms"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 87.11,
+            "unit": "ms",
+            "extra": "min 86.72ms, stddev 1.14ms"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 2169.11,
+            "unit": "ms",
+            "extra": "min 2109.77ms, stddev 42.67ms"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 1500.38,
+            "unit": "ms",
+            "extra": "min 1474.69ms, stddev 24.55ms"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 1057.85,
+            "unit": "ms",
+            "extra": "min 1054.69ms, stddev 5.76ms"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 1060.51,
+            "unit": "ms",
+            "extra": "min 1051.31ms, stddev 5.64ms"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 1168.48,
+            "unit": "ms",
+            "extra": "min 1163.17ms, stddev 5.14ms"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 1045.09,
+            "unit": "ms",
+            "extra": "min 1040.49ms, stddev 6.84ms"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 45.85,
+            "unit": "ms",
+            "extra": "min 43.33ms, stddev 1.78ms"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 2.7,
+            "unit": "ms",
+            "extra": "min 2.54ms, stddev 0.33ms"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 2.28,
+            "unit": "ms",
+            "extra": "min 2.17ms, stddev 0.14ms"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 1656.53,
+            "unit": "ms",
+            "extra": "min 1648.3ms, stddev 4.82ms"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 1807.89,
+            "unit": "ms",
+            "extra": "min 1803.07ms, stddev 27.19ms"
           }
         ]
       }
