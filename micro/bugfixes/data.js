@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1790145783355,
+  "lastUpdate": 1790232562724,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (bugfixes)": [
@@ -5888,6 +5888,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.0000041374054804310686",
             "extra": "mean: 35.797356149872385 usec\nrounds: 5391"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "e8d14e108350a69416f5d77aec39fee4539b0de8",
+          "message": "refactor(frontend): replace SimpleTable with RuiTable\n\nRuiTable (ui-library 2.26.0) covers what SimpleTable did and adds\nshared loading, error and empty states. The RPC node manager and the\nprioritized list drop their hand-rolled state rows for those props, and\nthe simple RPC manager moves its add button into the empty slot.\n\nRuiTable scopes its cell rules under :where(), so cell overrides no\nlonger need !important.",
+          "timestamp": "2026-09-23T09:02:35Z",
+          "url": "https://github.com/rotki/rotki/commit/e8d14e108350a69416f5d77aec39fee4539b0de8"
+        },
+        "date": 1790232561892,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 447.67243628852896,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00006834261122840416",
+            "extra": "mean: 2.2337761249957566 msec\nrounds: 312"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 309.93187065558226,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00009550211718696046",
+            "extra": "mean: 3.226515549642422 msec\nrounds: 282"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 1008.0429041465657,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000012404985005854276",
+            "extra": "mean: 992.0212680298811 usec\nrounds: 929"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 1637.4843549969778,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0048882166129320965",
+            "extra": "mean: 610.692857582658 usec\nrounds: 976"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 13.153801876995452,
+            "unit": "iter/sec",
+            "range": "stddev: 0.03701343586196208",
+            "extra": "mean: 76.02364771426957 msec\nrounds: 7"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 44938.103703041044,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0000016073454465422556",
+            "extra": "mean: 22.252830395518625 usec\nrounds: 6238"
           }
         ]
       }
