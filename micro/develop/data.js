@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1790232390751,
+  "lastUpdate": 1790318143942,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (develop)": [
@@ -6372,6 +6372,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.000004437684961635812",
             "extra": "mean: 35.58144243459552 usec\nrounds: 6801"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "d8e1ac317461d28fa5ccf98031f6946896205e01",
+          "message": "fix(frontend): lock price refresh only on refresh\n\nThe price refresh buttons, the price rows' loading state, the manual\nbalances table and the dashboard's busy flag all read the whole PRICES\nactivity kind. That kind also covers historic and daily lookups, the\noracle cache and manual price edits, so a single historic lookup\ndisabled every refresh button and put every price row in loading.\n\nusePriceRefresh now exposes `refreshing`, true only while the exchange\nrates or the latest prices are being fetched, and the four call sites\nread it instead.",
+          "timestamp": "2026-09-24T15:03:53Z",
+          "url": "https://github.com/rotki/rotki/commit/d8e1ac317461d28fa5ccf98031f6946896205e01"
+        },
+        "date": 1790318142585,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 142.26453955891617,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00011142706204750588",
+            "extra": "mean: 7.02915851764922 msec\nrounds: 85"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 126.2834813834629,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00010984105764356956",
+            "extra": "mean: 7.9186920493859 msec\nrounds: 81"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 993.0864193561667,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0000592883667682762",
+            "extra": "mean: 1.0069617109942108 msec\nrounds: 955"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 581.0214909683299,
+            "unit": "iter/sec",
+            "range": "stddev: 0.013841157045550851",
+            "extra": "mean: 1.7211067327878027 msec\nrounds: 1104"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 6.850619980217639,
+            "unit": "iter/sec",
+            "range": "stddev: 0.17403858913672546",
+            "extra": "mean: 145.9721897999998 msec\nrounds: 5"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 44396.89208390765,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00000193011485023931",
+            "extra": "mean: 22.52409916689789 usec\nrounds: 7089"
           }
         ]
       }
