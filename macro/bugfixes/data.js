@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1790232323386,
+  "lastUpdate": 1790318069074,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (bugfixes)": [
@@ -9880,6 +9880,142 @@ window.BENCHMARK_DATA = {
             "value": 1807.89,
             "unit": "ms",
             "extra": "min 1803.07ms, stddev 27.19ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "d8e1ac317461d28fa5ccf98031f6946896205e01",
+          "message": "fix(frontend): lock price refresh only on refresh\n\nThe price refresh buttons, the price rows' loading state, the manual\nbalances table and the dashboard's busy flag all read the whole PRICES\nactivity kind. That kind also covers historic and daily lookups, the\noracle cache and manual price edits, so a single historic lookup\ndisabled every refresh button and put every price row in loading.\n\nusePriceRefresh now exposes `refreshing`, true only while the exchange\nrates or the latest prices are being fetched, and the four call sites\nread it instead.",
+          "timestamp": "2026-09-24T15:03:53Z",
+          "url": "https://github.com/rotki/rotki/commit/d8e1ac317461d28fa5ccf98031f6946896205e01"
+        },
+        "date": 1790318067998,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 1278,
+            "unit": "ms",
+            "extra": "min 1175.55ms, stddev 1057.71ms"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 826.34,
+            "unit": "ms",
+            "extra": "min 813.38ms, stddev 267.95ms"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 3.66,
+            "unit": "ms",
+            "extra": "min 3.34ms, stddev 0.42ms"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 24.26,
+            "unit": "ms",
+            "extra": "min 23.19ms, stddev 2.67ms"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 1.41,
+            "unit": "ms",
+            "extra": "min 1.25ms, stddev 0.11ms"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 1.12,
+            "unit": "ms",
+            "extra": "min 1.0ms, stddev 0.09ms"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 59.49,
+            "unit": "ms",
+            "extra": "min 58.27ms, stddev 3.39ms"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 41.14,
+            "unit": "ms",
+            "extra": "min 38.41ms, stddev 1.88ms"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 1227.28,
+            "unit": "ms",
+            "extra": "min 1173.83ms, stddev 97.74ms"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 874.17,
+            "unit": "ms",
+            "extra": "min 862.4ms, stddev 13.94ms"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 597.15,
+            "unit": "ms",
+            "extra": "min 585.27ms, stddev 8.58ms"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 589.58,
+            "unit": "ms",
+            "extra": "min 582.66ms, stddev 5.04ms"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 649.5,
+            "unit": "ms",
+            "extra": "min 640.35ms, stddev 10.5ms"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 585.44,
+            "unit": "ms",
+            "extra": "min 576.53ms, stddev 9.91ms"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 23.64,
+            "unit": "ms",
+            "extra": "min 23.4ms, stddev 1.17ms"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 1.4,
+            "unit": "ms",
+            "extra": "min 1.36ms, stddev 0.15ms"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 1.14,
+            "unit": "ms",
+            "extra": "min 1.11ms, stddev 0.06ms"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 872.61,
+            "unit": "ms",
+            "extra": "min 864.17ms, stddev 15.6ms"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 982.46,
+            "unit": "ms",
+            "extra": "min 966.78ms, stddev 21.49ms"
           }
         ]
       }
