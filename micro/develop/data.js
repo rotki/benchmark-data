@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1790492710974,
+  "lastUpdate": 1790580846764,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (develop)": [
@@ -6564,6 +6564,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.000004075425471039788",
             "extra": "mean: 25.672051067764993 usec\nrounds: 7441"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "a5e34ac683710c2a22061c7a49da6514205c4d28",
+          "message": "test(frontend): cover empty account groups\n\nA tracked address whose balances have not loaded yet, and an xpub with no derived addresses, both show as empty rows with nothing to expand.",
+          "timestamp": "2026-09-25T14:25:31Z",
+          "url": "https://github.com/rotki/rotki/commit/a5e34ac683710c2a22061c7a49da6514205c4d28"
+        },
+        "date": 1790580845777,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 149.39329274749292,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00011442016297731648",
+            "extra": "mean: 6.693740941169407 msec\nrounds: 17"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 131.4271462317681,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00007691642530946474",
+            "extra": "mean: 7.608778160917594 msec\nrounds: 87"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 1003.4182925185876,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000010008583566172424",
+            "extra": "mean: 996.5933523994189 usec\nrounds: 979"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 2276.559039039248,
+            "unit": "iter/sec",
+            "range": "stddev: 0.002493708493242659",
+            "extra": "mean: 439.25941864526357 usec\nrounds: 1180"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 14.805333541879435,
+            "unit": "iter/sec",
+            "range": "stddev: 0.024245667500497503",
+            "extra": "mean: 67.54322671430047 msec\nrounds: 7"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 44264.72640806104,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0000016396646504032699",
+            "extra": "mean: 22.591351650552397 usec\nrounds: 7115"
           }
         ]
       }
