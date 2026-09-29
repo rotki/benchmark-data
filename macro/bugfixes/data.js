@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1790580779744,
+  "lastUpdate": 1790667059620,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (bugfixes)": [
@@ -10424,6 +10424,142 @@ window.BENCHMARK_DATA = {
             "value": 1762.47,
             "unit": "ms",
             "extra": "min 1755.8ms, stddev 5.0ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "1d409576f1112b65b9c0cc251bff0789e399f823",
+          "message": "feat(frontend): list premium and Binance in center\n\nTwo more one-off notifications become action center rows under\nIntegrations & keys.\n\n- Premium inactive: the backend reports premium status on every hourly\n  check, but only while a premium key is saved, so an inactive report\n  means a saved key that does not work. The row names the cause:\n  expired (renew), device limit (the backend's own explanation) or an\n  unreachable server (rotki retries, so it is only worth a look). It\n  offers removing the key, and leaves once a check finds the key\n  working, a new key is saved or the key is removed. A pure reader in\n  premium/core turns the report into a status. \"Premium activated\"\n  stays a notification, shown only on a change.\n- Binance pairs missing: raised when a trade history query finds an\n  account with no market pairs selected, one row per account. It\n  leaves once pairs are saved, the account is removed or renamed, or a\n  re-check finds pairs, and it offers \"Do not show again for this\n  account\" (suppressBinancePairsMissing) for balance-only accounts.\n\nThe notification texts nothing else uses are removed from every\nlocale.",
+          "timestamp": "2026-09-28T15:15:03Z",
+          "url": "https://github.com/rotki/rotki/commit/1d409576f1112b65b9c0cc251bff0789e399f823"
+        },
+        "date": 1790667058820,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 2102.72,
+            "unit": "ms",
+            "extra": "min 2054.25ms, stddev 1632.82ms"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 1401.73,
+            "unit": "ms",
+            "extra": "min 1368.73ms, stddev 420.94ms"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 6.54,
+            "unit": "ms",
+            "extra": "min 6.45ms, stddev 0.18ms"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 43.23,
+            "unit": "ms",
+            "extra": "min 42.18ms, stddev 1.54ms"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 2.59,
+            "unit": "ms",
+            "extra": "min 2.47ms, stddev 0.07ms"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 2.19,
+            "unit": "ms",
+            "extra": "min 2.08ms, stddev 0.32ms"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 126.94,
+            "unit": "ms",
+            "extra": "min 126.17ms, stddev 8.36ms"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 86.39,
+            "unit": "ms",
+            "extra": "min 85.69ms, stddev 0.67ms"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 2052.58,
+            "unit": "ms",
+            "extra": "min 2052.39ms, stddev 24.35ms"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 1478.89,
+            "unit": "ms",
+            "extra": "min 1433.77ms, stddev 25.54ms"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 1053.85,
+            "unit": "ms",
+            "extra": "min 1049.83ms, stddev 4.23ms"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 1054.68,
+            "unit": "ms",
+            "extra": "min 1053.16ms, stddev 2.84ms"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 1162.26,
+            "unit": "ms",
+            "extra": "min 1161.14ms, stddev 3.6ms"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 1038.51,
+            "unit": "ms",
+            "extra": "min 1036.58ms, stddev 4.03ms"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 42.59,
+            "unit": "ms",
+            "extra": "min 41.82ms, stddev 0.9ms"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 2.65,
+            "unit": "ms",
+            "extra": "min 2.54ms, stddev 0.08ms"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 2.24,
+            "unit": "ms",
+            "extra": "min 2.17ms, stddev 0.04ms"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 1642.33,
+            "unit": "ms",
+            "extra": "min 1636.57ms, stddev 6.83ms"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 1791.76,
+            "unit": "ms",
+            "extra": "min 1781.84ms, stddev 12.18ms"
           }
         ]
       }
