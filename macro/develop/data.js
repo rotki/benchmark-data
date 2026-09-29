@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1790580512683,
+  "lastUpdate": 1790666751058,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (develop)": [
@@ -14740,6 +14740,142 @@ window.BENCHMARK_DATA = {
             "value": 1378.43,
             "unit": "ms",
             "extra": "min 1374.75ms, stddev 4.1ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "1d409576f1112b65b9c0cc251bff0789e399f823",
+          "message": "feat(frontend): list premium and Binance in center\n\nTwo more one-off notifications become action center rows under\nIntegrations & keys.\n\n- Premium inactive: the backend reports premium status on every hourly\n  check, but only while a premium key is saved, so an inactive report\n  means a saved key that does not work. The row names the cause:\n  expired (renew), device limit (the backend's own explanation) or an\n  unreachable server (rotki retries, so it is only worth a look). It\n  offers removing the key, and leaves once a check finds the key\n  working, a new key is saved or the key is removed. A pure reader in\n  premium/core turns the report into a status. \"Premium activated\"\n  stays a notification, shown only on a change.\n- Binance pairs missing: raised when a trade history query finds an\n  account with no market pairs selected, one row per account. It\n  leaves once pairs are saved, the account is removed or renamed, or a\n  re-check finds pairs, and it offers \"Do not show again for this\n  account\" (suppressBinancePairsMissing) for balance-only accounts.\n\nThe notification texts nothing else uses are removed from every\nlocale.",
+          "timestamp": "2026-09-28T15:15:03Z",
+          "url": "https://github.com/rotki/rotki/commit/1d409576f1112b65b9c0cc251bff0789e399f823"
+        },
+        "date": 1790666750224,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 2518.83,
+            "unit": "ms",
+            "extra": "min 2471.61ms, stddev 1667.25ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 1456.16,
+            "unit": "ms",
+            "extra": "min 1396.22ms, stddev 410.31ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 7.48,
+            "unit": "ms",
+            "extra": "min 7.03ms, stddev 0.61ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 43.25,
+            "unit": "ms",
+            "extra": "min 41.23ms, stddev 3.41ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 2.61,
+            "unit": "ms",
+            "extra": "min 2.44ms, stddev 0.19ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 2.13,
+            "unit": "ms",
+            "extra": "min 1.96ms, stddev 0.1ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 127.83,
+            "unit": "ms",
+            "extra": "min 123.41ms, stddev 5.83ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 88.63,
+            "unit": "ms",
+            "extra": "min 85.04ms, stddev 4.58ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 2569,
+            "unit": "ms",
+            "extra": "min 2530.28ms, stddev 17.94ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 1719.37,
+            "unit": "ms",
+            "extra": "min 1682.82ms, stddev 23.5ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 979.13,
+            "unit": "ms",
+            "extra": "min 972.49ms, stddev 7.19ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 975.7,
+            "unit": "ms",
+            "extra": "min 973.2ms, stddev 3.7ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 1081.65,
+            "unit": "ms",
+            "extra": "min 1075.96ms, stddev 4.15ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 962.77,
+            "unit": "ms",
+            "extra": "min 956.3ms, stddev 5.18ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 46.71,
+            "unit": "ms",
+            "extra": "min 42.94ms, stddev 2.36ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 2.56,
+            "unit": "ms",
+            "extra": "min 2.55ms, stddev 0.18ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 2.14,
+            "unit": "ms",
+            "extra": "min 2.03ms, stddev 0.12ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 1539.91,
+            "unit": "ms",
+            "extra": "min 1518.24ms, stddev 11.13ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 1745.94,
+            "unit": "ms",
+            "extra": "min 1721.8ms, stddev 22.6ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
           }
         ]
       }
