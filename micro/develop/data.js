@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1790580846764,
+  "lastUpdate": 1790667136879,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (develop)": [
@@ -6628,6 +6628,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.0000016396646504032699",
             "extra": "mean: 22.591351650552397 usec\nrounds: 7115"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "1d409576f1112b65b9c0cc251bff0789e399f823",
+          "message": "feat(frontend): list premium and Binance in center\n\nTwo more one-off notifications become action center rows under\nIntegrations & keys.\n\n- Premium inactive: the backend reports premium status on every hourly\n  check, but only while a premium key is saved, so an inactive report\n  means a saved key that does not work. The row names the cause:\n  expired (renew), device limit (the backend's own explanation) or an\n  unreachable server (rotki retries, so it is only worth a look). It\n  offers removing the key, and leaves once a check finds the key\n  working, a new key is saved or the key is removed. A pure reader in\n  premium/core turns the report into a status. \"Premium activated\"\n  stays a notification, shown only on a change.\n- Binance pairs missing: raised when a trade history query finds an\n  account with no market pairs selected, one row per account. It\n  leaves once pairs are saved, the account is removed or renamed, or a\n  re-check finds pairs, and it offers \"Do not show again for this\n  account\" (suppressBinancePairsMissing) for balance-only accounts.\n\nThe notification texts nothing else uses are removed from every\nlocale.",
+          "timestamp": "2026-09-28T15:15:03Z",
+          "url": "https://github.com/rotki/rotki/commit/1d409576f1112b65b9c0cc251bff0789e399f823"
+        },
+        "date": 1790667136143,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 109.5457686170607,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00019617563234878595",
+            "extra": "mean: 9.128604533286005 msec\nrounds: 15"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 96.49741995074385,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00013794953705333345",
+            "extra": "mean: 10.362971367632834 msec\nrounds: 68"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 730.6465022545265,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00004750236205211216",
+            "extra": "mean: 1.3686509097276731 msec\nrounds: 709"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 2652.523288581549,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0002536419190161778",
+            "extra": "mean: 376.99951751781055 usec\nrounds: 1113"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 12.777703173741617,
+            "unit": "iter/sec",
+            "range": "stddev: 0.009221731898966417",
+            "extra": "mean: 78.26132649997817 msec\nrounds: 10"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 27987.702503444292,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000003684099533671361",
+            "extra": "mean: 35.72997818870396 usec\nrounds: 6327"
           }
         ]
       }
