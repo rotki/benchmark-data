@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1790666751058,
+  "lastUpdate": 1790752505248,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (develop)": [
@@ -14876,6 +14876,142 @@ window.BENCHMARK_DATA = {
             "value": 1745.94,
             "unit": "ms",
             "extra": "min 1721.8ms, stddev 22.6ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "adc5191fc53accdd436ca07be705d562e3715552",
+          "message": "refactor(frontend): plan an account delete once\n\nThe confirmation wording and the delete request each ran their own case\nanalysis over the row, so a change to one that missed the other would\ntell the user it deletes something other than what it sends. The row is\nnow turned once into an AccountDeletion in accounts/core, discriminated\nby an as-const DeletionKind, and both the message and the request switch\nover that one value, which fails to compile when a kind is unhandled.\n\nWhat left the backend is a RemovedAccounts rather than a string list\nthat held addresses, validator keys and xpubs alike, and the store prune\nis the pure withoutRemoved, which no longer deletes entries from the\nbalances store's own per-chain object before replacing it. Each removal\nresolves to an Option of what it removed, so a failed or cancelled\ndelete prunes nothing by construction.",
+          "timestamp": "2026-09-29T12:10:11Z",
+          "url": "https://github.com/rotki/rotki/commit/adc5191fc53accdd436ca07be705d562e3715552"
+        },
+        "date": 1790752504499,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 1838.57,
+            "unit": "ms",
+            "extra": "min 1790.02ms, stddev 1304.72ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 1109.57,
+            "unit": "ms",
+            "extra": "min 1069.61ms, stddev 341.09ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 5.63,
+            "unit": "ms",
+            "extra": "min 5.56ms, stddev 0.04ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 32.12,
+            "unit": "ms",
+            "extra": "min 31.47ms, stddev 0.66ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 2.1,
+            "unit": "ms",
+            "extra": "min 2.06ms, stddev 0.04ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 1.75,
+            "unit": "ms",
+            "extra": "min 1.69ms, stddev 0.03ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 84.13,
+            "unit": "ms",
+            "extra": "min 83.5ms, stddev 8.86ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 57.16,
+            "unit": "ms",
+            "extra": "min 56.7ms, stddev 14.52ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 1788.42,
+            "unit": "ms",
+            "extra": "min 1784.76ms, stddev 3.36ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 1286.06,
+            "unit": "ms",
+            "extra": "min 1268.83ms, stddev 19.88ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 814.22,
+            "unit": "ms",
+            "extra": "min 806.58ms, stddev 4.5ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 811.37,
+            "unit": "ms",
+            "extra": "min 809.99ms, stddev 1.59ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 899.77,
+            "unit": "ms",
+            "extra": "min 892.13ms, stddev 4.88ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 800.71,
+            "unit": "ms",
+            "extra": "min 798.97ms, stddev 1.66ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 32.16,
+            "unit": "ms",
+            "extra": "min 31.7ms, stddev 0.55ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 2.12,
+            "unit": "ms",
+            "extra": "min 1.99ms, stddev 0.25ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 1.68,
+            "unit": "ms",
+            "extra": "min 1.56ms, stddev 0.1ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 1226.18,
+            "unit": "ms",
+            "extra": "min 1218.82ms, stddev 4.33ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 1380.07,
+            "unit": "ms",
+            "extra": "min 1372.63ms, stddev 4.94ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
           }
         ]
       }
