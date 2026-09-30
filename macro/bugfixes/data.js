@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1790667059620,
+  "lastUpdate": 1790752770112,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (bugfixes)": [
@@ -10560,6 +10560,142 @@ window.BENCHMARK_DATA = {
             "value": 1791.76,
             "unit": "ms",
             "extra": "min 1781.84ms, stddev 12.18ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "adc5191fc53accdd436ca07be705d562e3715552",
+          "message": "refactor(frontend): plan an account delete once\n\nThe confirmation wording and the delete request each ran their own case\nanalysis over the row, so a change to one that missed the other would\ntell the user it deletes something other than what it sends. The row is\nnow turned once into an AccountDeletion in accounts/core, discriminated\nby an as-const DeletionKind, and both the message and the request switch\nover that one value, which fails to compile when a kind is unhandled.\n\nWhat left the backend is a RemovedAccounts rather than a string list\nthat held addresses, validator keys and xpubs alike, and the store prune\nis the pure withoutRemoved, which no longer deletes entries from the\nbalances store's own per-chain object before replacing it. Each removal\nresolves to an Option of what it removed, so a failed or cancelled\ndelete prunes nothing by construction.",
+          "timestamp": "2026-09-29T12:10:11Z",
+          "url": "https://github.com/rotki/rotki/commit/adc5191fc53accdd436ca07be705d562e3715552"
+        },
+        "date": 1790752769141,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 2220.57,
+            "unit": "ms",
+            "extra": "min 2157.87ms, stddev 1670.57ms"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 1408.36,
+            "unit": "ms",
+            "extra": "min 1384.78ms, stddev 435.44ms"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 7.45,
+            "unit": "ms",
+            "extra": "min 6.77ms, stddev 0.48ms"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 46.26,
+            "unit": "ms",
+            "extra": "min 43.95ms, stddev 1.29ms"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 2.84,
+            "unit": "ms",
+            "extra": "min 2.58ms, stddev 0.19ms"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 2.28,
+            "unit": "ms",
+            "extra": "min 2.07ms, stddev 0.16ms"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 133.96,
+            "unit": "ms",
+            "extra": "min 129.0ms, stddev 3.73ms"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 89.19,
+            "unit": "ms",
+            "extra": "min 87.19ms, stddev 1.93ms"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 2266,
+            "unit": "ms",
+            "extra": "min 2218.58ms, stddev 40.14ms"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 1541.31,
+            "unit": "ms",
+            "extra": "min 1525.52ms, stddev 9.96ms"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 1075.86,
+            "unit": "ms",
+            "extra": "min 1071.98ms, stddev 2.89ms"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 1080.19,
+            "unit": "ms",
+            "extra": "min 1071.22ms, stddev 5.05ms"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 1188.12,
+            "unit": "ms",
+            "extra": "min 1185.92ms, stddev 2.71ms"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 1065.27,
+            "unit": "ms",
+            "extra": "min 1060.98ms, stddev 2.73ms"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 47.75,
+            "unit": "ms",
+            "extra": "min 45.39ms, stddev 1.28ms"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 2.95,
+            "unit": "ms",
+            "extra": "min 2.55ms, stddev 0.22ms"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 2.27,
+            "unit": "ms",
+            "extra": "min 2.25ms, stddev 0.14ms"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 1676.03,
+            "unit": "ms",
+            "extra": "min 1657.82ms, stddev 11.2ms"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 835.09,
+            "unit": "ms",
+            "extra": "min 822.2ms, stddev 7.24ms"
           }
         ]
       }
