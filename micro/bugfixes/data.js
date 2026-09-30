@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1790667212068,
+  "lastUpdate": 1790752920486,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (bugfixes)": [
@@ -6272,6 +6272,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.000004063606007076739",
             "extra": "mean: 35.33061678543421 usec\nrounds: 6315"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "adc5191fc53accdd436ca07be705d562e3715552",
+          "message": "refactor(frontend): plan an account delete once\n\nThe confirmation wording and the delete request each ran their own case\nanalysis over the row, so a change to one that missed the other would\ntell the user it deletes something other than what it sends. The row is\nnow turned once into an AccountDeletion in accounts/core, discriminated\nby an as-const DeletionKind, and both the message and the request switch\nover that one value, which fails to compile when a kind is unhandled.\n\nWhat left the backend is a RemovedAccounts rather than a string list\nthat held addresses, validator keys and xpubs alike, and the store prune\nis the pure withoutRemoved, which no longer deletes entries from the\nbalances store's own per-chain object before replacing it. Each removal\nresolves to an Option of what it removed, so a failed or cancelled\ndelete prunes nothing by construction.",
+          "timestamp": "2026-09-29T12:10:11Z",
+          "url": "https://github.com/rotki/rotki/commit/adc5191fc53accdd436ca07be705d562e3715552"
+        },
+        "date": 1790752919539,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 346.6950580106282,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00003840889110339281",
+            "extra": "mean: 2.884379159420681 msec\nrounds: 276"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 245.07158184076624,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00005029891044290734",
+            "extra": "mean: 4.080440467592623 msec\nrounds: 216"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 775.4558296427917,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000043516900080622564",
+            "extra": "mean: 1.2895641012340355 msec\nrounds: 810"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 3133.511657387178,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0001494858291887513",
+            "extra": "mean: 319.13077382128904 usec\nrounds: 1039"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 14.852678402804221,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0015101711071560985",
+            "extra": "mean: 67.32792381818471 msec\nrounds: 11"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 33129.56128749115,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000002443794952101335",
+            "extra": "mean: 30.184522859274132 usec\nrounds: 6365"
           }
         ]
       }
