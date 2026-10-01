@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1790752770112,
+  "lastUpdate": 1790840953990,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (bugfixes)": [
@@ -10696,6 +10696,142 @@ window.BENCHMARK_DATA = {
             "value": 835.09,
             "unit": "ms",
             "extra": "min 822.2ms, stddev 7.24ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "a18159a9dde6ade36d34acad21ed01990720543b",
+          "message": "feat(frontend): fold and reorder action center\n\nSections now come in the order their fixes depend on each other: keys\nfirst, then chains, history and assets. A missing key or indexer leaves\nthe chains and history behind it incomplete, so it is worth fixing first.\nThe order is fixed, so a section never moves while it is being read.\n\nEach section header folds its rows away. A folded header keeps the row\ncount, coloured by its most pressing row, and says when a new row is\ninside. The folded sections are kept per user in local storage.",
+          "timestamp": "2026-09-30T13:21:46Z",
+          "url": "https://github.com/rotki/rotki/commit/a18159a9dde6ade36d34acad21ed01990720543b"
+        },
+        "date": 1790840953377,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 1930.15,
+            "unit": "ms",
+            "extra": "min 1898.64ms, stddev 1530.45ms"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 1470.49,
+            "unit": "ms",
+            "extra": "min 1320.77ms, stddev 355.07ms"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 6.57,
+            "unit": "ms",
+            "extra": "min 6.21ms, stddev 0.32ms"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 41.81,
+            "unit": "ms",
+            "extra": "min 41.48ms, stddev 0.8ms"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 2.48,
+            "unit": "ms",
+            "extra": "min 2.38ms, stddev 0.09ms"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 1.94,
+            "unit": "ms",
+            "extra": "min 1.93ms, stddev 0.08ms"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 111.95,
+            "unit": "ms",
+            "extra": "min 111.8ms, stddev 0.43ms"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 75.09,
+            "unit": "ms",
+            "extra": "min 73.18ms, stddev 1.93ms"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 1895.57,
+            "unit": "ms",
+            "extra": "min 1845.36ms, stddev 54.47ms"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 1406.57,
+            "unit": "ms",
+            "extra": "min 1377.38ms, stddev 56.47ms"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 1062.58,
+            "unit": "ms",
+            "extra": "min 1061.06ms, stddev 1.53ms"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 1065.45,
+            "unit": "ms",
+            "extra": "min 1062.34ms, stddev 1.95ms"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 1171.89,
+            "unit": "ms",
+            "extra": "min 1170.79ms, stddev 1.33ms"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 1053.12,
+            "unit": "ms",
+            "extra": "min 1052.05ms, stddev 2.82ms"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 41.72,
+            "unit": "ms",
+            "extra": "min 41.48ms, stddev 1.07ms"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 2.43,
+            "unit": "ms",
+            "extra": "min 2.34ms, stddev 0.24ms"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 1.89,
+            "unit": "ms",
+            "extra": "min 1.82ms, stddev 0.11ms"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 1630.2,
+            "unit": "ms",
+            "extra": "min 1628.22ms, stddev 1.91ms"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 729.64,
+            "unit": "ms",
+            "extra": "min 725.82ms, stddev 2.34ms"
           }
         ]
       }
