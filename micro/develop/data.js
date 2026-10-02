@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1790841036594,
+  "lastUpdate": 1790926388296,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (develop)": [
@@ -6820,6 +6820,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.00000428684029734472",
             "extra": "mean: 36.48892342652602 usec\nrounds: 5720"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "a18159a9dde6ade36d34acad21ed01990720543b",
+          "message": "feat(frontend): fold and reorder action center\n\nSections now come in the order their fixes depend on each other: keys\nfirst, then chains, history and assets. A missing key or indexer leaves\nthe chains and history behind it incomplete, so it is worth fixing first.\nThe order is fixed, so a section never moves while it is being read.\n\nEach section header folds its rows away. A folded header keeps the row\ncount, coloured by its most pressing row, and says when a new row is\ninside. The folded sections are kept per user in local storage.",
+          "timestamp": "2026-09-30T13:21:46Z",
+          "url": "https://github.com/rotki/rotki/commit/a18159a9dde6ade36d34acad21ed01990720543b"
+        },
+        "date": 1790926387802,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 162.21215548413326,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00009769848783581013",
+            "extra": "mean: 6.164766117652722 msec\nrounds: 17"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 141.87812835713902,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00013894081648557237",
+            "extra": "mean: 7.0483027340392885 msec\nrounds: 94"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 1117.8359605443336,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000022095236706229498",
+            "extra": "mean: 894.5856416294274 usec\nrounds: 1105"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 3387.134930317421,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0002851183037886035",
+            "extra": "mean: 295.23476937669153 usec\nrounds: 1058"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 15.931173105115759,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0015539140464206555",
+            "extra": "mean: 62.770016583328925 msec\nrounds: 12"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 46809.49022910737,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0000020073597970618247",
+            "extra": "mean: 21.363189282889774 usec\nrounds: 7819"
           }
         ]
       }
