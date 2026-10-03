@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1790926388296,
+  "lastUpdate": 1791011043753,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (develop)": [
@@ -6884,6 +6884,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.0000020073597970618247",
             "extra": "mean: 21.363189282889774 usec\nrounds: 7819"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "a0fc8a5a0e41c02fa6559e0386155201b1f08cb9",
+          "message": "Merge branch 'bugfixes' into develop\n\n# Conflicts:\n#\t.github/workflows/rotki_dev_builds.yml\n#\t.github/workflows/rotki_release.yaml\n#\t.github/workflows/task_e2e_tests.yml\n#\tdocs/changelog.rst\n#\tfrontend/app/src/locales/en.json\n#\tfrontend/app/src/modules/accounts/blockchain/use-account-delete.removals.spec.ts\n#\tfrontend/app/src/modules/accounts/blockchain/use-account-delete.ts\n#\tfrontend/app/src/modules/accounts/management/AccountForm.vue\n#\tfrontend/app/src/modules/assets/prices/use-price-refresh.ts\n#\tfrontend/app/src/modules/core/messaging/handlers/missing-api-key.spec.ts\n#\tfrontend/app/src/modules/core/messaging/handlers/missing-api-key.ts\n#\tfrontend/app/src/modules/core/messaging/handlers/no-available-indexers.spec.ts\n#\tfrontend/app/src/modules/core/messaging/handlers/no-available-indexers.ts\n#\tfrontend/app/src/modules/core/notifications/use-notification-cooldown.spec.ts\n#\tfrontend/app/src/modules/core/tasks/use-task-api.ts\n#\tfrontend/app/src/modules/dashboard/snapshots/composables/use-snapshot-draft.spec.ts\n#\tfrontend/app/src/modules/dashboard/snapshots/composables/use-snapshot-draft.ts\n#\tfrontend/app/src/modules/history/events/BridgePotentialMatchesDialog.vue\n#\tfrontend/app/src/modules/history/events/HistoryEventsDecodingStatus.spec.ts\n#\tfrontend/app/src/modules/history/events/HistoryEventsDecodingStatus.vue\n#\tfrontend/app/src/modules/history/events/HistoryEventsProtocolCacheUpdateStatus.vue\n#\tfrontend/app/src/modules/history/events/PotentialMatchesDialog.vue\n#\tfrontend/app/src/modules/history/events/PotentialMatchesList.vue\n#\tfrontend/app/src/modules/history/events/history-event-fields.spec.ts\n#\tfrontend/app/src/modules/history/events/tx/RepullingExchangeForm.spec.ts\n#\tfrontend/app/src/modules/history/events/tx/use-transaction-sync.spec.ts\n#\tfrontend/app/src/modules/history/events/tx/use-transaction-sync.ts\n#\tfrontend/app/src/modules/history/events/use-history-events-auto-fetch.ts\n#\tfrontend/app/src/modules/history/internal-tx-conflicts/InternalTxConflictsDialog.vue\n#\tfrontend/app/src/modules/reports/use-report-generation.spec.ts\n#\tfrontend/app/src/modules/reports/use-report-generation.ts\n#\tfrontend/app/src/modules/session/use-purge.spec.ts\n#\tfrontend/app/src/modules/session/use-purge.ts\n#\tfrontend/app/src/modules/settings/accounting/rule/AccountingRuleConflictsDialog.vue\n#\tfrontend/app/src/modules/settings/data-security/data-management/PurgeData.vue\n#\tfrontend/app/src/modules/settings/evm/IndexerOrderSetting.spec.ts\n#\tfrontend/app/src/modules/shell/app/AssetConflictDialog.vue\n#\tfrontend/app/tests/e2e/pages/snapshot-list-page.ts\n#\trotkehlchen/tasks/manager.py\n#\trotkehlchen/tests/unit/decoders/test_socket.py\n#\trotkehlchen/tests/unit/test_internal_tx_conflicts.py\n#\trotkehlchen/tests/unit/test_tasks_manager.py\n#\tuv.lock",
+          "timestamp": "2026-10-02T15:22:53Z",
+          "url": "https://github.com/rotki/rotki/commit/a0fc8a5a0e41c02fa6559e0386155201b1f08cb9"
+        },
+        "date": 1791011043344,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 219.80795308321163,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00009241096680573129",
+            "extra": "mean: 4.549425923735503 msec\nrounds: 118"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 181.63639507338553,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00008493538273340995",
+            "extra": "mean: 5.505504552630962 msec\nrounds: 114"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 1416.5442830358575,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00002017438695153031",
+            "extra": "mean: 705.943338288625 usec\nrounds: 1345"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 4843.689516444799,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00036882605922190857",
+            "extra": "mean: 206.45419088174467 usec\nrounds: 1404"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 26.21889221024839,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0012369876646474332",
+            "extra": "mean: 38.14043674999823 msec\nrounds: 16"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 62173.8498285334,
+            "unit": "iter/sec",
+            "range": "stddev: 9.924576960030253e-7",
+            "extra": "mean: 16.08393243715577 usec\nrounds: 8259"
           }
         ]
       }
