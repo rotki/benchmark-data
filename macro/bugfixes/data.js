@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1791010985379,
+  "lastUpdate": 1791098714299,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (bugfixes)": [
@@ -11104,6 +11104,142 @@ window.BENCHMARK_DATA = {
             "value": 418.45,
             "unit": "ms",
             "extra": "min 417.91ms, stddev 4.07ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "a0fc8a5a0e41c02fa6559e0386155201b1f08cb9",
+          "message": "Merge branch 'bugfixes' into develop\n\n# Conflicts:\n#\t.github/workflows/rotki_dev_builds.yml\n#\t.github/workflows/rotki_release.yaml\n#\t.github/workflows/task_e2e_tests.yml\n#\tdocs/changelog.rst\n#\tfrontend/app/src/locales/en.json\n#\tfrontend/app/src/modules/accounts/blockchain/use-account-delete.removals.spec.ts\n#\tfrontend/app/src/modules/accounts/blockchain/use-account-delete.ts\n#\tfrontend/app/src/modules/accounts/management/AccountForm.vue\n#\tfrontend/app/src/modules/assets/prices/use-price-refresh.ts\n#\tfrontend/app/src/modules/core/messaging/handlers/missing-api-key.spec.ts\n#\tfrontend/app/src/modules/core/messaging/handlers/missing-api-key.ts\n#\tfrontend/app/src/modules/core/messaging/handlers/no-available-indexers.spec.ts\n#\tfrontend/app/src/modules/core/messaging/handlers/no-available-indexers.ts\n#\tfrontend/app/src/modules/core/notifications/use-notification-cooldown.spec.ts\n#\tfrontend/app/src/modules/core/tasks/use-task-api.ts\n#\tfrontend/app/src/modules/dashboard/snapshots/composables/use-snapshot-draft.spec.ts\n#\tfrontend/app/src/modules/dashboard/snapshots/composables/use-snapshot-draft.ts\n#\tfrontend/app/src/modules/history/events/BridgePotentialMatchesDialog.vue\n#\tfrontend/app/src/modules/history/events/HistoryEventsDecodingStatus.spec.ts\n#\tfrontend/app/src/modules/history/events/HistoryEventsDecodingStatus.vue\n#\tfrontend/app/src/modules/history/events/HistoryEventsProtocolCacheUpdateStatus.vue\n#\tfrontend/app/src/modules/history/events/PotentialMatchesDialog.vue\n#\tfrontend/app/src/modules/history/events/PotentialMatchesList.vue\n#\tfrontend/app/src/modules/history/events/history-event-fields.spec.ts\n#\tfrontend/app/src/modules/history/events/tx/RepullingExchangeForm.spec.ts\n#\tfrontend/app/src/modules/history/events/tx/use-transaction-sync.spec.ts\n#\tfrontend/app/src/modules/history/events/tx/use-transaction-sync.ts\n#\tfrontend/app/src/modules/history/events/use-history-events-auto-fetch.ts\n#\tfrontend/app/src/modules/history/internal-tx-conflicts/InternalTxConflictsDialog.vue\n#\tfrontend/app/src/modules/reports/use-report-generation.spec.ts\n#\tfrontend/app/src/modules/reports/use-report-generation.ts\n#\tfrontend/app/src/modules/session/use-purge.spec.ts\n#\tfrontend/app/src/modules/session/use-purge.ts\n#\tfrontend/app/src/modules/settings/accounting/rule/AccountingRuleConflictsDialog.vue\n#\tfrontend/app/src/modules/settings/data-security/data-management/PurgeData.vue\n#\tfrontend/app/src/modules/settings/evm/IndexerOrderSetting.spec.ts\n#\tfrontend/app/src/modules/shell/app/AssetConflictDialog.vue\n#\tfrontend/app/tests/e2e/pages/snapshot-list-page.ts\n#\trotkehlchen/tasks/manager.py\n#\trotkehlchen/tests/unit/decoders/test_socket.py\n#\trotkehlchen/tests/unit/test_internal_tx_conflicts.py\n#\trotkehlchen/tests/unit/test_tasks_manager.py\n#\tuv.lock",
+          "timestamp": "2026-10-02T15:22:53Z",
+          "url": "https://github.com/rotki/rotki/commit/a0fc8a5a0e41c02fa6559e0386155201b1f08cb9"
+        },
+        "date": 1791098713890,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 1790.34,
+            "unit": "ms",
+            "extra": "min 1670.22ms, stddev 1441.2ms"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 1223.48,
+            "unit": "ms",
+            "extra": "min 1114.02ms, stddev 382.78ms"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 5.39,
+            "unit": "ms",
+            "extra": "min 4.91ms, stddev 0.53ms"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 36.5,
+            "unit": "ms",
+            "extra": "min 34.69ms, stddev 1.25ms"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 1.97,
+            "unit": "ms",
+            "extra": "min 1.92ms, stddev 0.08ms"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 1.66,
+            "unit": "ms",
+            "extra": "min 1.55ms, stddev 0.06ms"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 93.31,
+            "unit": "ms",
+            "extra": "min 89.16ms, stddev 2.58ms"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 62.91,
+            "unit": "ms",
+            "extra": "min 60.59ms, stddev 39.64ms"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 1636.53,
+            "unit": "ms",
+            "extra": "min 1636.3ms, stddev 46.9ms"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 1165.49,
+            "unit": "ms",
+            "extra": "min 1124.39ms, stddev 75.88ms"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 892.17,
+            "unit": "ms",
+            "extra": "min 885.88ms, stddev 3.37ms"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 892.73,
+            "unit": "ms",
+            "extra": "min 885.67ms, stddev 5.72ms"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 972.92,
+            "unit": "ms",
+            "extra": "min 968.61ms, stddev 5.46ms"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 879.05,
+            "unit": "ms",
+            "extra": "min 873.87ms, stddev 3.04ms"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 35.4,
+            "unit": "ms",
+            "extra": "min 33.99ms, stddev 1.06ms"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 1.95,
+            "unit": "ms",
+            "extra": "min 1.88ms, stddev 0.06ms"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 1.69,
+            "unit": "ms",
+            "extra": "min 1.54ms, stddev 0.08ms"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 1342.83,
+            "unit": "ms",
+            "extra": "min 1330.66ms, stddev 7.17ms"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 678.37,
+            "unit": "ms",
+            "extra": "min 655.57ms, stddev 25.27ms"
           }
         ]
       }
