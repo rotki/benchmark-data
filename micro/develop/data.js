@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1791186061819,
+  "lastUpdate": 1791274010387,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (develop)": [
@@ -7076,6 +7076,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.00000319695726241713",
             "extra": "mean: 25.507545531619815 usec\nrounds: 7116"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Relient",
+            "username": "RelientS",
+            "email": "mzs980722@icloud.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "21a52b3d93737cc23b160e8f91ea7e2bf152f17b",
+          "message": "feat(frontend): complete the zh-CN translation\n\nTranslate the 2807 strings missing from cn.json so it covers every key in\nen.json, and revise existing entries for consistent terminology (deposit and\nwithdrawal wording, cost basis, staking, Premium, API Key), leftover\nTraditional characters and a few mistranslations.\n\nKeep concepts the app separates apart in Chinese (dismiss vs ignore, trade\nvs transaction, expense vs spend, amount as token quantity) and fix strings\nwhose meaning did not come across (time range, wrong network, partial RPC\nconnection, complete, rounding, pinned section, interface-only, profile,\nnotes limit, price in asset, synthetic events).\n\nPlaceholders, plural segments, linked messages and HTML tags match en.json\nfor every key.",
+          "timestamp": "2026-10-05T16:16:10Z",
+          "url": "https://github.com/rotki/rotki/commit/21a52b3d93737cc23b160e8f91ea7e2bf152f17b"
+        },
+        "date": 1791274009769,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 108.21658546475024,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00013331968837609133",
+            "extra": "mean: 9.240727710132136 msec\nrounds: 69"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 96.88997398860543,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0001447511997406848",
+            "extra": "mean: 10.320985328343708 msec\nrounds: 67"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 719.2313791825334,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000022383655331037732",
+            "extra": "mean: 1.3903731524291718 msec\nrounds: 702"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 2512.1635489296655,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00029401417604050736",
+            "extra": "mean: 398.06325524708006 usec\nrounds: 905"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 12.821277034380659,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0019014704076021922",
+            "extra": "mean: 77.99535079996076 msec\nrounds: 10"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 28071.79959414176,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0000040815812034656535",
+            "extra": "mean: 35.622938837476156 usec\nrounds: 6916"
           }
         ]
       }
