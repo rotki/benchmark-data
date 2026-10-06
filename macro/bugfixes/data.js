@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1791185989526,
+  "lastUpdate": 1791273941014,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (bugfixes)": [
@@ -11376,6 +11376,142 @@ window.BENCHMARK_DATA = {
             "value": 801.92,
             "unit": "ms",
             "extra": "min 792.75ms, stddev 6.25ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Relient",
+            "username": "RelientS",
+            "email": "mzs980722@icloud.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "21a52b3d93737cc23b160e8f91ea7e2bf152f17b",
+          "message": "feat(frontend): complete the zh-CN translation\n\nTranslate the 2807 strings missing from cn.json so it covers every key in\nen.json, and revise existing entries for consistent terminology (deposit and\nwithdrawal wording, cost basis, staking, Premium, API Key), leftover\nTraditional characters and a few mistranslations.\n\nKeep concepts the app separates apart in Chinese (dismiss vs ignore, trade\nvs transaction, expense vs spend, amount as token quantity) and fix strings\nwhose meaning did not come across (time range, wrong network, partial RPC\nconnection, complete, rounding, pinned section, interface-only, profile,\nnotes limit, price in asset, synthetic events).\n\nPlaceholders, plural segments, linked messages and HTML tags match en.json\nfor every key.",
+          "timestamp": "2026-10-05T16:16:10Z",
+          "url": "https://github.com/rotki/rotki/commit/21a52b3d93737cc23b160e8f91ea7e2bf152f17b"
+        },
+        "date": 1791273940512,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 2052.35,
+            "unit": "ms",
+            "extra": "min 2050.67ms, stddev 1658.17ms"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 1411.17,
+            "unit": "ms",
+            "extra": "min 1360.93ms, stddev 421.61ms"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 6.51,
+            "unit": "ms",
+            "extra": "min 6.34ms, stddev 0.35ms"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 42.77,
+            "unit": "ms",
+            "extra": "min 41.18ms, stddev 1.79ms"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 2.6,
+            "unit": "ms",
+            "extra": "min 2.46ms, stddev 0.16ms"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 2.18,
+            "unit": "ms",
+            "extra": "min 2.07ms, stddev 0.1ms"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 127.29,
+            "unit": "ms",
+            "extra": "min 124.86ms, stddev 2.01ms"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 85.59,
+            "unit": "ms",
+            "extra": "min 84.03ms, stddev 1.31ms"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 2053.45,
+            "unit": "ms",
+            "extra": "min 2051.1ms, stddev 2.26ms"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 1474.42,
+            "unit": "ms",
+            "extra": "min 1430.33ms, stddev 24.32ms"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 1091.5,
+            "unit": "ms",
+            "extra": "min 1089.37ms, stddev 2.09ms"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 1094.2,
+            "unit": "ms",
+            "extra": "min 1090.63ms, stddev 1.8ms"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 1206.42,
+            "unit": "ms",
+            "extra": "min 1203.4ms, stddev 2.2ms"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 1082.12,
+            "unit": "ms",
+            "extra": "min 1078.89ms, stddev 4.46ms"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 42.5,
+            "unit": "ms",
+            "extra": "min 41.99ms, stddev 0.39ms"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 2.59,
+            "unit": "ms",
+            "extra": "min 2.38ms, stddev 0.14ms"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 2.22,
+            "unit": "ms",
+            "extra": "min 2.03ms, stddev 0.12ms"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 1700.04,
+            "unit": "ms",
+            "extra": "min 1685.93ms, stddev 8.74ms"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 814.09,
+            "unit": "ms",
+            "extra": "min 807.14ms, stddev 6.89ms"
           }
         ]
       }
