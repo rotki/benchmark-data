@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1791446587544,
+  "lastUpdate": 1791532895419,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (bugfixes)": [
@@ -6848,6 +6848,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.000012584765424123528",
             "extra": "mean: 42.32953792431199 usec\nrounds: 5445"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Yábir Benchakhtir",
+            "username": "yabirgb",
+            "email": "git@yabirgb.com"
+          },
+          "committer": {
+            "name": "GitHub",
+            "username": "web-flow",
+            "email": "noreply@github.com"
+          },
+          "id": "8d773508e1e552ef9b559526d3a7c9f7ebffb5d2",
+          "message": "Merge pull request #13314 from yabirgb/feat/balance-divergence-data-issues\n\nFeat/balance divergence data issues",
+          "timestamp": "2026-10-08T16:06:54Z",
+          "url": "https://github.com/rotki/rotki/commit/8d773508e1e552ef9b559526d3a7c9f7ebffb5d2"
+        },
+        "date": 1791532895136,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 462.45214932030007,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00007314710069202795",
+            "extra": "mean: 2.162385884614816 msec\nrounds: 364"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 318.2194098812481,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00003789826445310995",
+            "extra": "mean: 3.1424858727919083 msec\nrounds: 283"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 992.9191788087103,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000026383209736398437",
+            "extra": "mean: 1.0071313167701978 msec\nrounds: 966"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 2415.5591666704313,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0016419724573404064",
+            "extra": "mean: 413.982821782165 usec\nrounds: 1010"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 10.616993046056038,
+            "unit": "iter/sec",
+            "range": "stddev: 0.039603585217945846",
+            "extra": "mean: 94.18862720000334 msec\nrounds: 5"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 44542.14990990321,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000001716708642081384",
+            "extra": "mean: 22.450645108570896 usec\nrounds: 6092"
           }
         ]
       }
