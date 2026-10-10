@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1791532834547,
+  "lastUpdate": 1791618355542,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (develop)": [
@@ -7332,6 +7332,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.000002073915146507794",
             "extra": "mean: 24.497933662807267 usec\nrounds: 5261"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Yabir Benchakhtir",
+            "username": "yabirgb",
+            "email": "git@yabirgb.com"
+          },
+          "committer": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "id": "2783d11f0d35b4386b11bbf800cf78ade86c5723",
+          "message": "Add support for staking on hyperliquid",
+          "timestamp": "2026-10-08T12:07:59Z",
+          "url": "https://github.com/rotki/rotki/commit/2783d11f0d35b4386b11bbf800cf78ade86c5723"
+        },
+        "date": 1791618355064,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 138.1942267942684,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00010729182909403479",
+            "extra": "mean: 7.236192301207441 msec\nrounds: 83"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 120.40934267518067,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00013601802388443985",
+            "extra": "mean: 8.305003397432587 msec\nrounds: 78"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 928.4326618874065,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00006062274070224487",
+            "extra": "mean: 1.0770840374864716 msec\nrounds: 907"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 2457.207579259313,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00047636418063223064",
+            "extra": "mean: 406.9660245397072 usec\nrounds: 815"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 12.979711945867008,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0007147220354117883",
+            "extra": "mean: 77.04331222222687 msec\nrounds: 9"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 39314.073170625925,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000002902871496914754",
+            "extra": "mean: 25.436184026517108 usec\nrounds: 5722"
           }
         ]
       }
