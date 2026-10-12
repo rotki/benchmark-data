@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1791705050493,
+  "lastUpdate": 1791791849061,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (develop)": [
@@ -7460,6 +7460,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.0000035931803228989816",
             "extra": "mean: 35.114741431646266 usec\nrounds: 6594"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "ied",
+            "username": "izzetemredemir",
+            "email": "11755605+izzetemredemir@users.noreply.github.com"
+          },
+          "committer": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "id": "20c089d1af8edc7f3a9eafc15c6eb698a29d1bd3",
+          "message": "feat(frontend): add Turkish translation\n\nAdd a Turkish locale covering every key in en.json, offer it in the\nlanguage selector and keep Chromium's Turkish locale in the packaged\napp.",
+          "timestamp": "2026-10-10T21:31:04Z",
+          "url": "https://github.com/rotki/rotki/commit/20c089d1af8edc7f3a9eafc15c6eb698a29d1bd3"
+        },
+        "date": 1791791848680,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 109.32999859686828,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00017696645275095546",
+            "extra": "mean: 9.146620441177292 msec\nrounds: 68"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 97.00117902824513,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00015013273067545754",
+            "extra": "mean: 10.309153043478126 msec\nrounds: 69"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 702.4164019732967,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00020758439869772013",
+            "extra": "mean: 1.4236569607297074 msec\nrounds: 713"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 2565.127683127481,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00028703747366994243",
+            "extra": "mean: 389.84414170789734 usec\nrounds: 995"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 13.250657007326152,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0015256084133745546",
+            "extra": "mean: 75.46795600000138 msec\nrounds: 10"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 28565.853284298097,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0000038082723639581233",
+            "extra": "mean: 35.00683105971401 usec\nrounds: 5351"
           }
         ]
       }
