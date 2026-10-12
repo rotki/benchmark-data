@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1791704741472,
+  "lastUpdate": 1791791602925,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (develop)": [
@@ -16508,6 +16508,142 @@ window.BENCHMARK_DATA = {
             "value": 780.69,
             "unit": "ms",
             "extra": "min 778.09ms, stddev 2.99ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "ied",
+            "username": "izzetemredemir",
+            "email": "11755605+izzetemredemir@users.noreply.github.com"
+          },
+          "committer": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "id": "20c089d1af8edc7f3a9eafc15c6eb698a29d1bd3",
+          "message": "feat(frontend): add Turkish translation\n\nAdd a Turkish locale covering every key in en.json, offer it in the\nlanguage selector and keep Chromium's Turkish locale in the packaged\napp.",
+          "timestamp": "2026-10-10T21:31:04Z",
+          "url": "https://github.com/rotki/rotki/commit/20c089d1af8edc7f3a9eafc15c6eb698a29d1bd3"
+        },
+        "date": 1791791602556,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 2094.34,
+            "unit": "ms",
+            "extra": "min 2090.91ms, stddev 1533.21ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 1134.19,
+            "unit": "ms",
+            "extra": "min 1119.37ms, stddev 386.98ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 6.4,
+            "unit": "ms",
+            "extra": "min 6.35ms, stddev 0.24ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 36.78,
+            "unit": "ms",
+            "extra": "min 35.71ms, stddev 0.68ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 2.37,
+            "unit": "ms",
+            "extra": "min 2.19ms, stddev 0.1ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 1.98,
+            "unit": "ms",
+            "extra": "min 1.79ms, stddev 0.1ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 98.87,
+            "unit": "ms",
+            "extra": "min 96.69ms, stddev 10.66ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 66.66,
+            "unit": "ms",
+            "extra": "min 64.93ms, stddev 11.07ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 2092.88,
+            "unit": "ms",
+            "extra": "min 2041.13ms, stddev 27.99ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 1329.43,
+            "unit": "ms",
+            "extra": "min 1327.05ms, stddev 2.38ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 938.35,
+            "unit": "ms",
+            "extra": "min 937.11ms, stddev 3.27ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 936.68,
+            "unit": "ms",
+            "extra": "min 930.18ms, stddev 3.45ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 1034.41,
+            "unit": "ms",
+            "extra": "min 1030.21ms, stddev 4.81ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 921.24,
+            "unit": "ms",
+            "extra": "min 920.45ms, stddev 3.82ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 37.4,
+            "unit": "ms",
+            "extra": "min 36.5ms, stddev 1.0ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 2.42,
+            "unit": "ms",
+            "extra": "min 2.33ms, stddev 0.08ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 1.96,
+            "unit": "ms",
+            "extra": "min 1.92ms, stddev 0.03ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 1410.4,
+            "unit": "ms",
+            "extra": "min 1404.31ms, stddev 3.17ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 688.48,
+            "unit": "ms",
+            "extra": "min 685.99ms, stddev 2.16ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
           }
         ]
       }
