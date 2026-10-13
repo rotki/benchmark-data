@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1791791780609,
+  "lastUpdate": 1791879620055,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (bugfixes)": [
@@ -12328,6 +12328,142 @@ window.BENCHMARK_DATA = {
             "value": 438.86,
             "unit": "ms",
             "extra": "min 437.0ms, stddev 9.63ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "GitHub",
+            "username": "web-flow",
+            "email": "noreply@github.com"
+          },
+          "id": "383a623894d3dab1c865ea379ffc3f0e74126078",
+          "message": "fix(frontend): warn on github 504 in link check (#13349)\n\nThe external link check failed the nightly run whenever GitHub answered\nits issue or release list with a 504, which clears on the next run and\nsays nothing about the link. A 504 from github.com is now a warning,\nprinted as a GitHub Actions annotation in CI. Any other host still fails\non a 504.\n\nThe check sends HEAD requests with a timeout. All links answer HEAD the\nsame way they answer GET.\n\nThe latest release lookup now checks the API status and runs inside the\nerror handling, so a rate-limited lookup counts as a failed link instead\nof dropping the link from the results.",
+          "timestamp": "2026-10-13T08:14:20Z",
+          "url": "https://github.com/rotki/rotki/commit/383a623894d3dab1c865ea379ffc3f0e74126078"
+        },
+        "date": 1791879619637,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 1325.63,
+            "unit": "ms",
+            "extra": "min 1284.35ms, stddev 1208.53ms"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 881.05,
+            "unit": "ms",
+            "extra": "min 808.72ms, stddev 294.12ms"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 3.76,
+            "unit": "ms",
+            "extra": "min 3.51ms, stddev 1.82ms"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 27.1,
+            "unit": "ms",
+            "extra": "min 25.36ms, stddev 2.34ms"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 1.5,
+            "unit": "ms",
+            "extra": "min 1.45ms, stddev 0.12ms"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 1.21,
+            "unit": "ms",
+            "extra": "min 1.14ms, stddev 0.06ms"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 65.33,
+            "unit": "ms",
+            "extra": "min 60.73ms, stddev 3.68ms"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 45.43,
+            "unit": "ms",
+            "extra": "min 38.76ms, stddev 16.23ms"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 1329.17,
+            "unit": "ms",
+            "extra": "min 1227.13ms, stddev 107.93ms"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 891.32,
+            "unit": "ms",
+            "extra": "min 884.22ms, stddev 25.36ms"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 624.71,
+            "unit": "ms",
+            "extra": "min 606.08ms, stddev 9.48ms"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 623.96,
+            "unit": "ms",
+            "extra": "min 601.58ms, stddev 14.84ms"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 683.15,
+            "unit": "ms",
+            "extra": "min 657.7ms, stddev 12.81ms"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 617.87,
+            "unit": "ms",
+            "extra": "min 598.88ms, stddev 9.02ms"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 32.02,
+            "unit": "ms",
+            "extra": "min 29.61ms, stddev 1.45ms"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 2.02,
+            "unit": "ms",
+            "extra": "min 1.99ms, stddev 0.22ms"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 1.46,
+            "unit": "ms",
+            "extra": "min 1.32ms, stddev 0.18ms"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 941.05,
+            "unit": "ms",
+            "extra": "min 909.98ms, stddev 20.88ms"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 465.82,
+            "unit": "ms",
+            "extra": "min 431.43ms, stddev 16.68ms"
           }
         ]
       }
