@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1791791914741,
+  "lastUpdate": 1791879773861,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (bugfixes)": [
@@ -7104,6 +7104,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.0000037957588271512733",
             "extra": "mean: 35.212716553052104 usec\nrounds: 6488"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "GitHub",
+            "username": "web-flow",
+            "email": "noreply@github.com"
+          },
+          "id": "383a623894d3dab1c865ea379ffc3f0e74126078",
+          "message": "fix(frontend): warn on github 504 in link check (#13349)\n\nThe external link check failed the nightly run whenever GitHub answered\nits issue or release list with a 504, which clears on the next run and\nsays nothing about the link. A 504 from github.com is now a warning,\nprinted as a GitHub Actions annotation in CI. Any other host still fails\non a 504.\n\nThe check sends HEAD requests with a timeout. All links answer HEAD the\nsame way they answer GET.\n\nThe latest release lookup now checks the API status and runs inside the\nerror handling, so a rate-limited lookup counts as a failed link instead\nof dropping the link from the results.",
+          "timestamp": "2026-10-13T08:14:20Z",
+          "url": "https://github.com/rotki/rotki/commit/383a623894d3dab1c865ea379ffc3f0e74126078"
+        },
+        "date": 1791879773569,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 353.35811278802066,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000057669068161806656",
+            "extra": "mean: 2.8299902105258847 msec\nrounds: 19"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 239.31520655197733,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00007426385122385138",
+            "extra": "mean: 4.1785894611874905 msec\nrounds: 219"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 730.2174286287812,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000018692079546453503",
+            "extra": "mean: 1.3694551249999916 msec\nrounds: 720"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 2446.423706904089,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0003020883807453389",
+            "extra": "mean: 408.7599368735207 usec\nrounds: 998"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 13.24501231430702,
+            "unit": "iter/sec",
+            "range": "stddev: 0.001710473844647833",
+            "extra": "mean: 75.50011855555756 msec\nrounds: 9"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 28123.962683962727,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000003913653077163698",
+            "extra": "mean: 35.55686697629688 usec\nrounds: 6029"
           }
         ]
       }
