@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1792045387645,
+  "lastUpdate": 1792131586177,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (bugfixes)": [
@@ -12736,6 +12736,142 @@ window.BENCHMARK_DATA = {
             "value": 652.08,
             "unit": "ms",
             "extra": "min 631.43ms, stddev 120.7ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "1ed6d47e38664f30ae7a3ba8caac690753ea6d8f",
+          "message": "feat(reports): stop a report while it generates\n\nThe progress screen gets a Stop generating button while the report's\ntask can be cancelled. It asks \"Stop it? It stays unfinished.\" in\nplace, with Keep running and Stop, the same question the task dock\nrow asks, and the question goes away if the report settles first.",
+          "timestamp": "2026-10-15T18:39:07Z",
+          "url": "https://github.com/rotki/rotki/commit/1ed6d47e38664f30ae7a3ba8caac690753ea6d8f"
+        },
+        "date": 1792131585718,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 1225.5,
+            "unit": "ms",
+            "extra": "min 1175.9ms, stddev 1116.98ms"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 834.24,
+            "unit": "ms",
+            "extra": "min 818.25ms, stddev 287.27ms"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 3.75,
+            "unit": "ms",
+            "extra": "min 3.27ms, stddev 0.23ms"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 25.12,
+            "unit": "ms",
+            "extra": "min 23.37ms, stddev 0.92ms"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 1.39,
+            "unit": "ms",
+            "extra": "min 1.32ms, stddev 0.59ms"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 1.12,
+            "unit": "ms",
+            "extra": "min 1.06ms, stddev 0.35ms"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 60.62,
+            "unit": "ms",
+            "extra": "min 59.94ms, stddev 0.64ms"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 40.05,
+            "unit": "ms",
+            "extra": "min 38.04ms, stddev 1.69ms"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 1228.68,
+            "unit": "ms",
+            "extra": "min 1175.7ms, stddev 58.2ms"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 878.88,
+            "unit": "ms",
+            "extra": "min 812.65ms, stddev 34.64ms"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 615.2,
+            "unit": "ms",
+            "extra": "min 592.85ms, stddev 10.87ms"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 613.61,
+            "unit": "ms",
+            "extra": "min 610.95ms, stddev 2.96ms"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 676.74,
+            "unit": "ms",
+            "extra": "min 655.36ms, stddev 12.05ms"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 596.54,
+            "unit": "ms",
+            "extra": "min 589.76ms, stddev 13.86ms"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 27.04,
+            "unit": "ms",
+            "extra": "min 23.65ms, stddev 2.76ms"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 1.62,
+            "unit": "ms",
+            "extra": "min 1.39ms, stddev 0.19ms"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 1.18,
+            "unit": "ms",
+            "extra": "min 1.14ms, stddev 0.09ms"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 898.67,
+            "unit": "ms",
+            "extra": "min 882.35ms, stddev 14.38ms"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 445.13,
+            "unit": "ms",
+            "extra": "min 423.28ms, stddev 10.07ms"
           }
         ]
       }
