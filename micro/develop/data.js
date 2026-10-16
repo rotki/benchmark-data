@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1792045459345,
+  "lastUpdate": 1792131650214,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (develop)": [
@@ -7716,6 +7716,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.000004470357226522541",
             "extra": "mean: 36.50102169822362 usec\nrounds: 6360"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "1ed6d47e38664f30ae7a3ba8caac690753ea6d8f",
+          "message": "feat(reports): stop a report while it generates\n\nThe progress screen gets a Stop generating button while the report's\ntask can be cancelled. It asks \"Stop it? It stays unfinished.\" in\nplace, with Keep running and Stop, the same question the task dock\nrow asks, and the question goes away if the report settles first.",
+          "timestamp": "2026-10-15T18:39:07Z",
+          "url": "https://github.com/rotki/rotki/commit/1ed6d47e38664f30ae7a3ba8caac690753ea6d8f"
+        },
+        "date": 1792131649789,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 211.12082032293492,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00011830462228251538",
+            "extra": "mean: 4.736624263160681 msec\nrounds: 114"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 181.69889915041966,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00009710312838801372",
+            "extra": "mean: 5.503610669496399 msec\nrounds: 118"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 1320.0099290209864,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0000553964430771449",
+            "extra": "mean: 757.5700591446848 usec\nrounds: 1285"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 4845.493129679175,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00040152063806586587",
+            "extra": "mean: 206.3773434895389 usec\nrounds: 1083"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 24.277908576104014,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0014698272518417663",
+            "extra": "mean: 41.18970943750355 msec\nrounds: 16"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 60444.98080148588,
+            "unit": "iter/sec",
+            "range": "stddev: 9.911893762328724e-7",
+            "extra": "mean: 16.543970843240263 usec\nrounds: 6654"
           }
         ]
       }
