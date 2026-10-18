@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1792217216155,
+  "lastUpdate": 1792305353136,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (bugfixes)": [
@@ -7424,6 +7424,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.0000017171554645645564",
             "extra": "mean: 21.92673795659021 usec\nrounds: 6705"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "3114ecdfd58234a0e7a82d2a637fb4e10af63dac",
+          "message": "fix(ci): key the Rust warm caches like the Rust jobs\n\nrust-cache hashes every RUST* and CARGO* variable present at its step\ninto the key. The warm jobs set RUSTFLAGS at job level, so they saved\n...-7d36f67e-... while lint-colibri, lint-starling and\ntest-starling-windows, which set it only on their build steps, look\nfor ...-75c57f04-... and found nothing. RUSTFLAGS now sits on the warm\njobs' build steps too.",
+          "timestamp": "2026-10-16T14:20:26Z",
+          "url": "https://github.com/rotki/rotki/commit/3114ecdfd58234a0e7a82d2a637fb4e10af63dac"
+        },
+        "date": 1792305352569,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 362.00567019609264,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00003907073479768515",
+            "extra": "mean: 2.7623876704978576 msec\nrounds: 261"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 248.18428432488062,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00008417356976852074",
+            "extra": "mean: 4.029263991151713 msec\nrounds: 226"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 758.4767250588372,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000023907333831588766",
+            "extra": "mean: 1.3184320190213181 msec\nrounds: 736"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 2633.7990037512677,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0002291195216228755",
+            "extra": "mean: 379.67969407525777 usec\nrounds: 1131"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 13.782572316783686,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0015859085612765355",
+            "extra": "mean: 72.55539655556555 msec\nrounds: 9"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 28848.779333387465,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000003751120565968888",
+            "extra": "mean: 34.66351170160857 usec\nrounds: 6623"
           }
         ]
       }
