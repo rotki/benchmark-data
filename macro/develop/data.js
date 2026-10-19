@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1792304964630,
+  "lastUpdate": 1792392008657,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (develop)": [
@@ -17460,6 +17460,142 @@ window.BENCHMARK_DATA = {
             "value": 647.49,
             "unit": "ms",
             "extra": "min 608.26ms, stddev 27.67ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "3114ecdfd58234a0e7a82d2a637fb4e10af63dac",
+          "message": "fix(ci): key the Rust warm caches like the Rust jobs\n\nrust-cache hashes every RUST* and CARGO* variable present at its step\ninto the key. The warm jobs set RUSTFLAGS at job level, so they saved\n...-7d36f67e-... while lint-colibri, lint-starling and\ntest-starling-windows, which set it only on their build steps, look\nfor ...-75c57f04-... and found nothing. RUSTFLAGS now sits on the warm\njobs' build steps too.",
+          "timestamp": "2026-10-16T14:20:26Z",
+          "url": "https://github.com/rotki/rotki/commit/3114ecdfd58234a0e7a82d2a637fb4e10af63dac"
+        },
+        "date": 1792392008256,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 1791.63,
+            "unit": "ms",
+            "extra": "min 1690.66ms, stddev 1381.01ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V45 96-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 795.07,
+            "unit": "ms",
+            "extra": "min 719.85ms, stddev 337.12ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V45 96-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 5.01,
+            "unit": "ms",
+            "extra": "min 4.7ms, stddev 0.72ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V45 96-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 30.18,
+            "unit": "ms",
+            "extra": "min 28.47ms, stddev 1.34ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V45 96-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 2.19,
+            "unit": "ms",
+            "extra": "min 2.16ms, stddev 0.2ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V45 96-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 1.52,
+            "unit": "ms",
+            "extra": "min 1.34ms, stddev 0.17ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V45 96-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 72.67,
+            "unit": "ms",
+            "extra": "min 70.62ms, stddev 3.87ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V45 96-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 48.13,
+            "unit": "ms",
+            "extra": "min 46.37ms, stddev 10.1ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V45 96-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 1694.5,
+            "unit": "ms",
+            "extra": "min 1377.9ms, stddev 183.75ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V45 96-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 851.16,
+            "unit": "ms",
+            "extra": "min 814.91ms, stddev 34.37ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V45 96-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 575.33,
+            "unit": "ms",
+            "extra": "min 540.49ms, stddev 24.81ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V45 96-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 561.38,
+            "unit": "ms",
+            "extra": "min 546.43ms, stddev 19.9ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V45 96-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 620.36,
+            "unit": "ms",
+            "extra": "min 599.67ms, stddev 20.61ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V45 96-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 557.71,
+            "unit": "ms",
+            "extra": "min 546.53ms, stddev 17.9ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V45 96-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 24.42,
+            "unit": "ms",
+            "extra": "min 23.27ms, stddev 4.38ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V45 96-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 1.48,
+            "unit": "ms",
+            "extra": "min 1.26ms, stddev 0.4ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V45 96-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 1.08,
+            "unit": "ms",
+            "extra": "min 0.98ms, stddev 0.22ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V45 96-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 824.98,
+            "unit": "ms",
+            "extra": "min 811.39ms, stddev 44.23ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V45 96-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 419.79,
+            "unit": "ms",
+            "extra": "min 410.49ms, stddev 30.93ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V45 96-Core Processor\", \"logical_cpus\": 4}"
           }
         ]
       }
