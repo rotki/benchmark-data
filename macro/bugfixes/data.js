@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1792305209767,
+  "lastUpdate": 1792392180029,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (bugfixes)": [
@@ -13144,6 +13144,142 @@ window.BENCHMARK_DATA = {
             "value": 727.76,
             "unit": "ms",
             "extra": "min 723.91ms, stddev 44.0ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "3114ecdfd58234a0e7a82d2a637fb4e10af63dac",
+          "message": "fix(ci): key the Rust warm caches like the Rust jobs\n\nrust-cache hashes every RUST* and CARGO* variable present at its step\ninto the key. The warm jobs set RUSTFLAGS at job level, so they saved\n...-7d36f67e-... while lint-colibri, lint-starling and\ntest-starling-windows, which set it only on their build steps, look\nfor ...-75c57f04-... and found nothing. RUSTFLAGS now sits on the warm\njobs' build steps too.",
+          "timestamp": "2026-10-16T14:20:26Z",
+          "url": "https://github.com/rotki/rotki/commit/3114ecdfd58234a0e7a82d2a637fb4e10af63dac"
+        },
+        "date": 1792392179561,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 1176.7,
+            "unit": "ms",
+            "extra": "min 1124.71ms, stddev 966.75ms"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 804.16,
+            "unit": "ms",
+            "extra": "min 796.12ms, stddev 247.33ms"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 3.49,
+            "unit": "ms",
+            "extra": "min 3.43ms, stddev 0.06ms"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 24.32,
+            "unit": "ms",
+            "extra": "min 23.01ms, stddev 0.64ms"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 1.38,
+            "unit": "ms",
+            "extra": "min 1.35ms, stddev 0.06ms"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 1.13,
+            "unit": "ms",
+            "extra": "min 1.06ms, stddev 0.04ms"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 58.4,
+            "unit": "ms",
+            "extra": "min 57.41ms, stddev 1.0ms"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 39.13,
+            "unit": "ms",
+            "extra": "min 38.6ms, stddev 0.48ms"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 1124.96,
+            "unit": "ms",
+            "extra": "min 1121.69ms, stddev 26.84ms"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 816.54,
+            "unit": "ms",
+            "extra": "min 785.83ms, stddev 30.54ms"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 593.06,
+            "unit": "ms",
+            "extra": "min 584.56ms, stddev 6.12ms"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 588.64,
+            "unit": "ms",
+            "extra": "min 585.6ms, stddev 2.94ms"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 644.44,
+            "unit": "ms",
+            "extra": "min 640.09ms, stddev 3.5ms"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 580.65,
+            "unit": "ms",
+            "extra": "min 576.08ms, stddev 4.68ms"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 23.95,
+            "unit": "ms",
+            "extra": "min 23.11ms, stddev 0.47ms"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 1.38,
+            "unit": "ms",
+            "extra": "min 1.27ms, stddev 0.06ms"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 1.11,
+            "unit": "ms",
+            "extra": "min 0.99ms, stddev 0.06ms"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 869.75,
+            "unit": "ms",
+            "extra": "min 866.47ms, stddev 7.52ms"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 420.23,
+            "unit": "ms",
+            "extra": "min 419.93ms, stddev 4.02ms"
           }
         ]
       }
