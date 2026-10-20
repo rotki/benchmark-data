@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1792392320096,
+  "lastUpdate": 1792477980213,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (bugfixes)": [
@@ -7552,6 +7552,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.0000041178236251252485",
             "extra": "mean: 36.00391498055603 usec\nrounds: 5881"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "ce4136b5ecd7197c35d4e3f278723a6c39bd856c",
+          "message": "test(frontend): fix Tailwind 4 class assertion\n\nThe negative assertion still looked for the v3 `!border-rui-error`\nname, which never exists under Tailwind 4, so it could not fail.",
+          "timestamp": "2026-10-19T10:34:55Z",
+          "url": "https://github.com/rotki/rotki/commit/ce4136b5ecd7197c35d4e3f278723a6c39bd856c"
+        },
+        "date": 1792477979938,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 357.05391223754896,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00009505615917083686",
+            "extra": "mean: 2.800697501767456 msec\nrounds: 281"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 248.23037652830845,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00004072325086542114",
+            "extra": "mean: 4.028515824637437 msec\nrounds: 211"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 732.4206406176683,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00001677273546374475",
+            "extra": "mean: 1.3653356343926566 msec\nrounds: 692"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 2479.0017870071556,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00030056495833801936",
+            "extra": "mean: 403.38817230433625 usec\nrounds: 1004"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 13.464990527764874,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0013901721839038369",
+            "extra": "mean: 74.26666940002633 msec\nrounds: 10"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 28351.880819898925,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000005614772659728969",
+            "extra": "mean: 35.27102862601427 usec\nrounds: 5729"
           }
         ]
       }
