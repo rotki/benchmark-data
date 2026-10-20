@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1792392180029,
+  "lastUpdate": 1792477838040,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (bugfixes)": [
@@ -13280,6 +13280,142 @@ window.BENCHMARK_DATA = {
             "value": 420.23,
             "unit": "ms",
             "extra": "min 419.93ms, stddev 4.02ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "ce4136b5ecd7197c35d4e3f278723a6c39bd856c",
+          "message": "test(frontend): fix Tailwind 4 class assertion\n\nThe negative assertion still looked for the v3 `!border-rui-error`\nname, which never exists under Tailwind 4, so it could not fail.",
+          "timestamp": "2026-10-19T10:34:55Z",
+          "url": "https://github.com/rotki/rotki/commit/ce4136b5ecd7197c35d4e3f278723a6c39bd856c"
+        },
+        "date": 1792477837614,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 1847.58,
+            "unit": "ms",
+            "extra": "min 1805.19ms, stddev 1501.11ms"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 1442.87,
+            "unit": "ms",
+            "extra": "min 1220.83ms, stddev 377.21ms"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 6.29,
+            "unit": "ms",
+            "extra": "min 5.92ms, stddev 0.19ms"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 39.76,
+            "unit": "ms",
+            "extra": "min 39.49ms, stddev 0.31ms"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 2.43,
+            "unit": "ms",
+            "extra": "min 2.33ms, stddev 0.35ms"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 1.96,
+            "unit": "ms",
+            "extra": "min 1.9ms, stddev 0.16ms"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 104.52,
+            "unit": "ms",
+            "extra": "min 101.72ms, stddev 4.24ms"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 68.71,
+            "unit": "ms",
+            "extra": "min 68.28ms, stddev 36.83ms"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 1795.39,
+            "unit": "ms",
+            "extra": "min 1753.06ms, stddev 34.89ms"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 1324.8,
+            "unit": "ms",
+            "extra": "min 1278.15ms, stddev 28.31ms"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 1034.8,
+            "unit": "ms",
+            "extra": "min 1032.58ms, stddev 1.79ms"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 1034.5,
+            "unit": "ms",
+            "extra": "min 1032.64ms, stddev 2.21ms"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 1138.37,
+            "unit": "ms",
+            "extra": "min 1134.74ms, stddev 3.66ms"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 1024,
+            "unit": "ms",
+            "extra": "min 1019.32ms, stddev 3.98ms"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 39.49,
+            "unit": "ms",
+            "extra": "min 39.34ms, stddev 0.68ms"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 2.62,
+            "unit": "ms",
+            "extra": "min 2.33ms, stddev 0.16ms"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 2.05,
+            "unit": "ms",
+            "extra": "min 1.95ms, stddev 0.07ms"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 1556.26,
+            "unit": "ms",
+            "extra": "min 1554.0ms, stddev 3.53ms"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 732.65,
+            "unit": "ms",
+            "extra": "min 730.4ms, stddev 5.79ms"
           }
         ]
       }
