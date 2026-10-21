@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1792477912176,
+  "lastUpdate": 1792564405737,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (develop)": [
@@ -8036,6 +8036,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.0000027405774559449992",
             "extra": "mean: 24.83424788724925 usec\nrounds: 7100"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "d24b9dcd4bc8e88687413addd5fd44c973dc6ea4",
+          "message": "test(frontend): cap vitest workers at six\n\nEach vmThreads worker holds its own happy-dom context and module graph,\nso the default of one worker per core grows memory without making the\nrun faster. Locally (16 cores) the full suite peaked at 10 GB with 15\nworkers and 5.9 GB with six, in 84-94s against 100-104s.\n\nThe cap is also kept below the core count, so a 4-core CI runner still\ngets three workers as before.",
+          "timestamp": "2026-10-20T07:46:32Z",
+          "url": "https://github.com/rotki/rotki/commit/d24b9dcd4bc8e88687413addd5fd44c973dc6ea4"
+        },
+        "date": 1792564405322,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 224.20566295783664,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00004289901159613463",
+            "extra": "mean: 4.460190642856584 msec\nrounds: 126"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 194.82927369504534,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00004051868482176232",
+            "extra": "mean: 5.1326989062497885 msec\nrounds: 128"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 1387.6902451962155,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00010830038561253301",
+            "extra": "mean: 720.6219136163221 usec\nrounds: 1366"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 5044.421507736555,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00044503447794285843",
+            "extra": "mean: 198.23878683934615 usec\nrounds: 1778"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 24.39816458979981,
+            "unit": "iter/sec",
+            "range": "stddev: 0.005734553485303276",
+            "extra": "mean: 40.98668964705944 msec\nrounds: 17"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 62050.48938458071,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0000011989940915674436",
+            "extra": "mean: 16.11590835008782 usec\nrounds: 7976"
           }
         ]
       }
