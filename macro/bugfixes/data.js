@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1792477838040,
+  "lastUpdate": 1792564346720,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (bugfixes)": [
@@ -13416,6 +13416,142 @@ window.BENCHMARK_DATA = {
             "value": 732.65,
             "unit": "ms",
             "extra": "min 730.4ms, stddev 5.79ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "d24b9dcd4bc8e88687413addd5fd44c973dc6ea4",
+          "message": "test(frontend): cap vitest workers at six\n\nEach vmThreads worker holds its own happy-dom context and module graph,\nso the default of one worker per core grows memory without making the\nrun faster. Locally (16 cores) the full suite peaked at 10 GB with 15\nworkers and 5.9 GB with six, in 84-94s against 100-104s.\n\nThe cap is also kept below the core count, so a 4-core CI runner still\ngets three workers as before.",
+          "timestamp": "2026-10-20T07:46:32Z",
+          "url": "https://github.com/rotki/rotki/commit/d24b9dcd4bc8e88687413addd5fd44c973dc6ea4"
+        },
+        "date": 1792564346303,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 2133.64,
+            "unit": "ms",
+            "extra": "min 2049.53ms, stddev 1657.68ms"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 1364.09,
+            "unit": "ms",
+            "extra": "min 1344.1ms, stddev 419.79ms"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 6.53,
+            "unit": "ms",
+            "extra": "min 6.45ms, stddev 0.23ms"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 41.16,
+            "unit": "ms",
+            "extra": "min 40.49ms, stddev 0.7ms"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 2.5,
+            "unit": "ms",
+            "extra": "min 2.45ms, stddev 0.1ms"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 2.12,
+            "unit": "ms",
+            "extra": "min 2.07ms, stddev 0.04ms"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 126.02,
+            "unit": "ms",
+            "extra": "min 124.86ms, stddev 1.24ms"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 85.34,
+            "unit": "ms",
+            "extra": "min 83.54ms, stddev 1.6ms"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 2059.05,
+            "unit": "ms",
+            "extra": "min 2046.52ms, stddev 23.46ms"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 1462.72,
+            "unit": "ms",
+            "extra": "min 1414.25ms, stddev 24.91ms"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 1046.42,
+            "unit": "ms",
+            "extra": "min 1029.99ms, stddev 7.85ms"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 1045.07,
+            "unit": "ms",
+            "extra": "min 1032.34ms, stddev 6.94ms"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 1156.61,
+            "unit": "ms",
+            "extra": "min 1147.44ms, stddev 4.8ms"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 1033.92,
+            "unit": "ms",
+            "extra": "min 1021.4ms, stddev 6.55ms"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 41.56,
+            "unit": "ms",
+            "extra": "min 40.81ms, stddev 0.55ms"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 2.57,
+            "unit": "ms",
+            "extra": "min 2.47ms, stddev 0.08ms"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 2.18,
+            "unit": "ms",
+            "extra": "min 2.12ms, stddev 0.06ms"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 1635.3,
+            "unit": "ms",
+            "extra": "min 1629.64ms, stddev 4.37ms"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 802.61,
+            "unit": "ms",
+            "extra": "min 797.22ms, stddev 3.62ms"
           }
         ]
       }
