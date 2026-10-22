@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1792564474458,
+  "lastUpdate": 1792651190558,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (bugfixes)": [
@@ -7680,6 +7680,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.000002651612974467771",
             "extra": "mean: 22.698065956892073 usec\nrounds: 6201"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "471a45aff518fd0284fa1184c38d72a7513f1e52",
+          "message": "chore(frontend): size lint workers by free memory\n\nEvery ESLint worker builds its own typescript-eslint programs for all\nthe tsconfig projects it meets, about 4 GiB each, so the fixed four\nworkers of `pnpm run lint` need ~15 GB. With other tools running that\nwas enough to exhaust a 54 GB machine.\n\n`scripts/lint.ts` now picks 1 to 4 workers from the memory free at\nstart, keeping the larger of 4 GiB and 20% of RAM free, and prints its\nchoice on stderr. A passed --concurrency wins; CI pins 4, so the CI\nstep is unchanged. Under a cgroup cap Node shrinks its default heap\nbelow what one worker needs, so the script raises a shrunk default to\n4 GiB and leaves a normal one alone.",
+          "timestamp": "2026-10-21T14:27:47Z",
+          "url": "https://github.com/rotki/rotki/commit/471a45aff518fd0284fa1184c38d72a7513f1e52"
+        },
+        "date": 1792651189967,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 342.1341366595868,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00005567607647410215",
+            "extra": "mean: 2.922830237764231 msec\nrounds: 286"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 235.53713041662567,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00010351488502151733",
+            "extra": "mean: 4.245615110582216 msec\nrounds: 208"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 732.9417048710094,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000030117619869237384",
+            "extra": "mean: 1.364364987493774 msec\nrounds: 720"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 2452.743301416267,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00032849963476817563",
+            "extra": "mean: 407.7067499980852 usec\nrounds: 852"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 13.208515057680883,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00100665964111322",
+            "extra": "mean: 75.70873755551271 msec\nrounds: 9"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 28343.900717984397,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000004401963367141206",
+            "extra": "mean: 35.28095903064934 usec\nrounds: 5907"
           }
         ]
       }
