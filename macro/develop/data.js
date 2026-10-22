@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1792564083234,
+  "lastUpdate": 1792650657854,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (develop)": [
@@ -17868,6 +17868,142 @@ window.BENCHMARK_DATA = {
             "value": 801.32,
             "unit": "ms",
             "extra": "min 783.84ms, stddev 10.61ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "471a45aff518fd0284fa1184c38d72a7513f1e52",
+          "message": "chore(frontend): size lint workers by free memory\n\nEvery ESLint worker builds its own typescript-eslint programs for all\nthe tsconfig projects it meets, about 4 GiB each, so the fixed four\nworkers of `pnpm run lint` need ~15 GB. With other tools running that\nwas enough to exhaust a 54 GB machine.\n\n`scripts/lint.ts` now picks 1 to 4 workers from the memory free at\nstart, keeping the larger of 4 GiB and 20% of RAM free, and prints its\nchoice on stderr. A passed --concurrency wins; CI pins 4, so the CI\nstep is unchanged. Under a cgroup cap Node shrinks its default heap\nbelow what one worker needs, so the script raises a shrunk default to\n4 GiB and leaves a normal one alone.",
+          "timestamp": "2026-10-21T14:27:47Z",
+          "url": "https://github.com/rotki/rotki/commit/471a45aff518fd0284fa1184c38d72a7513f1e52"
+        },
+        "date": 1792650657574,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 2668.09,
+            "unit": "ms",
+            "extra": "min 2620.51ms, stddev 1843.38ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 1307.29,
+            "unit": "ms",
+            "extra": "min 1292.36ms, stddev 456.13ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 8.37,
+            "unit": "ms",
+            "extra": "min 8.23ms, stddev 0.12ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 47,
+            "unit": "ms",
+            "extra": "min 45.9ms, stddev 0.66ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 2.89,
+            "unit": "ms",
+            "extra": "min 2.7ms, stddev 0.2ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 2.38,
+            "unit": "ms",
+            "extra": "min 2.09ms, stddev 0.21ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 135.98,
+            "unit": "ms",
+            "extra": "min 134.67ms, stddev 3.12ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 95.87,
+            "unit": "ms",
+            "extra": "min 94.01ms, stddev 1.03ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 2669.37,
+            "unit": "ms",
+            "extra": "min 2618.04ms, stddev 30.48ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 1555.5,
+            "unit": "ms",
+            "extra": "min 1538.64ms, stddev 13.47ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 980.79,
+            "unit": "ms",
+            "extra": "min 972.73ms, stddev 5.82ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 977.42,
+            "unit": "ms",
+            "extra": "min 975.95ms, stddev 4.73ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 1089.22,
+            "unit": "ms",
+            "extra": "min 1081.27ms, stddev 4.5ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 962.79,
+            "unit": "ms",
+            "extra": "min 960.67ms, stddev 4.89ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 47.32,
+            "unit": "ms",
+            "extra": "min 44.82ms, stddev 1.78ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 2.68,
+            "unit": "ms",
+            "extra": "min 2.52ms, stddev 0.31ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 2.2,
+            "unit": "ms",
+            "extra": "min 2.18ms, stddev 0.12ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 1541.74,
+            "unit": "ms",
+            "extra": "min 1536.55ms, stddev 3.85ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 816.55,
+            "unit": "ms",
+            "extra": "min 809.16ms, stddev 3.81ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
           }
         ]
       }
