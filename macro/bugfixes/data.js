@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1792564346720,
+  "lastUpdate": 1792651028366,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (bugfixes)": [
@@ -13552,6 +13552,142 @@ window.BENCHMARK_DATA = {
             "value": 802.61,
             "unit": "ms",
             "extra": "min 797.22ms, stddev 3.62ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "471a45aff518fd0284fa1184c38d72a7513f1e52",
+          "message": "chore(frontend): size lint workers by free memory\n\nEvery ESLint worker builds its own typescript-eslint programs for all\nthe tsconfig projects it meets, about 4 GiB each, so the fixed four\nworkers of `pnpm run lint` need ~15 GB. With other tools running that\nwas enough to exhaust a 54 GB machine.\n\n`scripts/lint.ts` now picks 1 to 4 workers from the memory free at\nstart, keeping the larger of 4 GiB and 20% of RAM free, and prints its\nchoice on stderr. A passed --concurrency wins; CI pins 4, so the CI\nstep is unchanged. Under a cgroup cap Node shrinks its default heap\nbelow what one worker needs, so the script raises a shrunk default to\n4 GiB and leaves a normal one alone.",
+          "timestamp": "2026-10-21T14:27:47Z",
+          "url": "https://github.com/rotki/rotki/commit/471a45aff518fd0284fa1184c38d72a7513f1e52"
+        },
+        "date": 1792651028064,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 2099.6,
+            "unit": "ms",
+            "extra": "min 2052.12ms, stddev 1658.31ms"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 1359.66,
+            "unit": "ms",
+            "extra": "min 1354.01ms, stddev 435.08ms"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 6.81,
+            "unit": "ms",
+            "extra": "min 6.48ms, stddev 0.25ms"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 42.05,
+            "unit": "ms",
+            "extra": "min 40.67ms, stddev 1.63ms"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 2.61,
+            "unit": "ms",
+            "extra": "min 2.51ms, stddev 0.07ms"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 2.23,
+            "unit": "ms",
+            "extra": "min 2.18ms, stddev 0.07ms"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 127.25,
+            "unit": "ms",
+            "extra": "min 126.79ms, stddev 0.33ms"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 85.82,
+            "unit": "ms",
+            "extra": "min 84.9ms, stddev 0.98ms"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 2100.15,
+            "unit": "ms",
+            "extra": "min 2051.12ms, stddev 29.43ms"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 1428.09,
+            "unit": "ms",
+            "extra": "min 1424.81ms, stddev 9.36ms"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 1039.75,
+            "unit": "ms",
+            "extra": "min 1036.26ms, stddev 2.79ms"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 1042.22,
+            "unit": "ms",
+            "extra": "min 1039.36ms, stddev 1.63ms"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 1151.58,
+            "unit": "ms",
+            "extra": "min 1147.44ms, stddev 2.93ms"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 1028.4,
+            "unit": "ms",
+            "extra": "min 1024.52ms, stddev 2.05ms"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 41.98,
+            "unit": "ms",
+            "extra": "min 40.7ms, stddev 0.58ms"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 2.5,
+            "unit": "ms",
+            "extra": "min 2.41ms, stddev 0.06ms"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 2.06,
+            "unit": "ms",
+            "extra": "min 2.06ms, stddev 0.05ms"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 1639.35,
+            "unit": "ms",
+            "extra": "min 1632.49ms, stddev 5.25ms"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 800.7,
+            "unit": "ms",
+            "extra": "min 796.16ms, stddev 3.04ms"
           }
         ]
       }
