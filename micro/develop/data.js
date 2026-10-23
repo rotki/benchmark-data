@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1792651110160,
+  "lastUpdate": 1792737126401,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (develop)": [
@@ -8164,6 +8164,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.0000023461431436576463",
             "extra": "mean: 22.42924064552816 usec\nrounds: 7189"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "9fe8d74188b9d0613db94e7381bcdc4b537203eb",
+          "message": "ci: retry the cassette PR lookup on API errors\n\nThe commits/{sha}/pulls endpoint intermittently answers a 500 with an\nempty body for a large merge commit, which failed the whole run on\nthe first attempt. Retry errors like empty answers, and fail only\nwhen no attempt got through.",
+          "timestamp": "2026-10-22T16:40:17Z",
+          "url": "https://github.com/rotki/rotki/commit/9fe8d74188b9d0613db94e7381bcdc4b537203eb"
+        },
+        "date": 1792737125352,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 151.07951754127268,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00007435340014748776",
+            "extra": "mean: 6.619030933341541 msec\nrounds: 90"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 131.82081662457568,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00008001936972671857",
+            "extra": "mean: 7.58605526506477 msec\nrounds: 83"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 996.8253442093763,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000025813712163193524",
+            "extra": "mean: 1.003184766327487 msec\nrounds: 980"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 566.9133648084097,
+            "unit": "iter/sec",
+            "range": "stddev: 0.013141306994062064",
+            "extra": "mean: 1.7639379525616816 msec\nrounds: 1054"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 1.8393145430318072,
+            "unit": "iter/sec",
+            "range": "stddev: 0.43608067367270553",
+            "extra": "mean: 543.6807988000055 msec\nrounds: 5"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 45270.21539308951,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0000017884238216689883",
+            "extra": "mean: 22.089579016066487 usec\nrounds: 7549"
           }
         ]
       }
