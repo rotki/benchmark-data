@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1792737184978,
+  "lastUpdate": 1792823270808,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (bugfixes)": [
@@ -7808,6 +7808,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.0000011115004557693534",
             "extra": "mean: 16.226649876705295 usec\nrounds: 7326"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "6cd6a9e029830b2495218dd7f69da4ec502e9cf5",
+          "message": "fix(frontend): leave ignored assets out of manual totals\n\nmanualBalanceByLocation summed every manual balance, so a location's\ntotal in balancesByLocation (premium byLocation, global search)\nincluded ignored assets that net worth and the tables leave out.",
+          "timestamp": "2026-10-23T14:41:09Z",
+          "url": "https://github.com/rotki/rotki/commit/6cd6a9e029830b2495218dd7f69da4ec502e9cf5"
+        },
+        "date": 1792823270180,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 457.24154980902887,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00005042852481110566",
+            "extra": "mean: 2.1870278421059046 msec\nrounds: 19"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 319.19347142656665,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00005124806217602848",
+            "extra": "mean: 3.1328961570884104 msec\nrounds: 261"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 1000.6516414382754,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000016103078829773108",
+            "extra": "mean: 999.3487829217582 usec\nrounds: 972"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 526.547786158646,
+            "unit": "iter/sec",
+            "range": "stddev: 0.011626030347019409",
+            "extra": "mean: 1.8991628609728983 msec\nrounds: 1007"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 17.18115783807386,
+            "unit": "iter/sec",
+            "range": "stddev: 0.009250108844578268",
+            "extra": "mean: 58.20329511111152 msec\nrounds: 9"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 43921.29711598455,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000002625260832037795",
+            "extra": "mean: 22.767997888570186 usec\nrounds: 7104"
           }
         ]
       }
