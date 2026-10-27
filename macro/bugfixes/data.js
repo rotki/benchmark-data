@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1792997602661,
+  "lastUpdate": 1793083489097,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (bugfixes)": [
@@ -14232,6 +14232,142 @@ window.BENCHMARK_DATA = {
             "value": 803.68,
             "unit": "ms",
             "extra": "min 799.79ms, stddev 7.37ms"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Yábir Benchakhtir",
+            "username": "yabirgb",
+            "email": "git@yabirgb.com"
+          },
+          "committer": {
+            "name": "GitHub",
+            "username": "web-flow",
+            "email": "noreply@github.com"
+          },
+          "id": "ab6d370f1edb6bac47842f46b7f22e806bfa03c6",
+          "message": "Merge pull request #13452 from rotki/renovate/pypi-aiohttp-vulnerability\n\nfix(deps): update dependency aiohttp to v3.14.4 [security]",
+          "timestamp": "2026-10-26T15:55:12Z",
+          "url": "https://github.com/rotki/rotki/commit/ab6d370f1edb6bac47842f46b7f22e806bfa03c6"
+        },
+        "date": 1793083488518,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 1772.35,
+            "unit": "ms",
+            "extra": "min 1691.14ms, stddev 1439.82ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 1143.17,
+            "unit": "ms",
+            "extra": "min 1058.34ms, stddev 349.31ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 5.39,
+            "unit": "ms",
+            "extra": "min 5.24ms, stddev 0.14ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 35.65,
+            "unit": "ms",
+            "extra": "min 34.97ms, stddev 0.35ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 2.07,
+            "unit": "ms",
+            "extra": "min 1.97ms, stddev 0.06ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 1.62,
+            "unit": "ms",
+            "extra": "min 1.57ms, stddev 0.05ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 93.57,
+            "unit": "ms",
+            "extra": "min 91.08ms, stddev 5.2ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 63.56,
+            "unit": "ms",
+            "extra": "min 60.78ms, stddev 25.85ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 1743.76,
+            "unit": "ms",
+            "extra": "min 1690.0ms, stddev 35.97ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 1157.55,
+            "unit": "ms",
+            "extra": "min 1110.07ms, stddev 107.52ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 896.14,
+            "unit": "ms",
+            "extra": "min 891.88ms, stddev 2.8ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 894.38,
+            "unit": "ms",
+            "extra": "min 893.48ms, stddev 3.68ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 981.21,
+            "unit": "ms",
+            "extra": "min 976.55ms, stddev 4.99ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 884.58,
+            "unit": "ms",
+            "extra": "min 878.19ms, stddev 4.54ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 37.15,
+            "unit": "ms",
+            "extra": "min 36.18ms, stddev 0.81ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 2.05,
+            "unit": "ms",
+            "extra": "min 1.86ms, stddev 0.1ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 1.61,
+            "unit": "ms",
+            "extra": "min 1.6ms, stddev 0.06ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 1357.49,
+            "unit": "ms",
+            "extra": "min 1349.09ms, stddev 4.15ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 665.2,
+            "unit": "ms",
+            "extra": "min 658.59ms, stddev 53.36ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
           }
         ]
       }
