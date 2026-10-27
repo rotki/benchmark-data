@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1792997745094,
+  "lastUpdate": 1793083630777,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (bugfixes)": [
@@ -8000,6 +8000,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.0000026331795678671023",
             "extra": "mean: 25.581815330175615 usec\nrounds: 6249"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Yábir Benchakhtir",
+            "username": "yabirgb",
+            "email": "git@yabirgb.com"
+          },
+          "committer": {
+            "name": "GitHub",
+            "username": "web-flow",
+            "email": "noreply@github.com"
+          },
+          "id": "ab6d370f1edb6bac47842f46b7f22e806bfa03c6",
+          "message": "Merge pull request #13452 from rotki/renovate/pypi-aiohttp-vulnerability\n\nfix(deps): update dependency aiohttp to v3.14.4 [security]",
+          "timestamp": "2026-10-26T15:55:12Z",
+          "url": "https://github.com/rotki/rotki/commit/ab6d370f1edb6bac47842f46b7f22e806bfa03c6"
+        },
+        "date": 1793083630374,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 336.7045730399928,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0004457471894035203",
+            "extra": "mean: 2.969962632141687 msec\nrounds: 280"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 233.99758120036498,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0006478594222636006",
+            "extra": "mean: 4.27354844810866 msec\nrounds: 212"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 730.4430030361239,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000025922288104955305",
+            "extra": "mean: 1.3690322117447202 msec\nrounds: 647"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 2380.890634954366,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0002922006966499814",
+            "extra": "mean: 420.0108922765228 usec\nrounds: 984"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 13.18149746067475,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0023443859517584924",
+            "extra": "mean: 75.86391477776841 msec\nrounds: 9"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 28288.534979628665,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000003649731719007642",
+            "extra": "mean: 35.350010197421916 usec\nrounds: 5688"
           }
         ]
       }
