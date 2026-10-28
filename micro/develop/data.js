@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1792997676641,
+  "lastUpdate": 1793172109755,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (develop)": [
@@ -8420,6 +8420,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.0000044670905671772604",
             "extra": "mean: 34.88952284750313 usec\nrounds: 6434"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "4bb126b7216fb48c91fa73ee79646c010ed103d9",
+          "message": "feat(frontend): redesign balance divergence view\n\nShow the divergence search result as a comparison table: the last\nmatching and first diverged events side by side, with dates, the\nsearch window between them (rounded gap, block range), tracked and\non-chain values with the differing digits highlighted, and the\ndifference marked as a match or a drift.\n\nThe data issue drawer lays balance mismatches and negative balances\nout as value tiles instead of a sentence, moves the account, location\nand asset into the header, and tightens the spacing between sections.",
+          "timestamp": "2026-10-27T22:51:06Z",
+          "url": "https://github.com/rotki/rotki/commit/4bb126b7216fb48c91fa73ee79646c010ed103d9"
+        },
+        "date": 1793172109126,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 152.96189214667876,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00029676229195011356",
+            "extra": "mean: 6.537576032604751 msec\nrounds: 92"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 132.14997259697134,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00031033402070922253",
+            "extra": "mean: 7.567160101120735 msec\nrounds: 89"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 1013.554888570127,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0000712902642670877",
+            "extra": "mean: 986.626389233592 usec\nrounds: 966"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 3053.9048831214477,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0006685417119688593",
+            "extra": "mean: 327.44962213030135 usec\nrounds: 958"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 14.336184861753265,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0025131056427842476",
+            "extra": "mean: 69.75356481819972 msec\nrounds: 11"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 43137.452024899605,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0000028975260360296574",
+            "extra": "mean: 23.181712249086583 usec\nrounds: 7225"
           }
         ]
       }
