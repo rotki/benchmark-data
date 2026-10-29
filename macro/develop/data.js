@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1793171771949,
+  "lastUpdate": 1793259417384,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (develop)": [
@@ -18684,6 +18684,142 @@ window.BENCHMARK_DATA = {
             "value": 610.87,
             "unit": "ms",
             "extra": "min 606.3ms, stddev 9.03ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "79260cce22ea7dee68fde7b19bc650aaa8f561fb",
+          "message": "fix(frontend): name an unreachable backend in tasks\n\nA task whose request got no response showed ofetch's raw request\nline in its failure strip. useNativeTask dropped the thrown error\nwhen the run rejected, and isUnreachable only looked through a\nRequestFailed. Keep the thrown error as the TaskFailed cause and\nlet isUnreachable read it.",
+          "timestamp": "2026-10-28T16:27:17Z",
+          "url": "https://github.com/rotki/rotki/commit/79260cce22ea7dee68fde7b19bc650aaa8f561fb"
+        },
+        "date": 1793259416736,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 1939.82,
+            "unit": "ms",
+            "extra": "min 1888.82ms, stddev 1432.31ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 970.94,
+            "unit": "ms",
+            "extra": "min 940.42ms, stddev 371.38ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 5.36,
+            "unit": "ms",
+            "extra": "min 5.2ms, stddev 0.19ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 33.63,
+            "unit": "ms",
+            "extra": "min 33.32ms, stddev 0.37ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 1.88,
+            "unit": "ms",
+            "extra": "min 1.77ms, stddev 0.05ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 1.56,
+            "unit": "ms",
+            "extra": "min 1.45ms, stddev 0.07ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 84.36,
+            "unit": "ms",
+            "extra": "min 83.36ms, stddev 3.58ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 59.92,
+            "unit": "ms",
+            "extra": "min 57.99ms, stddev 6.71ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 1942.16,
+            "unit": "ms",
+            "extra": "min 1890.72ms, stddev 22.96ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 1153.18,
+            "unit": "ms",
+            "extra": "min 1150.3ms, stddev 5.16ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 811.02,
+            "unit": "ms",
+            "extra": "min 808.63ms, stddev 3.74ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 811.34,
+            "unit": "ms",
+            "extra": "min 805.74ms, stddev 3.55ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 897.53,
+            "unit": "ms",
+            "extra": "min 891.66ms, stddev 5.65ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 798.13,
+            "unit": "ms",
+            "extra": "min 794.41ms, stddev 4.34ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 32.62,
+            "unit": "ms",
+            "extra": "min 32.36ms, stddev 1.28ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 1.89,
+            "unit": "ms",
+            "extra": "min 1.8ms, stddev 0.04ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 1.54,
+            "unit": "ms",
+            "extra": "min 1.42ms, stddev 0.06ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 1214.8,
+            "unit": "ms",
+            "extra": "min 1208.46ms, stddev 5.46ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 611.94,
+            "unit": "ms",
+            "extra": "min 605.83ms, stddev 7.38ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
           }
         ]
       }
