@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1793172175952,
+  "lastUpdate": 1793259750813,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (bugfixes)": [
@@ -8128,6 +8128,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.0000012755589293250513",
             "extra": "mean: 16.837560394116075 usec\nrounds: 7211"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "79260cce22ea7dee68fde7b19bc650aaa8f561fb",
+          "message": "fix(frontend): name an unreachable backend in tasks\n\nA task whose request got no response showed ofetch's raw request\nline in its failure strip. useNativeTask dropped the thrown error\nwhen the run rejected, and isUnreachable only looked through a\nRequestFailed. Keep the thrown error as the TaskFailed cause and\nlet isUnreachable read it.",
+          "timestamp": "2026-10-28T16:27:17Z",
+          "url": "https://github.com/rotki/rotki/commit/79260cce22ea7dee68fde7b19bc650aaa8f561fb"
+        },
+        "date": 1793259750158,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 363.49668123359737,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0001655466967715043",
+            "extra": "mean: 2.7510567540982866 msec\nrounds: 305"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 248.5433642457264,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00003567476745739074",
+            "extra": "mean: 4.023442762331542 msec\nrounds: 223"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 756.8500746015211,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000022244864189807923",
+            "extra": "mean: 1.321265642375072 msec\nrounds: 741"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 2448.513959283652,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00026590861244929373",
+            "extra": "mean: 408.4109858587714 usec\nrounds: 990"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 13.761254287467334,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0015070727517482682",
+            "extra": "mean: 72.66779459999668 msec\nrounds: 10"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 29152.61670046248,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000003242413287357367",
+            "extra": "mean: 34.30223812410417 usec\nrounds: 6610"
           }
         ]
       }
