@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1793346362819,
+  "lastUpdate": 1793368513881,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (bugfixes)": [
@@ -8256,6 +8256,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.000002667904915914405",
             "extra": "mean: 26.068699014482707 usec\nrounds: 5987"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "be82055e7006b01f3230a3a43db79478ec8034cf",
+          "message": "ci: publish benchmark data through a GitHub App\n\nThe nightly benchmark jobs pushed to rotki/benchmark-data with\nBENCHMARK_DATA_TOKEN, a repository-level personal access token. It\nbelongs to one maintainer, its kind and expiry are unknown, and zizmor\nflags it three times as secrets-outside-env.\n\nThe benchmark jobs now only upload their datapoints as artifacts and\nneed no credentials, since benchmark-data is public. A new publish job\nin the benchmarks environment, which admits develop only, mints a\none-hour token from the rotki-benchmark-data app (contents write on\nbenchmark-data alone) and pushes the four series. It runs no repository\ncode. The benchmark jobs therefore run again from any ref or fork, and\nno longer need to be serialized.",
+          "timestamp": "2026-10-30T13:46:06Z",
+          "url": "https://github.com/rotki/rotki/commit/be82055e7006b01f3230a3a43db79478ec8034cf"
+        },
+        "date": 1793368513218,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 345.83378169479994,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000042475243992236824",
+            "extra": "mean: 2.891562516245174 msec\nrounds: 277"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 240.02896463167633,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00006838301075113617",
+            "extra": "mean: 4.166163869158444 msec\nrounds: 214"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 731.7041900089906,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00003907479255604172",
+            "extra": "mean: 1.366672507352613 msec\nrounds: 680"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 2500.1713271854524,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00037178108977781155",
+            "extra": "mean: 399.9725895287912 usec\nrounds: 955"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 13.90829476555066,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0018486590923545733",
+            "extra": "mean: 71.89954030000081 msec\nrounds: 10"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 28619.625686359253,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000004166122219795517",
+            "extra": "mean: 34.94105796347372 usec\nrounds: 5676"
           }
         ]
       }
