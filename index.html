@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- everything comes from this repository: no CDN, font, analytics or API call can load -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; connect-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<title>rotki benchmarks</title>
+<script src="vendor/chart.umd.min.js"></script>
+<style>
+:root {
+  /* primary = @rotki/ui-library --rui-light-primary-main / --rui-dark-primary-main */
+  --bg: #f2f2f2; --panel: #ffffff; --text: #212121; --muted: #6e6e6e; --line: #e2e2e2;
+  --accent: #4e5ba6; --accent-soft: #eceef7; --bad: #c62828; --bad-bg: #fde8e6; --good: #2e7d32; --good-bg: #e6f4e7;
+  --warn-bg: #fff4e0;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #161616; --panel: #212121; --text: #ececec; --muted: #a0a0a0; --line: #333333;
+    --accent: #5e6bb4; --accent-soft: #252a45;
+    --bad: #ef7b72; --bad-bg: #3d1f1c; --good: #7ccf82; --good-bg: #1d3320; --warn-bg: #3a2d17;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text); font: 14px/1.45 system-ui, sans-serif; }
+header { padding: 20px 16px 8px; max-width: 1200px; margin: 0 auto; }
+h1 { margin: 0 0 4px; font-size: 22px; }
+.sub { color: var(--muted); }
+main { max-width: 1200px; margin: 0 auto; padding: 0 16px 48px; }
+.controls { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin: 12px 0 16px; }
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: var(--panel); }
+.seg button { border: 0; background: none; color: var(--text); padding: 6px 12px; cursor: pointer; font: inherit; }
+.seg button + button { border-left: 1px solid var(--line); }
+.seg button.on { background: var(--accent); color: #fff; }
+input[type=search] { padding: 6px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); color: var(--text); font: inherit; min-width: 200px; flex: 1; max-width: 320px; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; margin-bottom: 16px; }
+.card h2 { margin: 0 0 8px; font-size: 16px; }
+.meta { color: var(--muted); font-size: 13px; margin-bottom: 8px; }
+.table-wrap { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nums; }
+th, td { text-align: right; padding: 6px 8px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+th:first-child, td:first-child { text-align: left; white-space: normal; }
+th { color: var(--muted); font-weight: 600; cursor: pointer; user-select: none; }
+td.name a { color: inherit; text-decoration: none; }
+td.name a:hover { text-decoration: underline; }
+.pill { display: inline-block; padding: 1px 8px; border-radius: 999px; font-size: 12px; }
+.pill.bad { background: var(--bad-bg); color: var(--bad); }
+.pill.good { background: var(--good-bg); color: var(--good); }
+.pill.hw { background: var(--warn-bg); color: var(--muted); }
+.d-bad { color: var(--bad); } .d-good { color: var(--good); }
+td.dim { opacity: .45; }
+a { color: var(--accent); }
+th:first-child, td:first-child { position: sticky; left: 0; background: var(--panel); z-index: 1; }
+@media (max-width: 600px) {
+  th:first-child, td:first-child { box-shadow: 1px 0 0 var(--line); }
+  td.name a { display: block; width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+}
+.error { color: var(--bad); }
+.group { margin-top: 24px; }
+.group > h2 { font-size: 15px; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; margin: 0 0 8px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(440px, 1fr)); gap: 20px; }
+.chart-card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 12px; min-width: 0; }
+.chart-card h3 { margin: 0 0 2px; font-size: 14px; word-break: break-word; }
+.chart-card .meta { margin-bottom: 4px; }
+.chart-box { position: relative; height: 240px; }
+.legend { display: flex; flex-wrap: wrap; gap: 10px; font-size: 12px; color: var(--muted); }
+.legend span::before { content: ""; display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: var(--c); margin-right: 4px; vertical-align: -1px; }
+@media (max-width: 520px) { .grid { grid-template-columns: 1fr; } }
+footer { max-width: 1200px; margin: 0 auto; padding: 0 16px 32px; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; color: var(--muted); font-size: 13px; }
+footer .spacer { flex: 1; }
+footer button { border: 1px solid var(--line); background: var(--panel); color: var(--text); border-radius: 8px; padding: 6px 12px; font: inherit; cursor: pointer; }
+</style>
+</head>
+<body>
+<header>
+  <h1>rotki benchmarks</h1>
+  <div class="sub">Nightly backend benchmarks of <a rel="noopener" href="https://github.com/rotki/rotki">rotki/rotki</a>, from <a rel="noopener" href="https://github.com/rotki/rotki/blob/develop/.github/workflows/rotki_benchmarks.yml">rotki_benchmarks.yml</a>. Click a point to open its commit on GitHub. <span id="updated"></span></div>
+</header>
+<main>
+  <div class="controls">
+    <div class="seg" id="suite"><button data-v="macro" class="on">Macro</button><button data-v="micro">Micro</button></div>
+    <div class="seg" id="branch"><button data-v="develop" class="on">develop</button><button data-v="bugfixes">bugfixes</button><button data-v="both">Both</button></div>
+    <div class="seg" id="range"><button data-v="7">7 days</button><button data-v="30">30 days</button><button data-v="90" class="on">90 days</button><button data-v="0">All</button></div>
+    <div class="seg" id="runner" title="Show one runner CPU at a time"></div>
+    <input type="search" id="filter" placeholder="Filter benchmarks">
+  </div>
+
+  <section class="card">
+    <h2>Latest night</h2>
+    <div class="meta" id="summary-meta"></div>
+    <div class="table-wrap"><table id="summary"><thead></thead><tbody></tbody></table></div>
+  </section>
+
+  <div class="legend" id="legend"></div>
+  <div id="charts"></div>
+</main>
+<footer>
+  <button id="download">Download data as JSON</button>
+  <span class="spacer"></span>
+  <span>Data from <a rel="noopener" href="https://github.com/benchmark-action/github-action-benchmark">github-action-benchmark</a> · <a rel="noopener" href="https://github.com/rotki/benchmark-data">page source on GitHub</a></span>
+</footer>
+
+<script>
+const SERIES = {
+  macro: { threshold: 1.2, biggerIsBetter: false },
+  micro: { threshold: 1.5, biggerIsBetter: true },
+};
+const BRANCHES = ['develop', 'bugfixes'];
+const BASELINE_NIGHTS = 7;
+const TREND_WINDOW = 7;
+const TREND_PERIOD_NIGHTS = 15;
+const MIN_TREND_NIGHTS = 5;
+// first slot is rotki's primary blue; the rest are picked to stay apart from it and each other
+const CPU_COLORS = ['#4e5ba6', '#1fa39a', '#f0a033', '#b05fd1', '#e0607e', '#7d8597'];
+const UNKNOWN_CPU = 'unknown runner';
+const POINT_ALPHA = '66';
+
+const state = { suite: 'macro', branch: 'develop', range: 90, cpu: 'all', filter: '', sort: 'status' };
+const data = {};
+const charts = [];
+
+/** "AMD EPYC 7763 64-Core Processor" → "EPYC 7763", "INTEL(R) XEON(R) PLATINUM 8573C" → "Xeon 8573C". */
+function shortCpu(model) {
+  const epyc = /EPYC\s+(\S+)/i.exec(model);
+  if (epyc) return `EPYC ${epyc[1]}`;
+  const xeon = /XEON\(R\)\s+(?:PLATINUM\s+)?(\S+)/i.exec(model);
+  if (xeon) return `Xeon ${xeon[1]}`;
+  return model.replace(/\(R\)|\(TM\)|CPU @.*| \d+-Core Processor/gi, '').trim();
+}
+
+function cpuOf(bench) {
+  const match = /machine: (\{.*\})/.exec(bench.extra || '');
+  if (!match) return UNKNOWN_CPU;
+  try {
+    const m = JSON.parse(match[1]);
+    return shortCpu(m.cpu_model);
+  } catch { return UNKNOWN_CPU; }
+}
+
+async function loadSeries(suite, branch) {
+  const res = await fetch(`${suite}/${branch}/data.js`);
+  if (!res.ok) throw new Error(`${suite}/${branch}: HTTP ${res.status}`);
+  const text = await res.text();
+  const json = JSON.parse(text.slice(text.indexOf('{')));
+  const points = Object.values(json.entries)[0] || [];
+  const byBench = new Map();
+  for (const p of points) {
+    for (const b of p.benches) {
+      if (!byBench.has(b.name)) byBench.set(b.name, []);
+      byBench.get(b.name).push({ t: p.date, v: b.value, unit: b.unit, cpu: cpuOf(b), commit: p.commit });
+    }
+  }
+  return { lastUpdate: json.lastUpdate, newest: points.length ? points[points.length - 1].date : 0, byBench };
+}
+
+function median(xs) {
+  const s = [...xs].sort((a, b) => a - b);
+  const m = Math.floor(s.length / 2);
+  return s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2;
+}
+
+/** Rolling median over the previous `window` points, so one noisy night or runner barely moves it. */
+function rollingMedian(pts, window) {
+  return pts.map((p, i) => ({ x: p.t, y: median(pts.slice(Math.max(0, i - window + 1), i + 1).map(q => q.v)) }));
+}
+
+/**
+ * One rolling-median line per runner CPU, so a night on a faster machine does not bend the line.
+ * CPUs with too few nights to smooth over get no line; their points still show.
+ */
+function trendLines(pts) {
+  const byCpu = new Map();
+  for (const p of pts) {
+    if (!byCpu.has(p.cpu)) byCpu.set(p.cpu, []);
+    byCpu.get(p.cpu).push(p);
+  }
+  return [...byCpu].filter(([, cpuPts]) => cpuPts.length >= TREND_WINDOW)
+    .map(([cpu, cpuPts]) => ({ cpu, line: rollingMedian(cpuPts, TREND_WINDOW) }));
+}
+
+/**
+ * Median of the last `maxNights` nights against the same number before them, shrinking the
+ * window to the history there is; null below `MIN_TREND_NIGHTS` on either side.
+ */
+function periodTrend(pts, maxNights, biggerIsBetter) {
+  const n = Math.min(maxNights, Math.floor(pts.length / 2));
+  if (n < MIN_TREND_NIGHTS) return null;
+  const recent = median(pts.slice(-n).map(p => p.v));
+  const before = median(pts.slice(-2 * n, -n).map(p => p.v));
+  return slowdown(recent, before, biggerIsBetter);
+}
+
+/** Slowdown ratio: above 1 means worse, whichever direction the unit runs. */
+function slowdown(cur, ref, biggerIsBetter) {
+  if (!ref || !cur) return null;
+  return biggerIsBetter ? ref / cur : cur / ref;
+}
+
+function summarize(pts, cfg) {
+  const last = pts[pts.length - 1];
+  const prior = pts.slice(0, -1);
+  const prev = prior[prior.length - 1];
+  const sameCpu = prior.filter(p => p.cpu === last.cpu && last.cpu !== UNKNOWN_CPU).slice(-BASELINE_NIGHTS);
+  const base = sameCpu.length >= 3 ? sameCpu : prior.slice(-BASELINE_NIGHTS);
+  const baseline = base.length ? median(base.map(p => p.v)) : null;
+  const vsPrev = prev ? slowdown(last.v, prev.v, cfg.biggerIsBetter) : null;
+  const vsBase = baseline ? slowdown(last.v, baseline, cfg.biggerIsBetter) : null;
+  const cpuChanged = prev && prev.cpu !== last.cpu;
+  let status = 'ok';
+  if (vsBase !== null && vsBase > cfg.threshold) status = 'regression';
+  else if (vsBase !== null && vsBase < 1 / cfg.threshold) status = 'improvement';
+  const trendPts = last.cpu === UNKNOWN_CPU ? pts : pts.filter(p => p.cpu === last.cpu);
+  const trend = periodTrend(trendPts, TREND_PERIOD_NIGHTS, cfg.biggerIsBetter);
+  return { last, prev, baseline, vsPrev, vsBase, trend, cpuChanged, sameCpuBaseline: base === sameCpu, status };
+}
+
+function fmtVal(v, unit) {
+  const n = Math.abs(v) >= 100 ? v.toFixed(0) : Math.abs(v) >= 10 ? v.toFixed(1) : v.toFixed(2);
+  return `${n} ${unit}`;
+}
+function fmtRatio(r) {
+  if (r === null) return '–';
+  const pct = (r - 1) * 100;
+  const cls = r > 1.05 ? 'd-bad' : r < 0.95 ? 'd-good' : '';
+  return `<span class="${cls}">${pct >= 0 ? '+' : ''}${pct.toFixed(1)}%</span>`;
+}
+function trendArrow(r) {
+  if (r === null) return '';
+  if (r > 1.05) return '<span class="d-bad" title="Getting slower">▲</span>';
+  if (r < 0.95) return '<span class="d-good" title="Getting faster">▼</span>';
+  return '<span title="Flat">▬</span>';
+}
+const fmtDate = t => new Date(t).toISOString().slice(0, 10);
+const groupOf = (suite, name) => suite === 'macro' ? name.split('/')[0] : (name.split('::')[0].split('/').pop() || 'other');
+const shortName = (suite, name) => suite === 'macro' ? name : name.split('::').pop();
+const anchor = name => 'b-' + name.replace(/[^a-zA-Z0-9]+/g, '-');
+
+function visibleBranches() { return state.branch === 'both' ? BRANCHES : [state.branch]; }
+/** Start of the selected range, counted back from the newest datapoint so an old page still shows data. */
+const newestPoint = () => Math.max(...Object.values(data).map(d => d.newest));
+function rangeCutoff() {
+  if (!state.range) return -Infinity;
+  return newestPoint() - state.range * 86400000;
+}
+function inRange(pts) {
+  const cutoff = rangeCutoff();
+  return pts.filter(p => p.t >= cutoff);
+}
+const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
+
+function renderSummary() {
+  const cfg = SERIES[state.suite];
+  const rows = [];
+  for (const branch of visibleBranches()) {
+    const series = data[`${state.suite}/${branch}`];
+    if (!series) continue;
+    for (const [name, pts] of series.byBench) {
+      if (state.filter && !name.toLowerCase().includes(state.filter)) continue;
+      rows.push({ name, branch, ...summarize(pts, cfg) });
+    }
+  }
+  const rank = { regression: 0, improvement: 1, ok: 2 };
+  const sorters = {
+    status: (a, b) => rank[a.status] - rank[b.status] || (b.vsBase ?? 0) - (a.vsBase ?? 0),
+    name: (a, b) => a.name.localeCompare(b.name),
+    vsPrev: (a, b) => (b.vsPrev ?? 0) - (a.vsPrev ?? 0),
+    vsBase: (a, b) => (b.vsBase ?? 0) - (a.vsBase ?? 0),
+    trend: (a, b) => (b.trend ?? 0) - (a.trend ?? 0),
+  };
+  rows.sort(sorters[state.sort]);
+
+  const thead = document.querySelector('#summary thead');
+  thead.innerHTML = `<tr><th data-s="name">Benchmark</th>${state.branch === 'both' ? '<th>Branch</th>' : ''}<th>Latest</th><th data-s="vsPrev">vs previous night</th><th data-s="vsBase">vs ${BASELINE_NIGHTS}-night median</th><th data-s="trend" title="Median of the last ${MIN_TREND_NIGHTS}-${TREND_PERIOD_NIGHTS} nights against as many before, on the latest night's CPU">Trend (same CPU)</th><th data-s="status">Status</th></tr>`;
+  thead.querySelectorAll('th[data-s]').forEach(th => th.onclick = () => { state.sort = th.dataset.s; renderSummary(); });
+
+  document.querySelector('#summary tbody').innerHTML = rows.map(r => {
+    const pill = r.status === 'regression' ? '<span class="pill bad">slower</span>'
+      : r.status === 'improvement' ? '<span class="pill good">faster</span>' : '';
+    const hw = r.cpuChanged ? ' <span class="pill hw" title="The runner CPU differs from the previous night">runner changed</span>' : '';
+    const baseNote = r.sameCpuBaseline ? ' title="Median of earlier nights on the same CPU"' : ' title="Median of earlier nights, any CPU"';
+    const prevCell = r.cpuChanged
+      ? `<td class="dim" title="Different runner CPU than the previous night: this mostly measures the hardware">${fmtRatio(r.vsPrev)}</td>`
+      : `<td>${fmtRatio(r.vsPrev)}</td>`;
+    return `<tr><td class="name"><a href="#${anchor(r.branch + r.name)}" title="${esc(r.name)}">${esc(shortName(state.suite, r.name))}</a></td>${state.branch === 'both' ? `<td>${r.branch}</td>` : ''}<td>${fmtVal(r.last.v, r.last.unit)}</td>${prevCell}<td${baseNote}>${fmtRatio(r.vsBase)}</td><td>${trendArrow(r.trend)} ${fmtRatio(r.trend)}</td><td>${pill}${hw}</td></tr>`;
+  }).join('') || '<tr><td colspan="7">No benchmarks match.</td></tr>';
+
+  const regressions = rows.filter(r => r.status === 'regression').length;
+  const latest = Math.max(...rows.map(r => r.last.t));
+  const commit = rows.find(r => r.last.t === latest)?.last.commit;
+  document.getElementById('summary-meta').innerHTML = rows.length
+    ? `${fmtDate(latest)} · commit <a href="${esc(commit?.url)}">${esc(commit?.id.slice(0, 10))}</a> · ${rows.length} benchmarks · <b>${regressions}</b> more than ${Math.round((cfg.threshold - 1) * 100)}% slower than their ${BASELINE_NIGHTS}-night median`
+    : '';
+}
+
+function renderCharts() {
+  charts.splice(0).forEach(c => c.destroy());
+  const root = document.getElementById('charts');
+  root.innerHTML = '';
+  const cpus = new Set();
+  const benches = new Map();
+  for (const branch of visibleBranches()) {
+    const series = data[`${state.suite}/${branch}`];
+    if (!series) continue;
+    for (const [name, pts] of series.byBench) {
+      if (state.filter && !name.toLowerCase().includes(state.filter)) continue;
+      if (!benches.has(name)) benches.set(name, {});
+      pts.forEach(p => cpus.add(p.cpu));
+      const shown = p => state.cpu === 'all' || p.cpu === state.cpu;
+      benches.get(name)[branch] = { all: pts, ranged: inRange(pts).filter(shown) };
+    }
+  }
+  // colours follow the whole history, so a CPU keeps its colour whatever range is shown
+  const cpuList = [...cpus].sort((a, b) => (a === UNKNOWN_CPU) - (b === UNKNOWN_CPU) || a.localeCompare(b));
+  const color = cpu => cpu === UNKNOWN_CPU ? '#9e9e9e' : CPU_COLORS[cpuList.indexOf(cpu) % CPU_COLORS.length];
+  renderRunnerSelector(cpuList, color);
+  document.getElementById('legend').innerHTML = state.suite === 'macro'
+    ? `Lines: ${TREND_WINDOW}-night rolling median per runner CPU, dots: single nights. ` + cpuList.map(c => `<span style="--c:${color(c)}">${c}</span>`).join('')
+    : `Line: ${TREND_WINDOW}-night rolling median, dots: single nights. Micro benchmarks record no runner hardware.`;
+
+  const groups = new Map();
+  for (const name of benches.keys()) {
+    const g = groupOf(state.suite, name);
+    if (!groups.has(g)) groups.set(g, []);
+    groups.get(g).push(name);
+  }
+  const styles = getComputedStyle(document.documentElement);
+  const textColor = styles.getPropertyValue('--muted').trim();
+  const gridColor = styles.getPropertyValue('--line').trim();
+
+  for (const [g, names] of [...groups].sort()) {
+    const section = document.createElement('section');
+    section.className = 'group';
+    section.innerHTML = `<h2>${g}</h2><div class="grid"></div>`;
+    root.appendChild(section);
+    for (const name of names.sort()) {
+      const byBranch = benches.get(name);
+      const card = document.createElement('div');
+      card.className = 'chart-card';
+      card.id = anchor(visibleBranches()[0] + name);
+      for (const b of visibleBranches()) if (b !== visibleBranches()[0]) { const a = document.createElement('a'); a.id = anchor(b + name); card.appendChild(a); }
+      const unit = Object.values(byBranch)[0]?.all[0]?.unit ?? '';
+      card.insertAdjacentHTML('beforeend', `<h3>${esc(shortName(state.suite, name))}</h3><div class="meta">${unit} · ${SERIES[state.suite].biggerIsBetter ? 'higher' : 'lower'} is better</div><div class="chart-box"><canvas></canvas></div>`);
+      section.querySelector('.grid').appendChild(card);
+      const lineColor = branch => branch === 'develop' ? CPU_COLORS[0] : '#8a90b8';
+      const cutoff = rangeCutoff();
+      const datasets = Object.entries(byBranch).flatMap(([branch, { all, ranged }]) => [{
+        label: branch,
+        data: ranged.map(p => ({ x: p.t, y: p.v, p })),
+        showLine: false,
+        pointRadius: state.range && state.range <= 7 ? 4 : 2,
+        pointHoverRadius: 5,
+        pointBackgroundColor: ranged.map(p => color(p.cpu) + POINT_ALPHA),
+        pointBorderWidth: 0,
+      }, ...trendLines(all).map(({ cpu, line }) => ({ cpu, line: line.filter(q => q.x >= cutoff) }))
+        .filter(({ cpu, line }) => line.length > 1 && (state.cpu === 'all' || cpu === state.cpu))
+        .map(({ cpu, line }, i) => ({
+        label: i === 0 ? `${branch} trend` : '',
+        data: line,
+        borderColor: cpu !== UNKNOWN_CPU ? color(cpu) : state.suite === 'macro' ? color(cpu) : lineColor(branch),
+        borderWidth: 2.5,
+        borderDash: branch === 'bugfixes' ? [6, 4] : [],
+        pointRadius: 0,
+        pointHitRadius: 0,
+        tension: 0.3,
+        isTrend: true,
+      }))]);
+      charts.push(new Chart(card.querySelector('canvas'), {
+        type: 'line',
+        data: { datasets },
+        options: {
+          animation: false, maintainAspectRatio: false, parsing: false,
+          interaction: { mode: 'nearest', intersect: false },
+          scales: {
+            x: { type: 'linear', min: Number.isFinite(cutoff) ? cutoff : undefined, max: newestPoint(), ticks: { color: textColor, maxTicksLimit: 5, maxRotation: 0, callback: v => fmtDate(v).slice(5) }, grid: { display: false }, border: { color: gridColor } },
+            y: { ticks: { color: textColor, maxTicksLimit: 5 }, grid: { color: gridColor }, border: { display: false } },
+          },
+          plugins: {
+            legend: { display: state.branch === 'both', labels: { color: textColor, boxWidth: 12, filter: item => item.text.endsWith('trend') } },
+            tooltip: { filter: item => !item.dataset.isTrend, callbacks: {
+              title: items => fmtDate(items[0].raw.x),
+              label: item => `${item.dataset.label}: ${fmtVal(item.raw.y, item.raw.p.unit)}`,
+              afterLabel: item => [`commit ${item.raw.p.commit.id.slice(0, 10)}`, item.raw.p.cpu],
+            } },
+          },
+          onClick: (_, els, chart) => {
+            const el = els.find(e => !chart.data.datasets[e.datasetIndex].isTrend);
+            if (el) window.open(chart.data.datasets[el.datasetIndex].data[el.index].p.commit.url, '_blank');
+          },
+        },
+      }));
+    }
+  }
+}
+
+const URL_KEYS = ['suite', 'branch', 'range', 'cpu', 'filter'];
+
+/** Mirrors the view into the query string, so a link or a reload reopens the same view. */
+function saveUrl() {
+  const params = new URLSearchParams(URL_KEYS.map(k => [k, state[k]]).filter(([, v]) => v !== ''));
+  history.replaceState(null, '', `?${params}${location.hash}`);
+}
+
+function loadUrl() {
+  const params = new URLSearchParams(location.search);
+  if (params.has('suite') && params.get('suite') in SERIES) state.suite = params.get('suite');
+  if (['develop', 'bugfixes', 'both'].includes(params.get('branch'))) state.branch = params.get('branch');
+  if (params.has('range') && !Number.isNaN(Number(params.get('range')))) state.range = Number(params.get('range'));
+  if (params.has('cpu')) state.cpu = params.get('cpu');
+  if (params.has('filter')) state.filter = params.get('filter').toLowerCase();
+  for (const [id, key] of [['suite', 'suite'], ['branch', 'branch'], ['range', 'range']]) {
+    document.querySelectorAll(`#${id} button`).forEach(b => b.classList.toggle('on', b.dataset.v === String(state[key])));
+  }
+  document.getElementById('filter').value = state.filter;
+}
+
+/** Saves the series in view (both branches when "Both") as JSON, built in the page, so nothing is fetched. */
+function downloadSeries() {
+  const out = {};
+  for (const branch of visibleBranches()) {
+    const series = data[`${state.suite}/${branch}`];
+    if (series) out[`${state.suite}/${branch}`] = Object.fromEntries(series.byBench);
+  }
+  const url = URL.createObjectURL(new Blob([JSON.stringify(out, null, 2)], { type: 'application/json' }));
+  const a = Object.assign(document.createElement('a'), { href: url, download: `rotki-benchmarks-${state.suite}-${state.branch}.json` });
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+/** Runner buttons come from the data, so a new CPU shows up without editing the page. */
+function renderRunnerSelector(cpuList, color) {
+  const seg = document.getElementById('runner');
+  const known = cpuList.filter(c => c !== UNKNOWN_CPU);
+  seg.hidden = known.length === 0;
+  if (state.cpu !== 'all' && !cpuList.includes(state.cpu)) state.cpu = 'all';
+  seg.innerHTML = [['all', 'All runners'], ...known.map(c => [c, c])]
+    .map(([v, label]) => `<button data-v="${esc(v)}" class="${state.cpu === v ? 'on' : ''}"${v === 'all' ? '' : ` style="box-shadow: inset 0 -3px ${color(v)}"`}>${esc(label)}</button>`).join('');
+  seg.querySelectorAll('button').forEach(btn => btn.onclick = () => { state.cpu = btn.dataset.v; render(); });
+}
+
+function render() { saveUrl(); renderSummary(); renderCharts(); }
+
+function bindSeg(id, key, parse = v => v) {
+  document.querySelectorAll(`#${id} button`).forEach(btn => btn.onclick = () => {
+    document.querySelectorAll(`#${id} button`).forEach(b => b.classList.toggle('on', b === btn));
+    state[key] = parse(btn.dataset.v);
+    render();
+  });
+}
+
+(async () => {
+  bindSeg('suite', 'suite');
+  bindSeg('branch', 'branch');
+  bindSeg('range', 'range', Number);
+  loadUrl();
+  let t;
+  document.getElementById('filter').oninput = e => { clearTimeout(t); t = setTimeout(() => { state.filter = e.target.value.toLowerCase(); render(); }, 150); };
+  document.getElementById('download').onclick = downloadSeries;
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', renderCharts);
+  const keys = Object.keys(SERIES).flatMap(s => BRANCHES.map(b => `${s}/${b}`));
+  const results = await Promise.allSettled(keys.map(k => loadSeries(...k.split('/'))));
+  const failed = [];
+  results.forEach((r, i) => r.status === 'fulfilled' ? (data[keys[i]] = r.value) : failed.push(keys[i]));
+  const updated = document.getElementById('updated');
+  if (!Object.keys(data).length) {
+    updated.innerHTML = '<span class="error">Could not load any benchmark data.</span>';
+    return;
+  }
+  const newest = Math.max(...Object.values(data).map(d => d.lastUpdate));
+  updated.innerHTML = `Last updated ${new Date(newest).toISOString().slice(0, 16).replace('T', ' ')} UTC.`
+    + (failed.length ? ` <span class="error">Could not load ${failed.join(', ')}.</span>` : '');
+  render();
+  if (location.hash) document.querySelector(location.hash)?.scrollIntoView();
+})();
+</script>
+</body>
+</html>
