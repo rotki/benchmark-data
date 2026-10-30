@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1793259673693,
+  "lastUpdate": 1793346291212,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (develop)": [
@@ -8548,6 +8548,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.0000022168218861072815",
             "extra": "mean: 21.464800330399026 usec\nrounds: 8474"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Yábir Benchakhtir",
+            "username": "yabirgb",
+            "email": "git@yabirgb.com"
+          },
+          "committer": {
+            "name": "GitHub",
+            "username": "web-flow",
+            "email": "noreply@github.com"
+          },
+          "id": "a621d9509a1914f0961408fbb2cd52dfd50e585c",
+          "message": "Fix BlockCypher transaction checkpoints (#13487)\n\nUse the chain height observed before address queries as a shared checkpoint so inactive batches do not stall progress or fragment future queries.\n\nCap checkpoints below timestamp-excluded or failed transactions so later refreshes can retry them. Preserve the prior checkpoint when a failed transaction has no usable block height.\n\nAdd regression coverage for inactive batches, mid-query blocks, timestamp exclusions, processing failures, and successful retries. Consolidate the original batching and decode-retry tests, making the mixed-refresh case fetch a genuinely new transaction.\n\nMock the chain-height endpoint in the API test without re-recording cassettes.\n\nFollow-up to the PR review comment: https://github.com/rotki/rotki/pull/13282#issuecomment-6494753643",
+          "timestamp": "2026-10-29T12:17:38Z",
+          "url": "https://github.com/rotki/rotki/commit/a621d9509a1914f0961408fbb2cd52dfd50e585c"
+        },
+        "date": 1793346290951,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 108.29185354406428,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00013534161311439772",
+            "extra": "mean: 9.234304957141553 msec\nrounds: 70"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 94.46271253045118,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0001533636058183663",
+            "extra": "mean: 10.586187641791867 msec\nrounds: 67"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 735.8550447229745,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00002146283203888587",
+            "extra": "mean: 1.3589633001380963 msec\nrounds: 723"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 2608.628839472272,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0002734235839612459",
+            "extra": "mean: 383.343151340112 usec\nrounds: 1044"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 12.966755285314433,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0017617123131825104",
+            "extra": "mean: 77.1202955555547 msec\nrounds: 9"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 28703.687166782678,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0000039658788979357686",
+            "extra": "mean: 34.8387297488822 usec\nrounds: 7086"
           }
         ]
       }
