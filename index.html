@@ -69,6 +69,7 @@ th:first-child, td:first-child { position: sticky; left: 0; background: var(--pa
 @media (max-width: 520px) { .grid { grid-template-columns: 1fr; } }
 footer { max-width: 1200px; margin: 0 auto; padding: 0 16px 32px; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; color: var(--muted); font-size: 13px; }
 footer .spacer { flex: 1; }
+footer .series-pages { flex-basis: 100%; }
 footer button { border: 1px solid var(--line); background: var(--panel); color: var(--text); border-radius: 8px; padding: 6px 12px; font: inherit; cursor: pointer; }
 </style>
 </head>
@@ -98,7 +99,13 @@ footer button { border: 1px solid var(--line); background: var(--panel); color: 
 <footer>
   <button id="download">Download data as JSON</button>
   <span class="spacer"></span>
-  <span>Data from <a rel="noopener" href="https://github.com/benchmark-action/github-action-benchmark">github-action-benchmark</a> · <a rel="noopener" href="https://github.com/rotki/benchmark-data">page source on GitHub</a></span>
+  <span>Data from <a rel="noopener" href="https://github.com/benchmark-action/github-action-benchmark">github-action-benchmark</a> · This site is open source. <a rel="noopener" href="https://github.com/rotki/benchmark-data/edit/main/index.html">Improve this page</a></span>
+  <nav class="series-pages">Per-series pages:
+    <a href="macro/develop/">macro develop</a> ·
+    <a href="macro/bugfixes/">macro bugfixes</a> ·
+    <a href="micro/develop/">micro develop</a> ·
+    <a href="micro/bugfixes/">micro bugfixes</a>
+  </nav>
 </footer>
 
 <script>
