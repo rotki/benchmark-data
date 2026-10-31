@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1793368507376,
+  "lastUpdate": 1793431671481,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (bugfixes)": [
@@ -14912,6 +14912,142 @@ window.BENCHMARK_DATA = {
             "value": 799.84,
             "unit": "ms",
             "extra": "min 792.1ms, stddev 3.78ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "4e58e80b0dfe1946320886d84664794c20b7e2e6",
+          "message": "feat(frontend): offer CSV import in add dialog\n\nUsers looking to add many accounts open the Add account dialog and\nnever find the CSV import, which lives only in the page menu.\n\nThe address form now shows an \"Import from CSV\" button on the \"Add\nmultiple addresses\" row, in add mode only. Clicking it closes the\nadd dialog and opens the existing import dialog, whose open state is\nnow shared so both entry points reach the one mounted dialog.",
+          "timestamp": "2026-10-30T16:36:02Z",
+          "url": "https://github.com/rotki/rotki/commit/4e58e80b0dfe1946320886d84664794c20b7e2e6"
+        },
+        "date": 1793431670990,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 1900.75,
+            "unit": "ms",
+            "extra": "min 1896.75ms, stddev 1569.2ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 1304.29,
+            "unit": "ms",
+            "extra": "min 1250.83ms, stddev 399.13ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 6.23,
+            "unit": "ms",
+            "extra": "min 6.05ms, stddev 0.24ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 40.71,
+            "unit": "ms",
+            "extra": "min 40.3ms, stddev 0.48ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 2.56,
+            "unit": "ms",
+            "extra": "min 2.48ms, stddev 0.1ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 2.09,
+            "unit": "ms",
+            "extra": "min 1.92ms, stddev 0.14ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 106.88,
+            "unit": "ms",
+            "extra": "min 102.54ms, stddev 6.43ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 71.22,
+            "unit": "ms",
+            "extra": "min 70.24ms, stddev 12.4ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 1844.68,
+            "unit": "ms",
+            "extra": "min 1807.1ms, stddev 35.75ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 1307.43,
+            "unit": "ms",
+            "extra": "min 1290.38ms, stddev 12.3ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 1051.82,
+            "unit": "ms",
+            "extra": "min 1036.61ms, stddev 7.69ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 1051.77,
+            "unit": "ms",
+            "extra": "min 1040.88ms, stddev 5.77ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 1156.54,
+            "unit": "ms",
+            "extra": "min 1147.21ms, stddev 5.18ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 1036.93,
+            "unit": "ms",
+            "extra": "min 1031.03ms, stddev 6.05ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 40.57,
+            "unit": "ms",
+            "extra": "min 40.2ms, stddev 0.29ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 2.6,
+            "unit": "ms",
+            "extra": "min 2.41ms, stddev 0.14ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 2.06,
+            "unit": "ms",
+            "extra": "min 1.91ms, stddev 0.11ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 1577.86,
+            "unit": "ms",
+            "extra": "min 1564.62ms, stddev 9.61ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 750.7,
+            "unit": "ms",
+            "extra": "min 731.32ms, stddev 10.36ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
           }
         ]
       }
