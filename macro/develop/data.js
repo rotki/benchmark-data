@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1793368503516,
+  "lastUpdate": 1793431668981,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (develop)": [
@@ -19092,6 +19092,142 @@ window.BENCHMARK_DATA = {
             "value": 795.42,
             "unit": "ms",
             "extra": "min 791.31ms, stddev 4.85ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "4e58e80b0dfe1946320886d84664794c20b7e2e6",
+          "message": "feat(frontend): offer CSV import in add dialog\n\nUsers looking to add many accounts open the Add account dialog and\nnever find the CSV import, which lives only in the page menu.\n\nThe address form now shows an \"Import from CSV\" button on the \"Add\nmultiple addresses\" row, in add mode only. Clicking it closes the\nadd dialog and opens the existing import dialog, whose open state is\nnow shared so both entry points reach the one mounted dialog.",
+          "timestamp": "2026-10-30T16:36:02Z",
+          "url": "https://github.com/rotki/rotki/commit/4e58e80b0dfe1946320886d84664794c20b7e2e6"
+        },
+        "date": 1793431668425,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 1375.86,
+            "unit": "ms",
+            "extra": "min 1324.49ms, stddev 1181.6ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V45 96-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 607.65,
+            "unit": "ms",
+            "extra": "min 601.71ms, stddev 600.49ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V45 96-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 3.78,
+            "unit": "ms",
+            "extra": "min 3.67ms, stddev 0.13ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V45 96-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 22.27,
+            "unit": "ms",
+            "extra": "min 21.98ms, stddev 0.39ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V45 96-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 1.36,
+            "unit": "ms",
+            "extra": "min 1.27ms, stddev 0.05ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V45 96-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 1.08,
+            "unit": "ms",
+            "extra": "min 0.97ms, stddev 0.06ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V45 96-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 57.12,
+            "unit": "ms",
+            "extra": "min 56.83ms, stddev 0.65ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V45 96-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 37.71,
+            "unit": "ms",
+            "extra": "min 37.68ms, stddev 0.11ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V45 96-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 1373.8,
+            "unit": "ms",
+            "extra": "min 1323.67ms, stddev 28.97ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V45 96-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 732.29,
+            "unit": "ms",
+            "extra": "min 725.91ms, stddev 22.04ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V45 96-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 534.82,
+            "unit": "ms",
+            "extra": "min 529.15ms, stddev 3.88ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V45 96-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 530.67,
+            "unit": "ms",
+            "extra": "min 525.85ms, stddev 3.38ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V45 96-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 586.69,
+            "unit": "ms",
+            "extra": "min 585.92ms, stddev 2.78ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V45 96-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 523.12,
+            "unit": "ms",
+            "extra": "min 521.02ms, stddev 2.07ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V45 96-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 22.41,
+            "unit": "ms",
+            "extra": "min 22.27ms, stddev 0.37ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V45 96-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 1.31,
+            "unit": "ms",
+            "extra": "min 1.28ms, stddev 0.06ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V45 96-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 0.99,
+            "unit": "ms",
+            "extra": "min 0.97ms, stddev 0.08ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V45 96-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 791.97,
+            "unit": "ms",
+            "extra": "min 787.58ms, stddev 3.67ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V45 96-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 402.71,
+            "unit": "ms",
+            "extra": "min 390.22ms, stddev 6.81ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V45 96-Core Processor\", \"logical_cpus\": 4}"
           }
         ]
       }
