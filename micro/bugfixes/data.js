@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1793368513881,
+  "lastUpdate": 1793431676058,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (bugfixes)": [
@@ -8320,6 +8320,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.000004166122219795517",
             "extra": "mean: 34.94105796347372 usec\nrounds: 5676"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "4e58e80b0dfe1946320886d84664794c20b7e2e6",
+          "message": "feat(frontend): offer CSV import in add dialog\n\nUsers looking to add many accounts open the Add account dialog and\nnever find the CSV import, which lives only in the page menu.\n\nThe address form now shows an \"Import from CSV\" button on the \"Add\nmultiple addresses\" row, in add mode only. Clicking it closes the\nadd dialog and opens the existing import dialog, whose open state is\nnow shared so both entry points reach the one mounted dialog.",
+          "timestamp": "2026-10-30T16:36:02Z",
+          "url": "https://github.com/rotki/rotki/commit/4e58e80b0dfe1946320886d84664794c20b7e2e6"
+        },
+        "date": 1793431675559,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 463.08905243134507,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000024006299626387876",
+            "extra": "mean: 2.1594118771534863 msec\nrounds: 350"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 319.4203915975171,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0000481318393486843",
+            "extra": "mean: 3.130670509164115 msec\nrounds: 273"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 990.9871150620926,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00004143263111792381",
+            "extra": "mean: 1.0090948558270032 msec\nrounds: 978"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 2811.4163071643625,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000834264023942692",
+            "extra": "mean: 355.69260854455786 usec\nrounds: 1147"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 13.329226083383947,
+            "unit": "iter/sec",
+            "range": "stddev: 0.024218191700150753",
+            "extra": "mean: 75.02311039997949 msec\nrounds: 5"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 44926.66341989877,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000002094179626995452",
+            "extra": "mean: 22.258496934296783 usec\nrounds: 7339"
           }
         ]
       }
