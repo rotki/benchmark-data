@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1793431676058,
+  "lastUpdate": 1793520059293,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (bugfixes)": [
@@ -8384,6 +8384,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.000002094179626995452",
             "extra": "mean: 22.258496934296783 usec\nrounds: 7339"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "69226c02a98d67118bd410631a712d5193ef94b2",
+          "message": "fix(frontend): keep calendar right on month ends\n\nMonth navigation from the 31st clamps the visible day (Oct 31 goes to\nNov 30, then back to Oct 30), and two checks compared the visible day\nwith another day:\n\n- The selected day's events kept a deleted event, because an empty list\n  was ignored whenever the selected day differed from the visible day.\n  It is now ignored only while another month is visible.\n- Today stayed enabled after returning to the current month. It is now\n  disabled when the current month is visible and today is selected.",
+          "timestamp": "2026-10-31T17:53:15Z",
+          "url": "https://github.com/rotki/rotki/commit/69226c02a98d67118bd410631a712d5193ef94b2"
+        },
+        "date": 1793520058646,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 354.27898689366873,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000026603602195603837",
+            "extra": "mean: 2.8226342430524514 msec\nrounds: 288"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 241.67924576234773,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0003684876745834794",
+            "extra": "mean: 4.137715660464025 msec\nrounds: 215"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 731.6765038784622,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0000209662994163811",
+            "extra": "mean: 1.3667242212907094 msec\nrounds: 714"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 2325.9901320619665,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0005120756502387461",
+            "extra": "mean: 429.92443786230086 usec\nrounds: 1030"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 13.209419642429863,
+            "unit": "iter/sec",
+            "range": "stddev: 0.003315604704029275",
+            "extra": "mean: 75.70355300000529 msec\nrounds: 10"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 27475.30427162206,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0000036197139475302326",
+            "extra": "mean: 36.396321224105705 usec\nrounds: 6167"
           }
         ]
       }
