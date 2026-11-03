@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1793606748474,
+  "lastUpdate": 1793694554693,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (develop)": [
@@ -8868,6 +8868,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.00000191549019250303",
             "extra": "mean: 22.406424406088345 usec\nrounds: 7924"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "093f66701650b61762754ea10c7cdd319f095bfa",
+          "message": "fix(frontend): shorten location rows without a path\n\nThe location picker gave every option 64px (48 dense) so an option could\nshow its parent path on a second line. Most lists have no paths, so every\nrow carried empty space. Rows now use the tall height only when some\noption in the list has a path, and the single-line 52px (36 dense)\notherwise.",
+          "timestamp": "2026-11-02T14:58:10Z",
+          "url": "https://github.com/rotki/rotki/commit/093f66701650b61762754ea10c7cdd319f095bfa"
+        },
+        "date": 1793694554168,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 102.51218640372599,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00042839444017239557",
+            "extra": "mean: 9.754937779413641 msec\nrounds: 68"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 92.96077503618658,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00023086925872981885",
+            "extra": "mean: 10.757225287877954 msec\nrounds: 66"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 729.8224473655503,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00002009581977304315",
+            "extra": "mean: 1.3701962766556623 msec\nrounds: 694"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 2602.2818256087235,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00011070867290950952",
+            "extra": "mean: 384.2781324294423 usec\nrounds: 959"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 13.089336735047807,
+            "unit": "iter/sec",
+            "range": "stddev: 0.001055183344427175",
+            "extra": "mean: 76.39806509999971 msec\nrounds: 10"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 28700.51577221571,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000004120863773388131",
+            "extra": "mean: 34.84257941343606 usec\nrounds: 6995"
           }
         ]
       }
