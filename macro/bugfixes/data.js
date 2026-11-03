@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1793606746395,
+  "lastUpdate": 1793694552066,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (bugfixes)": [
@@ -15320,6 +15320,142 @@ window.BENCHMARK_DATA = {
             "value": 797.47,
             "unit": "ms",
             "extra": "min 792.82ms, stddev 2.92ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "093f66701650b61762754ea10c7cdd319f095bfa",
+          "message": "fix(frontend): shorten location rows without a path\n\nThe location picker gave every option 64px (48 dense) so an option could\nshow its parent path on a second line. Most lists have no paths, so every\nrow carried empty space. Rows now use the tall height only when some\noption in the list has a path, and the single-line 52px (36 dense)\notherwise.",
+          "timestamp": "2026-11-02T14:58:10Z",
+          "url": "https://github.com/rotki/rotki/commit/093f66701650b61762754ea10c7cdd319f095bfa"
+        },
+        "date": 1793694551589,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 2156.35,
+            "unit": "ms",
+            "extra": "min 2106.45ms, stddev 1717.68ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 1381.96,
+            "unit": "ms",
+            "extra": "min 1362.52ms, stddev 444.78ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 6.78,
+            "unit": "ms",
+            "extra": "min 6.71ms, stddev 0.24ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 43.16,
+            "unit": "ms",
+            "extra": "min 41.82ms, stddev 0.99ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 2.53,
+            "unit": "ms",
+            "extra": "min 2.42ms, stddev 0.13ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 2.11,
+            "unit": "ms",
+            "extra": "min 2.04ms, stddev 0.08ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 129.59,
+            "unit": "ms",
+            "extra": "min 127.81ms, stddev 3.84ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 88.02,
+            "unit": "ms",
+            "extra": "min 86.6ms, stddev 11.28ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 2104.27,
+            "unit": "ms",
+            "extra": "min 2101.26ms, stddev 29.19ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 1445.29,
+            "unit": "ms",
+            "extra": "min 1429.08ms, stddev 7.15ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 1053.09,
+            "unit": "ms",
+            "extra": "min 1049.45ms, stddev 1.81ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 1054.15,
+            "unit": "ms",
+            "extra": "min 1053.85ms, stddev 0.43ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 1165.23,
+            "unit": "ms",
+            "extra": "min 1162.22ms, stddev 2.07ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 1039.86,
+            "unit": "ms",
+            "extra": "min 1034.6ms, stddev 2.75ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 42.3,
+            "unit": "ms",
+            "extra": "min 42.19ms, stddev 0.96ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 2.54,
+            "unit": "ms",
+            "extra": "min 2.43ms, stddev 0.07ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 2.17,
+            "unit": "ms",
+            "extra": "min 2.09ms, stddev 0.07ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 1655.73,
+            "unit": "ms",
+            "extra": "min 1654.65ms, stddev 1.31ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 811.07,
+            "unit": "ms",
+            "extra": "min 807.23ms, stddev 4.46ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
           }
         ]
       }
