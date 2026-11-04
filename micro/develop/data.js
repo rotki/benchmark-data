@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1793694554693,
+  "lastUpdate": 1793779071036,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (develop)": [
@@ -8932,6 +8932,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.000004120863773388131",
             "extra": "mean: 34.84257941343606 usec\nrounds: 6995"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "id": "c08836ffe25513d6ac4aace9e1aa1b297e9cc18a",
+          "message": "refactor(frontend): keep bank balances apart\n\nBank balances now live in their own store source, per connection, instead\nof a banks key in the exchange balance map. The location-wide views read\nthem as one derived banks location, so they still count with the exchange\nsource and the isBank filters on the exchange paths are gone. Prices now\nupdate the bank balances and accounts too.\n\nAlso from the frontend review:\n- bank balance queries get their own lane instead of the exchange one\n- a full refresh keeps the last balances of a bank waiting on a TAN, and\n  a removed connection's balances are dropped when it is removed\n- refreshing one bank no longer locks the others or the full refresh\n- suggested connection names are unique across every bank, and the\n  manual FinTS option clears a name it suggested\n- bank amounts use their currency's decimals\n- AssetBalances takes its display options, the amount format included,\n  as one prop\n- BankConnectionState is an as-const object\n- drop the unused directory search",
+          "timestamp": "2026-11-03T19:39:07Z",
+          "url": "https://github.com/rotki/rotki/commit/c08836ffe25513d6ac4aace9e1aa1b297e9cc18a"
+        },
+        "date": 1793779070627,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 119.69582017224867,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00006321365424918663",
+            "extra": "mean: 8.354510613327571 msec\nrounds: 75"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 105.08793289652183,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00021065504466205213",
+            "extra": "mean: 9.51584042465353 msec\nrounds: 73"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 729.7828460608677,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00008155599623078416",
+            "extra": "mean: 1.3702706296779614 msec\nrounds: 721"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 2683.2484166863965,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00019287387897525698",
+            "extra": "mean: 372.68260135038946 usec\nrounds: 1036"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 13.448811698439778,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0019155984701823188",
+            "extra": "mean: 74.35601169997881 msec\nrounds: 10"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 27453.92573479344,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00000707817731424374",
+            "extra": "mean: 36.42466325800032 usec\nrounds: 7335"
           }
         ]
       }
