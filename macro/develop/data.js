@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1793694548882,
+  "lastUpdate": 1793779065789,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (develop)": [
@@ -19636,6 +19636,142 @@ window.BENCHMARK_DATA = {
             "value": 784.83,
             "unit": "ms",
             "extra": "min 778.08ms, stddev 3.82ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "id": "c08836ffe25513d6ac4aace9e1aa1b297e9cc18a",
+          "message": "refactor(frontend): keep bank balances apart\n\nBank balances now live in their own store source, per connection, instead\nof a banks key in the exchange balance map. The location-wide views read\nthem as one derived banks location, so they still count with the exchange\nsource and the isBank filters on the exchange paths are gone. Prices now\nupdate the bank balances and accounts too.\n\nAlso from the frontend review:\n- bank balance queries get their own lane instead of the exchange one\n- a full refresh keeps the last balances of a bank waiting on a TAN, and\n  a removed connection's balances are dropped when it is removed\n- refreshing one bank no longer locks the others or the full refresh\n- suggested connection names are unique across every bank, and the\n  manual FinTS option clears a name it suggested\n- bank amounts use their currency's decimals\n- AssetBalances takes its display options, the amount format included,\n  as one prop\n- BankConnectionState is an as-const object\n- drop the unused directory search",
+          "timestamp": "2026-11-03T19:39:07Z",
+          "url": "https://github.com/rotki/rotki/commit/c08836ffe25513d6ac4aace9e1aa1b297e9cc18a"
+        },
+        "date": 1793779065313,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 2096.25,
+            "unit": "ms",
+            "extra": "min 2039.61ms, stddev 1576.0ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 1145.51,
+            "unit": "ms",
+            "extra": "min 1086.69ms, stddev 381.77ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 5.86,
+            "unit": "ms",
+            "extra": "min 5.8ms, stddev 0.2ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 35.85,
+            "unit": "ms",
+            "extra": "min 35.38ms, stddev 0.27ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 2.25,
+            "unit": "ms",
+            "extra": "min 2.09ms, stddev 0.08ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 1.87,
+            "unit": "ms",
+            "extra": "min 1.73ms, stddev 0.09ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 95.7,
+            "unit": "ms",
+            "extra": "min 95.32ms, stddev 1.84ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 64.93,
+            "unit": "ms",
+            "extra": "min 64.46ms, stddev 1.44ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 2041.61,
+            "unit": "ms",
+            "extra": "min 2040.51ms, stddev 22.78ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 1315.48,
+            "unit": "ms",
+            "extra": "min 1310.58ms, stddev 3.32ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 958.82,
+            "unit": "ms",
+            "extra": "min 954.93ms, stddev 3.57ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 956.06,
+            "unit": "ms",
+            "extra": "min 953.73ms, stddev 3.82ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 1057.18,
+            "unit": "ms",
+            "extra": "min 1053.12ms, stddev 3.82ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 944.61,
+            "unit": "ms",
+            "extra": "min 942.8ms, stddev 4.32ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 36.46,
+            "unit": "ms",
+            "extra": "min 35.68ms, stddev 0.4ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 2.36,
+            "unit": "ms",
+            "extra": "min 2.09ms, stddev 0.16ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 1.99,
+            "unit": "ms",
+            "extra": "min 1.75ms, stddev 0.12ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 3134.78,
+            "unit": "ms",
+            "extra": "min 3125.6ms, stddev 4.51ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 688.37,
+            "unit": "ms",
+            "extra": "min 687.05ms, stddev 1.66ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
           }
         ]
       }
