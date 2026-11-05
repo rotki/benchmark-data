@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1793779073488,
+  "lastUpdate": 1793866977844,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (bugfixes)": [
@@ -8640,6 +8640,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.000004082860019343384",
             "extra": "mean: 35.37919706959464 usec\nrounds: 5460"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "committer": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "id": "cb99a1b4a2173c0ae81ae1bfcbb7efbd79c7393c",
+          "message": "fix: update Gnosis Pay safe admin expectation",
+          "timestamp": "2026-11-05T07:14:19Z",
+          "url": "https://github.com/rotki/rotki/commit/cb99a1b4a2173c0ae81ae1bfcbb7efbd79c7393c"
+        },
+        "date": 1793866977393,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 459.22947720377266,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000055995221385935776",
+            "extra": "mean: 2.1775605653386068 msec\nrounds: 352"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 320.0038402305284,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00007099976765241928",
+            "extra": "mean: 3.124962498198795 msec\nrounds: 279"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 995.2816676827955,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000013116925072676003",
+            "extra": "mean: 1.0047407005176632 msec\nrounds: 975"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 2938.8666459723945,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0010222110116114166",
+            "extra": "mean: 340.26722558863366 usec\nrounds: 1055"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 13.675897882405769,
+            "unit": "iter/sec",
+            "range": "stddev: 0.047772312624572995",
+            "extra": "mean: 73.12134154544351 msec\nrounds: 11"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 44545.95159678603,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0000018796843497396203",
+            "extra": "mean: 22.448729102290624 usec\nrounds: 6257"
           }
         ]
       }
