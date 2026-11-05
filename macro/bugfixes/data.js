@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1793779068629,
+  "lastUpdate": 1793866973266,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (bugfixes)": [
@@ -15592,6 +15592,142 @@ window.BENCHMARK_DATA = {
             "value": 830.81,
             "unit": "ms",
             "extra": "min 821.25ms, stddev 10.15ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "committer": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "id": "cb99a1b4a2173c0ae81ae1bfcbb7efbd79c7393c",
+          "message": "fix: update Gnosis Pay safe admin expectation",
+          "timestamp": "2026-11-05T07:14:19Z",
+          "url": "https://github.com/rotki/rotki/commit/cb99a1b4a2173c0ae81ae1bfcbb7efbd79c7393c"
+        },
+        "date": 1793866972748,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 1821.22,
+            "unit": "ms",
+            "extra": "min 1790.12ms, stddev 1577.72ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 1370.24,
+            "unit": "ms",
+            "extra": "min 1223.03ms, stddev 427.58ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 6.06,
+            "unit": "ms",
+            "extra": "min 5.79ms, stddev 0.13ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 39.03,
+            "unit": "ms",
+            "extra": "min 38.67ms, stddev 0.19ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 2.42,
+            "unit": "ms",
+            "extra": "min 2.3ms, stddev 0.07ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 2.07,
+            "unit": "ms",
+            "extra": "min 1.87ms, stddev 0.1ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 101.16,
+            "unit": "ms",
+            "extra": "min 99.44ms, stddev 14.3ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 68.95,
+            "unit": "ms",
+            "extra": "min 67.98ms, stddev 16.33ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 1792.93,
+            "unit": "ms",
+            "extra": "min 1791.04ms, stddev 1.49ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 1295.44,
+            "unit": "ms",
+            "extra": "min 1289.4ms, stddev 6.62ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 1046.99,
+            "unit": "ms",
+            "extra": "min 1043.64ms, stddev 2.06ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 1046.59,
+            "unit": "ms",
+            "extra": "min 1046.0ms, stddev 2.36ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 1150.87,
+            "unit": "ms",
+            "extra": "min 1148.35ms, stddev 3.36ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 1032.68,
+            "unit": "ms",
+            "extra": "min 1031.27ms, stddev 5.27ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 40.04,
+            "unit": "ms",
+            "extra": "min 39.37ms, stddev 0.65ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 2.58,
+            "unit": "ms",
+            "extra": "min 2.45ms, stddev 0.06ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 2.08,
+            "unit": "ms",
+            "extra": "min 2.02ms, stddev 0.04ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 1574.5,
+            "unit": "ms",
+            "extra": "min 1571.02ms, stddev 5.81ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 732.26,
+            "unit": "ms",
+            "extra": "min 730.97ms, stddev 1.42ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
           }
         ]
       }
