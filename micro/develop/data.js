@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1793953512993,
+  "lastUpdate": 1794037503005,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (develop)": [
@@ -9124,6 +9124,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 9.968141721410997e-7",
             "extra": "mean: 16.33015906228651 usec\nrounds: 7890"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "05cca8a8ea1c98b3794d469cee8225a966715259",
+          "message": "refactor(frontend): share inline feedback pieces\n\nEvery inline question has one shape, ConfirmQuestion, with the tone\ncarried in the question: warning by default, error for anything that\ndestroys data. InlineConfirm and ConfirmPopover take it as one prop,\nand RowActions fills in the delete label and the error tone.\n\nTwo patterns that were copied by hand get a component each.\nConfirmMenu asks inside a menu: it keeps the menu open through the\nasking click, hides the entries without unmounting them, and gives\nfocus back to the entry that asked on cancel. The selection bar's\ncollapsed actions use it too. ConfirmInPlace turns a button into its\nquestion and back. ConfirmPopover no longer lets the menu move focus\noff Cancel, and every answer returns focus to the trigger.\n\nFailureStrip offers Retry only when a @retry handler is bound.\nuseFailureSlot holds a NamedFailure, named after the strip's title and\nfailure props, with report, clear and run; strips bind both props\nexplicitly. Anything else a holder needs, such as which data issue\nfailed, is kept beside the failure rather than inside it. The queried\naddress writes return a Result instead of a hand-made failure object.\n\nThe asset dialogs await the icon upload as part of the save. When the\nasset lands but its icon does not, the list refreshes and the dialog\nstays open naming the upload's failure; the next save retries only the\nicon, so a new asset is not added twice. The custom asset dialog now\nalso closes through its open state once a save lands, which it claimed\nto do but did not, so adding a second asset reopens it.\n\nThe confirm store is state-only again, and useConfirm().ask() returns\na promise of the choice for the history bulk deletes, the asset DB\nrestore and the snapshot leave guard. A second question settles the\nfirst as dismissed.\n\nFailures travel as plainfp Results instead of booleans, callbacks and\nside channels. useFailureSlot().run reports an Err an action returns.\nThe history event forms return their save failure to the dialog\ninstead of writing an injected ref. Ignoring, deleting history events,\nthe duplicate fixes and tag saves return Results carrying the raw\nerror, so a strip can say the backend is unreachable, and a delete the\nbackend refuses without a reason is named instead of left blank.\nuseDeleteQuestion fills in the Delete label and error tone in one\nplace, and the ETH validators table no longer throws while nothing is\nselected.",
+          "timestamp": "2026-11-06T12:29:07Z",
+          "url": "https://github.com/rotki/rotki/commit/05cca8a8ea1c98b3794d469cee8225a966715259"
+        },
+        "date": 1794037502437,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 162.26730468864176,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000046802553379621386",
+            "extra": "mean: 6.162670920792075 msec\nrounds: 101"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 140.55315496029132,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00007371887846190699",
+            "extra": "mean: 7.11474602105173 msec\nrounds: 95"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 1068.541461996769,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00001282658390268433",
+            "extra": "mean: 935.8551217388548 usec\nrounds: 1035"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 2061.758621280074,
+            "unit": "iter/sec",
+            "range": "stddev: 0.004241790432369206",
+            "extra": "mean: 485.0228293839436 usec\nrounds: 1055"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 15.15712228463691,
+            "unit": "iter/sec",
+            "range": "stddev: 0.022581609179755272",
+            "extra": "mean: 65.97558436363536 msec\nrounds: 11"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 44696.11091547994,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0000017029760568045788",
+            "extra": "mean: 22.373311223676563 usec\nrounds: 6905"
           }
         ]
       }
