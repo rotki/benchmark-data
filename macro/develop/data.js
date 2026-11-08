@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1794037497197,
+  "lastUpdate": 1794124401636,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (develop)": [
@@ -20180,6 +20180,142 @@ window.BENCHMARK_DATA = {
             "value": 614.81,
             "unit": "ms",
             "extra": "min 607.42ms, stddev 11.09ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "05cca8a8ea1c98b3794d469cee8225a966715259",
+          "message": "refactor(frontend): share inline feedback pieces\n\nEvery inline question has one shape, ConfirmQuestion, with the tone\ncarried in the question: warning by default, error for anything that\ndestroys data. InlineConfirm and ConfirmPopover take it as one prop,\nand RowActions fills in the delete label and the error tone.\n\nTwo patterns that were copied by hand get a component each.\nConfirmMenu asks inside a menu: it keeps the menu open through the\nasking click, hides the entries without unmounting them, and gives\nfocus back to the entry that asked on cancel. The selection bar's\ncollapsed actions use it too. ConfirmInPlace turns a button into its\nquestion and back. ConfirmPopover no longer lets the menu move focus\noff Cancel, and every answer returns focus to the trigger.\n\nFailureStrip offers Retry only when a @retry handler is bound.\nuseFailureSlot holds a NamedFailure, named after the strip's title and\nfailure props, with report, clear and run; strips bind both props\nexplicitly. Anything else a holder needs, such as which data issue\nfailed, is kept beside the failure rather than inside it. The queried\naddress writes return a Result instead of a hand-made failure object.\n\nThe asset dialogs await the icon upload as part of the save. When the\nasset lands but its icon does not, the list refreshes and the dialog\nstays open naming the upload's failure; the next save retries only the\nicon, so a new asset is not added twice. The custom asset dialog now\nalso closes through its open state once a save lands, which it claimed\nto do but did not, so adding a second asset reopens it.\n\nThe confirm store is state-only again, and useConfirm().ask() returns\na promise of the choice for the history bulk deletes, the asset DB\nrestore and the snapshot leave guard. A second question settles the\nfirst as dismissed.\n\nFailures travel as plainfp Results instead of booleans, callbacks and\nside channels. useFailureSlot().run reports an Err an action returns.\nThe history event forms return their save failure to the dialog\ninstead of writing an injected ref. Ignoring, deleting history events,\nthe duplicate fixes and tag saves return Results carrying the raw\nerror, so a strip can say the backend is unreachable, and a delete the\nbackend refuses without a reason is named instead of left blank.\nuseDeleteQuestion fills in the Delete label and error tone in one\nplace, and the ETH validators table no longer throws while nothing is\nselected.",
+          "timestamp": "2026-11-06T12:29:07Z",
+          "url": "https://github.com/rotki/rotki/commit/05cca8a8ea1c98b3794d469cee8225a966715259"
+        },
+        "date": 1794124401159,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 2673.07,
+            "unit": "ms",
+            "extra": "min 2669.15ms, stddev 1998.33ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 1225.78,
+            "unit": "ms",
+            "extra": "min 1203.95ms, stddev 430.21ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 6.88,
+            "unit": "ms",
+            "extra": "min 6.67ms, stddev 0.32ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 43.22,
+            "unit": "ms",
+            "extra": "min 41.17ms, stddev 1.21ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 2.51,
+            "unit": "ms",
+            "extra": "min 2.35ms, stddev 0.14ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 2.06,
+            "unit": "ms",
+            "extra": "min 1.99ms, stddev 0.13ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 129.24,
+            "unit": "ms",
+            "extra": "min 126.83ms, stddev 2.14ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 84.28,
+            "unit": "ms",
+            "extra": "min 83.36ms, stddev 0.82ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 2618.67,
+            "unit": "ms",
+            "extra": "min 2615.17ms, stddev 23.73ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 1464.54,
+            "unit": "ms",
+            "extra": "min 1458.06ms, stddev 14.34ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 1006.91,
+            "unit": "ms",
+            "extra": "min 1000.35ms, stddev 6.3ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 1006.36,
+            "unit": "ms",
+            "extra": "min 1002.58ms, stddev 5.59ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 1114.3,
+            "unit": "ms",
+            "extra": "min 1105.39ms, stddev 6.24ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 997.14,
+            "unit": "ms",
+            "extra": "min 985.37ms, stddev 6.55ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 42.97,
+            "unit": "ms",
+            "extra": "min 40.78ms, stddev 1.12ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 2.57,
+            "unit": "ms",
+            "extra": "min 2.41ms, stddev 0.09ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 2.12,
+            "unit": "ms",
+            "extra": "min 2.04ms, stddev 0.06ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 3384.53,
+            "unit": "ms",
+            "extra": "min 3360.6ms, stddev 58.46ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 780.49,
+            "unit": "ms",
+            "extra": "min 766.71ms, stddev 14.05ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
           }
         ]
       }
