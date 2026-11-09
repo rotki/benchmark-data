@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1794124401636,
+  "lastUpdate": 1794213357515,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (develop)": [
@@ -20316,6 +20316,142 @@ window.BENCHMARK_DATA = {
             "value": 780.49,
             "unit": "ms",
             "extra": "min 766.71ms, stddev 14.05ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "weiihann",
+            "username": "weiihann",
+            "email": "47109095+weiihann@users.noreply.github.com"
+          },
+          "committer": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "id": "143305e1fd9443964d7ae64f9091598507f6819d",
+          "message": "Rename Binance Smart Chain to BNB Smart Chain\n\nBinance rebranded the chain as BNB Smart Chain. Update the\nuser-facing name in the chain label, the location catalog, the\nlocale strings, the API docs, and the tests that assert it.\n\nIdentifiers (binance_sc, BINANCE_SC) are unchanged, as is the\nCoinLedger importer, which matches the text CoinLedger exports.",
+          "timestamp": "2026-11-06T15:24:38Z",
+          "url": "https://github.com/rotki/rotki/commit/143305e1fd9443964d7ae64f9091598507f6819d"
+        },
+        "date": 1794213356946,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 2670.14,
+            "unit": "ms",
+            "extra": "min 2615.53ms, stddev 1857.4ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 1202.58,
+            "unit": "ms",
+            "extra": "min 1197.89ms, stddev 430.19ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 6.64,
+            "unit": "ms",
+            "extra": "min 6.53ms, stddev 0.08ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 40.2,
+            "unit": "ms",
+            "extra": "min 39.58ms, stddev 1.18ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 2.5,
+            "unit": "ms",
+            "extra": "min 2.26ms, stddev 0.2ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 2.12,
+            "unit": "ms",
+            "extra": "min 1.92ms, stddev 0.16ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 123.73,
+            "unit": "ms",
+            "extra": "min 122.61ms, stddev 1.22ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 83.2,
+            "unit": "ms",
+            "extra": "min 82.13ms, stddev 0.57ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 2680.56,
+            "unit": "ms",
+            "extra": "min 2669.92ms, stddev 28.38ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 1463.73,
+            "unit": "ms",
+            "extra": "min 1450.06ms, stddev 20.97ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 996.37,
+            "unit": "ms",
+            "extra": "min 989.73ms, stddev 4.4ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 998.21,
+            "unit": "ms",
+            "extra": "min 990.94ms, stddev 3.34ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 1104.69,
+            "unit": "ms",
+            "extra": "min 1103.68ms, stddev 2.42ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 983.56,
+            "unit": "ms",
+            "extra": "min 982.83ms, stddev 1.08ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 41.41,
+            "unit": "ms",
+            "extra": "min 39.62ms, stddev 1.62ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 2.35,
+            "unit": "ms",
+            "extra": "min 2.31ms, stddev 0.06ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 1.94,
+            "unit": "ms",
+            "extra": "min 1.91ms, stddev 0.07ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 3372.05,
+            "unit": "ms",
+            "extra": "min 3365.58ms, stddev 5.24ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 770.42,
+            "unit": "ms",
+            "extra": "min 762.66ms, stddev 4.09ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
           }
         ]
       }
