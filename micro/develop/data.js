@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1794124406430,
+  "lastUpdate": 1794213362699,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (develop)": [
@@ -9252,6 +9252,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.0000015950443480520361",
             "extra": "mean: 16.259528047128 usec\nrounds: 7630"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "weiihann",
+            "username": "weiihann",
+            "email": "47109095+weiihann@users.noreply.github.com"
+          },
+          "committer": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "id": "143305e1fd9443964d7ae64f9091598507f6819d",
+          "message": "Rename Binance Smart Chain to BNB Smart Chain\n\nBinance rebranded the chain as BNB Smart Chain. Update the\nuser-facing name in the chain label, the location catalog, the\nlocale strings, the API docs, and the tests that assert it.\n\nIdentifiers (binance_sc, BINANCE_SC) are unchanged, as is the\nCoinLedger importer, which matches the text CoinLedger exports.",
+          "timestamp": "2026-11-06T15:24:38Z",
+          "url": "https://github.com/rotki/rotki/commit/143305e1fd9443964d7ae64f9091598507f6819d"
+        },
+        "date": 1794213362162,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 119.67544715572748,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00011048838683439933",
+            "extra": "mean: 8.355932848103352 msec\nrounds: 79"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 102.86762279221536,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0006424165868662877",
+            "extra": "mean: 9.721231742857738 msec\nrounds: 70"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 779.9550966957129,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00002483153176220157",
+            "extra": "mean: 1.2821250918629923 msec\nrounds: 762"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 3004.14959825014,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00009843781523551703",
+            "extra": "mean: 332.8729037270584 usec\nrounds: 966"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 13.925940710941804,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0014191257721029458",
+            "extra": "mean: 71.8084344000033 msec\nrounds: 10"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 29557.028281165312,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000004251660897339664",
+            "extra": "mean: 33.832900604464086 usec\nrounds: 6620"
           }
         ]
       }
