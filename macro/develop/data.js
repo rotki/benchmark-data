@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1794213357515,
+  "lastUpdate": 1794300606391,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (develop)": [
@@ -20452,6 +20452,142 @@ window.BENCHMARK_DATA = {
             "value": 770.42,
             "unit": "ms",
             "extra": "min 762.66ms, stddev 4.09ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "committer": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "id": "4aca39ed702adbf2309c5e026409183d251bdf0c",
+          "message": "test(bitvavo): pin POL/SKY/TRAC mappings\n\nPOL, SKY and TRAC exist in the global DB as identifiers of unrelated\nlegacy assets, so without a Bitvavo mapping the ticker fallback\nresolves them silently to the wrong project. Apply the payload of\nrotki/data location_asset_mappings v19 (rotki/data#297) through the\ndata updater and check that asset_from_bitvavo resolves them to\nPolygon Ecosystem Token, Sky and OriginTrail.",
+          "timestamp": "2026-11-09T19:51:58Z",
+          "url": "https://github.com/rotki/rotki/commit/4aca39ed702adbf2309c5e026409183d251bdf0c"
+        },
+        "date": 1794300605861,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 2462.8,
+            "unit": "ms",
+            "extra": "min 2413.46ms, stddev 1811.94ms\nmachine: {\"cpu_model\": \"Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 1159.04,
+            "unit": "ms",
+            "extra": "min 1150.56ms, stddev 396.6ms\nmachine: {\"cpu_model\": \"Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 6.95,
+            "unit": "ms",
+            "extra": "min 6.65ms, stddev 0.31ms\nmachine: {\"cpu_model\": \"Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 40.23,
+            "unit": "ms",
+            "extra": "min 39.74ms, stddev 0.34ms\nmachine: {\"cpu_model\": \"Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 2.41,
+            "unit": "ms",
+            "extra": "min 2.28ms, stddev 0.26ms\nmachine: {\"cpu_model\": \"Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 1.93,
+            "unit": "ms",
+            "extra": "min 1.8ms, stddev 0.12ms\nmachine: {\"cpu_model\": \"Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 115.82,
+            "unit": "ms",
+            "extra": "min 112.71ms, stddev 2.31ms\nmachine: {\"cpu_model\": \"Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 72.36,
+            "unit": "ms",
+            "extra": "min 71.07ms, stddev 1.07ms\nmachine: {\"cpu_model\": \"Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 2464.63,
+            "unit": "ms",
+            "extra": "min 2462.85ms, stddev 4.06ms\nmachine: {\"cpu_model\": \"Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 1395.44,
+            "unit": "ms",
+            "extra": "min 1391.26ms, stddev 9.28ms\nmachine: {\"cpu_model\": \"Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 1007.27,
+            "unit": "ms",
+            "extra": "min 1001.92ms, stddev 3.17ms\nmachine: {\"cpu_model\": \"Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 1006,
+            "unit": "ms",
+            "extra": "min 1005.2ms, stddev 2.47ms\nmachine: {\"cpu_model\": \"Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 1110.39,
+            "unit": "ms",
+            "extra": "min 1105.6ms, stddev 4.8ms\nmachine: {\"cpu_model\": \"Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 999.01,
+            "unit": "ms",
+            "extra": "min 995.6ms, stddev 2.52ms\nmachine: {\"cpu_model\": \"Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 40.78,
+            "unit": "ms",
+            "extra": "min 40.27ms, stddev 0.41ms\nmachine: {\"cpu_model\": \"Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 2.42,
+            "unit": "ms",
+            "extra": "min 2.31ms, stddev 0.09ms\nmachine: {\"cpu_model\": \"Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 1.94,
+            "unit": "ms",
+            "extra": "min 1.88ms, stddev 0.04ms\nmachine: {\"cpu_model\": \"Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 3369.93,
+            "unit": "ms",
+            "extra": "min 3361.03ms, stddev 7.13ms\nmachine: {\"cpu_model\": \"Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 701.15,
+            "unit": "ms",
+            "extra": "min 698.61ms, stddev 2.62ms\nmachine: {\"cpu_model\": \"Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz\", \"logical_cpus\": 4}"
           }
         ]
       }
