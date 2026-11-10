@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1794213362699,
+  "lastUpdate": 1794300613188,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (develop)": [
@@ -9316,6 +9316,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.000004251660897339664",
             "extra": "mean: 33.832900604464086 usec\nrounds: 6620"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "committer": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "id": "4aca39ed702adbf2309c5e026409183d251bdf0c",
+          "message": "test(bitvavo): pin POL/SKY/TRAC mappings\n\nPOL, SKY and TRAC exist in the global DB as identifiers of unrelated\nlegacy assets, so without a Bitvavo mapping the ticker fallback\nresolves them silently to the wrong project. Apply the payload of\nrotki/data location_asset_mappings v19 (rotki/data#297) through the\ndata updater and check that asset_from_bitvavo resolves them to\nPolygon Ecosystem Token, Sky and OriginTrail.",
+          "timestamp": "2026-11-09T19:51:58Z",
+          "url": "https://github.com/rotki/rotki/commit/4aca39ed702adbf2309c5e026409183d251bdf0c"
+        },
+        "date": 1794300612675,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 121.52590641663417,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00007463059363016107",
+            "extra": "mean: 8.228698139239903 msec\nrounds: 79"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 107.24180430424241,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00011750017133964679",
+            "extra": "mean: 9.324721888891615 msec\nrounds: 72"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 815.6138681304112,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000017007082136604164",
+            "extra": "mean: 1.2260703735852938 msec\nrounds: 795"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 3422.889147124748,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00009627647314750354",
+            "extra": "mean: 292.15085765777934 usec\nrounds: 1110"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 15.451964359695136,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0015226134610060984",
+            "extra": "mean: 64.71669081818473 msec\nrounds: 11"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 34658.942754279255,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0000026786407540309136",
+            "extra": "mean: 28.852582350525754 usec\nrounds: 6357"
           }
         ]
       }
