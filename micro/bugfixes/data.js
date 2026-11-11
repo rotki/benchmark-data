@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1794300616175,
+  "lastUpdate": 1794384847217,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (bugfixes)": [
@@ -9024,6 +9024,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 8.65416201443662e-7",
             "extra": "mean: 15.467076810746365 usec\nrounds: 7538"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Asish Kumar",
+            "username": "officialasishkumar",
+            "email": "officialasishkumar@gmail.com"
+          },
+          "committer": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "id": "24804f9eb5a755d08c109f170c7915d5cfd4053c",
+          "message": "Give the liveness endpoints a worker lane\n\nEvery REST request goes through one a2wsgi bridge whose executor has\nWSGI_BRIDGE_WORKERS threads, and requests beyond that queue FIFO. With\nthe pool held by slow synchronous requests (history events queries,\nsnapshot import/export, sync mode scripts), /ping, /tasks/<id> and\n/messages waited behind them. Health checks then failed, finished async\ntasks could not be collected and the frontend's retries piled more\nrequests into the same queue.\n\nRoute /ping, /messages, /tasks and /tasks/<id> through a second bridge\nover the same Flask app, with an executor of LIVENESS_LANE_WORKERS (4)\nthreads. Those handlers are quick in-memory reads, so the small pool\nanswers them even with the main one saturated. /tasks/trigger and\n/tasks/scheduler are not polled and stay on the main pool, as does\n/users: logout is one of the slow endpoints and would tie up the lane.\n\nThe tests check that only those four routes match the lane, against the\nreal URL map, and that with every main pool worker blocked and another\nrequest queued the liveness endpoints still answer.\n\nCloses #12578",
+          "timestamp": "2026-11-10T14:34:53Z",
+          "url": "https://github.com/rotki/rotki/commit/24804f9eb5a755d08c109f170c7915d5cfd4053c"
+        },
+        "date": 1794384846760,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 475.73568494953315,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000030122903638725476",
+            "extra": "mean: 2.1020075467033377 msec\nrounds: 364"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 321.666227238017,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00003612132363373257",
+            "extra": "mean: 3.108812537102472 msec\nrounds: 283"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 1073.5490747396811,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000016926892848359608",
+            "extra": "mean: 931.4897879656637 usec\nrounds: 1047"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 3135.8433288610972,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0009134081862935888",
+            "extra": "mean: 318.89348259091395 usec\nrounds: 1235"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 16.031858830504987,
+            "unit": "iter/sec",
+            "range": "stddev: 0.012044528917442423",
+            "extra": "mean: 62.375798750000655 msec\nrounds: 12"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 44712.467212627875,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0000018532114262572594",
+            "extra": "mean: 22.36512682792812 usec\nrounds: 7112"
           }
         ]
       }
