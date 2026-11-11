@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1794300606391,
+  "lastUpdate": 1794384839940,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (develop)": [
@@ -20588,6 +20588,142 @@ window.BENCHMARK_DATA = {
             "value": 701.15,
             "unit": "ms",
             "extra": "min 698.61ms, stddev 2.62ms\nmachine: {\"cpu_model\": \"Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz\", \"logical_cpus\": 4}"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Asish Kumar",
+            "username": "officialasishkumar",
+            "email": "officialasishkumar@gmail.com"
+          },
+          "committer": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "id": "24804f9eb5a755d08c109f170c7915d5cfd4053c",
+          "message": "Give the liveness endpoints a worker lane\n\nEvery REST request goes through one a2wsgi bridge whose executor has\nWSGI_BRIDGE_WORKERS threads, and requests beyond that queue FIFO. With\nthe pool held by slow synchronous requests (history events queries,\nsnapshot import/export, sync mode scripts), /ping, /tasks/<id> and\n/messages waited behind them. Health checks then failed, finished async\ntasks could not be collected and the frontend's retries piled more\nrequests into the same queue.\n\nRoute /ping, /messages, /tasks and /tasks/<id> through a second bridge\nover the same Flask app, with an executor of LIVENESS_LANE_WORKERS (4)\nthreads. Those handlers are quick in-memory reads, so the small pool\nanswers them even with the main one saturated. /tasks/trigger and\n/tasks/scheduler are not polled and stay on the main pool, as does\n/users: logout is one of the slow endpoints and would tie up the lane.\n\nThe tests check that only those four routes match the lane, against the\nreal URL map, and that with every main pool worker blocked and another\nrequest queued the liveness endpoints still answer.\n\nCloses #12578",
+          "timestamp": "2026-11-10T14:34:53Z",
+          "url": "https://github.com/rotki/rotki/commit/24804f9eb5a755d08c109f170c7915d5cfd4053c"
+        },
+        "date": 1794384839266,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 2573.53,
+            "unit": "ms",
+            "extra": "min 2517.81ms, stddev 1937.49ms\nmachine: {\"cpu_model\": \"Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 1190.89,
+            "unit": "ms",
+            "extra": "min 1170.97ms, stddev 426.82ms\nmachine: {\"cpu_model\": \"Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 7.16,
+            "unit": "ms",
+            "extra": "min 7.14ms, stddev 0.05ms\nmachine: {\"cpu_model\": \"Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 41.53,
+            "unit": "ms",
+            "extra": "min 40.38ms, stddev 0.78ms\nmachine: {\"cpu_model\": \"Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 2.71,
+            "unit": "ms",
+            "extra": "min 2.44ms, stddev 0.28ms\nmachine: {\"cpu_model\": \"Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 2.15,
+            "unit": "ms",
+            "extra": "min 1.99ms, stddev 0.2ms\nmachine: {\"cpu_model\": \"Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 122.31,
+            "unit": "ms",
+            "extra": "min 121.69ms, stddev 3.39ms\nmachine: {\"cpu_model\": \"Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 75.27,
+            "unit": "ms",
+            "extra": "min 72.97ms, stddev 2.42ms\nmachine: {\"cpu_model\": \"Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 2522.41,
+            "unit": "ms",
+            "extra": "min 2516.76ms, stddev 28.9ms\nmachine: {\"cpu_model\": \"Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 1426.2,
+            "unit": "ms",
+            "extra": "min 1406.43ms, stddev 17.02ms\nmachine: {\"cpu_model\": \"Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 1007.24,
+            "unit": "ms",
+            "extra": "min 1005.06ms, stddev 3.99ms\nmachine: {\"cpu_model\": \"Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 1009.1,
+            "unit": "ms",
+            "extra": "min 1007.25ms, stddev 4.34ms\nmachine: {\"cpu_model\": \"Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 1115.4,
+            "unit": "ms",
+            "extra": "min 1112.92ms, stddev 2.6ms\nmachine: {\"cpu_model\": \"Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 1001.36,
+            "unit": "ms",
+            "extra": "min 999.46ms, stddev 4.02ms\nmachine: {\"cpu_model\": \"Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 42.22,
+            "unit": "ms",
+            "extra": "min 41.2ms, stddev 0.8ms\nmachine: {\"cpu_model\": \"Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 3.02,
+            "unit": "ms",
+            "extra": "min 2.48ms, stddev 0.31ms\nmachine: {\"cpu_model\": \"Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 2.2,
+            "unit": "ms",
+            "extra": "min 1.97ms, stddev 0.26ms\nmachine: {\"cpu_model\": \"Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 3397.76,
+            "unit": "ms",
+            "extra": "min 3378.63ms, stddev 10.37ms\nmachine: {\"cpu_model\": \"Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 718.1,
+            "unit": "ms",
+            "extra": "min 713.16ms, stddev 2.46ms\nmachine: {\"cpu_model\": \"Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz\", \"logical_cpus\": 4}"
           }
         ]
       }
