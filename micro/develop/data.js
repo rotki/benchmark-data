@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1794384844921,
+  "lastUpdate": 1794473279862,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (develop)": [
@@ -9444,6 +9444,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.000001717762764800468",
             "extra": "mean: 22.2023810322862 usec\nrounds: 7191"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "6ebf8f1eec447a9e6c2633edcae73b68eff03389",
+          "message": "feat(frontend): finish the failure wording\n\nA dock row whose failure only a new key can fix now links to the page\nthat edits that key, beside where Retry would be.\n\nAn exchange table left empty by a failed refresh says the refresh\nfailed instead of claiming the exchange holds nothing.\n\nA failed bank removal is named above the table, as exchange removal\nalready is, instead of in a toast.\n\nThe notification overflow banner and the repull dialog's error path\nare removed: the 200-row cap stays, and a repull reports failures as\ntask results, so the dialog's catch could never run.",
+          "timestamp": "2026-11-10T11:52:17Z",
+          "url": "https://github.com/rotki/rotki/commit/6ebf8f1eec447a9e6c2633edcae73b68eff03389"
+        },
+        "date": 1794473279486,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 230.3681179578524,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0001135489382374078",
+            "extra": "mean: 4.3408784551643445 msec\nrounds: 145"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 202.69371075575842,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000139585917499102",
+            "extra": "mean: 4.933552187048263 msec\nrounds: 139"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 1428.734490595769,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00003423183412318506",
+            "extra": "mean: 699.9201087271359 usec\nrounds: 1398"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 6473.526485777167,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00003786971821259808",
+            "extra": "mean: 154.47530834964164 usec\nrounds: 1521"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 27.541820451243854,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0009490919401274116",
+            "extra": "mean: 36.308420562477295 msec\nrounds: 16"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 63794.70867816149,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0000011648358096905485",
+            "extra": "mean: 15.675281237585224 usec\nrounds: 8619"
           }
         ]
       }
