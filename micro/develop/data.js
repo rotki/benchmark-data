@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1794559197103,
+  "lastUpdate": 1794643136639,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (develop)": [
@@ -9572,6 +9572,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.0000018010221771262118",
             "extra": "mean: 22.431574269665777 usec\nrounds: 6537"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Asish Kumar",
+            "username": "officialasishkumar",
+            "email": "officialasishkumar@gmail.com"
+          },
+          "committer": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "id": "6fa41dcd14fd4dfb40fee70ae0c4dfd6600a8909",
+          "message": "Support Ethena staking on Ethereum\n\nStaking USDe for sUSDe or ENA for sENA, starting the cooldown to unstake\nand the final unstake all showed up as plain transfers, and USDe or ENA\nwaiting in a cooldown was missing from the balances, since the staked\ntokens are burned when the cooldown starts and the underlying tokens sit\nin the vault's silo until unstake.\n\nBoth vaults are ERC4626 tokens with a cooldown, so one decoder handles\nthem. The Deposit event turns the stake into a deposit for wrapped and a\nreceive wrapped. A Withdraw event to the vault's silo turns the burned\nstaked tokens into a return wrapped that starts the cooldown. The sUSDe\nunstake emits no event, so a post-decoding rule turns the silo's transfer\nto the receiver into a redeem wrapped for both vaults. The vaults and the\nsilos map to the ethena counterparty, which also catches unstakes made\nthrough a Safe.\n\nEthenaBalances queries cooldowns(address) of the vaults that each\naddress returned staked tokens to, and reports the amount awaiting the\nunstake together with the time it can be claimed.\n\nFix #11048",
+          "timestamp": "2026-11-12T08:04:40Z",
+          "url": "https://github.com/rotki/rotki/commit/6fa41dcd14fd4dfb40fee70ae0c4dfd6600a8909"
+        },
+        "date": 1794643136129,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 212.6048409052735,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0001780030065560514",
+            "extra": "mean: 4.703561761538402 msec\nrounds: 130"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 188.83708868441423,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00011699422253285456",
+            "extra": "mean: 5.295569884956268 msec\nrounds: 113"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 1369.0723354890927,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00001345625604790656",
+            "extra": "mean: 730.4215957608668 usec\nrounds: 1321"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 5209.190613430281,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000514892076610436",
+            "extra": "mean: 191.9684024273964 usec\nrounds: 1071"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 23.707684131931035,
+            "unit": "iter/sec",
+            "range": "stddev: 0.006332657454733475",
+            "extra": "mean: 42.180416882353164 msec\nrounds: 17"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 59325.2481950377,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0000014766027137970923",
+            "extra": "mean: 16.856229521575703 usec\nrounds: 7337"
           }
         ]
       }
