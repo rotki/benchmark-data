@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1794643136639,
+  "lastUpdate": 1794730807120,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (develop)": [
@@ -9636,6 +9636,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.0000014766027137970923",
             "extra": "mean: 16.856229521575703 usec\nrounds: 7337"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "committer": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "id": "0107398f506fb49631504fffc14e23a24e22f877",
+          "message": "fix: classify detected NFTs consistently\n\nTreat ERC721 and Solana NFT identifiers as non-fungible across net value, holdings, snapshots, sending, and NFT-only search. Match historical balances through the assets table to avoid scanning all EVM balance history.\n\nFix #13296",
+          "timestamp": "2026-11-14T20:49:21Z",
+          "url": "https://github.com/rotki/rotki/commit/0107398f506fb49631504fffc14e23a24e22f877"
+        },
+        "date": 1794730806803,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 205.49143418451627,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00009799289586104556",
+            "extra": "mean: 4.866382893128641 msec\nrounds: 131"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 183.32869878381976,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00013284119109437069",
+            "extra": "mean: 5.454683345454792 msec\nrounds: 110"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 1328.3304043561209,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000020807540770373165",
+            "extra": "mean: 752.8247465544749 usec\nrounds: 1306"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 5248.5973676951635,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00005987451783311734",
+            "extra": "mean: 190.52709322969724 usec\nrounds: 1019"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 24.08041806977319,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0006516000755592889",
+            "extra": "mean: 41.52751821428069 msec\nrounds: 14"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 57826.469417076936,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0000014106163020396678",
+            "extra": "mean: 17.2931187063737 usec\nrounds: 6832"
           }
         ]
       }
