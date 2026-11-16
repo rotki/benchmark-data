@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1794730805140,
+  "lastUpdate": 1794817714393,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (bugfixes)": [
@@ -17088,6 +17088,142 @@ window.BENCHMARK_DATA = {
             "value": 644.82,
             "unit": "ms",
             "extra": "min 642.12ms, stddev 2.21ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "committer": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "id": "4934bd00a2a25d2668df93ded37e9cec6e6e0a40",
+          "message": "feat: measure MCP demand and upgrade attribution\n\nThere was no way to tell how much the MCP server is used, which tools\npeople rely on, or how often free and Supporter users hit the premium\nwall. Without that, we cannot judge MCP demand or whether it leads to\nupgrades.\n\nMCP events now go through the existing opt-in usage analytics and are\nonly sent when submit_usage_analytics is enabled. No tool arguments,\nqueries, addresses or other user content is collected:\n- mcp_usage, once per session and model, now includes the user's plan\n- mcp_tool_used, once per distinct tool per session, with the tool name\n- mcp_gated, once per session when a tool returns premium_required.\n  premium_check_failed (backend errors) is excluded so outages are not\n  counted as demand.\n\nThe premium check now caches the user's actual tier instead of a yes/no\nMCP-access flag, so analytics can read the plan without an extra\ncapabilities request. The cache is behind a lock because analytics and\nthe premium check read it from different threads.\n\nUpgrade links now carry UTM parameters, with a separate campaign for\neach entry point: MCP premium errors (premium_required), the MCP\nsettings gate (mcp_settings) and the premium settings page\n(premium_settings). The premium settings page is the general upgrade\npage, so it uses the desktop medium rather than mcp, so that its\nupgrades are not counted as MCP-driven. The MCP settings gate keeps its\nupgrade button visible for subscribers whose tier does not include MCP,\nso they can upgrade from there",
+          "timestamp": "2026-11-15T14:20:14Z",
+          "url": "https://github.com/rotki/rotki/commit/4934bd00a2a25d2668df93ded37e9cec6e6e0a40"
+        },
+        "date": 1794817713947,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 1535.39,
+            "unit": "ms",
+            "extra": "min 1521.8ms, stddev 1346.01ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V45 96-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 875.14,
+            "unit": "ms",
+            "extra": "min 845.76ms, stddev 364.1ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V45 96-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 4.95,
+            "unit": "ms",
+            "extra": "min 4.7ms, stddev 0.41ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V45 96-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 32.95,
+            "unit": "ms",
+            "extra": "min 30.93ms, stddev 1.14ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V45 96-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 2.05,
+            "unit": "ms",
+            "extra": "min 1.81ms, stddev 0.14ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V45 96-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 1.41,
+            "unit": "ms",
+            "extra": "min 1.22ms, stddev 0.16ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V45 96-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 76.67,
+            "unit": "ms",
+            "extra": "min 75.76ms, stddev 1.72ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V45 96-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 51.16,
+            "unit": "ms",
+            "extra": "min 49.35ms, stddev 1.09ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V45 96-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 1536.46,
+            "unit": "ms",
+            "extra": "min 1382.73ms, stddev 80.02ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V45 96-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 918.26,
+            "unit": "ms",
+            "extra": "min 882.17ms, stddev 89.09ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V45 96-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 646.05,
+            "unit": "ms",
+            "extra": "min 638.16ms, stddev 5.41ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V45 96-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 639.6,
+            "unit": "ms",
+            "extra": "min 631.63ms, stddev 6.59ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V45 96-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 709.76,
+            "unit": "ms",
+            "extra": "min 703.86ms, stddev 3.42ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V45 96-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 632.92,
+            "unit": "ms",
+            "extra": "min 626.51ms, stddev 4.89ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V45 96-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 32.16,
+            "unit": "ms",
+            "extra": "min 29.92ms, stddev 1.56ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V45 96-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 2.13,
+            "unit": "ms",
+            "extra": "min 1.5ms, stddev 0.32ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V45 96-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 1.45,
+            "unit": "ms",
+            "extra": "min 1.15ms, stddev 0.16ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V45 96-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 969.72,
+            "unit": "ms",
+            "extra": "min 953.99ms, stddev 23.73ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V45 96-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 474.65,
+            "unit": "ms",
+            "extra": "min 464.92ms, stddev 11.26ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V45 96-Core Processor\", \"logical_cpus\": 4}"
           }
         ]
       }
