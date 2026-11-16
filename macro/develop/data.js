@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1794730802767,
+  "lastUpdate": 1794817712170,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (develop)": [
@@ -21268,6 +21268,142 @@ window.BENCHMARK_DATA = {
             "value": 420.3,
             "unit": "ms",
             "extra": "min 420.15ms, stddev 1.81ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V45 96-Core Processor\", \"logical_cpus\": 4}"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "committer": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "id": "4934bd00a2a25d2668df93ded37e9cec6e6e0a40",
+          "message": "feat: measure MCP demand and upgrade attribution\n\nThere was no way to tell how much the MCP server is used, which tools\npeople rely on, or how often free and Supporter users hit the premium\nwall. Without that, we cannot judge MCP demand or whether it leads to\nupgrades.\n\nMCP events now go through the existing opt-in usage analytics and are\nonly sent when submit_usage_analytics is enabled. No tool arguments,\nqueries, addresses or other user content is collected:\n- mcp_usage, once per session and model, now includes the user's plan\n- mcp_tool_used, once per distinct tool per session, with the tool name\n- mcp_gated, once per session when a tool returns premium_required.\n  premium_check_failed (backend errors) is excluded so outages are not\n  counted as demand.\n\nThe premium check now caches the user's actual tier instead of a yes/no\nMCP-access flag, so analytics can read the plan without an extra\ncapabilities request. The cache is behind a lock because analytics and\nthe premium check read it from different threads.\n\nUpgrade links now carry UTM parameters, with a separate campaign for\neach entry point: MCP premium errors (premium_required), the MCP\nsettings gate (mcp_settings) and the premium settings page\n(premium_settings). The premium settings page is the general upgrade\npage, so it uses the desktop medium rather than mcp, so that its\nupgrades are not counted as MCP-driven. The MCP settings gate keeps its\nupgrade button visible for subscribers whose tier does not include MCP,\nso they can upgrade from there",
+          "timestamp": "2026-11-15T14:20:14Z",
+          "url": "https://github.com/rotki/rotki/commit/4934bd00a2a25d2668df93ded37e9cec6e6e0a40"
+        },
+        "date": 1794817711666,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 2302.79,
+            "unit": "ms",
+            "extra": "min 2196.1ms, stddev 1697.06ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 1074.23,
+            "unit": "ms",
+            "extra": "min 1061.21ms, stddev 391.68ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 6.03,
+            "unit": "ms",
+            "extra": "min 5.97ms, stddev 0.05ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 36.67,
+            "unit": "ms",
+            "extra": "min 36.25ms, stddev 0.54ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 2.42,
+            "unit": "ms",
+            "extra": "min 2.18ms, stddev 0.11ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 2.02,
+            "unit": "ms",
+            "extra": "min 1.87ms, stddev 0.08ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 103.8,
+            "unit": "ms",
+            "extra": "min 102.84ms, stddev 38.54ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 65.78,
+            "unit": "ms",
+            "extra": "min 64.22ms, stddev 26.79ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 2209.64,
+            "unit": "ms",
+            "extra": "min 2197.22ms, stddev 28.74ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 1128.73,
+            "unit": "ms",
+            "extra": "min 1120.88ms, stddev 8.0ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 965.83,
+            "unit": "ms",
+            "extra": "min 955.45ms, stddev 5.23ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 964.99,
+            "unit": "ms",
+            "extra": "min 952.58ms, stddev 5.73ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 27.97,
+            "unit": "ms",
+            "extra": "min 26.77ms, stddev 0.94ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 942.65,
+            "unit": "ms",
+            "extra": "min 931.57ms, stddev 4.97ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 36.45,
+            "unit": "ms",
+            "extra": "min 36.33ms, stddev 0.4ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 2.26,
+            "unit": "ms",
+            "extra": "min 2.15ms, stddev 0.12ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 1.97,
+            "unit": "ms",
+            "extra": "min 1.8ms, stddev 0.11ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 780.25,
+            "unit": "ms",
+            "extra": "min 774.16ms, stddev 4.19ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 689.93,
+            "unit": "ms",
+            "extra": "min 680.07ms, stddev 5.78ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
           }
         ]
       }
