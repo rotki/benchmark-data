@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1794730807120,
+  "lastUpdate": 1794817716642,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (develop)": [
@@ -9700,6 +9700,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.0000014106163020396678",
             "extra": "mean: 17.2931187063737 usec\nrounds: 6832"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "committer": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "id": "4934bd00a2a25d2668df93ded37e9cec6e6e0a40",
+          "message": "feat: measure MCP demand and upgrade attribution\n\nThere was no way to tell how much the MCP server is used, which tools\npeople rely on, or how often free and Supporter users hit the premium\nwall. Without that, we cannot judge MCP demand or whether it leads to\nupgrades.\n\nMCP events now go through the existing opt-in usage analytics and are\nonly sent when submit_usage_analytics is enabled. No tool arguments,\nqueries, addresses or other user content is collected:\n- mcp_usage, once per session and model, now includes the user's plan\n- mcp_tool_used, once per distinct tool per session, with the tool name\n- mcp_gated, once per session when a tool returns premium_required.\n  premium_check_failed (backend errors) is excluded so outages are not\n  counted as demand.\n\nThe premium check now caches the user's actual tier instead of a yes/no\nMCP-access flag, so analytics can read the plan without an extra\ncapabilities request. The cache is behind a lock because analytics and\nthe premium check read it from different threads.\n\nUpgrade links now carry UTM parameters, with a separate campaign for\neach entry point: MCP premium errors (premium_required), the MCP\nsettings gate (mcp_settings) and the premium settings page\n(premium_settings). The premium settings page is the general upgrade\npage, so it uses the desktop medium rather than mcp, so that its\nupgrades are not counted as MCP-driven. The MCP settings gate keeps its\nupgrade button visible for subscribers whose tier does not include MCP,\nso they can upgrade from there",
+          "timestamp": "2026-11-15T14:20:14Z",
+          "url": "https://github.com/rotki/rotki/commit/4934bd00a2a25d2668df93ded37e9cec6e6e0a40"
+        },
+        "date": 1794817716254,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 213.03423210839938,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00036132808479315346",
+            "extra": "mean: 4.69408127559126 msec\nrounds: 127"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 184.69246290397135,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00016755626915480664",
+            "extra": "mean: 5.414406112067162 msec\nrounds: 116"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 1370.7760326651614,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000020707501058787882",
+            "extra": "mean: 729.5137762627262 usec\nrounds: 1247"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 5236.632242153554,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00015085230356325972",
+            "extra": "mean: 190.96242656687917 usec\nrounds: 926"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 25.499844525863306,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00126583695370853",
+            "extra": "mean: 39.21592537498597 msec\nrounds: 16"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 59146.38724026872,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000001604460687543476",
+            "extra": "mean: 16.907203409360033 usec\nrounds: 6922"
           }
         ]
       }
