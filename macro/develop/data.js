@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1794908539392,
+  "lastUpdate": 1794992466897,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (develop)": [
@@ -21540,6 +21540,142 @@ window.BENCHMARK_DATA = {
             "value": 757.33,
             "unit": "ms",
             "extra": "min 756.39ms, stddev 2.44ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "committer": {
+            "name": "GitHub",
+            "username": "web-flow",
+            "email": "noreply@github.com"
+          },
+          "id": "0e2caf6decb4192a7da392da0b00e9794b23bf92",
+          "message": "Accounting diagnosis and approved repairs via MCP (#13677)\n\n* feat(accounting): diagnose balance buckets\n\nDiagnosing an accounting problem meant reconstructing the historical\nbalance engine's state by hand: nothing explained why a bucket stopped,\nwhat each event did to it, or why a bridge leg stayed unmatched.\n\nAdd read-only diagnostics that reuse the engine's own rules instead of\nreimplementing them:\n- Bucket.effects_with_rule reports which branch decided an event's\n  bucket effects, so every effect is traceable to a named rule.\n- get_accounting_health tells healthy apart from unprocessed, stale,\n  blocked, mismatched and unverified, with reason counts per status.\n  The reconciliation report now keeps every classified bucket for it.\n- trace_bucket replays a bucket's events with exact decimal running\n  balances, the stop and the balances the last pass stored, so stale\n  metrics and one-wei residues are visible.\n- explain_data_issue separates facts, hypotheses and conflicts between\n  an issue and its bucket, e.g. a dismissed issue whose bucket is still\n  stopped.\n- inspect_transaction compares a transaction's decoded effects with the\n  transfers in its saved receipt.\n- explain_bridge_match runs the matcher's candidate classification,\n  which now returns a rejection reason, over every candidate.\n\nNothing here writes or queries a remote.\n\nRefs #13672\n\n* feat(accounting): add approved remediation plans\n\nThe diagnostics can show what is wrong, but there was no bounded way to\nrepair it: redecoding or relinking events was all or nothing, with no\nrecord of what was proposed, approved and changed, and nothing checked\nafterwards whether the repair cleared the stop it targeted.\n\nA remediation plan is a previewed repair of one of two kinds:\nredecoding EVM transactions with the current decoders (customized ones\nonly when explicitly requested) or linking a bridge leg with a\ncounterpart the matcher considers eligible. The preview stores the\nexact event and bucket effect diffs, the baseline stops and issues of\nthe affected buckets and digests of the events it was computed from.\n\nApplying needs a stated approval, a pending and unexpired plan and\nunchanged events, so a stale or repeated apply changes nothing. It\nrecords an outcome per item, reprocesses the affected range and\nverifies the result from the bucket processing stops rather than from\nissue states. Every transition is kept in an audit table. Both new\ntables go into the unreleased v53->v54 upgrade.\n\nRefs #13672\n\n* feat(api): expose accounting diagnosis endpoints\n\nThe diagnostics and remediation plans were only reachable from Python,\nso neither the MCP server nor any other client could use them.\n\nAdd endpoints under /data_issues/diagnostics for health, issue\nlisting, issue explanation, bucket traces, transactions and bridge\nmatches, and under /data_issues/remediation_plans to create, read,\napply, reject and verify plans. Creating and applying plans can run as\nasync tasks since they decode and reprocess. Plan conflicts return 409\nwith a machine readable code in the result. All endpoints are behind\nthe accounting update feature flag and documented in docs/api.rst.\n\nRefs #13672\n\n* feat(mcp): add accounting diagnosis and repair tools\n\nAn agent investigating accounting problems through the MCP server could\nonly run SQL over privacy-filtered events, so it had to reconstruct the\nbalance engine's state itself, doing balance arithmetic in binary\nfloats, and had no safe way to repair what it found.\n\nAdd nine tools over the new endpoints: get_accounting_health,\nlist_data_issues, explain_data_issue, trace_bucket,\ninspect_transaction, explain_bridge_match, preview_remediation,\napply_remediation and verify_remediation.\n\nIdentifiers stay private outside raw mode. Addresses, transaction\nhashes and group identifiers become the same anon_ hashes the analytics\ntables use, so diagnoses join with SQL results, and the server resolves\nthem when the agent hands one back. The analytics layer now remembers\nwhat it hashed for this. Buckets get bucket_ references. All references\nare dropped when the privacy mode changes, and embedded identifiers in\nfree text are scrubbed.\n\napply_remediation asks the user to approve the plan through an MCP\nelicitation in their client. A declined plan is rejected for good, and\na client without elicitation support cannot apply plans at all.\n\nRefs #13672\n\n* feat(mcp): track, cancel and scope accounting work\n\nThree gaps of the accounting diagnosis tools:\n\n- A preview or apply that outlasted the tool's wait only returned a\n  task id, with no way to get its result or stop it. Add\n  get_remediation_task and cancel_remediation_task. They only accept\n  tasks these tools started, so an agent can't touch tasks the user\n  started in rotki. A cancelled apply stops between transactions,\n  keeps what was already redecoded, and marks the plan\n  partially_applied or cancelled instead of leaving it applying.\n- Health did not say whether the archive queries that rebasing\n  reconciliation and divergence search need are possible. It now\n  counts the active RPC nodes of each chain by their saved archive\n  probe.\n- References were only dropped when the privacy mode changed, so after\n  another user logged in a reference could resolve against that\n  user's data. The MCP session state, including loaded analytics\n  tables, is now also dropped when the logged-in user changes.\n\nRefs #13672\n\n* feat(mcp): flag deceptive assets and link to rotki\n\nThe accounting tools never return asset names, symbols or notes, since\na scam token controls them, but that also hid the evidence that an\nasset is a lookalike or phishing token. And in raw privacy mode, where\nidentifiers may be shown, the agent still could not point the user to\nthe transaction in rotki.\n\nDiagnoses now carry asset_signals: per involved asset, structural flags\nread from its metadata (spam_flagged, mixed_scripts as in a Cyrillic\nletter inside a Latin symbol, invisible_characters, link_in_metadata,\nunknown_asset), never the text itself. An unfamiliar or unpriced asset\nis not flagged, so a flag is evidence rather than a spam verdict.\n\nIn raw mode every result naming a transaction gets a ui_route opening\nits events in rotki. Other modes keep pointing at the Data issues page,\nbecause such a route would expose the transaction identifier.\n\nRefs #13672\n\n* fix(db): expect remediation tables in upgrade\n\ntest_latest_upgrade_correctness compares the tables the latest upgrade\ncreates with an expected set. The v53->v54 upgrade now also creates\nremediation_plans and remediation_plan_audit, which were missing from that\nset, so the test failed.\n\n* fix(accounting): count protocol fees in receipt check\n\ninspect_transaction compares the decoded wallet effects of a transaction\nwith the transfers in its saved receipt. It left every SPEND/FEE event out\nof the decoded side to skip gas, but protocol fees use that type too and do\nshow up as token transfers: a Hop deposit with a bonder fee, for example,\nwas always reported as a discrepancy of the fee amount, pointing the agent\nat a decoding bug that doesn't exist. Only gas events are left out now.\n\n* fix(accounting): scope bridge link previews\n\nA bridge link plan is only meant to propose a candidate the matcher would\nconsider, but the preview relied on classify_bridge_candidate alone. The\nmatcher also requires the anchor to be a bridge leg, and its candidate\nquery restricts the time window and the assets. So a plain spend could be\nused as the anchor, and a receive far outside the window or of another\ntoken with a matching amount could be linked, rewriting it into a bridge\nleg, while explain_bridge_match reported the same candidate as rejected.\n\nThe preview now applies the same checks as explain_bridge_match: a\nnon-bridge anchor is refused with not_a_bridge_leg, and a candidate\noutside the window or the searched assets is rejected, unless it shares\nthe leg's exact transfer id, which the matcher accepts regardless. Both\nuse one shared description of the matcher's search so they can't diverge.\n\n* fix(accounting): judge remediation by applied items\n\nApplying and verifying a plan took the earliest timestamp over every plan\nitem, including ones that were never applied (no_change, blocked,\npreview_failed, unsupported). When another processing pass ran during the\napply and finished with the redecoded range still stale, that earlier\ntimestamp made verification believe the change had been re-evaluated, and\nit judged the plan from stops computed on the old events, typically\nreporting not_repaired. Reprocessing and verification now start from the\napplied items only, which carry their timestamp in their outcome.\n\nA clean apply was also reported as partially_applied whenever the plan had\nan item that was never applicable, since those are recorded as skipped.\nThe plan is applied when every applicable item was.\n\nThe stale-from timestamp is cached as text, so get_processing_state\nreturned a string and verification failed comparing it with an integer\nwhenever a pass had run and something was still stale. It is returned as\nan integer now.\n\n* fix(accounting): audit only verdict changes\n\nverify_plan wrote an audit entry on every call. Agents are told to call\nverify_remediation again until a processing pass has re-evaluated the\nplan, so polling filled the plan's audit trail with identical entries. A\nverification is now recorded only when its verdict differs from the last\nrecorded one.\n\n* fix(accounting): take health stops from the report\n\nget_accounting_health derived the blocked status and its list of stops\nfrom the raw bucket stops, while the reconciliation report shown in the\nsame response leaves out stops of ignored assets and of wallet buckets of\naccounts that are no longer tracked. Ignoring an asset deletes neither its\nstops nor marks balances stale, so once a stopped spam bucket's asset was\nignored, health stayed blocked indefinitely and listed that stop while its\nown coverage counted no blocked bucket. Health now reads the stops of the\nbuckets in the report's scope.\n\n* fix(accounting): mirror processor rebasing in trace\n\nThe bucket trace treated any negative balance of a rebasing-asset bucket\nas awaiting reconciliation and kept applying later events. The processor\nonly waits for a reconciliation on on-chain rebasing events: a rebasing\nasset that goes negative through an exchange or manual event stops the\nbucket. For such a bucket the trace showed no stop row although the bucket\nhad one, later rows showed balances the engine never computed, and the\nissue explanation reported no events left unapplied. The trace now applies\nthe same rule as the processor.\n\n* fix(accounting): count pending decoding per chain\n\nexplain_data_issue reports a pending_decoding prerequisite when the\naccount of the issue's bucket has undecoded transactions. The count\nmatched only the address, so an address tracked on several EVM chains had\nits undecoded transactions on every chain counted for an issue of one of\nthem, and an agent was told to wait for decoding that can't affect that\nbucket. Only transactions of the bucket's chain are counted now.\n\n* feat(mcp): name event rewrites in approval prompt\n\nThe approval prompt for apply_remediation listed only the per-bucket net\neffects of a plan. Linking a bridge leg usually changes no net balance, so\nthe user approved without seeing that a plain receive or spend gets\nrewritten into a bridge leg, or that a zksync exit takes a new amount. The\nprompt now names each event a bridge link rewrites and how, and for a\nredecode how many events change, get added and get removed.\n\nTo pair each current event with its proposed version, a bridge link plan\nlists the proposed events in the order of the current ones, which differed\nwhen the anchor was the withdrawal leg.\n\n* fix(accounting): move plans into remediation pkg\n\nThe rebase onto develop brought in the data_issues/remediation/\npackage of the automatic remediation pipeline. A package takes\nprecedence over a module of the same name, so it hid\ndata_issues/remediation.py and importing the API schemas failed\nwith \"cannot import name 'APPROVAL_METHODS'\": the backend could\nnot start.\n\nThe remediation plans now live in data_issues/remediation/plans.py\nand every import and test patch points there. Tests that develop\nadded for the pipeline also patched the old private\n_preview_transaction, which this branch made public as\npreview_transaction, so they patch the public name now.\n\n* fix(accounting): judge redecoded stops correctly\n\nRedecoding a transaction deletes its events and saves new ones, so\nthey get new identifiers. Verification compared the stop of each\nbucket by event identifier, so a stop that was still in the\nredecoded transaction looked like it had moved, and the negative\nbalance issue raised again on the replacing event counted as a new\none. A redecode that repaired nothing was reported as\nnew_problems_revealed instead of not_repaired. A stop still inside\na redecoded transaction now counts as persisted, and its re-raised\nissue is not new.\n\nA redecode that changes events without changing any bucket's net\neffect had no affected buckets, so verification found nothing to\njudge and reported the plan as repaired while the stop was still\nthere. Buckets stopped at an event of a previewed transaction are\nnow always affected.\n\nA bridge link the database refuses raised out of apply and left\nthe plan in the applying state for good, where it could neither be\napplied again nor verified. The refusal is now the item's failed\noutcome and the plan fails.\n\n* feat(mcp): link issues and split observed holdings\n\nTwo parts of #13672 the first version left as follow-ups.\n\nObserved-only holdings: a holding that the account has no history\nof at all, usually an unsolicited airdrop, was a mismatch like any\ndisagreement over a bucket with history, so health stayed\n\"mismatch\" because of airdrops. Health now reports a\nmismatch_breakdown (with history, observed only, and observed only\nwith deceptive asset metadata), and only a mismatch with history\nmakes the status \"mismatch\". When only observed-only ones remain\nthe status is \"observed_only_mismatch\". The issue list marks each\nbalance mismatch as observed_only or not and returns the\nasset_signals of the listed assets. Observed-only holdings are not\ndeclared spam: one received in a transaction rotki missed looks the\nsame.\n\nLinks outside raw mode: transaction routes name the transaction, so\nthey stay raw-mode only. A data issue id is a row number, and the\ndata issues page already opens one from ?issue=<id>, so every issue\nnow carries an issue_ui_route in every privacy mode.\n\nFix #13672",
+          "timestamp": "2026-11-17T14:52:12Z",
+          "url": "https://github.com/rotki/rotki/commit/0e2caf6decb4192a7da392da0b00e9794b23bf92"
+        },
+        "date": 1794992466262,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 2042.08,
+            "unit": "ms",
+            "extra": "min 2041.45ms, stddev 1540.6ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 919.21,
+            "unit": "ms",
+            "extra": "min 912.85ms, stddev 362.32ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 4.75,
+            "unit": "ms",
+            "extra": "min 4.65ms, stddev 0.09ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 31.46,
+            "unit": "ms",
+            "extra": "min 30.76ms, stddev 0.39ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 1.72,
+            "unit": "ms",
+            "extra": "min 1.62ms, stddev 0.07ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 1.53,
+            "unit": "ms",
+            "extra": "min 1.4ms, stddev 0.08ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 86.68,
+            "unit": "ms",
+            "extra": "min 85.6ms, stddev 0.84ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 55.45,
+            "unit": "ms",
+            "extra": "min 54.71ms, stddev 1.05ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 2044.17,
+            "unit": "ms",
+            "extra": "min 2041.16ms, stddev 21.65ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 974.15,
+            "unit": "ms",
+            "extra": "min 968.03ms, stddev 6.79ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 831.71,
+            "unit": "ms",
+            "extra": "min 826.96ms, stddev 3.22ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 829.78,
+            "unit": "ms",
+            "extra": "min 827.87ms, stddev 2.23ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 23.65,
+            "unit": "ms",
+            "extra": "min 22.01ms, stddev 2.47ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 811.99,
+            "unit": "ms",
+            "extra": "min 809.7ms, stddev 1.2ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 32.09,
+            "unit": "ms",
+            "extra": "min 31.45ms, stddev 1.15ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 1.74,
+            "unit": "ms",
+            "extra": "min 1.62ms, stddev 0.45ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 1.55,
+            "unit": "ms",
+            "extra": "min 1.4ms, stddev 0.16ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 668.69,
+            "unit": "ms",
+            "extra": "min 666.32ms, stddev 2.03ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 619.85,
+            "unit": "ms",
+            "extra": "min 612.13ms, stddev 42.41ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
           }
         ]
       }
