@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1794992472092,
+  "lastUpdate": 1795079970813,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (develop)": [
@@ -9892,6 +9892,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.000005114866791668961",
             "extra": "mean: 34.476310582864905 usec\nrounds: 6227"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "neriumpete",
+            "username": "cargopete",
+            "email": "pavlovskipetko@protonmail.com"
+          },
+          "committer": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "id": "595df0d0ab73fbd64d8fb9df335f52ae976d3e1e",
+          "message": "Find aave v3 debt tokens from their mint log and handle stable debt mints",
+          "timestamp": "2026-11-17T16:52:01Z",
+          "url": "https://github.com/rotki/rotki/commit/595df0d0ab73fbd64d8fb9df335f52ae976d3e1e"
+        },
+        "date": 1795079970498,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 160.91659567707006,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00006906105076712189",
+            "extra": "mean: 6.2143994271841025 msec\nrounds: 103"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 139.49470778003084,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00010112567118211515",
+            "extra": "mean: 7.168730741935383 msec\nrounds: 93"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 1077.7161319038764,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00004770475571477201",
+            "extra": "mean: 927.8881241514086 usec\nrounds: 1031"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 789.0282630555856,
+            "unit": "iter/sec",
+            "range": "stddev: 0.01224690112716996",
+            "extra": "mean: 1.2673817235993634 msec\nrounds: 1089"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 8.016563679576539,
+            "unit": "iter/sec",
+            "range": "stddev: 0.07838540838252893",
+            "extra": "mean: 124.74172725000088 msec\nrounds: 8"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 44728.7109638087,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0000016303533083466678",
+            "extra": "mean: 22.35700467221443 usec\nrounds: 7491"
           }
         ]
       }
