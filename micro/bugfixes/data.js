@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1795079972879,
+  "lastUpdate": 1795165319529,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (bugfixes)": [
@@ -9600,6 +9600,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.0000020688737826427364",
             "extra": "mean: 21.162705298297517 usec\nrounds: 7455"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Yábir Benchakhtir",
+            "username": "yabirgb",
+            "email": "git@yabirgb.com"
+          },
+          "committer": {
+            "name": "GitHub",
+            "username": "web-flow",
+            "email": "noreply@github.com"
+          },
+          "id": "ed4db5ed570859d0c2d7fb91d5f9c0fd679a5151",
+          "message": "Merge pull request #13711 from yabirgb/connext\n\nAdd Connext NXTP bridge decoder",
+          "timestamp": "2026-11-19T17:09:31Z",
+          "url": "https://github.com/rotki/rotki/commit/ed4db5ed570859d0c2d7fb91d5f9c0fd679a5151"
+        },
+        "date": 1795165319060,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 354.12353492939195,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00003901432912750087",
+            "extra": "mean: 2.8238733135864247 msec\nrounds: 287"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 244.98165886350304,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00005307369915049791",
+            "extra": "mean: 4.081938234229903 msec\nrounds: 222"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 753.3925509090853,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000021827785368007562",
+            "extra": "mean: 1.3273292904122085 msec\nrounds: 730"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 2549.038798039392,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0002717363275091097",
+            "extra": "mean: 392.30473885652736 usec\nrounds: 942"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 13.66701428899313,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0019393244903337385",
+            "extra": "mean: 73.16887060002273 msec\nrounds: 10"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 29712.379810497863,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000003889215064539813",
+            "extra": "mean: 33.65600488341509 usec\nrounds: 6554"
           }
         ]
       }
