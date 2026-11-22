@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1795250606512,
+  "lastUpdate": 1795336889129,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (bugfixes)": [
@@ -17904,6 +17904,142 @@ window.BENCHMARK_DATA = {
             "value": 719.94,
             "unit": "ms",
             "extra": "min 717.91ms, stddev 1.35ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "committer": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "id": "dd0a43a2bbe4dec3819ffe315bac7ee4f4828476",
+          "message": "perf: skip wallet observations without flag\n\nEVM balance refreshes wrote wallet balance observations for every\naccount and queried token, and token detection wrote them too, in their\nown write transactions. Only the experimental accounting update reads\nthem (reconciliation and the current balance mismatch detector), so\nwithout ROTKI_ACCOUNTING_UPDATE every refresh paid for rows that nothing\nreads.\n\nSkip the writes unless the accounting update is enabled. A missing\nobservation already means unknown coverage, so turning the flag on later\nis safe: the next balance refresh fills them in.\n\nLLM-Model: anthropic/claude-opus-5-5\nHarness: Claude Code 2.1.330",
+          "timestamp": "2026-11-21T22:26:26Z",
+          "url": "https://github.com/rotki/rotki/commit/dd0a43a2bbe4dec3819ffe315bac7ee4f4828476"
+        },
+        "date": 1795336888752,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 1963.12,
+            "unit": "ms",
+            "extra": "min 1936.51ms, stddev 1633.9ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 1231.85,
+            "unit": "ms",
+            "extra": "min 1224.83ms, stddev 412.86ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 6.78,
+            "unit": "ms",
+            "extra": "min 6.69ms, stddev 0.22ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 42.35,
+            "unit": "ms",
+            "extra": "min 41.74ms, stddev 1.24ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 2.68,
+            "unit": "ms",
+            "extra": "min 2.57ms, stddev 0.22ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 2.19,
+            "unit": "ms",
+            "extra": "min 2.04ms, stddev 0.18ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 111.17,
+            "unit": "ms",
+            "extra": "min 109.57ms, stddev 8.14ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 72.35,
+            "unit": "ms",
+            "extra": "min 71.57ms, stddev 12.56ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 1950.08,
+            "unit": "ms",
+            "extra": "min 1898.75ms, stddev 38.72ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 1297.45,
+            "unit": "ms",
+            "extra": "min 1287.09ms, stddev 15.44ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 1058.69,
+            "unit": "ms",
+            "extra": "min 1056.2ms, stddev 2.07ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 1060.34,
+            "unit": "ms",
+            "extra": "min 1056.13ms, stddev 2.62ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 1167.36,
+            "unit": "ms",
+            "extra": "min 1163.15ms, stddev 2.42ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 1048.07,
+            "unit": "ms",
+            "extra": "min 1041.62ms, stddev 4.26ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 41.67,
+            "unit": "ms",
+            "extra": "min 41.41ms, stddev 0.74ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 2.6,
+            "unit": "ms",
+            "extra": "min 2.47ms, stddev 0.11ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 2.08,
+            "unit": "ms",
+            "extra": "min 1.93ms, stddev 0.13ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 1596.02,
+            "unit": "ms",
+            "extra": "min 1592.36ms, stddev 4.67ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 756.17,
+            "unit": "ms",
+            "extra": "min 745.97ms, stddev 8.27ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
           }
         ]
       }
