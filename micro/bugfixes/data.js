@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1795250610614,
+  "lastUpdate": 1795336893555,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (bugfixes)": [
@@ -9728,6 +9728,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.000003887244878442915",
             "extra": "mean: 35.233352055101456 usec\nrounds: 6303"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "committer": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "id": "dd0a43a2bbe4dec3819ffe315bac7ee4f4828476",
+          "message": "perf: skip wallet observations without flag\n\nEVM balance refreshes wrote wallet balance observations for every\naccount and queried token, and token detection wrote them too, in their\nown write transactions. Only the experimental accounting update reads\nthem (reconciliation and the current balance mismatch detector), so\nwithout ROTKI_ACCOUNTING_UPDATE every refresh paid for rows that nothing\nreads.\n\nSkip the writes unless the accounting update is enabled. A missing\nobservation already means unknown coverage, so turning the flag on later\nis safe: the next balance refresh fills them in.\n\nLLM-Model: anthropic/claude-opus-5-5\nHarness: Claude Code 2.1.330",
+          "timestamp": "2026-11-21T22:26:26Z",
+          "url": "https://github.com/rotki/rotki/commit/dd0a43a2bbe4dec3819ffe315bac7ee4f4828476"
+        },
+        "date": 1795336893146,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 345.5759967847081,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000029234582276859702",
+            "extra": "mean: 2.893719498183187 msec\nrounds: 275"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 243.01024391200684,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000041927150184991634",
+            "extra": "mean: 4.115052863212205 msec\nrounds: 212"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 791.9296283546824,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000010965000889039657",
+            "extra": "mean: 1.262738460837241 msec\nrounds: 766"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 2592.464054735103,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0003248288109310664",
+            "extra": "mean: 385.7334099477725 usec\nrounds: 583"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 14.514945670875115,
+            "unit": "iter/sec",
+            "range": "stddev: 0.001595113215887477",
+            "extra": "mean: 68.89450520001219 msec\nrounds: 10"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 33249.228197233955,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0000027586373400843857",
+            "extra": "mean: 30.075886094799376 usec\nrounds: 6163"
           }
         ]
       }
