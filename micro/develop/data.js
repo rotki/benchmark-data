@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1795336891297,
+  "lastUpdate": 1795426727837,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (develop)": [
@@ -10148,6 +10148,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.0000041776054482633585",
             "extra": "mean: 31.9756613560479 usec\nrounds: 6402"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "committer": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "id": "bcae2b1c680e58f5b0b477913976b6d38497f8a4",
+          "message": "perf: index customized event lookup\n\n_write_tx_events looked up previously customized event positions with\nname LIKE 'customized_event_original_<gid>_%'. LIKE is case-insensitive,\nso SQLite cannot use the key_value_cache primary key index and scans the\nwhole table for every decoded transaction write. Look up the exact keys\nof the transaction's events with name IN (...) instead, which is an index\nsearch: 1.90ms -> 0.003ms per tx with 20k cached rows.\n\nLLM-Model: anthropic/claude-opus-5-5\nHarness: Claude Code 2.1.330",
+          "timestamp": "2026-11-23T06:40:24Z",
+          "url": "https://github.com/rotki/rotki/commit/bcae2b1c680e58f5b0b477913976b6d38497f8a4"
+        },
+        "date": 1795426727547,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 204.2210413559041,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0005554716688582996",
+            "extra": "mean: 4.896655081967094 msec\nrounds: 122"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 187.07015320556363,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00007356160850696119",
+            "extra": "mean: 5.345588181034638 msec\nrounds: 116"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 1319.9554696082764,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00001706416429174953",
+            "extra": "mean: 757.6013153661694 usec\nrounds: 1243"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 2345.407615542683,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0010169736921021024",
+            "extra": "mean: 426.365120234599 usec\nrounds: 1023"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 14.16912626167915,
+            "unit": "iter/sec",
+            "range": "stddev: 0.015217113243440723",
+            "extra": "mean: 70.57598200000035 msec\nrounds: 9"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 49196.057188776336,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00002981866763990988",
+            "extra": "mean: 20.326832212646128 usec\nrounds: 6395"
           }
         ]
       }
