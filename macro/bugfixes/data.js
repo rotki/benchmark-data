@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1795336889129,
+  "lastUpdate": 1795426725657,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (bugfixes)": [
@@ -18040,6 +18040,142 @@ window.BENCHMARK_DATA = {
             "value": 756.17,
             "unit": "ms",
             "extra": "min 745.97ms, stddev 8.27ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "committer": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "id": "bcae2b1c680e58f5b0b477913976b6d38497f8a4",
+          "message": "perf: index customized event lookup\n\n_write_tx_events looked up previously customized event positions with\nname LIKE 'customized_event_original_<gid>_%'. LIKE is case-insensitive,\nso SQLite cannot use the key_value_cache primary key index and scans the\nwhole table for every decoded transaction write. Look up the exact keys\nof the transaction's events with name IN (...) instead, which is an index\nsearch: 1.90ms -> 0.003ms per tx with 20k cached rows.\n\nLLM-Model: anthropic/claude-opus-5-5\nHarness: Claude Code 2.1.330",
+          "timestamp": "2026-11-23T06:40:24Z",
+          "url": "https://github.com/rotki/rotki/commit/bcae2b1c680e58f5b0b477913976b6d38497f8a4"
+        },
+        "date": 1795426725384,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 1687.57,
+            "unit": "ms",
+            "extra": "min 1669.6ms, stddev 1394.5ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 1022.21,
+            "unit": "ms",
+            "extra": "min 1003.31ms, stddev 373.42ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 4.89,
+            "unit": "ms",
+            "extra": "min 4.83ms, stddev 0.04ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 33.29,
+            "unit": "ms",
+            "extra": "min 32.75ms, stddev 0.28ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 1.85,
+            "unit": "ms",
+            "extra": "min 1.81ms, stddev 0.07ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 1.56,
+            "unit": "ms",
+            "extra": "min 1.54ms, stddev 0.05ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 87.21,
+            "unit": "ms",
+            "extra": "min 86.99ms, stddev 7.18ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 58.62,
+            "unit": "ms",
+            "extra": "min 57.88ms, stddev 8.71ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 1686.09,
+            "unit": "ms",
+            "extra": "min 1635.48ms, stddev 28.21ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 1065.31,
+            "unit": "ms",
+            "extra": "min 1063.61ms, stddev 124.6ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 885.86,
+            "unit": "ms",
+            "extra": "min 885.43ms, stddev 1.16ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 886.96,
+            "unit": "ms",
+            "extra": "min 884.38ms, stddev 2.42ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 968.95,
+            "unit": "ms",
+            "extra": "min 966.57ms, stddev 3.05ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 876.99,
+            "unit": "ms",
+            "extra": "min 874.0ms, stddev 2.44ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 33.44,
+            "unit": "ms",
+            "extra": "min 32.99ms, stddev 0.26ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 1.93,
+            "unit": "ms",
+            "extra": "min 1.9ms, stddev 0.03ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 1.66,
+            "unit": "ms",
+            "extra": "min 1.58ms, stddev 0.04ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 1336.39,
+            "unit": "ms",
+            "extra": "min 1332.99ms, stddev 3.07ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 648.68,
+            "unit": "ms",
+            "extra": "min 646.4ms, stddev 28.68ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
           }
         ]
       }
