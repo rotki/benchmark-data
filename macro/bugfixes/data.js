@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1795426725657,
+  "lastUpdate": 1795519983437,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (bugfixes)": [
@@ -18176,6 +18176,142 @@ window.BENCHMARK_DATA = {
             "value": 648.68,
             "unit": "ms",
             "extra": "min 646.4ms, stddev 28.68ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V74 80-Core Processor\", \"logical_cpus\": 4}"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "id": "a5fe53f0439cb4b27a126e4a42aca7dc9632da4a",
+          "message": "fix: keep the origin port check behind proxies\n\nRevert the portless Host relaxation. A Host without a port is also what\na browser sends for a server reached directly on port 80/443, so the\nrelaxation let any other port on the same hostname write to the API.\n\nRecommend only `proxy_set_header Host $http_host;` in the changelog, as\nthe docs and the 1.44.3 release notes already do, and pin the behaviour\nin the reverse proxy test.",
+          "timestamp": "2026-11-24T08:47:34Z",
+          "url": "https://github.com/rotki/rotki/commit/a5fe53f0439cb4b27a126e4a42aca7dc9632da4a"
+        },
+        "date": 1795519983001,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 1955.53,
+            "unit": "ms",
+            "extra": "min 1885.67ms, stddev 1569.52ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 1283.83,
+            "unit": "ms",
+            "extra": "min 1219.42ms, stddev 400.99ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 6.45,
+            "unit": "ms",
+            "extra": "min 6.33ms, stddev 0.47ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 40.93,
+            "unit": "ms",
+            "extra": "min 40.58ms, stddev 0.32ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 2.72,
+            "unit": "ms",
+            "extra": "min 2.49ms, stddev 0.18ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 2.28,
+            "unit": "ms",
+            "extra": "min 2.1ms, stddev 0.1ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 109.25,
+            "unit": "ms",
+            "extra": "min 106.76ms, stddev 9.81ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 71.99,
+            "unit": "ms",
+            "extra": "min 69.58ms, stddev 26.54ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 1899.57,
+            "unit": "ms",
+            "extra": "min 1853.22ms, stddev 23.3ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 1284.6,
+            "unit": "ms",
+            "extra": "min 1276.56ms, stddev 8.75ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 1064.17,
+            "unit": "ms",
+            "extra": "min 1063.48ms, stddev 8.04ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 1067.91,
+            "unit": "ms",
+            "extra": "min 1065.29ms, stddev 8.77ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 1174.14,
+            "unit": "ms",
+            "extra": "min 1171.56ms, stddev 9.14ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 1058.36,
+            "unit": "ms",
+            "extra": "min 1056.82ms, stddev 7.16ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 41.23,
+            "unit": "ms",
+            "extra": "min 40.75ms, stddev 0.31ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 2.52,
+            "unit": "ms",
+            "extra": "min 2.41ms, stddev 0.23ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 2.08,
+            "unit": "ms",
+            "extra": "min 1.92ms, stddev 0.16ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 1610.91,
+            "unit": "ms",
+            "extra": "min 1605.35ms, stddev 2.59ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 731.23,
+            "unit": "ms",
+            "extra": "min 721.59ms, stddev 4.71ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
           }
         ]
       }
