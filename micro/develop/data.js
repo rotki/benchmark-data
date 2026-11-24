@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1795426727837,
+  "lastUpdate": 1795519986013,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (develop)": [
@@ -10212,6 +10212,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.00002981866763990988",
             "extra": "mean: 20.326832212646128 usec\nrounds: 6395"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "id": "a5fe53f0439cb4b27a126e4a42aca7dc9632da4a",
+          "message": "fix: keep the origin port check behind proxies\n\nRevert the portless Host relaxation. A Host without a port is also what\na browser sends for a server reached directly on port 80/443, so the\nrelaxation let any other port on the same hostname write to the API.\n\nRecommend only `proxy_set_header Host $http_host;` in the changelog, as\nthe docs and the 1.44.3 release notes already do, and pin the behaviour\nin the reverse proxy test.",
+          "timestamp": "2026-11-24T08:47:34Z",
+          "url": "https://github.com/rotki/rotki/commit/a5fe53f0439cb4b27a126e4a42aca7dc9632da4a"
+        },
+        "date": 1795519985484,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 151.9895565178488,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00010929957578468112",
+            "extra": "mean: 6.579399420002687 msec\nrounds: 100"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 134.35199854592705,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0000939739650844264",
+            "extra": "mean: 7.443134533336762 msec\nrounds: 90"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 1013.51523902126,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000031229393542750534",
+            "extra": "mean: 986.6649868685629 usec\nrounds: 990"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 1137.0323869583867,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00835012810943094",
+            "extra": "mean: 879.482424133094 usec\nrounds: 837"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 5.735616482910732,
+            "unit": "iter/sec",
+            "range": "stddev: 0.08841936991382418",
+            "extra": "mean: 174.34917466666397 msec\nrounds: 12"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 41980.40255998032,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0000020451070423933435",
+            "extra": "mean: 23.820638655649635 usec\nrounds: 7616"
           }
         ]
       }
