@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1795519983437,
+  "lastUpdate": 1795601989746,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (bugfixes)": [
@@ -18312,6 +18312,142 @@ window.BENCHMARK_DATA = {
             "value": 731.23,
             "unit": "ms",
             "extra": "min 721.59ms, stddev 4.71ms\nmachine: {\"cpu_model\": \"INTEL(R) XEON(R) PLATINUM 8573C\", \"logical_cpus\": 4}"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Lefteris Karapetsas",
+            "username": "LefterisJP",
+            "email": "lefteris@refu.co"
+          },
+          "id": "a5fe53f0439cb4b27a126e4a42aca7dc9632da4a",
+          "message": "fix: keep the origin port check behind proxies\n\nRevert the portless Host relaxation. A Host without a port is also what\na browser sends for a server reached directly on port 80/443, so the\nrelaxation let any other port on the same hostname write to the API.\n\nRecommend only `proxy_set_header Host $http_host;` in the changelog, as\nthe docs and the 1.44.3 release notes already do, and pin the behaviour\nin the reverse proxy test.",
+          "timestamp": "2026-11-24T08:47:34Z",
+          "url": "https://github.com/rotki/rotki/commit/a5fe53f0439cb4b27a126e4a42aca7dc9632da4a"
+        },
+        "date": 1795601989281,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 2142.65,
+            "unit": "ms",
+            "extra": "min 2102.24ms, stddev 1724.23ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 1376.09,
+            "unit": "ms",
+            "extra": "min 1321.34ms, stddev 417.07ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 6.54,
+            "unit": "ms",
+            "extra": "min 6.47ms, stddev 0.17ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 41.54,
+            "unit": "ms",
+            "extra": "min 41.28ms, stddev 0.63ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 2.48,
+            "unit": "ms",
+            "extra": "min 2.42ms, stddev 0.12ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 2.12,
+            "unit": "ms",
+            "extra": "min 2.08ms, stddev 0.09ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 125.52,
+            "unit": "ms",
+            "extra": "min 123.88ms, stddev 1.16ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 85.29,
+            "unit": "ms",
+            "extra": "min 84.42ms, stddev 0.6ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 2105.5,
+            "unit": "ms",
+            "extra": "min 2102.34ms, stddev 23.46ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 1393.21,
+            "unit": "ms",
+            "extra": "min 1387.54ms, stddev 23.33ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 1049.3,
+            "unit": "ms",
+            "extra": "min 1045.54ms, stddev 4.14ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 1050.55,
+            "unit": "ms",
+            "extra": "min 1048.61ms, stddev 1.94ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 1162.11,
+            "unit": "ms",
+            "extra": "min 1154.67ms, stddev 5.01ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 1037.92,
+            "unit": "ms",
+            "extra": "min 1032.12ms, stddev 3.53ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 41.16,
+            "unit": "ms",
+            "extra": "min 40.8ms, stddev 0.94ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 2.6,
+            "unit": "ms",
+            "extra": "min 2.45ms, stddev 0.09ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 2.12,
+            "unit": "ms",
+            "extra": "min 2.09ms, stddev 0.08ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 1642.61,
+            "unit": "ms",
+            "extra": "min 1638.98ms, stddev 3.76ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 804.47,
+            "unit": "ms",
+            "extra": "min 794.74ms, stddev 5.26ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
           }
         ]
       }
