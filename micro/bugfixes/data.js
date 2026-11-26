@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1795601994922,
+  "lastUpdate": 1795687180908,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (bugfixes)": [
@@ -9984,6 +9984,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.000002985792525869275",
             "extra": "mean: 26.374663340374823 usec\nrounds: 6113"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "71a4f0da1cbb90f08078ac32a5779af6e4c1fadf",
+          "message": "fix: clear staking rate limit waits once they end\n\nThe rate limit line in the task dock stayed up after the wait was over:\nthe backend only cleared it with the next progress frame, and the\nbeaconcha.in block productions path fetches every page before it sends\none. The backend now sends a frame with no wait right after each sleep.\n\nThe dock text puts the seconds first so the dock does not cut them off,\nand a zero second wait is not shown. The frame schema accepts only the\ntwo staking query types, which replaces the runtime check, and the wait\ndetail is published only when it changes, since every publish re-runs\nevery dock row's detail.\n\nLLM-Model: anthropic/claude-opus-5-5\nHarness: Claude Code 2.1.330",
+          "timestamp": "2026-11-25T14:32:22Z",
+          "url": "https://github.com/rotki/rotki/commit/71a4f0da1cbb90f08078ac32a5779af6e4c1fadf"
+        },
+        "date": 1795687180532,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 353.3973660194779,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00004669622329624541",
+            "extra": "mean: 2.829675872414069 msec\nrounds: 290"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 242.91762784369243,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00005129488315680271",
+            "extra": "mean: 4.116621790179258 msec\nrounds: 224"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 744.7480696499614,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000027568908520335506",
+            "extra": "mean: 1.342735940853139 msec\nrounds: 727"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 3168.0130735958337,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00021509372113228108",
+            "extra": "mean: 315.65526302104433 usec\nrounds: 1152"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 15.320076592233626,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0004326530503598478",
+            "extra": "mean: 65.27382509999597 msec\nrounds: 10"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 33185.74800294591,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0000030374940517730025",
+            "extra": "mean: 30.133417511373548 usec\nrounds: 5231"
           }
         ]
       }
