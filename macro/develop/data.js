@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1795687171206,
+  "lastUpdate": 1795773817015,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (develop)": [
@@ -22764,6 +22764,142 @@ window.BENCHMARK_DATA = {
             "value": 454.94,
             "unit": "ms",
             "extra": "min 446.76ms, stddev 13.68ms\nmachine: {\"cpu_model\": \"AMD EPYC 9V45 96-Core Processor\", \"logical_cpus\": 4}"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "ea4d5eb4a7f3950867b177dce4fe2046dd7e4f13",
+          "message": "test(frontend): cover each dash fallback in tx conflicts\n\nThe no-reason test passed on the last-error dash alone, and no row\nlacked a timestamp, so the timestamp fallback never rendered. Each\ntest now leaves exactly one dash source empty.\n\nLLM-Model: anthropic/claude-opus-5-5\nHarness: Claude Code 2.1.330",
+          "timestamp": "2026-11-26T18:05:15Z",
+          "url": "https://github.com/rotki/rotki/commit/ea4d5eb4a7f3950867b177dce4fe2046dd7e4f13"
+        },
+        "date": 1795773816454,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 2660.88,
+            "unit": "ms",
+            "extra": "min 2607.19ms, stddev 2031.36ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 1238.31,
+            "unit": "ms",
+            "extra": "min 1226.38ms, stddev 417.62ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 6.52,
+            "unit": "ms",
+            "extra": "min 6.25ms, stddev 0.96ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 39.33,
+            "unit": "ms",
+            "extra": "min 38.29ms, stddev 2.39ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 2.3,
+            "unit": "ms",
+            "extra": "min 2.27ms, stddev 0.18ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 2.03,
+            "unit": "ms",
+            "extra": "min 1.97ms, stddev 0.07ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 121.39,
+            "unit": "ms",
+            "extra": "min 119.86ms, stddev 1.55ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 76.09,
+            "unit": "ms",
+            "extra": "min 74.85ms, stddev 1.35ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 2617.03,
+            "unit": "ms",
+            "extra": "min 2606.78ms, stddev 26.92ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 1309.25,
+            "unit": "ms",
+            "extra": "min 1303.54ms, stddev 5.52ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 972.37,
+            "unit": "ms",
+            "extra": "min 968.4ms, stddev 4.5ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 974.32,
+            "unit": "ms",
+            "extra": "min 968.57ms, stddev 4.25ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 25.42,
+            "unit": "ms",
+            "extra": "min 24.99ms, stddev 0.31ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 949.45,
+            "unit": "ms",
+            "extra": "min 945.23ms, stddev 2.12ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 38.96,
+            "unit": "ms",
+            "extra": "min 38.7ms, stddev 0.44ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 2.27,
+            "unit": "ms",
+            "extra": "min 2.2ms, stddev 0.05ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 2.03,
+            "unit": "ms",
+            "extra": "min 1.93ms, stddev 0.05ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 854.62,
+            "unit": "ms",
+            "extra": "min 852.98ms, stddev 1.37ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 735.74,
+            "unit": "ms",
+            "extra": "min 735.44ms, stddev 1.56ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
           }
         ]
       }
