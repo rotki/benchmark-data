@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1795687180908,
+  "lastUpdate": 1795773825656,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend micro benchmarks (bugfixes)": [
@@ -10048,6 +10048,70 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.0000030374940517730025",
             "extra": "mean: 30.133417511373548 usec\nrounds: 5231"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "committer": {
+            "name": "Konstantinos Paparas",
+            "username": "kelsos",
+            "email": "kelsos86@gmail.com"
+          },
+          "id": "ea4d5eb4a7f3950867b177dce4fe2046dd7e4f13",
+          "message": "test(frontend): cover each dash fallback in tx conflicts\n\nThe no-reason test passed on the last-error dash alone, and no row\nlacked a timestamp, so the timestamp fallback never rendered. Each\ntest now leaves exactly one dash source empty.\n\nLLM-Model: anthropic/claude-opus-5-5\nHarness: Claude Code 2.1.330",
+          "timestamp": "2026-11-26T18:05:15Z",
+          "url": "https://github.com/rotki/rotki/commit/ea4d5eb4a7f3950867b177dce4fe2046dd7e4f13"
+        },
+        "date": 1795773825249,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_db_serialization",
+            "value": 384.9048746823379,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00013243372379353755",
+            "extra": "mean: 2.598044518987452 msec\nrounds: 316"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_history_event_api_serialization",
+            "value": 257.8013901131339,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00018462365936118823",
+            "extra": "mean: 3.87895503418798 msec\nrounds: 234"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_fval_arithmetic",
+            "value": 819.0976468441606,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00006338665436131635",
+            "extra": "mean: 1.2208556621458069 msec\nrounds: 811"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_redecode_delete_customized_lookup",
+            "value": 3331.5822699403316,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000147681531498456",
+            "extra": "mean: 300.1576785369043 usec\nrounds: 1039"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_transaction_decoding[ethereum_accounts0]",
+            "value": 15.156097512003715,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0009514487817898881",
+            "extra": "mean: 65.98004527273557 msec\nrounds: 11"
+          },
+          {
+            "name": "rotkehlchen/tests/benchmarks/test_hot_paths.py::test_events_filter_query_construction",
+            "value": 32651.60853397131,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0000026458058158860525",
+            "extra": "mean: 30.62636252543523 usec\nrounds: 6463"
           }
         ]
       }
