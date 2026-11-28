@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1795773820178,
+  "lastUpdate": 1795857633769,
   "repoUrl": "https://github.com/rotki/rotki",
   "entries": {
     "rotki backend macro benchmarks (bugfixes)": [
@@ -18720,6 +18720,142 @@ window.BENCHMARK_DATA = {
             "value": 813.83,
             "unit": "ms",
             "extra": "min 808.02ms, stddev 3.24ms\nmachine: {\"cpu_model\": \"AMD EPYC 7763 64-Core Processor\", \"logical_cpus\": 4}"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Yábir Benchakhtir",
+            "username": "yabirgb",
+            "email": "git@yabirgb.com"
+          },
+          "committer": {
+            "name": "GitHub",
+            "username": "web-flow",
+            "email": "noreply@github.com"
+          },
+          "id": "b5b3f6a47430ca17af8a6ed47c950d4215a64b44",
+          "message": "Merge pull request #13767 from yabirgb/cost-basis-stalled-reason\n\nShow stalled cost basis reason in Task Center",
+          "timestamp": "2026-11-27T18:38:30Z",
+          "url": "https://github.com/rotki/rotki/commit/b5b3f6a47430ca17af8a6ed47c950d4215a64b44"
+        },
+        "date": 1795857633360,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "small/boot_to_ping",
+            "value": 1529.99,
+            "unit": "ms",
+            "extra": "min 1458.6ms, stddev 1433.18ms\nmachine: {\"cpu_model\": \"Intel(R) Xeon(R) 6973P-C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/user_unlock",
+            "value": 1059.25,
+            "unit": "ms",
+            "extra": "min 989.34ms, stddev 350.1ms\nmachine: {\"cpu_model\": \"Intel(R) Xeon(R) 6973P-C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/history_events_p1",
+            "value": 5.08,
+            "unit": "ms",
+            "extra": "min 4.82ms, stddev 0.25ms\nmachine: {\"cpu_model\": \"Intel(R) Xeon(R) 6973P-C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/asset_search",
+            "value": 31.7,
+            "unit": "ms",
+            "extra": "min 30.43ms, stddev 1.33ms\nmachine: {\"cpu_model\": \"Intel(R) Xeon(R) 6973P-C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/manual_balances",
+            "value": 2.05,
+            "unit": "ms",
+            "extra": "min 1.99ms, stddev 0.05ms\nmachine: {\"cpu_model\": \"Intel(R) Xeon(R) 6973P-C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/netvalue_stats",
+            "value": 1.69,
+            "unit": "ms",
+            "extra": "min 1.64ms, stddev 0.04ms\nmachine: {\"cpu_model\": \"Intel(R) Xeon(R) 6973P-C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/blockchain_balances_eth",
+            "value": 83.37,
+            "unit": "ms",
+            "extra": "min 80.96ms, stddev 29.48ms\nmachine: {\"cpu_model\": \"Intel(R) Xeon(R) 6973P-C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "small/redecode_transactions",
+            "value": 57.53,
+            "unit": "ms",
+            "extra": "min 56.09ms, stddev 27.55ms\nmachine: {\"cpu_model\": \"Intel(R) Xeon(R) 6973P-C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/boot_to_ping",
+            "value": 1584.59,
+            "unit": "ms",
+            "extra": "min 1529.43ms, stddev 197.38ms\nmachine: {\"cpu_model\": \"Intel(R) Xeon(R) 6973P-C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/user_unlock",
+            "value": 1172.89,
+            "unit": "ms",
+            "extra": "min 1044.01ms, stddev 130.99ms\nmachine: {\"cpu_model\": \"Intel(R) Xeon(R) 6973P-C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_p1",
+            "value": 870.29,
+            "unit": "ms",
+            "extra": "min 864.61ms, stddev 10.0ms\nmachine: {\"cpu_model\": \"Intel(R) Xeon(R) 6973P-C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_deep",
+            "value": 858.94,
+            "unit": "ms",
+            "extra": "min 850.36ms, stddev 21.47ms\nmachine: {\"cpu_model\": \"Intel(R) Xeon(R) 6973P-C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_filtered",
+            "value": 948.61,
+            "unit": "ms",
+            "extra": "min 928.05ms, stddev 24.54ms\nmachine: {\"cpu_model\": \"Intel(R) Xeon(R) 6973P-C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/history_events_by_location",
+            "value": 851.51,
+            "unit": "ms",
+            "extra": "min 843.87ms, stddev 20.0ms\nmachine: {\"cpu_model\": \"Intel(R) Xeon(R) 6973P-C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/asset_search",
+            "value": 32.29,
+            "unit": "ms",
+            "extra": "min 31.12ms, stddev 1.17ms\nmachine: {\"cpu_model\": \"Intel(R) Xeon(R) 6973P-C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/manual_balances",
+            "value": 2.02,
+            "unit": "ms",
+            "extra": "min 1.93ms, stddev 0.14ms\nmachine: {\"cpu_model\": \"Intel(R) Xeon(R) 6973P-C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/netvalue_stats",
+            "value": 1.69,
+            "unit": "ms",
+            "extra": "min 1.57ms, stddev 0.15ms\nmachine: {\"cpu_model\": \"Intel(R) Xeon(R) 6973P-C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/blockchain_balances_eth",
+            "value": 1292.81,
+            "unit": "ms",
+            "extra": "min 1280.53ms, stddev 30.79ms\nmachine: {\"cpu_model\": \"Intel(R) Xeon(R) 6973P-C\", \"logical_cpus\": 4}"
+          },
+          {
+            "name": "whale/redecode_transactions",
+            "value": 612.86,
+            "unit": "ms",
+            "extra": "min 602.99ms, stddev 12.52ms\nmachine: {\"cpu_model\": \"Intel(R) Xeon(R) 6973P-C\", \"logical_cpus\": 4}"
           }
         ]
       }
